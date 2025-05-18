@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://x2g34cdgtlvr"]
+
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="1_cbl7u"]
+[ext_resource type="Texture2D" uid="uid://bfbcguqgjh4av" path="res://resources/models/characters/dizzy/dizzy_albedo.png" id="1_q1b3k"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cbl7u")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("1_q1b3k")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.4
+shader_parameter/resolution = Vector2i(320, 240)

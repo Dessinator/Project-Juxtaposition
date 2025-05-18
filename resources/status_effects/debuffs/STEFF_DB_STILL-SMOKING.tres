@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://bq5jwwxfvrich"]
+
+[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="1_gsn2l"]
+[ext_resource type="Texture2D" uid="uid://dghg2hmr6d835" path="res://resources/images/icons/STEFF_ICN_STILL-SMOKING.jpg" id="1_wyw4g"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/mod_substat.gd" id="2_1hxju"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/status_effect_component.gd" id="2_okq26"]
+
+[sub_resource type="Resource" id="Resource_2ftb1"]
+script = ExtResource("2_1hxju")
+_affected_substat = 3
+_use_percentage_of_base_stat_value_instead = false
+_mod_value = -2
+_percentage_of_base_stat = 1.0
+
+[resource]
+script = ExtResource("1_gsn2l")
+_name = "Still Smoking"
+_icon = ExtResource("1_wyw4g")
+_brief_description = "Decreases actor DMMT (Damage Mitigation) for 2 turns.
+"
+_long_description = "Decreases actor DMMT (Damage Mitigation) by 20% for 2 turns."
+_status_effect_type = 2
+_duration_turns = 2
+_duration_mode = 0
+_status_effect_components = Array[ExtResource("2_okq26")]([SubResource("Resource_2ftb1")])

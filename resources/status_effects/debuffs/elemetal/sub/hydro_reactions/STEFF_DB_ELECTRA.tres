@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=4 format=3 uid="uid://kw7tc7igmntj"]
+
+[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="1_46u1g"]
+[ext_resource type="Texture2D" uid="uid://cx32lcrrx7kb6" path="res://resources/images/icons/STEFF_ICN_ELECTRA.jpg" id="1_vm7ri"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/status_effect_component.gd" id="2_wmg3y"]
+
+[resource]
+script = ExtResource("1_46u1g")
+_name = "Electra"
+_icon = ExtResource("1_vm7ri")
+_brief_description = ""
+_long_description = ""
+_status_effect_type = 0
+_duration_turns = 5
+_duration_mode = 0
+_status_effect_components = Array[ExtResource("2_wmg3y")]([])

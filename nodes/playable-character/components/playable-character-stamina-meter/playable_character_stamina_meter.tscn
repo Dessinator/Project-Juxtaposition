@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dalxdx30uubou"]
+
+[ext_resource type="Texture2D" uid="uid://cyfutvwdypvuc" path="res://resources/images/progress-bars/PBRTEX_stamina_indicator_under.png" id="1_cpgej"]
+[ext_resource type="Script" uid="uid://di774t7moc4ew" path="res://nodes/playable-character/components/playable-character-stamina-meter/playable_character_stamina_meter.gd" id="1_tylmx"]
+[ext_resource type="Texture2D" uid="uid://b1wuxag4jlp25" path="res://resources/images/progress-bars/PBRTEX_stamina_indicator_progress.png" id="2_ti3xx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vruwe"]
+viewport_path = NodePath("SubViewport")
+
+[node name="PlayableCharacterStaminaMeter" type="Node3D"]
+script = ExtResource("1_tylmx")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.02
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_vruwe")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(32, 32)
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 4
+texture_under = ExtResource("1_cpgej")
+texture_progress = ExtResource("2_ti3xx")

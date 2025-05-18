@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://b3mqjburvhdry"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_og7rr"]
+
+[sub_resource type="Curve" id="Curve_htfxf"]
+_limits = [0.0, 0.3, 0.0, 9999.0]
+_data = [Vector2(0, 0), 0.0, 6.83524e-05, 0, 0, Vector2(9999, 0.3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "DMG RES"
+script = ExtResource("1_og7rr")
+_internal_name = &"damage_resistance"
+_readable_name = "Damage Resistance"
+_readable_abbreviation = "DMG RES"
+_curve = SubResource("Curve_htfxf")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

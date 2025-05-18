@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://dxfb8ep786bf5"]
+
+[ext_resource type="Texture2D" uid="uid://jqablfbgyf34" path="res://resources/images/icons/STEFF_ICN_VAPRO.png" id="1_nx13e"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="1_q0bty"]
+
+[resource]
+script = ExtResource("1_q0bty")
+_name = "Vapro"
+_icon = ExtResource("1_nx13e")
+_brief_description = ""
+_long_description = ""
+_duration_turns = 5
+_duration_mode = 0
+_status_effect_components = Array[Resource("res://resources/status_effects/status_effect_components/status_effect_component.gd")]([])

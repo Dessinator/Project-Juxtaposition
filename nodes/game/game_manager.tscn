@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://4bfrxae26ksk"]
+
+[ext_resource type="Script" uid="uid://bwy6j63f84imk" path="res://nodes/game/game_manager.gd" id="1_tverr"]
+[ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_qjrq7"]
+[ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_2spcy"]
+[ext_resource type="Script" uid="uid://bgck5sowut3fk" path="res://nodes/game/states/main_menu_state.gd" id="4_uyvi7"]
+[ext_resource type="Script" uid="uid://befaq1xu87jen" path="res://nodes/game/states/main_state.gd" id="5_uyvi7"]
+
+[sub_resource type="Resource" id="Resource_uyvi7"]
+script = ExtResource("3_2spcy")
+content = {}
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_tverr")
+
+[node name="GameFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+script = ExtResource("2_qjrq7")
+process_type = 0
+active = false
+initial_state = NodePath("MainMenuState")
+actor = NodePath("..")
+blackboard = SubResource("Resource_uyvi7")
+verbose = true
+metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
+
+[node name="MainMenuState" type="Node" parent="GameFiniteStateMachine"]
+script = ExtResource("4_uyvi7")
+_main_menu_scene_path = "uid://dnc6t7sfn7x5p"
+
+[node name="MainState" type="Node" parent="GameFiniteStateMachine"]
+script = ExtResource("5_uyvi7")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdsxjbfqrqtka"]
+
+[ext_resource type="Script" uid="uid://dqa5gbg2wctf7" path="res://nodes/character/character.gd" id="1_pjags"]
+[ext_resource type="Script" uid="uid://c2rvp0akqatlx" path="res://nodes/character/components/character_attack_definition_manager.gd" id="2_vyemw"]
+
+[node name="Character" type="Node3D"]
+script = ExtResource("1_pjags")
+
+[node name="CharacterAttackDefinitionManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vyemw")
+metadata/_custom_type_script = "uid://c2rvp0akqatlx"

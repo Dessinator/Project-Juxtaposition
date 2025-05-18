@@ -1,0 +1,185 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=29 format=3 uid="uid://denmw7372g8g"]
+
+[ext_resource type="Script" uid="uid://dkwx2cueh4lp1" path="res://resources/character/character-stats/stat.gd" id="1_ltpus"]
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="2_us5xl"]
+[ext_resource type="Script" uid="uid://24nukwcutln8" path="res://resources/status_effects/status_effect.gd" id="3_f5bow"]
+[ext_resource type="Script" uid="uid://3qgt3g5o34v3" path="res://resources/character/character-stats/character_stats.gd" id="4_6ew8o"]
+
+[sub_resource type="Resource" id="Resource_iikov"]
+resource_name = "ATTK"
+script = ExtResource("1_ltpus")
+_internal_name = &"attack"
+_readable_name = "Attack"
+_readable_abbreviation = "ATTK"
+_value = 0
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[sub_resource type="Resource" id="Resource_s1vqs"]
+resource_name = "DFNS"
+script = ExtResource("1_ltpus")
+_internal_name = &"defense"
+_readable_name = "Defense"
+_readable_abbreviation = "DFNS"
+_value = 0
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[sub_resource type="Resource" id="Resource_x2jdf"]
+resource_name = "AGLT"
+script = ExtResource("1_ltpus")
+_internal_name = &"agility"
+_readable_name = "Agility"
+_readable_abbreviation = "AGLT"
+_value = 0
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[sub_resource type="Resource" id="Resource_phunj"]
+resource_name = "VTLY"
+script = ExtResource("1_ltpus")
+_internal_name = &"vitality"
+_readable_name = "Vitality"
+_readable_abbreviation = "VTLY"
+_value = 0
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[sub_resource type="Curve" id="Curve_ltpus"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_2enbw"]
+resource_name = "ATK DMG"
+script = ExtResource("2_us5xl")
+_internal_name = &"attack_damage"
+_readable_name = "Attack Damage"
+_readable_abbreviation = "ATK DMG"
+_curve = SubResource("Curve_ltpus")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Curve" id="Curve_us5xl"]
+_data = [Vector2(0, 0), 0.0, 2.76116, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_kh3ab"]
+resource_name = "CRT CHA"
+script = ExtResource("2_us5xl")
+_internal_name = &"critical_chance"
+_readable_name = "Critical Chance"
+_readable_abbreviation = "CRT CHA"
+_curve = SubResource("Curve_us5xl")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Curve" id="Curve_f5bow"]
+_data = [Vector2(0, 0), 0.0, 0.542031, 0, 0, Vector2(1, 1), 1.99215, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_mbksj"]
+resource_name = "CRT MUL"
+script = ExtResource("2_us5xl")
+_internal_name = &"critical_multiplier"
+_readable_name = "Critical Multiplier"
+_readable_abbreviation = "CRT MUL"
+_curve = SubResource("Curve_f5bow")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Curve" id="Curve_6ew8o"]
+_data = [Vector2(0, 0), 0.0, 0.715575, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_lo8ns"]
+resource_name = "DMG RES"
+script = ExtResource("2_us5xl")
+_internal_name = &"damage_resistance"
+_readable_name = "Damage Resistance"
+_readable_abbreviation = "DMG RES"
+_curve = SubResource("Curve_6ew8o")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Curve" id="Curve_2enbw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.929256, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_7ud3h"]
+resource_name = "DBF RES"
+script = ExtResource("2_us5xl")
+_internal_name = &"debuff_resistance"
+_readable_name = "Debuff Resistance"
+_readable_abbreviation = "DBF RES"
+_curve = SubResource("Curve_2enbw")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Curve" id="Curve_kh3ab"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.929256, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_ltpus"]
+resource_name = "BUF RET"
+script = ExtResource("2_us5xl")
+_internal_name = &"buff_retention"
+_readable_name = "Buff Retention"
+_readable_abbreviation = "BUF RET"
+_curve = SubResource("Curve_kh3ab")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Resource" id="Resource_8uyb7"]
+resource_name = "MVT SPD"
+script = ExtResource("2_us5xl")
+_internal_name = &"movement_speed"
+_readable_name = "Movement Speed"
+_readable_abbreviation = "MVT SPD"
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Resource" id="Resource_u4b4o"]
+resource_name = "ATK SPD"
+script = ExtResource("2_us5xl")
+_internal_name = &"attack_speed"
+_readable_name = "Attack Speed"
+_readable_abbreviation = "ATK SPD"
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Resource" id="Resource_ay4v2"]
+resource_name = "SPS RGN"
+script = ExtResource("2_us5xl")
+_internal_name = &"stamina_regeneration_rate"
+_readable_name = "Stamina Regeneration"
+_readable_abbreviation = "SPS RGN"
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Curve" id="Curve_mbksj"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_us5xl"]
+resource_name = "MAX HPS"
+script = ExtResource("2_us5xl")
+_internal_name = &"maximum_health"
+_readable_name = "Maximum Hit Points"
+_readable_abbreviation = "MAX HPS"
+_curve = SubResource("Curve_mbksj")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Resource" id="Resource_f5bow"]
+resource_name = "HPS RGN"
+script = ExtResource("2_us5xl")
+_internal_name = &"health_regeneration_rate"
+_readable_name = "Health Regeneration"
+_readable_abbreviation = "HPS RGN"
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[sub_resource type="Curve" id="Curve_lo8ns"]
+_data = [Vector2(0, 0), 0.0, 0.504405, 0, 1, Vector2(1, 0.504405), 0.504405, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_6ew8o"]
+resource_name = "MAX SPS"
+script = ExtResource("2_us5xl")
+_internal_name = &"maxinum_stamina"
+_readable_name = "Maximum Stamina Points"
+_readable_abbreviation = "MAX SPS"
+_curve = SubResource("Curve_lo8ns")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"
+
+[resource]
+script = ExtResource("4_6ew8o")
+_stats = Array[ExtResource("1_ltpus")]([SubResource("Resource_iikov"), SubResource("Resource_s1vqs"), SubResource("Resource_x2jdf"), SubResource("Resource_phunj")])
+_substats = Array[ExtResource("2_us5xl")]([SubResource("Resource_2enbw"), SubResource("Resource_kh3ab"), SubResource("Resource_mbksj"), SubResource("Resource_lo8ns"), SubResource("Resource_7ud3h"), SubResource("Resource_ltpus"), SubResource("Resource_8uyb7"), SubResource("Resource_u4b4o"), SubResource("Resource_ay4v2"), SubResource("Resource_us5xl"), SubResource("Resource_f5bow"), SubResource("Resource_6ew8o")])
+_wards = Array[ExtResource("3_f5bow")]([])
+metadata/_custom_type_script = "uid://3qgt3g5o34v3"

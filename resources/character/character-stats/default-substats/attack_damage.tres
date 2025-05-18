@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://dew3wshj0c7uo"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_g6red"]
+
+[sub_resource type="Curve" id="Curve_peiqg"]
+_limits = [1.0, 9999.0, 0.0, 9999.0]
+_data = [Vector2(0, 1), 0.0, 1.4, 0, 0, Vector2(9999, 9999), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "ATK DMG"
+script = ExtResource("1_g6red")
+_internal_name = &"attack_damage"
+_readable_name = "Attack Damage"
+_readable_abbreviation = "ATK DMG"
+_curve = SubResource("Curve_peiqg")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=10 format=3 uid="uid://cc7jn7k286y16"]
+
+[ext_resource type="Texture2D" uid="uid://dxq0ews4mxq75" path="res://resources/images/icons/STEFF_ICN_HYDRO.jpg" id="1_yabct"]
+[ext_resource type="Resource" uid="uid://b63wcef68po16" path="res://resources/status_effects/debuffs/elemetal/sub/hydro_reactions/STEFF_DB_STEAMRO.tres" id="2_a0p32"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/status_effect_component.gd" id="2_ncqy6"]
+[ext_resource type="Resource" uid="uid://ctgknj4k2a0aw" path="res://resources/status_effects/debuffs/elemetal/sub/hydro_reactions/STEFF_DB_GLACIO.tres" id="3_feuma"]
+[ext_resource type="Resource" uid="uid://3rw8ic8vh41d" path="res://resources/status_effects/debuffs/elemetal/sub/hydro_reactions/STEFF_DB_MIASMO.tres" id="4_idt2g"]
+[ext_resource type="Resource" uid="uid://kw7tc7igmntj" path="res://resources/status_effects/debuffs/elemetal/sub/hydro_reactions/STEFF_DB_ELECTRA.tres" id="5_aguve"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/combine_rule.gd" id="6_1mqns"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="7_1l1f4"]
+
+[sub_resource type="Resource" id="Resource_8c4ey"]
+script = ExtResource("6_1mqns")
+_combination_rules = {
+"Cryo": ExtResource("3_feuma"),
+"Pyro": ExtResource("2_a0p32"),
+"Toxi": ExtResource("4_idt2g"),
+"Volt": ExtResource("5_aguve")
+}
+
+[resource]
+script = ExtResource("7_1l1f4")
+_name = "Hydro"
+_icon = ExtResource("1_yabct")
+_brief_description = ""
+_long_description = ""
+_status_effect_type = 0
+_duration_turns = 5
+_duration_mode = 0
+_status_effect_components = Array[ExtResource("2_ncqy6")]([SubResource("Resource_8c4ey")])

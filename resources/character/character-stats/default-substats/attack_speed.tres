@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://dydl2m6dpx8h0"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_bhmbc"]
+
+[sub_resource type="Curve" id="Curve_2xxwf"]
+_limits = [1.0, 3.0, 0.0, 9999.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(9999, 3), 0.000280028, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "ATK SPD"
+script = ExtResource("1_bhmbc")
+_internal_name = &"attack_speed"
+_readable_name = "Attack Speed"
+_readable_abbreviation = "ATK SPD"
+_curve = SubResource("Curve_2xxwf")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

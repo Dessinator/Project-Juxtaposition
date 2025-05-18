@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://baeldudlcjgto"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_bg4yq"]
+
+[sub_resource type="Curve" id="Curve_ay1c5"]
+_limits = [1.0, 10.0, 0.0, 9999.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(9999, 10), 0.00282605, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "CRT MUL"
+script = ExtResource("1_bg4yq")
+_internal_name = &"critical_multiplier"
+_readable_name = "Critical Multiplier"
+_readable_abbreviation = "CRT MUL"
+_curve = SubResource("Curve_ay1c5")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

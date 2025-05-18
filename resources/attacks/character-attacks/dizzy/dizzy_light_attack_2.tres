@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AttackDefinition" load_steps=7 format=3 uid="uid://cqcla3r1g1qub"]
+
+[ext_resource type="Script" uid="uid://bcfnhvhafkj3v" path="res://resources/attacks/attack_component.gd" id="1_5e7nb"]
+[ext_resource type="Script" uid="uid://dg037gl1v2i6t" path="res://resources/attacks/component/attack_animation_handler.gd" id="2_vqrri"]
+[ext_resource type="Script" uid="uid://dnlunstix2nb5" path="res://resources/attacks/component/attack_hitbox_handler.gd" id="3_a2gdd"]
+[ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/attacks/attack_definition.gd" id="4_kdmim"]
+
+[sub_resource type="Resource" id="Resource_sq0jn"]
+script = ExtResource("2_vqrri")
+_animation_name = &"light_attack_2"
+metadata/_custom_type_script = "uid://dg037gl1v2i6t"
+
+[sub_resource type="Resource" id="Resource_wa1o5"]
+script = ExtResource("3_a2gdd")
+_hitbox_animation_name = &"light_attack_2"
+metadata/_custom_type_script = "uid://dnlunstix2nb5"
+
+[resource]
+script = ExtResource("4_kdmim")
+_attack_name = ""
+_attack_description = ""
+_attack_type = 1
+_attack_components = Array[ExtResource("1_5e7nb")]([SubResource("Resource_sq0jn"), SubResource("Resource_wa1o5")])
+metadata/_custom_type_script = "uid://0rqq8j1kh32y"

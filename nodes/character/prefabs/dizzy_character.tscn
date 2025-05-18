@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://hwm20jjo22ad"]
+
+[ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_n352f"]
+[ext_resource type="Resource" uid="uid://csxvkfqvs8ue1" path="res://resources/character/character-stats/prefabs/dizzy/dizzy_character_stats.tres" id="2_n352f"]
+[ext_resource type="PackedScene" uid="uid://fq6koepqyxc2" path="res://resources/models/characters/dizzy/dizzy_character_model.tscn" id="2_ykt8n"]
+[ext_resource type="Resource" uid="uid://ckjrdqhj5cinv" path="res://resources/attacks/character-attacks/dizzy/monsoon-chorus-combo/monsoon_chorus.tres" id="3_sc15y"]
+[ext_resource type="PackedScene" uid="uid://bd2jee8xqwwqs" path="res://nodes/character/components/character-attack-state-machine/prefabs/dizzy/dizzy_character_attack_state_machine.tscn" id="3_vieyh"]
+
+[node name="DizzyCharacter" node_paths=PackedStringArray("_character_model") instance=ExtResource("1_n352f")]
+_character_model = NodePath("DizzyCharacterModel")
+_character_stats = ExtResource("2_n352f")
+_character_attack_state_machine = ExtResource("3_vieyh")
+
+[node name="CharacterAttackDefinitionManager" parent="." index="0"]
+_light_attack = ExtResource("3_sc15y")
+
+[node name="DizzyCharacterModel" parent="." index="1" instance=ExtResource("2_ykt8n")]

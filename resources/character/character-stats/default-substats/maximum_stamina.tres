@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://pu4pfkj7h841"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_ah60j"]
+
+[sub_resource type="Curve" id="Curve_d1a5h"]
+_limits = [10.0, 200.0, 0.0, 9999.0]
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(9999, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "MAX SPS"
+script = ExtResource("1_ah60j")
+_internal_name = &"maximum_stamina"
+_readable_name = "Maximum Stamina Points"
+_readable_abbreviation = "MAX SPS"
+_curve = SubResource("Curve_d1a5h")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=10 format=3 uid="uid://c0dfgbglmxyav"]
+
+[ext_resource type="Texture2D" uid="uid://0futfxea57da" path="res://resources/images/icons/STEFF_ICN_PYRO.png" id="1_vrkhm"]
+[ext_resource type="Resource" uid="uid://cc7jn7k286y16" path="res://resources/status_effects/debuffs/elemetal/sub/STEFF_DB_HYDRO.tres" id="2_7agmo"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/status_effect_component.gd" id="2_yxx0p"]
+[ext_resource type="Resource" uid="uid://dxfb8ep786bf5" path="res://resources/status_effects/debuffs/elemetal/sub/STEFF_DB_VAPRO.tres" id="3_7ym1p"]
+[ext_resource type="Resource" uid="uid://dwu8y8m7pe181" path="res://resources/status_effects/debuffs/elemetal/sub/STEFF_DB_RADIO.tres" id="4_y6fv7"]
+[ext_resource type="Resource" uid="uid://b63wcef68po16" path="res://resources/status_effects/debuffs/elemetal/sub/hydro_reactions/STEFF_DB_STEAMRO.tres" id="5_rchhu"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/combine_rule.gd" id="6_k25na"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="7_i0rsg"]
+
+[sub_resource type="Resource" id="Resource_pmc0l"]
+script = ExtResource("6_k25na")
+_combination_rules = {
+"Cryo": ExtResource("2_7agmo"),
+"Cryo Ward": ExtResource("2_7agmo"),
+"Hydro": ExtResource("5_rchhu"),
+"Toxi": ExtResource("3_7ym1p"),
+"Toxi Ward": ExtResource("3_7ym1p"),
+"Volt": ExtResource("4_y6fv7"),
+"Volt Ward": ExtResource("4_y6fv7")
+}
+
+[resource]
+script = ExtResource("7_i0rsg")
+_name = "Pyro"
+_icon = ExtResource("1_vrkhm")
+_brief_description = ""
+_long_description = ""
+_status_effect_type = 2
+_duration_turns = 5
+_duration_mode = 0
+_status_effect_components = Array[ExtResource("2_yxx0p")]([SubResource("Resource_pmc0l")])

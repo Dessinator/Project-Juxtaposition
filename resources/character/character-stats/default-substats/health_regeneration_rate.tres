@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://dmewkfi1er0r1"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_x8bua"]
+
+[sub_resource type="Curve" id="Curve_cs45c"]
+_limits = [50.0, 1000.0, 0.0, 9999.0]
+_data = [Vector2(0, 50), 0.0, 0.0, 0, 0, Vector2(9999, 1000), 0.133013, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "HPS RGN"
+script = ExtResource("1_x8bua")
+_internal_name = &"health_regeneration_rate"
+_readable_name = "Health Regeneration"
+_readable_abbreviation = "HPS RGN"
+_curve = SubResource("Curve_cs45c")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

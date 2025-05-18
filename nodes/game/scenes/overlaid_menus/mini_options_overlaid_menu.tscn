@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxyaku7y7rrnv"]
+
+[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/overlaid_menu/menus/mini_options_overlaid_menu.tscn" id="1_m8biw"]
+[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/mini_options_menu_with_reset.tscn" id="2_ejjnv"]
+
+[node name="MiniOptionsOverlaidMenu" instance=ExtResource("1_m8biw")]
+menu_scene = ExtResource("2_ejjnv")

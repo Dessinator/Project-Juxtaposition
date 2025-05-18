@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2hppw7xs1lpw"]
+
+[ext_resource type="Shader" uid="uid://df4j4o0tqwo4m" path="res://resources/shaders/psx_postprocess.gdshader" id="1_kc6fv"]
+[ext_resource type="Script" uid="uid://dj2grhpgva2hy" path="res://nodes/render/world-render-handler/world_render_handler.gd" id="2_tel0o"]
+[ext_resource type="Shader" uid="uid://bj20nu0ouq2a1" path="res://resources/shaders/crt_shader.gdshader" id="3_douec"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phy2g"]
+shader = ExtResource("1_kc6fv")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye0wb"]
+shader = ExtResource("1_kc6fv")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 4
+
+[sub_resource type="World3D" id="World3D_ckdo8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3etuk"]
+shader = ExtResource("3_douec")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(320, 240)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.1
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = true
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.5
+
+[node name="WorldRenderHandler" type="Control"]
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("ShaderMaterial_phy2g")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_tel0o")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ye0wb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+unique_name_in_owner = true
+own_world_3d = true
+world_3d = SubResource("World3D_ckdo8")
+handle_input_locally = false
+size = Vector2i(288, 162)
+size_2d_override = Vector2i(320, 240)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CRTShader" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_3etuk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

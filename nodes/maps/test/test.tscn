@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://57vj2ad36gqk"]
+
+[ext_resource type="PackedScene" uid="uid://d2hppw7xs1lpw" path="res://nodes/render/world-render-handler/world_render_handler.tscn" id="1_ulxrs"]
+[ext_resource type="PackedScene" uid="uid://djxf8p7k2ll00" path="res://nodes/maps/test/test_map_environment.tscn" id="2_wdd5i"]
+[ext_resource type="PackedScene" uid="uid://cuh7qfq65d3ce" path="res://nodes/render/ui-render-handler/ui_render_handler.tscn" id="3_le35c"]
+
+[node name="Test" type="Node"]
+
+[node name="WorldRenderHandler" parent="." instance=ExtResource("1_ulxrs")]
+
+[node name="TestMapEnvironment" parent="WorldRenderHandler/SubViewportContainer/SubViewport" index="0" instance=ExtResource("2_wdd5i")]
+
+[node name="UIRenderHandler" parent="." instance=ExtResource("3_le35c")]
+
+[editable path="WorldRenderHandler"]

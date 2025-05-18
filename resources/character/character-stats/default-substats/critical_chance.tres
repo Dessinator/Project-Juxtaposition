@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://dwdv2rjrj772f"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_wiml8"]
+
+[sub_resource type="Curve" id="Curve_hnkma"]
+_limits = [0.05, 0.5, 0.0, 9999.0]
+_data = [Vector2(0, 0.05), 0.0, 0.0, 0, 0, Vector2(9999, 0.5), 0.000140014, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "CRT CHA"
+script = ExtResource("1_wiml8")
+_internal_name = &"critical_chance"
+_readable_name = "Critical Chance"
+_readable_abbreviation = "CRT CHA"
+_curve = SubResource("Curve_hnkma")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="AttackDefinition" load_steps=21 format=3 uid="uid://ckjrdqhj5cinv"]
+
+[ext_resource type="Script" uid="uid://bcfnhvhafkj3v" path="res://resources/attacks/attack_component.gd" id="1_rpavc"]
+[ext_resource type="Script" uid="uid://bc8y3m7rn5qtk" path="res://resources/attacks/component/attack_combo_animation_handler.gd" id="2_vx7xm"]
+[ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/attacks/attack_definition.gd" id="3_3g13q"]
+[ext_resource type="Script" uid="uid://c8j2cfv1gwux0" path="res://resources/attacks/component/attack_combo_definition.gd" id="4_3g13q"]
+[ext_resource type="Script" uid="uid://cnkk347uus13r" path="res://resources/attacks/component/attack_combo_handler.gd" id="4_rwchr"]
+[ext_resource type="Script" uid="uid://dg037gl1v2i6t" path="res://resources/attacks/component/attack_animation_handler.gd" id="5_rwchr"]
+
+[sub_resource type="Resource" id="Resource_ivfc4"]
+script = ExtResource("2_vx7xm")
+_animation_names = Array[StringName]([&"light_attack_0", &"light_attack_1", &"light_attack_2", &"light_attack_3"])
+metadata/_custom_type_script = "uid://bc8y3m7rn5qtk"
+
+[sub_resource type="Resource" id="Resource_hham8"]
+script = ExtResource("4_3g13q")
+metadata/_custom_type_script = "uid://c8j2cfv1gwux0"
+
+[sub_resource type="Resource" id="Resource_n5eqr"]
+script = ExtResource("5_rwchr")
+_animation_name = &"light_attack_0"
+metadata/_custom_type_script = "uid://dg037gl1v2i6t"
+
+[sub_resource type="Resource" id="Resource_xwxlu"]
+script = ExtResource("3_3g13q")
+_attack_name = ""
+_attack_description = ""
+_attack_type = 0
+_attack_components = Array[ExtResource("1_rpavc")]([SubResource("Resource_hham8"), SubResource("Resource_n5eqr")])
+metadata/_custom_type_script = "uid://0rqq8j1kh32y"
+
+[sub_resource type="Resource" id="Resource_xpia4"]
+script = ExtResource("4_3g13q")
+metadata/_custom_type_script = "uid://c8j2cfv1gwux0"
+
+[sub_resource type="Resource" id="Resource_3g13q"]
+script = ExtResource("5_rwchr")
+_animation_name = &"light_attack_1"
+metadata/_custom_type_script = "uid://dg037gl1v2i6t"
+
+[sub_resource type="Resource" id="Resource_u406c"]
+script = ExtResource("3_3g13q")
+_attack_name = ""
+_attack_description = ""
+_attack_type = 0
+_attack_components = Array[ExtResource("1_rpavc")]([SubResource("Resource_xpia4"), SubResource("Resource_3g13q")])
+metadata/_custom_type_script = "uid://0rqq8j1kh32y"
+
+[sub_resource type="Resource" id="Resource_c6a4q"]
+script = ExtResource("4_3g13q")
+metadata/_custom_type_script = "uid://c8j2cfv1gwux0"
+
+[sub_resource type="Resource" id="Resource_rwchr"]
+script = ExtResource("5_rwchr")
+_animation_name = &"light_attack_2"
+metadata/_custom_type_script = "uid://dg037gl1v2i6t"
+
+[sub_resource type="Resource" id="Resource_iycju"]
+script = ExtResource("3_3g13q")
+_attack_name = ""
+_attack_description = ""
+_attack_type = 0
+_attack_components = Array[ExtResource("1_rpavc")]([SubResource("Resource_c6a4q"), SubResource("Resource_rwchr")])
+metadata/_custom_type_script = "uid://0rqq8j1kh32y"
+
+[sub_resource type="Resource" id="Resource_p5l0q"]
+script = ExtResource("4_3g13q")
+metadata/_custom_type_script = "uid://c8j2cfv1gwux0"
+
+[sub_resource type="Resource" id="Resource_tsj4o"]
+script = ExtResource("5_rwchr")
+_animation_name = &"light_attack_3"
+metadata/_custom_type_script = "uid://dg037gl1v2i6t"
+
+[sub_resource type="Resource" id="Resource_wjywg"]
+script = ExtResource("3_3g13q")
+_attack_name = ""
+_attack_description = ""
+_attack_type = 0
+_attack_components = Array[ExtResource("1_rpavc")]([SubResource("Resource_p5l0q"), SubResource("Resource_tsj4o")])
+metadata/_custom_type_script = "uid://0rqq8j1kh32y"
+
+[sub_resource type="Resource" id="Resource_b3j5w"]
+script = ExtResource("4_rwchr")
+_sub_attacks = Array[ExtResource("3_3g13q")]([SubResource("Resource_xwxlu"), SubResource("Resource_u406c"), SubResource("Resource_iycju"), SubResource("Resource_wjywg")])
+metadata/_custom_type_script = "uid://cnkk347uus13r"
+
+[resource]
+script = ExtResource("3_3g13q")
+_attack_name = "Monsoon Chorus"
+_attack_description = ""
+_attack_type = 0
+_attack_components = Array[ExtResource("1_rpavc")]([SubResource("Resource_ivfc4"), SubResource("Resource_b3j5w")])
+metadata/_custom_type_script = "uid://0rqq8j1kh32y"

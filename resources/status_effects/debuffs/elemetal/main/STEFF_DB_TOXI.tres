@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=9 format=3 uid="uid://cocstmkovv33h"]
+
+[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="1_4rtex"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect_components/combine_rule.gd" id="1_5fee3"]
+[ext_resource type="Texture2D" uid="uid://dbwad1atau2jo" path="res://resources/images/icons/STEFF_ICN_TOXI.png" id="1_num2t"]
+[ext_resource type="Resource" uid="uid://dxfb8ep786bf5" path="res://resources/status_effects/debuffs/elemetal/sub/STEFF_DB_VAPRO.tres" id="1_yv2um"]
+[ext_resource type="Resource" uid="uid://hxlccwpnf04p" path="res://resources/status_effects/debuffs/elemetal/sub/STEFF_DB_VIRO.tres" id="2_5pkne"]
+[ext_resource type="Resource" uid="uid://ds0iogpxdb83u" path="res://resources/status_effects/debuffs/elemetal/sub/STEFF_DB_CORROSI.tres" id="3_lhn7t"]
+[ext_resource type="Resource" uid="uid://3rw8ic8vh41d" path="res://resources/status_effects/debuffs/elemetal/sub/hydro_reactions/STEFF_DB_MIASMO.tres" id="5_w23yb"]
+
+[sub_resource type="Resource" id="Resource_m1611"]
+script = ExtResource("1_5fee3")
+_combination_rules = {
+"Cryo": ExtResource("2_5pkne"),
+"Cryo Ward": ExtResource("2_5pkne"),
+"Hydro": ExtResource("5_w23yb"),
+"Pyro": ExtResource("1_yv2um"),
+"Pyro Ward": ExtResource("1_yv2um"),
+"Volt": ExtResource("3_lhn7t"),
+"Volt Ward": ExtResource("3_lhn7t")
+}
+
+[resource]
+script = ExtResource("1_4rtex")
+_name = "Toxi"
+_icon = ExtResource("1_num2t")
+_brief_description = ""
+_long_description = ""
+_duration_turns = 1
+_duration_mode = 0
+_status_effect_components = Array[Resource("res://resources/status_effects/status_effect_components/status_effect_component.gd")]([SubResource("Resource_m1611")])

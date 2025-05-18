@@ -1,0 +1,317 @@
+[gd_scene load_steps=21 format=3 uid="uid://fq6koepqyxc2"]
+
+[ext_resource type="PackedScene" uid="uid://cn6jtrto7uqn8" path="res://resources/models/characters/dizzy/dizzy.glb" id="1_n0jfd"]
+[ext_resource type="Script" uid="uid://dcn283kx87gf1" path="res://nodes/character_model/character_model_hitbox_container.gd" id="2_7346e"]
+[ext_resource type="Script" uid="uid://o2ba5etytxkv" path="res://nodes/collision/hitbox.gd" id="3_p2040"]
+
+[sub_resource type="Animation" id="Animation_p2040"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterModelHitboxContainer/LightAttack0Hitbox0:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterModelHitboxContainer/LightAttack1Hitbox0:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterModelHitboxContainer/LightAttack2Hitbox0:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterModelHitboxContainer/LightAttack2Hitbox1:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterModelHitboxContainer/LightAttack3Hitbox0:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterModelHitboxContainer/LightAttack3Hitbox1:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7346e"]
+resource_name = "light_attack_0"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterModelHitboxContainer/LightAttack0Hitbox0:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_o5ghq"]
+resource_name = "light_attack_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterModelHitboxContainer/LightAttack1Hitbox0:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_s1k44"]
+resource_name = "light_attack_2"
+length = 0.8333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterModelHitboxContainer/LightAttack2Hitbox0:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterModelHitboxContainer/LightAttack2Hitbox1:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_v8304"]
+resource_name = "light_attack_3"
+length = 0.8333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterModelHitboxContainer/LightAttack3Hitbox0:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterModelHitboxContainer/LightAttack3Hitbox1:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5ghq"]
+_data = {
+&"RESET": SubResource("Animation_p2040"),
+&"light_attack_0": SubResource("Animation_7346e"),
+&"light_attack_1": SubResource("Animation_o5ghq"),
+&"light_attack_2": SubResource("Animation_s1k44"),
+&"light_attack_3": SubResource("Animation_v8304")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0jfd"]
+size = Vector3(2.39121, 3.71996, 1.95724)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7346e"]
+size = Vector3(1.38437, 1.49292, 1.95724)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2040"]
+size = Vector3(1.64648, 1, 2.5625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5ghq"]
+size = Vector3(3.97461, 1.56647, 1.75342)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v8304"]
+size = Vector3(2.07153, 1.56647, 2.49634)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1k44"]
+size = Vector3(3.87366, 2.19997, 2.08032)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ascr4"]
+size = Vector3(1.32922, 3.04109, 3.77649)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_11xsx"]
+size = Vector3(4.06964, 1.646, 2.57031)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhd6u"]
+size = Vector3(2.06282, 1.314, 3.13873)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6s2a"]
+size = Vector3(3.1785, 1.91747, 2.61425)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2dnud"]
+size = Vector3(1.91272, 2.56066, 3.71771)
+
+[node name="DizzyCharacterModel" instance=ExtResource("1_n0jfd")]
+
+[node name="AnimationPlayer" parent="." index="1"]
+unique_name_in_owner = true
+root_motion_track = NodePath("rig_001/Skeleton3D:MCH-torso.parent")
+root_motion_local = false
+
+[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_o5ghq")
+}
+
+[node name="CharacterModelHitboxContainer" type="Node3D" parent="." index="3"]
+script = ExtResource("2_7346e")
+_hitboxes = {
+&"light_attack_0": [NodePath("LightAttack0Hitbox0")],
+&"light_attack_1": [NodePath("LightAttack1Hitbox0")],
+&"light_attack_2": [NodePath("LightAttack2Hitbox0"), NodePath("LightAttack2Hitbox1")],
+&"light_attack_3": [NodePath("LightAttack3Hitbox0"), NodePath("LightAttack3Hitbox1")]
+}
+
+[node name="LightAttack0Hitbox0" type="Area3D" parent="CharacterModelHitboxContainer" index="0"]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+monitorable = false
+script = ExtResource("3_p2040")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack0Hitbox0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192461, 1.85837, 1.69948)
+shape = SubResource("BoxShape3D_n0jfd")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack0Hitbox0" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.970877, 2.97189, 0.699475)
+shape = SubResource("BoxShape3D_7346e")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="LightAttack1Hitbox0" type="Area3D" parent="CharacterModelHitboxContainer" index="1"]
+monitoring = false
+monitorable = false
+script = ExtResource("3_p2040")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack1Hitbox0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526284, 1.2226, 2.69661)
+shape = SubResource("BoxShape3D_p2040")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="LightAttack2Hitbox0" type="Area3D" parent="CharacterModelHitboxContainer" index="2"]
+monitoring = false
+monitorable = false
+script = ExtResource("3_p2040")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack2Hitbox0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787281, 1.64158)
+shape = SubResource("BoxShape3D_o5ghq")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack2Hitbox0" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63538, 0.787281, 0.350339)
+shape = SubResource("BoxShape3D_v8304")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="LightAttack2Hitbox1" type="Area3D" parent="CharacterModelHitboxContainer" index="3"]
+monitoring = false
+monitorable = false
+script = ExtResource("3_p2040")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack2Hitbox1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.352722, 1.10403, 1.80504)
+shape = SubResource("BoxShape3D_s1k44")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack2Hitbox1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26422, 1.52459, -0.289737)
+shape = SubResource("BoxShape3D_ascr4")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="LightAttack3Hitbox0" type="Area3D" parent="CharacterModelHitboxContainer" index="4"]
+monitoring = false
+monitorable = false
+script = ExtResource("3_p2040")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack3Hitbox0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25473, 0.827049, 2.05003)
+shape = SubResource("BoxShape3D_11xsx")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack3Hitbox0" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97324, 0.661049, 0.828792)
+shape = SubResource("BoxShape3D_yhd6u")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="LightAttack3Hitbox1" type="Area3D" parent="CharacterModelHitboxContainer" index="5"]
+monitoring = false
+monitorable = false
+script = ExtResource("3_p2040")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack3Hitbox1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.815048, 0.958733, 2.17765)
+shape = SubResource("BoxShape3D_m6s2a")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterModelHitboxContainer/LightAttack3Hitbox1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.724763, 2.57459, 1.60031)
+shape = SubResource("BoxShape3D_2dnud")
+debug_color = Color(0.7, 0, 0, 0.419608)

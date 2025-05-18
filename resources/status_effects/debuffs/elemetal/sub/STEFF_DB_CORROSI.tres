@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://ds0iogpxdb83u"]
+
+[ext_resource type="Texture2D" uid="uid://dtwpe2g2juuna" path="res://resources/images/icons/STEFF_ICN_CORROSI.png" id="1_4ehyo"]
+[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="1_tmudd"]
+
+[resource]
+script = ExtResource("1_tmudd")
+_name = "Corrosi"
+_icon = ExtResource("1_4ehyo")
+_brief_description = ""
+_long_description = ""
+_duration_turns = 5
+_duration_mode = 0
+_status_effect_components = Array[Resource("res://resources/status_effects/status_effect_components/status_effect_component.gd")]([])

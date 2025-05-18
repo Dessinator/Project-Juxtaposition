@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://056n3gghxmxn"]
+
+[ext_resource type="Script" uid="uid://bwmg3r0od2dcb" path="res://nodes/character/components/character_attack_state_machine.gd" id="1_pght3"]
+[ext_resource type="Script" uid="uid://buexcfq1bndh6" path="res://nodes/character/initial-attack-states/none.gd" id="2_8sb6n"]
+[ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="3_suxeb"]
+[ext_resource type="Script" uid="uid://cd0gt4yumqm7l" path="res://nodes/character/components/character-attack-state-machine/character_attack_state.gd" id="4_667v0"]
+
+[node name="CharacterAttackStateMachine" type="Node" node_paths=PackedStringArray("_neutral_states", "initial_state")]
+script = ExtResource("1_pght3")
+_neutral_states = [NodePath("None"), NodePath("Air"), NodePath("Juxtaposition")]
+process_type = 0
+active = false
+initial_state = NodePath("None")
+metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
+
+[node name="None" type="Node" parent="."]
+script = ExtResource("2_8sb6n")
+metadata/_custom_type_script = "uid://k5p6yghm7nrm"
+
+[node name="startLightSeries" type="Node" parent="None"]
+script = ExtResource("3_suxeb")
+use_event = true
+event = "start_light_series"
+
+[node name="startHeavySeries" type="Node" parent="None"]
+script = ExtResource("3_suxeb")
+use_event = true
+event = "start_heavy_series"
+
+[node name="Air" type="Node" parent="."]
+script = ExtResource("4_667v0")
+metadata/_custom_type_script = "uid://cd0gt4yumqm7l"
+
+[node name="startLightSeries" type="Node" parent="Air"]
+script = ExtResource("3_suxeb")
+use_event = true
+event = "start_light_series"
+
+[node name="startHeavySeries" type="Node" parent="Air"]
+script = ExtResource("3_suxeb")
+use_event = true
+event = "start_heavy_series"
+
+[node name="Juxtaposition" type="Node" parent="."]
+script = ExtResource("4_667v0")
+metadata/_custom_type_script = "uid://cd0gt4yumqm7l"
+
+[node name="startLightSeries" type="Node" parent="Juxtaposition"]
+script = ExtResource("3_suxeb")
+use_event = true
+event = "start_light_series"
+
+[node name="startHeavySeries" type="Node" parent="Juxtaposition"]
+script = ExtResource("3_suxeb")
+use_event = true
+event = "start_heavy_series"
+
+[connection signal="state_changed" from="." to="." method="_on_state_changed"]

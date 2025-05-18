@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://djhpmlpasusss"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_ioygc"]
+
+[sub_resource type="Curve" id="Curve_lqgyr"]
+_limits = [1.5, 5.0, 0.0, 9999.0]
+_data = [Vector2(0, 1.5), 0.0, 0.00110536, 0, 0, Vector2(9999, 5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "MVT SPD"
+script = ExtResource("1_ioygc")
+_internal_name = &"movement_speed"
+_readable_name = "Movement Speed"
+_readable_abbreviation = "MVT SPD"
+_curve = SubResource("Curve_lqgyr")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

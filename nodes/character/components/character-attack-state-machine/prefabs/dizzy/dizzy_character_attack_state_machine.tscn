@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd2jee8xqwwqs"]
+
+[ext_resource type="PackedScene" uid="uid://056n3gghxmxn" path="res://nodes/character/components/character-attack-state-machine/character_attack_state_machine.tscn" id="1_v60hm"]
+[ext_resource type="Script" uid="uid://cd0gt4yumqm7l" path="res://nodes/character/components/character-attack-state-machine/character_attack_state.gd" id="2_87a8p"]
+[ext_resource type="Resource" uid="uid://c7y5wo7l3dxa0" path="res://resources/attacks/character-attacks/dizzy/dizzy_light_attack_0.tres" id="3_ytnpc"]
+[ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="4_nl0f4"]
+[ext_resource type="Resource" uid="uid://bekw4y5hp0xig" path="res://resources/attacks/character-attacks/dizzy/dizzy_light_attack_1.tres" id="5_0a7gu"]
+[ext_resource type="Resource" uid="uid://cqcla3r1g1qub" path="res://resources/attacks/character-attacks/dizzy/dizzy_light_attack_2.tres" id="6_ul7ya"]
+[ext_resource type="Resource" uid="uid://bd5fkebrsujkp" path="res://resources/attacks/character-attacks/dizzy/dizzy_light_attack_3.tres" id="7_kcceu"]
+
+[node name="CharacterAttackStateMachine" instance=ExtResource("1_v60hm")]
+verbose = true
+
+[node name="startLightSeries" parent="None" index="0" node_paths=PackedStringArray("next_state")]
+next_state = NodePath("../../LightAttack_0")
+
+[node name="startHeavySeries" parent="None" index="1" node_paths=PackedStringArray("next_state")]
+next_state = NodePath("../../HeavyAttack_0")
+
+[node name="startLightSeries" parent="Air" index="0" node_paths=PackedStringArray("next_state")]
+next_state = NodePath("../../LightAttack_0")
+
+[node name="startHeavySeries" parent="Air" index="1" node_paths=PackedStringArray("next_state")]
+next_state = NodePath("../../HeavyAttack_0")
+
+[node name="startLightSeries" parent="Juxtaposition" index="0" node_paths=PackedStringArray("next_state")]
+next_state = NodePath("../../LightAttack_0")
+
+[node name="startHeavySeries" parent="Juxtaposition" index="1" node_paths=PackedStringArray("next_state")]
+next_state = NodePath("../../HeavyAttack_0")
+
+[node name="LightAttack_0" type="Node" parent="." index="3"]
+script = ExtResource("2_87a8p")
+_attack_definition = ExtResource("3_ytnpc")
+metadata/_custom_type_script = "uid://cd0gt4yumqm7l"
+
+[node name="toLightAttack_1" type="Node" parent="LightAttack_0" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../LightAttack_1")
+use_event = true
+event = "advance_light_attack"
+
+[node name="returnToNeutralState" type="Node" parent="LightAttack_0" index="1" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../None")
+use_event = true
+event = "return_to_neutral_state"
+
+[node name="LightAttack_1" type="Node" parent="." index="4"]
+script = ExtResource("2_87a8p")
+_attack_definition = ExtResource("5_0a7gu")
+metadata/_custom_type_script = "uid://cd0gt4yumqm7l"
+
+[node name="toLightAttack_2" type="Node" parent="LightAttack_1" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../LightAttack_2")
+use_event = true
+event = "advance_light_attack"
+
+[node name="returnToNeutralState" type="Node" parent="LightAttack_1" index="1" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../None")
+use_event = true
+event = "return_to_neutral_state"
+
+[node name="LightAttack_2" type="Node" parent="." index="5"]
+script = ExtResource("2_87a8p")
+_attack_definition = ExtResource("6_ul7ya")
+metadata/_custom_type_script = "uid://cd0gt4yumqm7l"
+
+[node name="toLightAttack_3" type="Node" parent="LightAttack_2" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../LightAttack_3")
+use_event = true
+event = "advance_light_attack"
+
+[node name="returnToNeutralState" type="Node" parent="LightAttack_2" index="1" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../None")
+use_event = true
+event = "return_to_neutral_state"
+
+[node name="LightAttack_3" type="Node" parent="." index="6"]
+script = ExtResource("2_87a8p")
+_attack_definition = ExtResource("7_kcceu")
+metadata/_custom_type_script = "uid://cd0gt4yumqm7l"
+
+[node name="returnToNeutralState" type="Node" parent="LightAttack_3" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../None")
+use_event = true
+event = "return_to_neutral_state"
+
+[node name="HeavyAttack_0" type="Node" parent="." index="7"]
+script = ExtResource("2_87a8p")
+metadata/_custom_type_script = "uid://cd0gt4yumqm7l"
+
+[node name="returnToNeutralState" type="Node" parent="HeavyAttack_0" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nl0f4")
+next_state = NodePath("../../None")
+use_event = true
+event = "return_to_neutral_state"
