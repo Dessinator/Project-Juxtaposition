@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=39 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://d0o4r54gr58df" path="res://nodes/playable-character/states/animation/skid_animation_state.gd" id="24_8ke1j"]
 [ext_resource type="Script" uid="uid://vg7akdv3mrll" path="res://nodes/playable-character/states/movement/attack_state.gd" id="25_mb8j0"]
 [ext_resource type="Script" uid="uid://bha2v0jkxk21b" path="res://nodes/playable-character/states/animation/dodge_animation_state.gd" id="30_dkfog"]
+[ext_resource type="Script" uid="uid://dicp70ytv2j24" path="res://nodes/playable-character/states/animation/landing_animation_state.gd" id="34_m348m"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p803t"]
 
@@ -445,8 +446,8 @@ event = "on_start_falling"
 [node name="AnimationFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_2aic4")
-autostart = true
 process_type = 0
+active = false
 initial_state = NodePath("IdleAnimationState")
 actor = NodePath("..")
 blackboard = SubResource("Resource_s6wqa")
@@ -484,3 +485,7 @@ script = ExtResource("24_8ke1j")
 [node name="DodgeAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("30_dkfog")
+
+[node name="LandingAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("34_m348m")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kwwbdk1m8trx"]
+
+[node name="CharacterModel" type="Node3D"]
+
+[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true

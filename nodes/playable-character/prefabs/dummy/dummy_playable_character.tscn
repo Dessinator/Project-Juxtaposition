@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct1fe2iciikck"]
+
+[ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_j8br1"]
+[ext_resource type="PackedScene" uid="uid://g2m4fx6hxdhi" path="res://nodes/character/prefabs/dummy_character.tscn" id="2_5tsi8"]
+[ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_dmk0r"]
+
+[sub_resource type="Resource" id="Resource_5tsi8"]
+resource_local_to_scene = true
+script = ExtResource("2_dmk0r")
+content = {
+"auto_jog": false,
+"regenerate_stamina": false
+}
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[node name="DummyPlayableCharacter" node_paths=PackedStringArray("_character") instance=ExtResource("1_j8br1")]
+debug_no_animations = true
+_character = NodePath("DummyCharacter")
+
+[node name="PlayableCharacterStaminaMeter" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51563, 0)
+
+[node name="DummyCharacter" parent="." index="3" instance=ExtResource("2_5tsi8")]
+
+[node name="GameplayFiniteStateMachine" parent="." index="8"]
+blackboard = SubResource("Resource_5tsi8")
+
+[node name="WalkState" parent="GameplayFiniteStateMachine" index="1" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="JogState" parent="GameplayFiniteStateMachine" index="2" node_paths=PackedStringArray("_character")]
+_acceleration = 15.0
+_speed_multiplier = 2.0
+_character = NodePath("../../DummyCharacter")
+
+[node name="SprintState" parent="GameplayFiniteStateMachine" index="3" node_paths=PackedStringArray("_character")]
+_speed_multiplier = 3.0
+_character = NodePath("../../DummyCharacter")
+
+[node name="JumpState" parent="GameplayFiniteStateMachine" index="5" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="FallState" parent="GameplayFiniteStateMachine" index="6" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="DodgeState" parent="GameplayFiniteStateMachine" index="8" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="IdleAnimationState" parent="AnimationFiniteStateMachine" index="0" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="WalkAnimationState" parent="AnimationFiniteStateMachine" index="1" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="JogAnimationState" parent="AnimationFiniteStateMachine" index="2" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="SprintAnimationState" parent="AnimationFiniteStateMachine" index="3" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="JumpAnimationState" parent="AnimationFiniteStateMachine" index="4" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="FallAnimationState" parent="AnimationFiniteStateMachine" index="5" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="SkidAnimationState" parent="AnimationFiniteStateMachine" index="6" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="DodgeAnimationState" parent="AnimationFiniteStateMachine" index="7" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")
+
+[node name="LandingAnimationState" parent="AnimationFiniteStateMachine" index="8" node_paths=PackedStringArray("_character")]
+_character = NodePath("../../DummyCharacter")

@@ -64,6 +64,8 @@ func _grab_model_data(model: Node3D):
 
 func _grab_animation_names(animation_player: AnimationPlayer):
 	var animation_library = animation_player.get_animation_library("")
-	var animations = animation_library.get_animation_list()
+	var animations: Array[StringName] = []
+	if animation_library:
+		animations = animation_library.get_animation_list()
 	
 	return animations

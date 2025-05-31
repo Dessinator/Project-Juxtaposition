@@ -1,10 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://hwm20jjo22ad"]
+[gd_scene load_steps=14 format=3 uid="uid://hwm20jjo22ad"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_n352f"]
 [ext_resource type="Resource" uid="uid://csxvkfqvs8ue1" path="res://resources/character/character-stats/prefabs/dizzy/dizzy_character_stats.tres" id="2_n352f"]
 [ext_resource type="PackedScene" uid="uid://fq6koepqyxc2" path="res://resources/models/characters/dizzy/dizzy_character_model.tscn" id="2_ykt8n"]
 [ext_resource type="Resource" uid="uid://ckjrdqhj5cinv" path="res://resources/attacks/character-attacks/dizzy/monsoon-chorus-combo/monsoon_chorus.tres" id="3_sc15y"]
 [ext_resource type="PackedScene" uid="uid://bd2jee8xqwwqs" path="res://nodes/character/components/character-attack-state-machine/prefabs/dizzy/dizzy_character_attack_state_machine.tscn" id="3_vieyh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vieyh"]
+animation = &"G_combat_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtaau"]
+animation = &"G_combat_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvvh6"]
+animation = &"G_combat_walk_strafe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_33f00"]
+animation = &"G_combat_walk"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7xlm5"]
+animation = &"G_combat_walk_strafe_right"
+play_mode = 1
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_vieyh"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_vieyh")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gtaau")
+blend_point_1/pos = Vector2(0, 0.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_uvvh6")
+blend_point_2/pos = Vector2(0.3, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_33f00")
+blend_point_3/pos = Vector2(0, -0.5)
+blend_point_4/node = SubResource("AnimationNodeAnimation_7xlm5")
+blend_point_4/pos = Vector2(-0.3, 0)
+sync = true
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vieyh"]
+states/WalkBlendSpace/node = SubResource("AnimationNodeBlendSpace2D_vieyh")
+states/WalkBlendSpace/position = Vector2(356, 100)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xi512"]
+states/CombatStateMachine/node = SubResource("AnimationNodeStateMachine_vieyh")
+states/CombatStateMachine/position = Vector2(500, 100)
+graph_offset = Vector2(-42, 73)
 
 [node name="DizzyCharacter" node_paths=PackedStringArray("_character_model") instance=ExtResource("1_n352f")]
 _character_model = NodePath("DizzyCharacterModel")
@@ -15,3 +54,16 @@ _character_attack_state_machine = ExtResource("3_vieyh")
 _light_attack = ExtResource("3_sc15y")
 
 [node name="DizzyCharacterModel" parent="." index="1" instance=ExtResource("2_ykt8n")]
+
+[node name="RootMotionView" type="RootMotionView" parent="." index="2"]
+animation_path = NodePath("../AnimationTree")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+root_node = NodePath("../DizzyCharacterModel")
+root_motion_track = NodePath("dizzy_root_002/Skeleton3D:root")
+root_motion_local = true
+tree_root = SubResource("AnimationNodeStateMachine_xi512")
+anim_player = NodePath("../DizzyCharacterModel/AnimationPlayer")
+parameters/CombatStateMachine/WalkBlendSpace/blend_position = Vector2(0.295716, -0.0044843)
+
+[editable path="DizzyCharacterModel"]

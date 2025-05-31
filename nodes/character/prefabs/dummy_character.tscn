@@ -1,0 +1,133 @@
+[gd_scene load_steps=28 format=3 uid="uid://g2m4fx6hxdhi"]
+
+[ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_atyoj"]
+[ext_resource type="Resource" uid="uid://bvhiki6iepd3r" path="res://resources/character/character-stats/prefabs/dummy/dummy_character_stats.tres" id="2_0pg88"]
+[ext_resource type="PackedScene" uid="uid://bgvvktev2x52x" path="res://nodes/character_model/prefabs/dummy_character_model.tscn" id="2_ha7b4"]
+[ext_resource type="PackedScene" uid="uid://d4fa6hfrd2p4q" path="res://nodes/character/components/character-attack-state-machine/prefabs/dummy/dummy_character_attack_state_machine.tscn" id="6_c50kb"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pg88"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3jcs7"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dj2qr"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xc87n"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_38sl6"]
+animation = &"walk_strafe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c50kb"]
+animation = &"walk_strafe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o63qx"]
+animation = &"walk_backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iqkbo"]
+animation = &"jog"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d66ta"]
+animation = &"jog_strafe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cm2we"]
+animation = &"jog_strafe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t2dxk"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0q0f0"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_iqkbo"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_0pg88")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_3jcs7")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_38sl6")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_c50kb")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_o63qx")
+blend_point_4/pos = Vector2(0, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_iqkbo")
+blend_point_5/pos = Vector2(0, 2)
+blend_point_6/node = SubResource("AnimationNodeAnimation_d66ta")
+blend_point_6/pos = Vector2(2, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_cm2we")
+blend_point_7/pos = Vector2(-2, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_t2dxk")
+blend_point_8/pos = Vector2(0, 3)
+blend_point_9/node = SubResource("AnimationNodeAnimation_0q0f0")
+blend_point_9/pos = Vector2(-3, 0)
+blend_point_10/node = SubResource("AnimationNodeAnimation_dj2qr")
+blend_point_10/pos = Vector2(3, -0.1)
+blend_point_11/node = SubResource("AnimationNodeAnimation_xc87n")
+blend_point_11/pos = Vector2(0, -3)
+min_space = Vector2(-3, -3)
+max_space = Vector2(3, 3)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2kw50"]
+animation = &"dodge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0svs2"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3tqxe"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jqn3c"]
+animation = &"landing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wsfnm"]
+animation = &"skid"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dj2qr"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t2dxk"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d66ta"]
+states/End/position = Vector2(584, -25)
+states/Movement/node = SubResource("AnimationNodeBlendSpace2D_iqkbo")
+states/Movement/position = Vector2(381, -25)
+states/Start/position = Vector2(202, -25)
+states/dodge/node = SubResource("AnimationNodeAnimation_2kw50")
+states/dodge/position = Vector2(202, 100)
+states/fall/node = SubResource("AnimationNodeAnimation_0svs2")
+states/fall/position = Vector2(381, 233)
+states/jump/node = SubResource("AnimationNodeAnimation_3tqxe")
+states/jump/position = Vector2(381, 100)
+states/landing/node = SubResource("AnimationNodeAnimation_jqn3c")
+states/landing/position = Vector2(381, -141.518)
+states/skid/node = SubResource("AnimationNodeAnimation_wsfnm")
+states/skid/position = Vector2(202, 233)
+transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_dj2qr"), "landing", "Movement", SubResource("AnimationNodeStateMachineTransition_t2dxk")]
+graph_offset = Vector2(-144, -147.815)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3jcs7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cm2we"]
+states/Passive/node = SubResource("AnimationNodeStateMachine_d66ta")
+states/Passive/position = Vector2(417, 100)
+transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransition_3jcs7")]
+
+[node name="DummyCharacter" node_paths=PackedStringArray("_character_model") instance=ExtResource("1_atyoj")]
+_character_model = NodePath("DummyCharacterModel")
+_character_stats = ExtResource("2_0pg88")
+_character_attack_state_machine = ExtResource("6_c50kb")
+
+[node name="DummyCharacterModel" parent="." index="1" instance=ExtResource("2_ha7b4")]
+
+[node name="AnimationTree" parent="." index="3"]
+root_node = NodePath("%AnimationTree/../DummyCharacterModel")
+tree_root = SubResource("AnimationNodeStateMachine_cm2we")
+anim_player = NodePath("../DummyCharacterModel/AnimationPlayer")
+parameters/Passive/Movement/blend_position = Vector2(0.0318224, -2.76923)
+
+[editable path="DummyCharacterModel"]

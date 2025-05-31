@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bqm0lmrn8pna5"]
+
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="1_omw2i"]
+[ext_resource type="Texture2D" uid="uid://dhrf5s2cegvxs" path="res://resources/models/characters/dizzy/materials/dizzy_parasol_albedo.png" id="2_omw2i"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_omw2i")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_omw2i")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.4
+shader_parameter/resolution = Vector2i(320, 240)

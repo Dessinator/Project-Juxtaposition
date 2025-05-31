@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://djxf8p7k2ll00"]
 
 [ext_resource type="Texture2D" uid="uid://cn57l1m38jcs8" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_d717b"]
-[ext_resource type="PackedScene" uid="uid://dxh8508evm4f7" path="res://nodes/playable-character/prefabs/dizzy/dizzy_playable_character.tscn" id="2_d717b"]
+[ext_resource type="PackedScene" uid="uid://ct1fe2iciikck" path="res://nodes/playable-character/prefabs/dummy/dummy_playable_character.tscn" id="2_6rty2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d717b"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -34,4 +34,4 @@ use_collision = true
 size = Vector3(50, 0.5, 50)
 material = SubResource("StandardMaterial3D_gis55")
 
-[node name="DizzyPlayableCharacter" parent="." instance=ExtResource("2_d717b")]
+[node name="DummyPlayableCharacter" parent="." instance=ExtResource("2_6rty2")]

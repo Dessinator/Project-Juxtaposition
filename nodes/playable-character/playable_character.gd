@@ -6,6 +6,7 @@ const STAMINA_REGENERATION_INTERVAL: float = 0.5
 const AGILITY: StringName = &"agility"
 const STAMINA_REGENERATION_RATE: StringName = &"stamina_regeneration_rate"
 
+@export var debug_no_animations: bool
 @export var _character: Character
 
 var _character_attack_state_machine: CharacterAttackStateMachine
@@ -71,7 +72,8 @@ func _reset_status():
 
 func _start_state_machines():
 	_character_attack_state_machine.start()
-	_animation_finite_state_machine.start()
+	if debug_no_animations:
+		_animation_finite_state_machine.start()
 	_gameplay_finite_state_machine.start()
 
 func _handle_toggle_auto_jog(auto_jog: bool) -> bool:

@@ -45,38 +45,34 @@ _character = NodePath("../../DizzyCharacter")
 [node name="DodgeState" parent="GameplayFiniteStateMachine" index="8" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
 
-[node name="AnimationFiniteStateMachine" parent="." index="9"]
-autostart = false
-active = false
-
 [node name="IdleAnimationState" parent="AnimationFiniteStateMachine" index="0" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"idle"
+_animation_name = &"combat_idle"
 
 [node name="WalkAnimationState" parent="AnimationFiniteStateMachine" index="1" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"walk"
+_animation_name = &"combat_walk"
 
 [node name="JogAnimationState" parent="AnimationFiniteStateMachine" index="2" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"jog"
+_animation_name = &"combat_walk"
 
 [node name="SprintAnimationState" parent="AnimationFiniteStateMachine" index="3" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"sprint"
+_animation_name = &"combat_skip"
 
 [node name="JumpAnimationState" parent="AnimationFiniteStateMachine" index="4" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"jump"
+_animation_name = &"combat_jump"
 
 [node name="FallAnimationState" parent="AnimationFiniteStateMachine" index="5" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"fall"
+_animation_name = &"combat_fall"
 
 [node name="SkidAnimationState" parent="AnimationFiniteStateMachine" index="6" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"skid"
+_animation_name = &"combat_idle"
 
 [node name="DodgeAnimationState" parent="AnimationFiniteStateMachine" index="7" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DizzyCharacter")
-_animation_name = &"dodge"
+_animation_name = &"combat_dodge"

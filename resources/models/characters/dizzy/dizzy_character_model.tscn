@@ -211,8 +211,6 @@ size = Vector3(1.91272, 2.56066, 3.71771)
 
 [node name="AnimationPlayer" parent="." index="1"]
 unique_name_in_owner = true
-root_motion_track = NodePath("rig_001/Skeleton3D:MCH-torso.parent")
-root_motion_local = false
 
 [node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = true
@@ -221,6 +219,7 @@ libraries = {
 }
 
 [node name="CharacterModelHitboxContainer" type="Node3D" parent="." index="3"]
+visible = false
 script = ExtResource("2_7346e")
 _hitboxes = {
 &"light_attack_0": [NodePath("LightAttack0Hitbox0")],
