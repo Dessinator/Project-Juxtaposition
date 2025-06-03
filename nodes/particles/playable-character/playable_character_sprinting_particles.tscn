@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgnq2vj4f5nni"]
+
+[ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/shaders/psx_render_material.tres" id="1_ukte5"]
+
+[sub_resource type="Curve" id="Curve_ukte5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.88948, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kw3b2"]
+curve = SubResource("Curve_ukte5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kw3b2"]
+lifetime_randomness = 1.0
+spread = 180.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.8
+scale_max = 1.6
+scale_curve = SubResource("CurveTexture_kw3b2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_dkpyw"]
+material = ExtResource("1_ukte5")
+radius = 0.2
+height = 0.4
+radial_segments = 6
+rings = 3
+
+[node name="PlayableCharacterSprintingParticles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 30
+lifetime = 2.0
+randomness = 1.0
+fixed_fps = 12
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_kw3b2")
+draw_pass_1 = SubResource("SphereMesh_dkpyw")

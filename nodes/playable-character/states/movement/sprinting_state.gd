@@ -22,10 +22,14 @@ const MOVEMENT_SPEED: StringName = &"movement_speed"
 @onready var _sprint_animation_state: Node = %SprintAnimationState
 
 @onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
+@onready var _playable_character_sprinting_particles: Node3D = %PlayableCharacterSprintingParticles
 
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	var status = actor.get_status()
+	
+	var particle_system = _playable_character_sprinting_particles.get_node("%GPUParticles3D")
+	particle_system.emitting = true
 	
 	_stamina_regeneration_delay_timer.stop()
 	blackboard.set_value("regenerate_stamina", false)
@@ -65,7 +69,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	if will_skid:
 		return
 	
-	var stats = actor.get_character().get_character_stats()
+	var stats = _character.get_character_stats()
 	var agility_stat = stats.get_stat(AGILITY)
 	var agility_value = agility_stat.get_value(false)
 	var movement_speed_stat = stats.get_substat(MOVEMENT_SPEED)
@@ -78,10 +82,15 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	if not velocity.is_zero_approx():
 		var velocity_normalized = velocity.normalized()
 		_character.rotation.y = atan2(velocity_normalized.x, velocity_normalized.z)
+	
+	#_handle_targeting(blackboard.get_value("is_targeting"))
 
 func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	var status = actor.get_status()
+	
+	var particle_system = _playable_character_sprinting_particles.get_node("%GPUParticles3D")
+	particle_system.emitting = false
 	
 	status.stamina_modified.disconnect(_on_status_stamina_modified)
 	
@@ -117,6 +126,17 @@ func _handle_skidding(actor: Node, is_skidding_allowed_while_running: bool, dire
 func _handle_running(current_velocity: Vector3, direction: Vector3, speed: float, delta: float) -> Vector3:
 	var velocity = current_velocity.move_toward(direction * speed, _acceleration * delta)
 	return velocity
+
+func _handle_targeting(is_targeting: bool):
+	var character_animation_tree_expression_base = _character.get_node("%CharacterAnimationTreeExpressionBase")
+	
+	if not is_targeting:
+		character_animation_tree_expression_base.travel_to_non_targeting_movement()
+		return
+	
+	character_animation_tree_expression_base.travel_to_targeting_movement()
+	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
+	_character.rotation.y = horizontal_camera_rotation + PI
 
 func _handle_stamina_drained(status: CharacterStatus, auto_jog: bool) -> bool:
 	if not status.is_exhausted():

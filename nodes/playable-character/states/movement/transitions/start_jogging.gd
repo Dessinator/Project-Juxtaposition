@@ -9,7 +9,12 @@ func is_valid(actor: Node, blackboard: BTBlackboard) -> bool:
 	if not actor.is_on_floor():
 		return false
 		
-	if not blackboard.get_value("auto_jog"):
+	if blackboard.get_value("auto_jog"):
+		if blackboard.get_value("is_targeting"):
+			var direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")
+			if direction.y > 0:
+				return false
+	else:
 		return false
 	
 	if Input.is_action_pressed("sprint") and (not actor.get_status().is_exhausted()):

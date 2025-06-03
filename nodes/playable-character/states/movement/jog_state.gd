@@ -42,6 +42,8 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	if not velocity.is_zero_approx():
 		var velocity_normalized = velocity.normalized()
 		_character.rotation.y = atan2(velocity_normalized.x, velocity_normalized.z)
+	
+	_handle_targeting(blackboard.get_value("is_targeting"))
 
 # Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
@@ -57,6 +59,17 @@ func _handle_direction_input(horizontal_rotation: float) -> Vector3:
 func _handle_jogging(current_velocity: Vector3, direction: Vector3, speed: float, delta: float) -> Vector3:
 	var velocity = current_velocity.move_toward(direction * speed, _acceleration * delta)
 	return velocity
+
+func _handle_targeting(is_targeting: bool):
+	var character_animation_tree_expression_base = _character.get_node("%CharacterAnimationTreeExpressionBase")
+	
+	if not is_targeting:
+		character_animation_tree_expression_base.travel_to_non_targeting_movement()
+		return
+	
+	character_animation_tree_expression_base.travel_to_targeting_movement()
+	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
+	_character.rotation.y = horizontal_camera_rotation + PI
 
 func _handle_stamina_regeneration_delay(blackboard: BTBlackboard):
 	_stamina_regeneration_delay_timer.timeout.connect(_on_stamina_regeneration_delay_timer_timeout.bind(blackboard))

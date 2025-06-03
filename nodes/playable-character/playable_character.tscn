@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=50 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
@@ -27,13 +27,24 @@
 [ext_resource type="Script" uid="uid://b6gxvfktn0fip" path="res://nodes/playable-character/states/animation/walk_animation_state.gd" id="20_8ke1j"]
 [ext_resource type="Script" uid="uid://cc0l0i2nuhe3l" path="res://nodes/playable-character/states/animation/sprint_animation_state.gd" id="21_bd5yv"]
 [ext_resource type="Script" uid="uid://bpja311ercgac" path="res://nodes/playable-character/states/animation/jog_animation_state.gd" id="21_clyg5"]
+[ext_resource type="Script" uid="uid://cmae08vrs1ck2" path="res://nodes/playable-character/states/movement/transitions/start_wallrunning.gd" id="21_dhcem"]
 [ext_resource type="Script" uid="uid://c71xdf608gu73" path="res://nodes/playable-character/states/animation/jump_animation_state.gd" id="22_clyg5"]
 [ext_resource type="Script" uid="uid://cuvokqs3w823t" path="res://nodes/playable-character/states/movement/dodge_state.gd" id="22_dkfog"]
 [ext_resource type="Script" uid="uid://nbxd43ou3r4n" path="res://nodes/playable-character/states/animation/fall_animation_state.gd" id="23_beju2"]
 [ext_resource type="Script" uid="uid://d0o4r54gr58df" path="res://nodes/playable-character/states/animation/skid_animation_state.gd" id="24_8ke1j"]
 [ext_resource type="Script" uid="uid://vg7akdv3mrll" path="res://nodes/playable-character/states/movement/attack_state.gd" id="25_mb8j0"]
+[ext_resource type="Script" uid="uid://qly0iiqltxnc" path="res://nodes/playable-character/states/movement/wallrun_state.gd" id="26_m2e7d"]
+[ext_resource type="Script" uid="uid://b13rsw3t1jgfm" path="res://nodes/playable-character/states/movement/wall_jump_state.gd" id="27_1uog8"]
+[ext_resource type="Script" uid="uid://dseck7wu1b2ry" path="res://nodes/playable-character/states/movement/wallslide_state.gd" id="27_spatg"]
+[ext_resource type="Script" uid="uid://bcvliiu7ogmcn" path="res://nodes/playable-character/states/movement/transitions/start_wall_jumping.gd" id="28_ilvu7"]
+[ext_resource type="Script" uid="uid://kndvodnh2ijr" path="res://nodes/playable-character/states/movement/mantle_state.gd" id="28_spatg"]
+[ext_resource type="Script" uid="uid://bp3tfb82chts3" path="res://nodes/playable-character/states/movement/transitions/start_mantling.gd" id="29_4yxhn"]
+[ext_resource type="Script" uid="uid://cok62q8k5bjtu" path="res://nodes/playable-character/states/movement/swing_state.gd" id="29_0675m"]
 [ext_resource type="Script" uid="uid://bha2v0jkxk21b" path="res://nodes/playable-character/states/animation/dodge_animation_state.gd" id="30_dkfog"]
 [ext_resource type="Script" uid="uid://dicp70ytv2j24" path="res://nodes/playable-character/states/animation/landing_animation_state.gd" id="34_m348m"]
+[ext_resource type="Script" uid="uid://ynpouhyp1et3" path="res://nodes/playable-character/states/animation/wallrun_animation_state.gd" id="43_ug6ed"]
+[ext_resource type="Script" uid="uid://cifmbgac83745" path="res://nodes/playable-character/states/animation/wallslide_animation_state.gd" id="44_m65ax"]
+[ext_resource type="Script" uid="uid://bu40nfnoj3gl0" path="res://nodes/playable-character/states/animation/mantle_animation_state.gd" id="45_kbp4i"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p803t"]
 
@@ -240,6 +251,10 @@ metadata/_custom_type_script = "uid://1h0braq41vwb"
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("29_4yxhn")
+next_state = NodePath("../../MantleState")
+
 [node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
@@ -304,6 +319,14 @@ unique_name_in_owner = true
 script = ExtResource("12_nfjh7")
 _camera = NodePath("../../PlayableCharacterCamera")
 
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("29_4yxhn")
+next_state = NodePath("../../MantleState")
+
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("21_dhcem")
+next_state = NodePath("../../WallrunState")
+
 [node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
@@ -317,6 +340,14 @@ next_state = NodePath("../../DodgeState")
 [node name="FallState" type="Node" parent="GameplayFiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("14_fc7wd")
+
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("29_4yxhn")
+next_state = NodePath("../../MantleState")
+
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("21_dhcem")
+next_state = NodePath("../../WallrunState")
 
 [node name="land" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
@@ -405,6 +436,10 @@ next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/DodgeState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("29_4yxhn")
+next_state = NodePath("../../MantleState")
+
 [node name="AttackState" type="Node" parent="GameplayFiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("25_mb8j0")
@@ -443,6 +478,124 @@ next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
+[node name="WallrunState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state", "_drain_stamina_timer")]
+unique_name_in_owner = true
+script = ExtResource("26_m2e7d")
+_speed_multiplier = 1.5
+_stamina_drain = 2
+_animation_state = NodePath("../../AnimationFiniteStateMachine/WallrunAnimationState")
+_drain_stamina_timer = NodePath("../../DrainStaminaTimer")
+
+[node name="startWallsliding" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../WallslideState")
+use_event = true
+event = "on_start_wallsliding"
+
+[node name="startWallJumping" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("28_ilvu7")
+next_state = NodePath("../../WallJumpState")
+
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("29_4yxhn")
+next_state = NodePath("../../MantleState")
+
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_b0vta")
+next_state = NodePath("../../FallState")
+use_event = true
+event = "on_start_falling"
+
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("12_jtxij")
+next_state = NodePath("../../LandingState")
+
+[node name="WallslideState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+unique_name_in_owner = true
+script = ExtResource("27_spatg")
+_gravity = 2.5
+_acceleration = 25.0
+_speed_multiplier = 2.0
+_animation_state = NodePath("../../AnimationFiniteStateMachine/WallslideAnimationState")
+
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("21_dhcem")
+next_state = NodePath("../../WallrunState")
+
+[node name="startWallJumping" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("28_ilvu7")
+next_state = NodePath("../../WallJumpState")
+
+[node name="startSwinging" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../SwingState")
+
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_b0vta")
+next_state = NodePath("../../FallState")
+use_event = true
+event = "on_start_falling"
+
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("12_jtxij")
+next_state = NodePath("../../LandingState")
+
+[node name="MantleState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+unique_name_in_owner = true
+script = ExtResource("28_spatg")
+_force = 2.5
+_vertical_force = 6.0
+_animation_state = NodePath("../../AnimationFiniteStateMachine/MantleAnimationState")
+
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("12_jtxij")
+next_state = NodePath("../../LandingState")
+
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_b0vta")
+next_state = NodePath("../../FallState")
+
+[node name="startDodge" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("12_pffgr")
+next_state = NodePath("../../DodgeState")
+
+[node name="SwingState" type="Node" parent="GameplayFiniteStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("29_0675m")
+
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/SwingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../FallState")
+use_event = true
+event = "on_start_falling"
+
+[node name="startDodge" type="Node" parent="GameplayFiniteStateMachine/SwingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("12_pffgr")
+next_state = NodePath("../../DodgeState")
+
+[node name="WallJumpState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+unique_name_in_owner = true
+script = ExtResource("27_1uog8")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/JumpAnimationState")
+
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../FallState")
+use_event = true
+event = "on_start_falling"
+
+[node name="startDodge" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("12_pffgr")
+next_state = NodePath("../../DodgeState")
+
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("21_dhcem")
+next_state = NodePath("../../WallrunState")
+
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("29_4yxhn")
+next_state = NodePath("../../MantleState")
+
 [node name="AnimationFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_2aic4")
@@ -470,6 +623,10 @@ script = ExtResource("21_clyg5")
 unique_name_in_owner = true
 script = ExtResource("21_bd5yv")
 
+[node name="SkidAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("24_8ke1j")
+
 [node name="JumpAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("22_clyg5")
@@ -478,14 +635,22 @@ script = ExtResource("22_clyg5")
 unique_name_in_owner = true
 script = ExtResource("23_beju2")
 
-[node name="SkidAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="LandingAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 unique_name_in_owner = true
-script = ExtResource("24_8ke1j")
+script = ExtResource("34_m348m")
 
 [node name="DodgeAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("30_dkfog")
 
-[node name="LandingAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="WallrunAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 unique_name_in_owner = true
-script = ExtResource("34_m348m")
+script = ExtResource("43_ug6ed")
+
+[node name="WallslideAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("44_m65ax")
+
+[node name="MantleAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("45_kbp4i")

@@ -6,8 +6,9 @@ const STAMINA_REGENERATION_INTERVAL: float = 0.5
 const AGILITY: StringName = &"agility"
 const STAMINA_REGENERATION_RATE: StringName = &"stamina_regeneration_rate"
 
-@export var debug_no_animations: bool
 @export var _character: Character
+
+@export var _mantle_ray_cast: RayCast3D
 
 var _character_attack_state_machine: CharacterAttackStateMachine
 
@@ -41,6 +42,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	_gameplay_blackboard.set_value("auto_jog", _handle_toggle_auto_jog(_gameplay_blackboard.get_value("auto_jog")))
+	_gameplay_blackboard.set_value("is_targeting", _handling_toggle_targeting(_gameplay_blackboard.get_value("is_targeting")))
 	
 	_handle_stamina_regeneration(_gameplay_blackboard.get_value("regenerate_stamina"), delta)
 
@@ -51,6 +53,9 @@ func get_character() -> Character:
 	return _character
 func get_status() -> CharacterStatus:
 	return _status
+
+func get_mantle_raycast() -> RayCast3D:
+	return _mantle_ray_cast
 
 func _reset_status():
 	_status = CharacterStatus.new()
@@ -72,8 +77,7 @@ func _reset_status():
 
 func _start_state_machines():
 	_character_attack_state_machine.start()
-	if debug_no_animations:
-		_animation_finite_state_machine.start()
+	_animation_finite_state_machine.start()
 	_gameplay_finite_state_machine.start()
 
 func _handle_toggle_auto_jog(auto_jog: bool) -> bool:
@@ -81,6 +85,12 @@ func _handle_toggle_auto_jog(auto_jog: bool) -> bool:
 		return auto_jog
 	
 	return not auto_jog
+
+func _handling_toggle_targeting(is_targeting: bool) -> bool:
+	if not Input.is_action_just_pressed("target"):
+		return is_targeting
+	
+	return not is_targeting
 
 func _handle_stamina_regeneration(regenerate_stamina: bool, delta: float):
 	if _status.is_stamina_max():

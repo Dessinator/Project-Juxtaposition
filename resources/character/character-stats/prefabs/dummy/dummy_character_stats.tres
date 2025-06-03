@@ -29,7 +29,7 @@ script = ExtResource("1_4r8ku")
 _internal_name = &"agility"
 _readable_name = "Agility"
 _readable_abbreviation = "AGLT"
-_value = 100
+_value = 5000
 metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
 
 [sub_resource type="Resource" id="Resource_phunj"]
@@ -38,7 +38,7 @@ script = ExtResource("1_4r8ku")
 _internal_name = &"vitality"
 _readable_name = "Vitality"
 _readable_abbreviation = "VTLY"
-_value = 100
+_value = 9999
 metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
 
 [sub_resource type="Curve" id="Curve_ltpus"]
@@ -189,7 +189,7 @@ _readable_abbreviation = "HPS RGN"
 _curve = SubResource("Curve_7fald")
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"
 
-[sub_resource type="Curve" id="Curve_sq8fh"]
+[sub_resource type="Curve" id="Curve_cdcnw"]
 _limits = [10.0, 200.0, 0.0, 9999.0]
 _data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(9999, 200), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -200,7 +200,7 @@ script = ExtResource("2_wrnwq")
 _internal_name = &"maximum_stamina"
 _readable_name = "Maximum Stamina Points"
 _readable_abbreviation = "MAX SPS"
-_curve = SubResource("Curve_sq8fh")
+_curve = SubResource("Curve_cdcnw")
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"
 
 [resource]
