@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgrw78lmg08te"]
+
+[ext_resource type="Script" uid="uid://wqgacu02d8wt" path="res://nodes/render/ui-render-handler/ui-visuals/action/action_ui_visual.gd" id="1_ocq2x"]
+
+[node name="ActionUIVisual" type="PanelContainer"]
+custom_minimum_size = Vector2(80, 80)
+size_flags_horizontal = 3
+mouse_filter = 1
+script = ExtResource("1_ocq2x")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "Action Name"
+text_overrun_behavior = 4
+autowrap_mode = 3
+
+[node name="CooldownProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+mouse_filter = 1
+value = 100.0
+fill_mode = 3
+show_percentage = false

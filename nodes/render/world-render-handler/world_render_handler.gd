@@ -1,3 +1,4 @@
+class_name WorldRenderHandler
 extends Control
 
 const PS1_RESOLUTION = Vector2i(320, 240)

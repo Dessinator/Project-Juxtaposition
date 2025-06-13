@@ -7,6 +7,7 @@ const AGILITY: StringName = &"agility"
 const STAMINA_REGENERATION_RATE: StringName = &"stamina_regeneration_rate"
 
 @export var _character: Character
+@export var _playable_character_gameplay_ui_packedscene: PackedScene
 
 @export var _mantle_ray_cast: RayCast3D
 
@@ -48,6 +49,8 @@ func _process(delta: float) -> void:
 
 func get_character_attack_state_machine() -> CharacterAttackStateMachine:
 	return _character_attack_state_machine
+func get_playable_character_gameplay_ui_packedscene() -> PackedScene:
+	return _playable_character_gameplay_ui_packedscene
 
 func get_character() -> Character:
 	return _character

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=52 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" uid="uid://cuvokqs3w823t" path="res://nodes/playable-character/states/movement/dodge_state.gd" id="22_dkfog"]
 [ext_resource type="Script" uid="uid://nbxd43ou3r4n" path="res://nodes/playable-character/states/animation/fall_animation_state.gd" id="23_beju2"]
 [ext_resource type="Script" uid="uid://d0o4r54gr58df" path="res://nodes/playable-character/states/animation/skid_animation_state.gd" id="24_8ke1j"]
+[ext_resource type="Script" uid="uid://bopupw87ystdo" path="res://nodes/playable-character/states/movement/transitions/start_gliding.gd" id="24_kbp4i"]
 [ext_resource type="Script" uid="uid://vg7akdv3mrll" path="res://nodes/playable-character/states/movement/attack_state.gd" id="25_mb8j0"]
 [ext_resource type="Script" uid="uid://qly0iiqltxnc" path="res://nodes/playable-character/states/movement/wallrun_state.gd" id="26_m2e7d"]
 [ext_resource type="Script" uid="uid://b13rsw3t1jgfm" path="res://nodes/playable-character/states/movement/wall_jump_state.gd" id="27_1uog8"]
@@ -45,6 +46,7 @@
 [ext_resource type="Script" uid="uid://ynpouhyp1et3" path="res://nodes/playable-character/states/animation/wallrun_animation_state.gd" id="43_ug6ed"]
 [ext_resource type="Script" uid="uid://cifmbgac83745" path="res://nodes/playable-character/states/animation/wallslide_animation_state.gd" id="44_m65ax"]
 [ext_resource type="Script" uid="uid://bu40nfnoj3gl0" path="res://nodes/playable-character/states/animation/mantle_animation_state.gd" id="45_kbp4i"]
+[ext_resource type="PackedScene" uid="uid://bgnq2vj4f5nni" path="res://nodes/particles/playable-character/playable_character_sprinting_particles.tscn" id="48_avwae"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p803t"]
 
@@ -348,6 +350,10 @@ next_state = NodePath("../../MantleState")
 [node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("21_dhcem")
 next_state = NodePath("../../WallrunState")
+
+[node name="startGliding" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("24_kbp4i")
+next_state = NodePath("")
 
 [node name="land" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
@@ -654,3 +660,6 @@ script = ExtResource("44_m65ax")
 [node name="MantleAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("45_kbp4i")
+
+[node name="PlayableCharacterSprintingParticles" parent="." instance=ExtResource("48_avwae")]
+unique_name_in_owner = true

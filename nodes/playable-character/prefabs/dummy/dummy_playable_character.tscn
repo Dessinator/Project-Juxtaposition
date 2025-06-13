@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_j8br1"]
 [ext_resource type="PackedScene" uid="uid://g2m4fx6hxdhi" path="res://nodes/character/prefabs/dummy_character.tscn" id="2_5tsi8"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_dmk0r"]
-[ext_resource type="PackedScene" uid="uid://bgnq2vj4f5nni" path="res://nodes/particles/playable-character/playable_character_sprinting_particles.tscn" id="4_5tsi8"]
+[ext_resource type="PackedScene" uid="uid://di0dtfexknrs7" path="res://nodes/playable-character/components/playable-character-gameplay-ui/prefabs/dummy/dummy_playable_character_gameplay_ui.tscn" id="2_qlr8o"]
 
 [sub_resource type="Resource" id="Resource_5tsi8"]
 resource_local_to_scene = true
@@ -17,6 +17,7 @@ metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
 [node name="DummyPlayableCharacter" node_paths=PackedStringArray("_character", "_mantle_ray_cast") instance=ExtResource("1_j8br1")]
 _character = NodePath("DummyCharacter")
+_playable_character_gameplay_ui_packedscene = ExtResource("2_qlr8o")
 _mantle_ray_cast = NodePath("DummyCharacter/MantleRayCast")
 
 [node name="PlayableCharacterStaminaMeter" parent="." index="2"]
@@ -115,6 +116,3 @@ _camera = NodePath("../../PlayableCharacterCamera")
 
 [node name="MantleAnimationState" parent="AnimationFiniteStateMachine" index="11" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
-
-[node name="PlayableCharacterSprintingParticles" parent="." index="10" instance=ExtResource("4_5tsi8")]
-unique_name_in_owner = true
