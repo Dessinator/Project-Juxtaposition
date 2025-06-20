@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3dyt64jn0vo3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_owlx8"]
+
+[sub_resource type="Gradient" id="Gradient_bws26"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_owlx8"]
+gradient = SubResource("Gradient_bws26")
+width = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ge24a"]
+
+[node name="CharacterStatusEffectVisual" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_owlx8")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_owlx8")
+texture_progress = SubResource("PlaceholderTexture2D_ge24a")

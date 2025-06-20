@@ -9,7 +9,9 @@ extends FSMTransition
 func is_valid(actor: Node, _blackboard: BTBlackboard) -> bool:
 	actor = actor as PlayableCharacter
 	
-	var status = actor.get_status()
+	var character_container = actor.get_playable_character_character_container()
+	var character = character_container.get_current_character()
+	var status = character.get_character_status()
 	var stamina_drain = _dodge_state.get_stamina_drain()
 	var stamina = status.get_stamina()
 	

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6weyk7jdqxip"]
+
+[ext_resource type="PackedScene" uid="uid://cqhtmx2xw45nj" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/character_status_visual.tscn" id="1_37u70"]
+[ext_resource type="Texture2D" uid="uid://dalhfti0s88dr" path="res://resources/images/character-images/kaho/kaho_portrait_normal.png" id="2_5n8u1"]
+
+[node name="KahoCharacterStatusVisual" instance=ExtResource("1_37u70")]
+_character_name = "Kaho"
+_character_portrait = ExtResource("2_5n8u1")
+
+[node name="CharacterPortraitTextureRect" parent="CharacterStatusVisualContainer" index="0"]
+texture = ExtResource("2_5n8u1")
+
+[node name="CharacterNameLabel" parent="CharacterStatusVisualContainer/VBoxContainer/CharacterMetadataContainer" index="0"]
+text = "Kaho"

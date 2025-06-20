@@ -1,16 +1,10 @@
 @tool
-extends FSMState
-
-@export var _camera: PlayableCharacterCamera
-@export var _character: Character
-
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-@onready var _idle_animation_state: Node = %IdleAnimationState
+extends PlayableCharacterGameplayState
 
 @onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
 
-func _on_enter(_actor: Node, blackboard: BTBlackboard) -> void:
-	_animation_finite_state_machine.change_state(_idle_animation_state)
+func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	
 	_handle_stamina_regeneration_delay(blackboard)
 
@@ -30,7 +24,7 @@ func _handle_targeting(is_targeting: bool):
 	
 	character_animation_tree_expression_base.travel_to_targeting_movement()
 	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
-	_character.rotation.y = horizontal_camera_rotation + PI
+	_playable_character_character_container.rotation.y = horizontal_camera_rotation + PI
 
 #func _handle_stamina_regen_delay(status: CharacterStatus):
 	#var stamina = status.get_stamina()

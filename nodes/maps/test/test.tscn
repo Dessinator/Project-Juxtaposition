@@ -8,7 +8,7 @@
 [node name="Test" type="Node"]
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("_playable_character") instance=ExtResource("1_llmsn")]
-_playable_character = NodePath("WorldRenderHandler/SubViewportContainer/SubViewport/TestMapEnvironment/DummyPlayableCharacter")
+_playable_character = NodePath("WorldRenderHandler/SubViewportContainer/SubViewport/TestMapEnvironment/PlayerPlayableCharacter")
 
 [node name="WorldRenderHandler" parent="GameManager" instance=ExtResource("1_ulxrs")]
 unique_name_in_owner = true

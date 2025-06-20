@@ -1,20 +1,30 @@
 @tool
-extends FSMState
+extends PlayableCharacterAnimationState
 
-@export var _character: Character
-@export var _camera: PlayableCharacterCamera
+var _wallrun_vector: Vector2
 
+@onready var _camera: PlayableCharacterCamera = %PlayableCharacterCamera
 @onready var _gameplay_finite_state_machine: FiniteStateMachine = %GameplayFiniteStateMachine
-@onready var _character_animation_tree_expression_base: CharacterAnimationTreeExpressionBase = _character.get_node("%CharacterAnimationTreeExpressionBase")
 
 # Executes after the state is entered.
 func _on_enter(_actor: Node, _blackboard: BTBlackboard) -> void:
-	_character_animation_tree_expression_base.travel_to_wallrunning()
+	_update_character_animation_tree_expression_base()
 
 # Executes every _process call, if the state is active.
 func _on_update(_delta: float, actor: Node, _blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	
+	_wallrun_vector = _handle_wallrun_vector()
+	
+	_update_character_animation_tree_expression_base()
+
+func _handle_direction_input() -> Vector2:
+	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")
+	var direction = input_direction.normalized()
+	
+	return direction
+
+func _handle_wallrun_vector() -> Vector2:
 	var cam_basis = _camera.get_camera().global_transform.basis
 	var input_vector = _handle_direction_input()
 	var move_dir = (cam_basis.x * input_vector.x) + (cam_basis.z * input_vector.y)
@@ -32,12 +42,8 @@ func _on_update(_delta: float, actor: Node, _blackboard: BTBlackboard) -> void:
 	var wallrun_vector = Vector2(lateral_amount, vertical_amount)
 	wallrun_vector = wallrun_vector.normalized()
 	
-	print(wallrun_vector)
-	
-	_character_animation_tree_expression_base.set_wallrun_vector(wallrun_vector)
+	return wallrun_vector
 
-func _handle_direction_input() -> Vector2:
-	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")
-	var direction = input_direction.normalized()
-	
-	return direction
+func _update_character_animation_tree_expression_base():
+	_character_animation_tree_expression_base.travel_to_wallrunning()
+	_character_animation_tree_expression_base.set_wallrun_vector(_wallrun_vector)

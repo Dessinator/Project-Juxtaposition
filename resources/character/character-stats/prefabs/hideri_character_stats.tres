@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=21 format=3 uid="uid://tdg3cjj1tp1c"]
+
+[ext_resource type="Script" uid="uid://dkwx2cueh4lp1" path="res://resources/character/character-stats/stat.gd" id="1_0qig8"]
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="2_jxceu"]
+[ext_resource type="Resource" uid="uid://dew3wshj0c7uo" path="res://resources/character/character-stats/default-substats/attack_damage.tres" id="3_evh8p"]
+[ext_resource type="Resource" uid="uid://dwdv2rjrj772f" path="res://resources/character/character-stats/default-substats/critical_chance.tres" id="4_6xa18"]
+[ext_resource type="Resource" uid="uid://baeldudlcjgto" path="res://resources/character/character-stats/default-substats/critical_multiplier.tres" id="5_pqk07"]
+[ext_resource type="Resource" uid="uid://b3mqjburvhdry" path="res://resources/character/character-stats/default-substats/damage_resistance.tres" id="6_igxrp"]
+[ext_resource type="Resource" uid="uid://cw585xg2f2jyl" path="res://resources/character/character-stats/default-substats/debuff_resistance.tres" id="7_6post"]
+[ext_resource type="Resource" uid="uid://2ufvi0lih60t" path="res://resources/character/character-stats/default-substats/buff_retention.tres" id="8_luru0"]
+[ext_resource type="Resource" uid="uid://djhpmlpasusss" path="res://resources/character/character-stats/default-substats/movement_speed.tres" id="9_ctbo5"]
+[ext_resource type="Resource" uid="uid://dydl2m6dpx8h0" path="res://resources/character/character-stats/default-substats/attack_speed.tres" id="10_lx0sw"]
+[ext_resource type="Resource" uid="uid://cwbkwrcdjuhtg" path="res://resources/character/character-stats/default-substats/stamina_regeneration_rate.tres" id="11_nwysk"]
+[ext_resource type="Resource" uid="uid://1j87o24pix7w" path="res://resources/character/character-stats/default-substats/maximum_health.tres" id="12_43fa0"]
+[ext_resource type="Resource" uid="uid://dmewkfi1er0r1" path="res://resources/character/character-stats/default-substats/health_regeneration_rate.tres" id="13_hwmwx"]
+[ext_resource type="Resource" uid="uid://pu4pfkj7h841" path="res://resources/character/character-stats/default-substats/maximum_stamina.tres" id="14_6a43e"]
+[ext_resource type="Script" uid="uid://24nukwcutln8" path="res://resources/status_effects/status_effect.gd" id="15_kaci5"]
+[ext_resource type="Script" uid="uid://3qgt3g5o34v3" path="res://resources/character/character-stats/character_stats.gd" id="16_u2ran"]
+
+[sub_resource type="Resource" id="Resource_cqnmv"]
+resource_name = "ATTK"
+script = ExtResource("1_0qig8")
+_internal_name = &"attack"
+_readable_name = "Attack"
+_readable_abbreviation = "ATTK"
+_value = 100
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[sub_resource type="Resource" id="Resource_hd2jt"]
+resource_name = "DFNS"
+script = ExtResource("1_0qig8")
+_internal_name = &"defense"
+_readable_name = "Defense"
+_readable_abbreviation = "DFNS"
+_value = 100
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[sub_resource type="Resource" id="Resource_tc4ov"]
+resource_name = "AGLT"
+script = ExtResource("1_0qig8")
+_internal_name = &"agility"
+_readable_name = "Agility"
+_readable_abbreviation = "AGLT"
+_value = 100
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[sub_resource type="Resource" id="Resource_phunj"]
+resource_name = "VTLY"
+script = ExtResource("1_0qig8")
+_internal_name = &"vitality"
+_readable_name = "Vitality"
+_readable_abbreviation = "VTLY"
+_value = 100
+metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
+
+[resource]
+script = ExtResource("16_u2ran")
+_stats = Array[ExtResource("1_0qig8")]([SubResource("Resource_cqnmv"), SubResource("Resource_hd2jt"), SubResource("Resource_tc4ov"), SubResource("Resource_phunj")])
+_substats = Array[ExtResource("2_jxceu")]([ExtResource("3_evh8p"), ExtResource("4_6xa18"), ExtResource("5_pqk07"), ExtResource("6_igxrp"), ExtResource("7_6post"), ExtResource("8_luru0"), ExtResource("9_ctbo5"), ExtResource("10_lx0sw"), ExtResource("11_nwysk"), ExtResource("12_43fa0"), ExtResource("13_hwmwx"), ExtResource("14_6a43e")])
+_wards = Array[ExtResource("15_kaci5")]([])
+metadata/_custom_type_script = "uid://3qgt3g5o34v3"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8rgk5qujgtg6"]
+
+[ext_resource type="Script" uid="uid://buf8m7i74pn61" path="res://nodes/playable-character/components/playable-character-visual-controller/playable_character_visual_controller.gd" id="1_mkoka"]
+
+[node name="PlayableCharacterVisualController" type="Node"]
+script = ExtResource("1_mkoka")
+metadata/_custom_type_script = "uid://buf8m7i74pn61"

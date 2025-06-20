@@ -1,6 +1,5 @@
 @tool
-extends FSMState
-
+extends PlayableCharacterGameplayState
 
 # Executes after the state is entered.
 func _on_enter(_actor: Node, _blackboard: BTBlackboard) -> void:

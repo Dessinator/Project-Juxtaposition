@@ -1,21 +1,21 @@
 class_name UIRenderHandler
 extends Control
 
-signal playable_character_gameplay_ui_changed
-signal playable_character_gameplay_ui_updated
-
-@onready var _game_manager: GameManager = $".."
-@onready var _playable_character_gameplay_ui_container: Control = %PlayableCharacterGameplayUIMarginContainer
-
+var _game_manager: GameManager
 var _playable_character: PlayableCharacter
+var _playable_character_visual_controller: PlayableCharacterVisualController
 var _current_playable_character_gameplay_ui: PlayableCharacterGameplayUI
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	_playable_character = _game_manager.get_playable_character()
-	var gameplay_ui = _playable_character.get_playable_character_gameplay_ui_packedscene()
+@onready var _playable_character_gameplay_ui_container: Control = %PlayableCharacterGameplayUIMarginContainer
+
+func initialize(game_manager: GameManager) -> void:
+	_game_manager = game_manager
 	
-	_update_playable_character_gameplay_ui(gameplay_ui)
+	_playable_character = _game_manager.get_playable_character()
+	_playable_character_visual_controller = _playable_character.get_playable_character_visual_controller()
+	_current_playable_character_gameplay_ui = _playable_character_visual_controller.get_new_playable_character_gameplay_ui_instance()
+	
+	_playable_character_gameplay_ui_container.add_child(_current_playable_character_gameplay_ui)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,12 +23,4 @@ func _process(delta: float) -> void:
 
 func get_playable_character_gameplay_ui_container() -> Control:
 	return _playable_character_gameplay_ui_container
-
-# handles switching gameplay ui for a PlayableCharacter node.
-func _update_playable_character_gameplay_ui(playable_character_gameplay_ui_packedscene: PackedScene):
-	if _current_playable_character_gameplay_ui:
-		_current_playable_character_gameplay_ui.queue_free()
-	
-	_current_playable_character_gameplay_ui = playable_character_gameplay_ui_packedscene.instantiate()
-	_playable_character_gameplay_ui_container.add_child(_current_playable_character_gameplay_ui)
 	

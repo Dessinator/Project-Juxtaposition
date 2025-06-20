@@ -1,0 +1,222 @@
+[gd_scene load_steps=17 format=3 uid="uid://cad4mvjfw42dv"]
+
+[ext_resource type="Script" uid="uid://646bbatk5cun" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.gd" id="1_p0fui"]
+[ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/character-status-bar/character_status_bar.tscn" id="2_ygow3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8jt8"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q8jt8"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_ygow3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4c5i4"]
+gradient = SubResource("Gradient_ygow3")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_4qldq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jdj2u"]
+gradient = SubResource("Gradient_4qldq")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_4c5i4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4qldq"]
+gradient = SubResource("Gradient_4c5i4")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_8n8rt"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0.588235)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ygow3"]
+gradient = SubResource("Gradient_8n8rt")
+
+[sub_resource type="Animation" id="Animation_ygow3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSwitcherVisualContainer:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSwitcherVisualContainer:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4c5i4"]
+resource_name = "switch_off"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSwitcherVisualContainer:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-300, -0.25, 0, 0.0333333, 225.5, 0, -0.2, 151.5, 0.2, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSwitcherVisualContainer:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+
+[sub_resource type="Animation" id="Animation_8n8rt"]
+resource_name = "switch_on"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSwitcherVisualContainer:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.166667, 120.5, -300, 0, 104.5, 0.1, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSwitcherVisualContainer:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wub3"]
+_data = {
+&"RESET": SubResource("Animation_ygow3"),
+&"switch_off": SubResource("Animation_4c5i4"),
+&"switch_on": SubResource("Animation_8n8rt")
+}
+
+[node name="CharacterSwitcherVisual" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 163.0
+offset_bottom = 56.0
+size_flags_vertical = 3
+script = ExtResource("1_p0fui")
+
+[node name="CharacterSwitcherVisualContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_right = 163.0
+offset_bottom = 32.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q8jt8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSwitcherVisualContainer"]
+layout_mode = 2
+
+[node name="CharacterMetadataContainer" type="HBoxContainer" parent="CharacterSwitcherVisualContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterIconTextureRect" type="TextureRect" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_q8jt8")
+expand_mode = 1
+
+[node name="CharacterNameLabel" type="Label" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Character Name"
+vertical_alignment = 1
+
+[node name="CharacterHealthBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+_show_status_label = false
+_under = SubResource("GradientTexture1D_4c5i4")
+_progress = SubResource("GradientTexture1D_jdj2u")
+
+[node name="CharacterStaminaBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+_show_status_label = false
+_under = SubResource("GradientTexture1D_4c5i4")
+_progress = SubResource("GradientTexture1D_4qldq")
+
+[node name="KeyHint" type="Control" parent="CharacterSwitcherVisualContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="CharacterSwitcherVisualContainer/KeyHint"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -20.0
+offset_right = 45.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="KeyHintLabel" type="Label" parent="CharacterSwitcherVisualContainer/KeyHint/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="CharacterSwitchCooldownTextureProgressBar" type="TextureProgressBar" parent="CharacterSwitcherVisualContainer/KeyHint/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_ygow3")
+
+[node name="Button" type="Button" parent="CharacterSwitcherVisualContainer"]
+layout_mode = 2
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_5wub3")
+}

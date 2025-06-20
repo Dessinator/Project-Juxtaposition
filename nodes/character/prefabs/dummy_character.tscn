@@ -220,10 +220,11 @@ states/Passive/node = SubResource("AnimationNodeStateMachine_d66ta")
 states/Passive/position = Vector2(426, 100)
 transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransition_3jcs7")]
 
-[node name="DummyCharacter" node_paths=PackedStringArray("_character_model") instance=ExtResource("1_atyoj")]
+[node name="DummyCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_atyoj")]
 _character_model = NodePath("DummyCharacterModel")
 _character_stats = ExtResource("2_0pg88")
 _character_attack_state_machine = ExtResource("6_c50kb")
+_mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="DummyCharacterModel" parent="." index="1" instance=ExtResource("2_ha7b4")]
 
@@ -235,5 +236,11 @@ parameters/Passive/NonTargetingMovement/blend_position = -0.00623327
 parameters/Passive/TargetingMovement/blend_position = Vector2(-0.00289297, -0.0329671)
 parameters/Passive/Wallrunning/blend_position = Vector2(-0.00268096, -0.0626704)
 parameters/Passive/Wallsliding/blend_position = 0.00248969
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
 
 [editable path="DummyCharacterModel"]

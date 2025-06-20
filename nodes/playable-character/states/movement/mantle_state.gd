@@ -1,5 +1,5 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
@@ -9,15 +9,10 @@ const MOVEMENT_SPEED: StringName = &"movement_speed"
 @export var _gravity: float = 9.8
 @export var _acceleration: float = 40.0
 
-@export var _camera: PlayableCharacterCamera
-@export var _character: Character
-@export var _animation_state: FSMState
-
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-
-func _on_enter(actor: Node, _blackboard: BTBlackboard) -> void:
+func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
-	var mantle_ray_cast = actor.get_mantle_raycast()
+	var mantle_ray_cast = _character.get_mantle_ray_cast()
 	
 	if not mantle_ray_cast.is_colliding():
 		return
@@ -33,7 +28,7 @@ func _on_enter(actor: Node, _blackboard: BTBlackboard) -> void:
 	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
 	var direction = _handle_direction_input(horizontal_camera_rotation)
 	if direction.is_zero_approx():
-		direction = Vector3.FORWARD.rotated(Vector3.UP, _character.rotation.y + PI)
+		direction = Vector3.FORWARD.rotated(Vector3.UP, _playable_character_character_container.rotation.y + PI)
 	
 	var stats = _character.get_character_stats()
 	var agility_stat = stats.get_stat(AGILITY)
@@ -46,12 +41,10 @@ func _on_enter(actor: Node, _blackboard: BTBlackboard) -> void:
 	
 	actor.velocity = velocity
 	
-	_animation_finite_state_machine.change_state(_animation_state)
-	
 	var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
 	if not horizontal_velocity.is_zero_approx():
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_character.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
 func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
@@ -75,7 +68,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor.velocity = velocity
 	if not horizontal_velocity.is_zero_approx():
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_character.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
 func _handle_mantle_force(normalized_direction: Vector3, speed: float) -> Vector3:
 	var velocity = Vector3(

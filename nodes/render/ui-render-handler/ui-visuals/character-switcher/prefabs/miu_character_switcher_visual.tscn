@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://gf7nai16tjbr"]
+
+[ext_resource type="PackedScene" uid="uid://cad4mvjfw42dv" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.tscn" id="1_drytr"]
+[ext_resource type="Texture2D" uid="uid://plvvle75uvib" path="res://resources/images/character-images/miu/miu_icon.png" id="2_gwsid"]
+
+[node name="MiuCharacterSwitcherVisual" instance=ExtResource("1_drytr")]
+_character_icon = ExtResource("2_gwsid")
+_character_name = "Miu"
+
+[node name="CharacterIconTextureRect" parent="VBoxContainer/CharacterMetadataContainer" index="0"]
+texture = ExtResource("2_gwsid")
+
+[node name="CharacterNameLabel" parent="VBoxContainer/CharacterMetadataContainer" index="1"]
+text = "Miu"

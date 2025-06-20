@@ -1,24 +1,16 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
 
-@export var _acceleration: float
-@export var _camera: PlayableCharacterCamera
-@export var _character: Character
-
-@onready var _character_visual: Node3D = %CharacterVisual
-
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-@onready var _walk_animation_state: Node = %WalkAnimationState
+@export var _acceleration: float = 10.0
 
 @onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
 
 # Executes after the state is entered.
-func _on_enter(_actor: Node, blackboard: BTBlackboard) -> void:
-	_animation_finite_state_machine.change_state(_walk_animation_state)
-	
+func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	_handle_stamina_regeneration_delay(blackboard)
 
 # Executes every _process call, if the state is active.
@@ -28,7 +20,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
 	var direction = _handle_direction_input(horizontal_camera_rotation)
 	
-	var stats = actor.get_character().get_character_stats()
+	var stats = _character.get_character_stats()
 	var agility_stat = stats.get_stat(AGILITY)
 	var agility_value = agility_stat.get_value(false)
 	var movement_speed_stat = stats.get_substat(MOVEMENT_SPEED)
@@ -39,7 +31,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor.velocity = velocity
 	if not velocity.is_zero_approx():
 		var velocity_normalized = velocity.normalized()
-		_character.rotation.y = atan2(velocity_normalized.x, velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(velocity_normalized.x, velocity_normalized.z)
 	
 	_handle_targeting(blackboard.get_value("is_targeting"))
 
@@ -67,7 +59,7 @@ func _handle_targeting(is_targeting: bool):
 	
 	character_animation_tree_expression_base.travel_to_targeting_movement()
 	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
-	_character.rotation.y = horizontal_camera_rotation + PI
+	_playable_character_character_container.rotation.y = horizontal_camera_rotation + PI
 
 func _handle_stamina_regeneration_delay(blackboard: BTBlackboard):
 	_stamina_regeneration_delay_timer.timeout.connect(_on_stamina_regeneration_delay_timer_timeout.bind(blackboard))

@@ -1,16 +1,8 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
-
-#const WALL_PULL_FORCE: int = 1
-#const GRAVITY: float = 2
-#const ACCELERATION: int = 40
-#const VERTICAL_STAMINA_MAX: float = 5.0
-#const VERTICAL_SPEED: float = 6.5
-#const HORIZONTAL_SPEED_MAX: float = 2.2
-#const HORIZONTAL_SPEED_MIN: float = 1.5
 
 @export var _wall_pull_force: int = 1
 @export var _gravity: float = 2.0
@@ -19,18 +11,13 @@ const MOVEMENT_SPEED: StringName = &"movement_speed"
 @export var _horizontal_speed_min: float = 1.5
 @export var _horizontal_speed_max: float = 2.2
 
-@export var _camera: PlayableCharacterCamera
-@export var _character: Character
-@export var _animation_state: FSMState
-
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-
 # Executes after the state is entered.
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
-	var status = actor.get_status()
-	
-	_animation_finite_state_machine.change_state(_animation_state)
+	var character_container = actor.get_playable_character_character_container()
+	var character = character_container.get_current_character()
+	var status = character.get_character_status()
 	
 	var last_slide_collision = actor.get_last_slide_collision()
 	if not last_slide_collision:
@@ -72,7 +59,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
 	if not horizontal_velocity.is_zero_approx():
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_character.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
 # Executes before the state is exited.
 func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:

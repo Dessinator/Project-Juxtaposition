@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://wffrsv16y7pf"]
+[gd_scene load_steps=6 format=3 uid="uid://wffrsv16y7pf"]
 
 [ext_resource type="Script" uid="uid://bf8y3d3kmmfps" path="res://nodes/playable-character/components/playable-character-gameplay-ui/playable_character_gameplay_ui.gd" id="1_jtpcf"]
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="3_j2fnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bws26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8jt8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8s2jg"]
 
 [node name="PlayableCharacterGameplayUI" type="Control"]
 layout_mode = 3
@@ -12,19 +19,72 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_jtpcf")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="CharacterStatusPanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -249.0
+offset_right = 380.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bws26")
+
+[node name="CharacterSwitcherPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -88.0
+offset_right = 163.0
+offset_bottom = 88.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q8jt8")
+
+[node name="CharacterSwitcherVisualContainer" type="VBoxContainer" parent="CharacterSwitcherPanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="CharacterActionPanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -380.0
+offset_top = -60.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8s2jg")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+[node name="CharacterActionVisualContainer" type="HBoxContainer" parent="CharacterActionPanelContainer"]
 layout_mode = 2
 mouse_filter = 2
+
+[node name="DodgeCharacterActionVisual" parent="CharacterActionPanelContainer/CharacterActionVisualContainer" instance=ExtResource("3_j2fnf")]
+layout_mode = 2
+_action_name = "Dodge"
+
+[node name="ParryCharacterActionVisual" parent="CharacterActionPanelContainer/CharacterActionVisualContainer" instance=ExtResource("3_j2fnf")]
+layout_mode = 2
+_action_name = "Parry"
+
+[node name="JumpCharacterActionVisual" parent="CharacterActionPanelContainer/CharacterActionVisualContainer" instance=ExtResource("3_j2fnf")]
+layout_mode = 2
+_action_name = "Jump"
+
+[node name="LightAttackCharacterActionVisual" parent="CharacterActionPanelContainer/CharacterActionVisualContainer" instance=ExtResource("3_j2fnf")]
+layout_mode = 2
+_action_name = "Light Attack"
+
+[node name="HeavyAttackCharacterActionVisual" parent="CharacterActionPanelContainer/CharacterActionVisualContainer" instance=ExtResource("3_j2fnf")]
+layout_mode = 2
+_action_name = "Heavy Attack"
+
+[node name="JuxtaposeCharacterActionVisual" parent="CharacterActionPanelContainer/CharacterActionVisualContainer" instance=ExtResource("3_j2fnf")]
+layout_mode = 2
+_action_name = "Juxtapose"

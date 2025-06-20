@@ -1,19 +1,13 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 @export var _gravity: float = 9.8
 @export var _acceleration: int = 40
 
-@export var _character: Character
-
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-@onready var _fall_animation_state: Node = %FallAnimationState
-
 @onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
 
-func _on_enter(_actor: Node, blackboard: BTBlackboard) -> void:
-	_animation_finite_state_machine.change_state(_fall_animation_state)
-	
+func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	_stamina_regeneration_delay_timer.stop()
 	blackboard.set_value("regenerate_stamina", false)
 
@@ -26,7 +20,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor.velocity = velocity
 	if not horizontal_velocity.is_zero_approx():
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_character.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
 # Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:

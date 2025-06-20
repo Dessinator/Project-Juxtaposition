@@ -1,5 +1,5 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 @export var _velocity_retained_percentage: float = 0.0
 

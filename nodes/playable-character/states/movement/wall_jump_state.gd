@@ -1,13 +1,8 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
-
-#const WALL_PUSH_FORCE: float = 14
-#const FORCE: float = 12.5
-#const GRAVITY: float = 9.8
-#const ACCELERATION: int = 40
 
 @export var _wall_push_force: float = 14
 @export var _force: float = 12.5
@@ -15,16 +10,9 @@ const MOVEMENT_SPEED: StringName = &"movement_speed"
 @export var _acceleration: int = 40
 @export var _speed_multiplier: float = 0.8
 
-@export var _camera: PlayableCharacterCamera
-@export var _character: Character
-@export var _animation_state: FSMState
-
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
-	
-	_animation_finite_state_machine.change_state(_animation_state)
 	
 	var velocity = _handle_wall_jump_force(actor.velocity, blackboard.get_value("current_wall_normal"))
 	actor.velocity = velocity
@@ -56,7 +44,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
 	if not horizontal_velocity.is_zero_approx():
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_character.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
 # Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:

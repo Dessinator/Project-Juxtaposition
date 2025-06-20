@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8bm0r27t0ukw"]
+
+[ext_resource type="PackedScene" uid="uid://cad4mvjfw42dv" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.tscn" id="1_xgqfi"]
+[ext_resource type="Texture2D" uid="uid://dux10wgrqymsx" path="res://resources/images/character-images/maika/maika_icon.png" id="2_itjib"]
+
+[node name="MaikaCharacterSwitcherVisual" instance=ExtResource("1_xgqfi")]
+_character_icon = ExtResource("2_itjib")
+_character_name = "Maika"
+
+[node name="CharacterIconTextureRect" parent="VBoxContainer/CharacterMetadataContainer" index="0"]
+texture = ExtResource("2_itjib")
+
+[node name="CharacterNameLabel" parent="VBoxContainer/CharacterMetadataContainer" index="1"]
+text = "Maika"

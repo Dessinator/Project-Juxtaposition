@@ -1,21 +1,16 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 @export var _speed_retained_percentage: float = 0.5
-
 @export var _skid_duration_timer: Timer
 @export var _skid_cooldown_timer: Timer
 
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-@onready var _skid_animation_state: Node = %SkidAnimationState
-
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
 	
 	var velocity = _handle_skidding(actor.velocity)
 	actor.velocity = velocity
-	
-	_animation_finite_state_machine.change_state(_skid_animation_state)
 	
 	_skid_duration_timer.timeout.connect(_on_skid_duration_timer_timeout)
 	_skid_duration_timer.start()

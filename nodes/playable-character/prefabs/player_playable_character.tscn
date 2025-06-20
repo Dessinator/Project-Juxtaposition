@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxe5jhys8u15c"]
+
+[ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_afw0l"]
+[ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_77ffc"]
+[ext_resource type="PackedScene" uid="uid://wffrsv16y7pf" path="res://nodes/playable-character/components/playable-character-gameplay-ui/playable_character_gameplay_ui.tscn" id="2_wng8g"]
+[ext_resource type="PackedScene" uid="uid://dmb2w42ar2vo2" path="res://nodes/character/prefabs/maika_character.tscn" id="3_xxgub"]
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="3_ylbtk"]
+[ext_resource type="PackedScene" uid="uid://5a754smhrn7s" path="res://nodes/character/prefabs/mafuyu_character.tscn" id="4_wng8g"]
+[ext_resource type="PackedScene" uid="uid://dd2y8gmrc02cs" path="res://nodes/character/prefabs/kaho_character.tscn" id="5_xxgub"]
+
+[sub_resource type="PackedScene" id="PackedScene_qt45v"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("DummyPlayableCharacterGameplayUI", "PanelContainer", "HBoxContainer", "LightAttackActionUIVisual", "layout_mode", "_action_name", "HeavyAttackActionUIVisual", "JumpActionUIVisual", "DodgeActionUIVisual", "ParryActionUIVisual", "JuxtaposeActionUIVisual"),
+"node_count": 7,
+"node_paths": [NodePath("PanelContainer/HBoxContainer")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, 0, 2147483647, 262147, 1, 2, 4, 2, 5, 3, 0, 1073741824, 0, 2147483647, 524294, 1, 2, 4, 2, 5, 4, 0, 1073741824, 0, 2147483647, 786439, 1, 2, 4, 2, 5, 5, 0, 1073741824, 0, 2147483647, 1048584, 1, 2, 4, 2, 5, 6, 0, 1073741824, 0, 2147483647, 1310729, 1, 2, 4, 2, 5, 7, 0, 1073741824, 0, 2147483647, 1572874, 1, 2, 4, 2, 5, 8, 0),
+"variants": [ExtResource("2_wng8g"), ExtResource("3_ylbtk"), 2, "Light Attack", "Heavy Attack", "Jump", "Dodge", "Parry", "Juxtapose"],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_xxgub"]
+resource_local_to_scene = true
+script = ExtResource("2_77ffc")
+content = {
+"auto_jog": false,
+"is_targeting": false,
+"regenerate_stamina": false
+}
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[node name="PlayerPlayableCharacter" instance=ExtResource("1_afw0l")]
+_playable_character_gameplay_ui_packedscene = SubResource("PackedScene_qt45v")
+
+[node name="MaikaCharacter" parent="PlayableCharacterCharacterContainer" index="0" instance=ExtResource("3_xxgub")]
+
+[node name="KahoCharacter" parent="PlayableCharacterCharacterContainer" index="1" instance=ExtResource("5_xxgub")]
+
+[node name="MafuyuCharacter" parent="PlayableCharacterCharacterContainer" index="2" instance=ExtResource("4_wng8g")]
+
+[node name="GameplayFiniteStateMachine" parent="." index="8"]
+blackboard = SubResource("Resource_xxgub")
+
+[node name="JumpState" parent="GameplayFiniteStateMachine" index="5"]
+_can_switch_characters = false
+
+[node name="FallState" parent="GameplayFiniteStateMachine" index="6"]
+_can_switch_characters = false
+
+[node name="LandingState" parent="GameplayFiniteStateMachine" index="7"]
+_can_switch_characters = false
+
+[node name="DodgeState" parent="GameplayFiniteStateMachine" index="8"]
+_can_switch_characters = false
+
+[node name="AttackState" parent="GameplayFiniteStateMachine" index="9"]
+_can_switch_characters = false
+
+[node name="WallrunState" parent="GameplayFiniteStateMachine" index="10"]
+_can_switch_characters = false
+
+[node name="WallslideState" parent="GameplayFiniteStateMachine" index="11"]
+_can_switch_characters = false
+
+[node name="MantleState" parent="GameplayFiniteStateMachine" index="12"]
+_can_switch_characters = false
+
+[node name="SwingState" parent="GameplayFiniteStateMachine" index="13"]
+_can_switch_characters = false
+
+[node name="WallJumpState" parent="GameplayFiniteStateMachine" index="14"]
+_can_switch_characters = false

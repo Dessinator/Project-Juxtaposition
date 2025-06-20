@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://cw585xg2f2jyl"]
+
+[ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_665lr"]
+
+[sub_resource type="Curve" id="Curve_2enbw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.929256, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+resource_name = "DBF RES"
+script = ExtResource("1_665lr")
+_internal_name = &"debuff_resistance"
+_readable_name = "Debuff Resistance"
+_readable_abbreviation = "DBF RES"
+_curve = SubResource("Curve_2enbw")
+metadata/_custom_type_script = "uid://cnekm5ikmah4x"

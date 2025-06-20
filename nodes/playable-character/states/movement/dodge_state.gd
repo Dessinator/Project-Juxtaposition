@@ -1,22 +1,15 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
-@export var _force: float
-@export var _skid_threshold: float
-@export var _stamina_drain: int
-
-@export var _camera: PlayableCharacterCamera
-@export var _character: Character
+@export var _force: float = 10.0
+@export var _skid_threshold: float = 0.5
+@export var _stamina_drain: int = 3
 @export var _dodge_time_timer: Timer
-
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
-@onready var _dodge_animation_state: Node = %DodgeAnimationState
 
 # Executes after the state is entered.
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
-	
-	_animation_finite_state_machine.change_state(_dodge_animation_state)
 	
 	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
 	var direction = _handle_direction_input(horizontal_camera_rotation)
@@ -29,11 +22,14 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	actor.velocity = velocity
 	if not horizontal_velocity.is_zero_approx():
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_character.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 	
 	actor.velocity = velocity
 	
-	actor.get_status().exhaust(_stamina_drain)
+	var character_container = actor.get_playable_character_character_container()
+	var character = character_container.get_current_character()
+	var status = character.get_character_status()
+	status.exhaust(_stamina_drain)
 	
 	_dodge_time_timer.timeout.connect(_on_dodge_time_timer_timeout.bind(actor, blackboard.get_value("auto_jog")))
 	_dodge_time_timer.start()

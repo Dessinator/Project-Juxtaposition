@@ -14,7 +14,7 @@ func is_valid(actor: Node, _blackboard: BTBlackboard) -> bool:
 	if not actor.is_on_wall():
 		return false
 	
-	var mantle_ray_cast = actor.get_mantle_raycast()
+	var mantle_ray_cast = actor.get_playable_character_character_container().get_current_character().get_mantle_ray_cast()
 	if not mantle_ray_cast.is_colliding():
 		return false
 	

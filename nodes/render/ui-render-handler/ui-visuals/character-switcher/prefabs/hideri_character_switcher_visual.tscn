@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh6u358no2qw1"]
+
+[ext_resource type="PackedScene" uid="uid://cad4mvjfw42dv" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.tscn" id="1_trsud"]
+[ext_resource type="Texture2D" uid="uid://dgyharv7oft6f" path="res://resources/images/character-images/hideri/hideri_icon.png" id="2_m5ea7"]
+
+[node name="HideriCharacterSwitcherVisual" instance=ExtResource("1_trsud")]
+_character_icon = ExtResource("2_m5ea7")
+_character_name = "Hideri"
+
+[node name="CharacterIconTextureRect" parent="VBoxContainer/CharacterMetadataContainer" index="0"]
+texture = ExtResource("2_m5ea7")
+
+[node name="CharacterNameLabel" parent="VBoxContainer/CharacterMetadataContainer" index="1"]
+text = "Hideri"

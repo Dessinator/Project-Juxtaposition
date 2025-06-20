@@ -1,5 +1,5 @@
 @tool
-class_name ActionUIVisual
+class_name CharacterActionVisual
 extends PanelContainer
 
 const EMPTY_ACTION_NAME_PLACEHOLDER: String = "Action Name"

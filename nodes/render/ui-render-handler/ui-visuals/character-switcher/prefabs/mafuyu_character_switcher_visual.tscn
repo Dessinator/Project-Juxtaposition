@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlve1g2rnjvum"]
+
+[ext_resource type="PackedScene" uid="uid://cad4mvjfw42dv" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.tscn" id="1_q5w7y"]
+[ext_resource type="Texture2D" uid="uid://b76eet2s34ocy" path="res://resources/images/character-images/mafuyu/mafuyu_icon.png" id="2_mkl1r"]
+
+[node name="MafuyuCharacterSwitcherVisual" instance=ExtResource("1_q5w7y")]
+_character_icon = ExtResource("2_mkl1r")
+_character_name = "Mafuyu"
+
+[node name="CharacterIconTextureRect" parent="VBoxContainer/CharacterMetadataContainer" index="0"]
+texture = ExtResource("2_mkl1r")
+
+[node name="CharacterNameLabel" parent="VBoxContainer/CharacterMetadataContainer" index="1"]
+text = "Mafuyu"

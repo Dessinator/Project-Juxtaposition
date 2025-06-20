@@ -15,69 +15,21 @@ content = {
 }
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
-[node name="DummyPlayableCharacter" node_paths=PackedStringArray("_character", "_mantle_ray_cast") instance=ExtResource("1_j8br1")]
+[node name="DummyPlayableCharacter" node_paths=PackedStringArray("_character") instance=ExtResource("1_j8br1")]
 _character = NodePath("DummyCharacter")
 _playable_character_gameplay_ui_packedscene = ExtResource("2_qlr8o")
-_mantle_ray_cast = NodePath("DummyCharacter/MantleRayCast")
 
-[node name="PlayableCharacterStaminaMeter" parent="." index="2"]
+[node name="PlayableCharacterStaminaMeter" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51563, 0)
 
 [node name="DummyCharacter" parent="." index="3" instance=ExtResource("2_5tsi8")]
 
-[node name="MantleRayCast" type="RayCast3D" parent="DummyCharacter" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
-target_position = Vector3(0, -2, 0)
-debug_shape_custom_color = Color(0, 1, 0, 1)
-debug_shape_thickness = 5
-
-[node name="GameplayFiniteStateMachine" parent="." index="8"]
+[node name="GameplayFiniteStateMachine" parent="." index="7"]
 blackboard = SubResource("Resource_5tsi8")
-
-[node name="IdleState" parent="GameplayFiniteStateMachine" index="0" node_paths=PackedStringArray("_camera", "_character")]
-_camera = NodePath("../../PlayableCharacterCamera")
-_character = NodePath("../../DummyCharacter")
-
-[node name="WalkState" parent="GameplayFiniteStateMachine" index="1" node_paths=PackedStringArray("_character")]
-_character = NodePath("../../DummyCharacter")
-
-[node name="JogState" parent="GameplayFiniteStateMachine" index="2" node_paths=PackedStringArray("_character")]
-_acceleration = 15.0
-_speed_multiplier = 2.0
-_character = NodePath("../../DummyCharacter")
-
-[node name="SprintState" parent="GameplayFiniteStateMachine" index="3" node_paths=PackedStringArray("_character")]
-_speed_multiplier = 3.0
-_character = NodePath("../../DummyCharacter")
-
-[node name="JumpState" parent="GameplayFiniteStateMachine" index="5" node_paths=PackedStringArray("_character")]
-_character = NodePath("../../DummyCharacter")
-
-[node name="FallState" parent="GameplayFiniteStateMachine" index="6" node_paths=PackedStringArray("_character")]
-_character = NodePath("../../DummyCharacter")
-
-[node name="DodgeState" parent="GameplayFiniteStateMachine" index="8" node_paths=PackedStringArray("_character")]
-_character = NodePath("../../DummyCharacter")
-
-[node name="WallrunState" parent="GameplayFiniteStateMachine" index="10" node_paths=PackedStringArray("_camera", "_character")]
-_camera = NodePath("../../PlayableCharacterCamera")
-_character = NodePath("../../DummyCharacter")
-
-[node name="WallslideState" parent="GameplayFiniteStateMachine" index="11" node_paths=PackedStringArray("_camera", "_character")]
-_camera = NodePath("../../PlayableCharacterCamera")
-_character = NodePath("../../DummyCharacter")
-
-[node name="MantleState" parent="GameplayFiniteStateMachine" index="12" node_paths=PackedStringArray("_camera", "_character")]
-_camera = NodePath("../../PlayableCharacterCamera")
-_character = NodePath("../../DummyCharacter")
 
 [node name="startFalling" parent="GameplayFiniteStateMachine/MantleState" index="1"]
 use_event = true
 event = "on_start_falling"
-
-[node name="WallJumpState" parent="GameplayFiniteStateMachine" index="14" node_paths=PackedStringArray("_camera", "_character")]
-_camera = NodePath("../../PlayableCharacterCamera")
-_character = NodePath("../../DummyCharacter")
 
 [node name="IdleAnimationState" parent="AnimationFiniteStateMachine" index="0" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
@@ -106,13 +58,11 @@ _character = NodePath("../../DummyCharacter")
 [node name="DodgeAnimationState" parent="AnimationFiniteStateMachine" index="8" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="WallrunAnimationState" parent="AnimationFiniteStateMachine" index="9" node_paths=PackedStringArray("_character", "_camera")]
+[node name="WallrunAnimationState" parent="AnimationFiniteStateMachine" index="9" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
-_camera = NodePath("../../PlayableCharacterCamera")
 
-[node name="WallslideAnimationState" parent="AnimationFiniteStateMachine" index="10" node_paths=PackedStringArray("_character", "_camera")]
+[node name="WallslideAnimationState" parent="AnimationFiniteStateMachine" index="10" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
-_camera = NodePath("../../PlayableCharacterCamera")
 
 [node name="MantleAnimationState" parent="AnimationFiniteStateMachine" index="11" node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")

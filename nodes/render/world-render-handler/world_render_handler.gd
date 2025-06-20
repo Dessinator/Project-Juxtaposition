@@ -13,10 +13,14 @@ const GAME_STRETCH_SHRINK = 1
 
 const DEFAULT_COLOR_LIMIT = 12
 
+var _game_manager: GameManager
+
 @onready var _subviewport_container: SubViewportContainer = %SubViewportContainer
 @onready var _subviewport: SubViewport = %SubViewport
 
-func _ready():
+func initialize(game_manager: GameManager):
+	_game_manager = game_manager
+	
 	_preselect_resolution()
 	_preselect_affine_mapping()
 	_preselect_jitter_strength()

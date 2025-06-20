@@ -1,16 +1,8 @@
 @tool
-extends FSMState
+extends PlayableCharacterGameplayState
 
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
-
-#const WALL_PULL_FORCE: int = 1
-#const GRAVITY: float = 2
-#const ACCELERATION: int = 40
-#const VERTICAL_STAMINA_MAX: float = 5.0
-#const VERTICAL_SPEED: float = 6.5
-#const HORIZONTAL_SPEED_MAX: float = 2.2
-#const HORIZONTAL_SPEED_MIN: float = 1.5
 
 @export var _wall_pull_force: int = 1
 @export var _gravity: float = 2.0
@@ -18,23 +10,19 @@ const MOVEMENT_SPEED: StringName = &"movement_speed"
 @export var _speed_multiplier: float
 @export var _horizontal_speed_min: float = 1.5
 @export var _horizontal_speed_max: float = 2.2
-
 @export var _skid_threshold: float
 @export var _stamina_drain: int
-
-@export var _camera: PlayableCharacterCamera
-@export var _character: Character
-@export var _animation_state: FSMState
-
 @export var _drain_stamina_timer: Timer
 
-@onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
 @onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
 
 # Executes after the state is entered.
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
-	var status = actor.get_status()
+	var character_container = actor.get_playable_character_character_container()
+	var character = character_container.get_current_character()
+	var status = character.get_character_status()
 	
 	var last_slide_collision = actor.get_last_slide_collision()
 	if not last_slide_collision:
@@ -47,8 +35,6 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	
 	_stamina_regeneration_delay_timer.stop()
 	blackboard.set_value("regenerate_stamina", false)
-	
-	_animation_finite_state_machine.change_state(_animation_state)
 	
 	status.stamina_modified.connect(_on_status_stamina_modified.bind(actor))
 	
@@ -92,12 +78,14 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
 	if not horizontal_velocity.is_zero_approx():
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_character.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
 # Executes before the state is exited.
 func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
-	var status = actor.get_status()
+	var character_container = actor.get_playable_character_character_container()
+	var character = character_container.get_current_character()
+	var status = character.get_character_status()
 	
 	#var particle_system = _playable_character_sprinting_particles.get_node("%GPUParticles3D")
 	#particle_system.emitting = false
@@ -133,7 +121,11 @@ func _handle_wallrunning(playable_character: PlayableCharacter, wall_negative_no
 	return velocity
 
 func _handle_stamina_drained(playable_character: PlayableCharacter) -> bool:
-	if not playable_character.get_status().is_exhausted():
+	var character_container = playable_character.get_playable_character_character_container()
+	var character = character_container.get_current_character()
+	var status = character.get_character_status()
+	
+	if not status.is_exhausted():
 		return false
 	
 	var last_slide_collision = playable_character.get_last_slide_collision()

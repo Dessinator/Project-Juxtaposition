@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
 [ext_resource type="PackedScene" uid="uid://dhal1wbe247ok" path="res://nodes/playable-character/components/playable-character-camera/playable_character_camera.tscn" id="2_b536o"]
+[ext_resource type="Script" uid="uid://b30qr6jj8jrtd" path="res://nodes/playable-character/components/playable-character-character-container/playable_character_character_container.gd" id="2_kbp4i"]
 [ext_resource type="PackedScene" uid="uid://dalxdx30uubou" path="res://nodes/playable-character/components/playable-character-stamina-meter/playable_character_stamina_meter.tscn" id="2_s6wqa"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_kwpjs"]
 [ext_resource type="Script" uid="uid://dc3gcbxjw1fl" path="res://nodes/playable-character/states/movement/idle_state.gd" id="4_kwpjs"]
+[ext_resource type="PackedScene" uid="uid://c8rgk5qujgtg6" path="res://nodes/playable-character/components/playable-character-visual-controller/playable_character_visual_controller.tscn" id="5_avwae"]
 [ext_resource type="Script" uid="uid://48jvbjogtre" path="res://nodes/playable-character/states/movement/transitions/start_walking.gd" id="5_kwpjs"]
 [ext_resource type="Script" uid="uid://bvkuv47v02wto" path="res://nodes/playable-character/states/movement/transitions/start_sprinting.gd" id="6_541kw"]
 [ext_resource type="Script" uid="uid://vyjbkqhnabi0" path="res://nodes/playable-character/states/movement/transitions/start_jogging.gd" id="7_beju2"]
@@ -32,7 +34,6 @@
 [ext_resource type="Script" uid="uid://cuvokqs3w823t" path="res://nodes/playable-character/states/movement/dodge_state.gd" id="22_dkfog"]
 [ext_resource type="Script" uid="uid://nbxd43ou3r4n" path="res://nodes/playable-character/states/animation/fall_animation_state.gd" id="23_beju2"]
 [ext_resource type="Script" uid="uid://d0o4r54gr58df" path="res://nodes/playable-character/states/animation/skid_animation_state.gd" id="24_8ke1j"]
-[ext_resource type="Script" uid="uid://bopupw87ystdo" path="res://nodes/playable-character/states/movement/transitions/start_gliding.gd" id="24_kbp4i"]
 [ext_resource type="Script" uid="uid://vg7akdv3mrll" path="res://nodes/playable-character/states/movement/attack_state.gd" id="25_mb8j0"]
 [ext_resource type="Script" uid="uid://qly0iiqltxnc" path="res://nodes/playable-character/states/movement/wallrun_state.gd" id="26_m2e7d"]
 [ext_resource type="Script" uid="uid://b13rsw3t1jgfm" path="res://nodes/playable-character/states/movement/wall_jump_state.gd" id="27_1uog8"]
@@ -48,8 +49,6 @@
 [ext_resource type="Script" uid="uid://bu40nfnoj3gl0" path="res://nodes/playable-character/states/animation/mantle_animation_state.gd" id="45_kbp4i"]
 [ext_resource type="PackedScene" uid="uid://bgnq2vj4f5nni" path="res://nodes/particles/playable-character/playable_character_sprinting_particles.tscn" id="48_avwae"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_p803t"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0vta"]
 
 [sub_resource type="Resource" id="Resource_t22va"]
@@ -57,36 +56,51 @@ resource_local_to_scene = true
 script = ExtResource("3_kwpjs")
 content = {
 "auto_jog": false,
+"is_targeting": false,
 "regenerate_stamina": false
 }
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
 [sub_resource type="Resource" id="Resource_s6wqa"]
 script = ExtResource("3_kwpjs")
-content = {}
+content = {
+"is_targeting": false
+}
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
 [node name="PlayableCharacter" type="CharacterBody3D"]
 script = ExtResource("1_quqvc")
 metadata/_custom_type_script = "uid://bjx0nfkhbn162"
 
-[node name="CharacterVisual" type="Node3D" parent="."]
-unique_name_in_owner = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterVisual"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_p803t")
-skeleton = NodePath("../..")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_b0vta")
 
-[node name="PlayableCharacterStaminaMeter" parent="." instance=ExtResource("2_s6wqa")]
+[node name="PlayableCharacterVisualController" parent="." instance=ExtResource("5_avwae")]
 unique_name_in_owner = true
 
+[node name="PlayableCharacterCharacterContainer" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_kbp4i")
+
 [node name="PlayableCharacterCamera" parent="." instance=ExtResource("2_b536o")]
+unique_name_in_owner = true
+
+[node name="RotationPivot" parent="PlayableCharacterCamera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
+
+[node name="PlayableCharacterStaminaMeter" parent="PlayableCharacterCamera/RotationPivot" index="0" instance=ExtResource("2_s6wqa")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.939692, -0.34202, 0, 0.34202, 0.939692, 1, 1.87938, 0.68404)
+
+[node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" index="1"]
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9448e-07, 0.999999, 5.65648e-05, -2.27374e-11, -5.70416e-05, 1, 0, 1.3, 0)
+
+[node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
+transform = Transform3D(1, 7.73588e-08, 3.50877e-07, 1.27421e-08, 1.00001, 0.000274926, 2.14419e-07, 2.68221e-07, 1.00147, -3.34859e-09, -0.000283003, 5)
+
+[node name="Camera" parent="PlayableCharacterCamera" index="2"]
+transform = Transform3D(1, -2.95792e-15, 8.12683e-15, 0, 0.939693, 0.34202, -8.64839e-15, -0.34202, 0.939693, 4.06341e-14, 2.9317, 4.25384)
 
 [node name="RegenerateStaminaTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -100,6 +114,11 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 
+[node name="CharacterSwitchCooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+one_shot = true
+
 [node name="GameplayFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_2aic4")
@@ -110,9 +129,10 @@ blackboard = SubResource("Resource_t22va")
 verbose = true
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
-[node name="IdleState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="IdleState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("4_kwpjs")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
 metadata/_custom_type_script = "uid://bv80dvrqw5nqc"
 
 [node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
@@ -144,11 +164,10 @@ next_state = NodePath("../../FallState")
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../AttackState")
 
-[node name="WalkState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_camera")]
+[node name="WalkState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("9_g13tn")
-_acceleration = 10.0
-_camera = NodePath("../../PlayableCharacterCamera")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/WalkAnimationState")
 
 [node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_qyjwt")
@@ -178,10 +197,10 @@ next_state = NodePath("../../FallState")
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../AttackState")
 
-[node name="JogState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_camera")]
+[node name="JogState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("13_beju2")
-_camera = NodePath("../../PlayableCharacterCamera")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/JogAnimationState")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
 [node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
@@ -213,16 +232,13 @@ next_state = NodePath("../../FallState")
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../AttackState")
 
-[node name="SprintState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_camera", "_drain_stamina_timer", "_allow_skidding_delay_timer", "_skid_cooldown_timer")]
+[node name="SprintState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_drain_stamina_timer", "_allow_skidding_delay_timer", "_skid_cooldown_timer", "_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("11_c3dl5")
-_acceleration = 25.0
-_skid_threshold = 0.5
-_stamina_drain = 1
-_camera = NodePath("../../PlayableCharacterCamera")
 _drain_stamina_timer = NodePath("../../DrainStaminaTimer")
 _allow_skidding_delay_timer = NodePath("AllowSkiddingDelayTimer")
 _skid_cooldown_timer = NodePath("../SkidState/SkidCooldownTimer")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/SprintAnimationState")
 
 [node name="AllowSkiddingDelayTimer" type="Timer" parent="GameplayFiniteStateMachine/SprintState"]
 wait_time = 3.0
@@ -272,11 +288,12 @@ metadata/_custom_type_script = "uid://1h0braq41vwb"
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../AttackState")
 
-[node name="SkidState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_skid_duration_timer", "_skid_cooldown_timer")]
+[node name="SkidState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_skid_duration_timer", "_skid_cooldown_timer", "_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("13_owwb0")
 _skid_duration_timer = NodePath("SkidDurationTimer")
 _skid_cooldown_timer = NodePath("SkidCooldownTimer")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/SkidAnimationState")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
 [node name="SkidDurationTimer" type="Timer" parent="GameplayFiniteStateMachine/SkidState"]
@@ -316,10 +333,10 @@ event = "on_start_sprinting"
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="JumpState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_camera")]
+[node name="JumpState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("12_nfjh7")
-_camera = NodePath("../../PlayableCharacterCamera")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/JumpAnimationState")
 
 [node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
@@ -339,9 +356,10 @@ event = "on_start_falling"
 script = ExtResource("12_pffgr")
 next_state = NodePath("../../DodgeState")
 
-[node name="FallState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="FallState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("14_fc7wd")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/FallAnimationState")
 
 [node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
@@ -351,10 +369,6 @@ next_state = NodePath("../../MantleState")
 script = ExtResource("21_dhcem")
 next_state = NodePath("../../WallrunState")
 
-[node name="startGliding" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
-script = ExtResource("24_kbp4i")
-next_state = NodePath("")
-
 [node name="land" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
 next_state = NodePath("../../LandingState")
@@ -363,9 +377,10 @@ next_state = NodePath("../../LandingState")
 script = ExtResource("12_pffgr")
 next_state = NodePath("../../DodgeState")
 
-[node name="LandingState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="LandingState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("16_fc7wd")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/LandingAnimationState")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
 [node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
@@ -393,14 +408,11 @@ next_state = NodePath("../../SprintState")
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
-[node name="DodgeState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_camera", "_dodge_time_timer")]
+[node name="DodgeState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_dodge_time_timer", "_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("22_dkfog")
-_force = 10.0
-_skid_threshold = 0.5
-_stamina_drain = 3
-_camera = NodePath("../../PlayableCharacterCamera")
 _dodge_time_timer = NodePath("DodgeTimeTimer")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/DodgeAnimationState")
 
 [node name="DodgeTimeTimer" type="Timer" parent="GameplayFiniteStateMachine/DodgeState"]
 wait_time = 0.3
@@ -484,13 +496,13 @@ next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="WallrunState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state", "_drain_stamina_timer")]
+[node name="WallrunState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_drain_stamina_timer", "_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("26_m2e7d")
 _speed_multiplier = 1.5
 _stamina_drain = 2
-_animation_state = NodePath("../../AnimationFiniteStateMachine/WallrunAnimationState")
 _drain_stamina_timer = NodePath("../../DrainStaminaTimer")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/WallrunAnimationState")
 
 [node name="startWallsliding" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
@@ -614,52 +626,44 @@ verbose = true
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
 [node name="IdleAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("19_jrru3")
 
 [node name="WalkAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("20_8ke1j")
 
 [node name="JogAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("21_clyg5")
 
 [node name="SprintAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("21_bd5yv")
 
 [node name="SkidAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("24_8ke1j")
 
 [node name="JumpAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("22_clyg5")
 
 [node name="FallAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("23_beju2")
 
 [node name="LandingAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("34_m348m")
 
 [node name="DodgeAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("30_dkfog")
 
 [node name="WallrunAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("43_ug6ed")
 
 [node name="WallslideAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("44_m65ax")
 
 [node name="MantleAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
-unique_name_in_owner = true
 script = ExtResource("45_kbp4i")
 
 [node name="PlayableCharacterSprintingParticles" parent="." instance=ExtResource("48_avwae")]
 unique_name_in_owner = true
+
+[connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="." method="_on_current_character_changed"]
+
+[editable path="PlayableCharacterCamera"]

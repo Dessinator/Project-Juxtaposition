@@ -1,0 +1,260 @@
+[gd_scene load_steps=56 format=3 uid="uid://c7ixr5uo7fs72"]
+
+[ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_hj4o1"]
+[ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_4y4et"]
+[ext_resource type="PackedScene" uid="uid://d4fa6hfrd2p4q" path="res://nodes/character/components/character-attack-state-machine/prefabs/dummy/dummy_character_attack_state_machine.tscn" id="3_4y4et"]
+[ext_resource type="Resource" uid="uid://dvyfvj1ymgjm7" path="res://resources/character/character-stats/prefabs/miu_character_stats.tres" id="3_ryv0y"]
+[ext_resource type="PackedScene" uid="uid://gf7nai16tjbr" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/miu_character_switcher_visual.tscn" id="4_4y4et"]
+[ext_resource type="PackedScene" uid="uid://6bpnqrlkk3eb" path="res://nodes/character_model/prefabs/miu_character_model.tscn" id="4_hj4o1"]
+[ext_resource type="PackedScene" uid="uid://qcvx55byd0td" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/miu_character_status_visual.tscn" id="5_ryv0y"]
+
+[sub_resource type="Resource" id="Resource_ryv0y"]
+script = ExtResource("2_4y4et")
+_name = "Miu Amano"
+_nickname = "Miu"
+_pronouns = "She/Her/Hers"
+_lore = ""
+metadata/_custom_type_script = "uid://cf8q48g7hjdjb"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fw5je"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pqdem"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vcnnv"]
+animation = &"jog"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_14jtu"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0pg88"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_fw5je")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_pqdem")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_vcnnv")
+blend_point_2/pos = 2.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_14jtu")
+blend_point_3/pos = 3.0
+max_space = 3.0
+blend_mode = 2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pg88"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3jcs7"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dj2qr"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xc87n"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_38sl6"]
+animation = &"walk_strafe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c50kb"]
+animation = &"walk_strafe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o63qx"]
+animation = &"walk_backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iqkbo"]
+animation = &"jog"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d66ta"]
+animation = &"jog_strafe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cm2we"]
+animation = &"jog_strafe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t2dxk"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0q0f0"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_iqkbo"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_0pg88")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_3jcs7")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_38sl6")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_c50kb")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_o63qx")
+blend_point_4/pos = Vector2(0, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_iqkbo")
+blend_point_5/pos = Vector2(0, -2)
+blend_point_6/node = SubResource("AnimationNodeAnimation_d66ta")
+blend_point_6/pos = Vector2(2, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_cm2we")
+blend_point_7/pos = Vector2(-2, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_t2dxk")
+blend_point_8/pos = Vector2(0, 3)
+blend_point_9/node = SubResource("AnimationNodeAnimation_0q0f0")
+blend_point_9/pos = Vector2(-3, 0)
+blend_point_10/node = SubResource("AnimationNodeAnimation_dj2qr")
+blend_point_10/pos = Vector2(3, -0.1)
+blend_point_11/node = SubResource("AnimationNodeAnimation_xc87n")
+blend_point_11/pos = Vector2(0, -3)
+min_space = Vector2(-3, -3)
+max_space = Vector2(3, 3)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sy323"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bfudv"]
+animation = &"wallrun_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1q4p6"]
+animation = &"wallrun_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r3dtm"]
+animation = &"wallrun_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sw0u7"]
+animation = &"wallrun_down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3he8t"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_sy323")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_bfudv")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1q4p6")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_r3dtm")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_sw0u7")
+blend_point_4/pos = Vector2(0, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3he8t"]
+animation = &"wallslide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_120cr"]
+animation = &"wallslide_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_te2m4"]
+animation = &"wallslide_left"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_3jcs7"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3he8t")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_120cr")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_te2m4")
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2kw50"]
+animation = &"dodge"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0svs2"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3tqxe"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jqn3c"]
+animation = &"landing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xyyel"]
+animation = &"mantle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wsfnm"]
+animation = &"skid"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t2dxk"]
+xfade_time = 0.2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0pg88"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_38sl6"]
+xfade_time = 0.2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sy323"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bfudv"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c50kb"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o63qx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqkbo"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d66ta"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cm2we"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d66ta"]
+states/End/position = Vector2(875, -25)
+states/NonTargetingMovement/node = SubResource("AnimationNodeBlendSpace1D_0pg88")
+states/NonTargetingMovement/position = Vector2(381, -25)
+states/Start/position = Vector2(202, -25)
+states/TargetingMovement/node = SubResource("AnimationNodeBlendSpace2D_iqkbo")
+states/TargetingMovement/position = Vector2(645, -25)
+states/Wallrunning/node = SubResource("AnimationNodeBlendSpace2D_3he8t")
+states/Wallrunning/position = Vector2(645, -285)
+states/Wallsliding/node = SubResource("AnimationNodeBlendSpace1D_3jcs7")
+states/Wallsliding/position = Vector2(645, -215)
+states/dodge/node = SubResource("AnimationNodeAnimation_2kw50")
+states/dodge/position = Vector2(86, -141.518)
+states/fall/node = SubResource("AnimationNodeAnimation_0svs2")
+states/fall/position = Vector2(381, -215)
+states/jump/node = SubResource("AnimationNodeAnimation_3tqxe")
+states/jump/position = Vector2(381, -285)
+states/landing/node = SubResource("AnimationNodeAnimation_jqn3c")
+states/landing/position = Vector2(381, -141.518)
+states/mantle/node = SubResource("AnimationNodeAnimation_xyyel")
+states/mantle/position = Vector2(202, -215)
+states/skid/node = SubResource("AnimationNodeAnimation_wsfnm")
+states/skid/position = Vector2(202, -141.518)
+transitions = ["landing", "TargetingMovement", SubResource("AnimationNodeStateMachineTransition_t2dxk"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_0pg88"), "landing", "NonTargetingMovement", SubResource("AnimationNodeStateMachineTransition_38sl6"), "TargetingMovement", "NonTargetingMovement", SubResource("AnimationNodeStateMachineTransition_sy323"), "NonTargetingMovement", "TargetingMovement", SubResource("AnimationNodeStateMachineTransition_bfudv"), "Start", "NonTargetingMovement", SubResource("AnimationNodeStateMachineTransition_c50kb"), "Wallrunning", "Wallsliding", SubResource("AnimationNodeStateMachineTransition_o63qx"), "mantle", "fall", SubResource("AnimationNodeStateMachineTransition_iqkbo"), "mantle", "landing", SubResource("AnimationNodeStateMachineTransition_d66ta"), "mantle", "dodge", SubResource("AnimationNodeStateMachineTransition_cm2we")]
+graph_offset = Vector2(-79, -324.815)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3jcs7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cm2we"]
+states/Passive/node = SubResource("AnimationNodeStateMachine_d66ta")
+states/Passive/position = Vector2(426, 100)
+transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransition_3jcs7")]
+
+[node name="MiuCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_hj4o1")]
+_character_metadata = SubResource("Resource_ryv0y")
+_character_model = NodePath("MiuCharacterModel")
+_character_stats = ExtResource("3_ryv0y")
+_character_switcher_visual_packedscene = ExtResource("4_4y4et")
+_character_status_visual_packedscene = ExtResource("5_ryv0y")
+_character_attack_state_machine = ExtResource("3_4y4et")
+_mantle_ray_cast = NodePath("MantleRayCast")
+
+[node name="MiuCharacterModel" parent="." index="1" instance=ExtResource("4_hj4o1")]
+
+[node name="AnimationTree" parent="." index="3"]
+root_node = NodePath("%AnimationTree/../MiuCharacterModel")
+tree_root = SubResource("AnimationNodeStateMachine_cm2we")
+anim_player = NodePath("../MiuCharacterModel/AnimationPlayer")
+parameters/Passive/NonTargetingMovement/blend_position = -0.00623327
+parameters/Passive/TargetingMovement/blend_position = Vector2(-0.00289297, -0.0329671)
+parameters/Passive/Wallrunning/blend_position = Vector2(-0.00268096, -0.0626704)
+parameters/Passive/Wallsliding/blend_position = 0.00248969
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[editable path="MiuCharacterModel"]

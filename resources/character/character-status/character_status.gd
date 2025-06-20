@@ -27,7 +27,7 @@ const BUFF_RETENTION: StringName = &"buff_retention"
 const MAXIMUM_HEALTH: StringName = &"maximum_health"
 const MAXIMUM_STAMINA: StringName = &"maximum_stamina"
 
-var _character: PlayableCharacter
+var _character: Character
 var _stats: CharacterStats
 
 # health
@@ -43,7 +43,7 @@ var _stamina: int
 # status effects
 var _status_effects: Dictionary = {}
 
-func initialize(character: PlayableCharacter, stats: CharacterStats):
+func initialize(character: Character, stats: CharacterStats):
 	_character = character
 	_stats = stats
 	
@@ -305,8 +305,6 @@ func tick_debuffs():
 			continue
 		_tick_status_effect(status_effect_instance)
 
-# ...not sure if this will ever be useful, but hey, it's here. General status effects probably just need to be ticked
-# before the actor takes their turn (for animations and stuff)
 func tick_general():
 	for status_effect_name in _status_effects.keys():
 		var status_effect_instance = _status_effects[status_effect_name]

@@ -11,7 +11,10 @@ func _on_transition(_delta: float, _actor: Node, _blackboard: BTBlackboard) -> v
 func is_valid(actor: Node, _blackboard: BTBlackboard) -> bool:
 	actor = actor as PlayableCharacter
 	
-	if actor.get_status().is_exhausted():
+	var character_container = actor.get_playable_character_character_container()
+	var character = character_container.get_current_character()
+	var status = character.get_character_status()
+	if status.is_exhausted():
 		return false
 	
 	return actor.is_on_wall_only()
