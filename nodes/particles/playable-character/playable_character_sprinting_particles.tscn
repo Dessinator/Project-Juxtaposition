@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgnq2vj4f5nni"]
+[gd_scene load_steps=9 format=3 uid="uid://bgnq2vj4f5nni"]
 
-[ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/shaders/psx_render_material.tres" id="1_ukte5"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="1_ukte5"]
 
 [sub_resource type="Curve" id="Curve_ukte5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.88948, 0.0, 0, 0]
@@ -19,8 +19,24 @@ scale_min = 0.8
 scale_max = 1.6
 scale_curve = SubResource("CurveTexture_kw3b2")
 
+[sub_resource type="Gradient" id="Gradient_kw3b2"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dkpyw"]
+gradient = SubResource("Gradient_kw3b2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1pm17"]
+render_priority = 0
+shader = ExtResource("1_ukte5")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_dkpyw")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
 [sub_resource type="SphereMesh" id="SphereMesh_dkpyw"]
-material = ExtResource("1_ukte5")
+material = SubResource("ShaderMaterial_1pm17")
 radius = 0.2
 height = 0.4
 radial_segments = 6

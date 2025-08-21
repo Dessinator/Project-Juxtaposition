@@ -1,0 +1,2 @@
+class_name CharacterComboChainParryNode
+extends CharacterComboChainAttackNode

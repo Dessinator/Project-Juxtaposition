@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvdq86nhekbgt"]
+
+[ext_resource type="Material" uid="uid://bly25nr0aqsv3" path="res://addons/ThirdPersonTemplate/Environments/Materials/BlueGrid.material" id="1_4idx5"]
+[ext_resource type="PackedScene" uid="uid://dxe5jhys8u15c" path="res://nodes/playable-character/prefabs/player_playable_character.tscn" id="2_4ti28"]
+[ext_resource type="PackedScene" uid="uid://ciwgnsmkif2l3" path="res://nodes/entity/prefabs/kilobyte/kilobyte_entity.tscn" id="3_4ti28"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8lvh5"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_72lrg"]
+sky_material = SubResource("ProceduralSkyMaterial_8lvh5")
+
+[sub_resource type="Environment" id="Environment_38v42"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_72lrg")
+ambient_light_source = 3
+ambient_light_energy = 2.0
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4ti28"]
+vertices = PackedVector3Array(-99.5, 149.5, -93.25, -95.5, 149.5, -93.25, -95.5, 149.5, -95.25, -93.25, 149.5, -95.5, -93.25, 149.5, -99.5, -99.5, 149.5, -99.5, 93.25, 149.5, -95.5, 93.25, 149.5, -99.5, 95.25, 149.5, -95.5, 95.5, 149.5, -93.25, 99.5, 149.5, -93.25, 99.5, 149.5, -99.5, -94.25, 0.5, -94.25, -94.25, 0.5, 94.5, 94.5, 0.5, 94.5, 94.5, 0.5, -94.25, -99.5, 149.5, 93.25, -95.5, 149.5, 93.25, 95.5, 149.5, 93.25, 99.5, 149.5, 93.25, -95.5, 149.5, 95.25, -93.25, 149.5, 99.5, -93.25, 149.5, 95.5, -99.5, 149.5, 99.5, 95.25, 149.5, 95.5, 93.25, 149.5, 95.5, 93.25, 149.5, 99.5, 99.5, 149.5, 99.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(4, 7, 3), PackedInt32Array(3, 7, 6), PackedInt32Array(8, 6, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(7, 11, 8), PackedInt32Array(8, 11, 10), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(0, 1, 16), PackedInt32Array(16, 1, 17), PackedInt32Array(9, 10, 18), PackedInt32Array(18, 10, 19), PackedInt32Array(16, 17, 20), PackedInt32Array(21, 20, 22), PackedInt32Array(16, 20, 23), PackedInt32Array(23, 20, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(19, 24, 18), PackedInt32Array(26, 24, 27), PackedInt32Array(27, 24, 19), PackedInt32Array(22, 25, 21), PackedInt32Array(21, 25, 26)]
+
+[node name="CombatTestMap" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_38v42")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_4ti28")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(200, 1, 200)
+material = ExtResource("1_4idx5")
+
+[node name="walls" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 74, 0)
+size = Vector3(200, 150, 200)
+material = ExtResource("1_4idx5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D/walls"]
+operation = 2
+size = Vector3(190, 150, 190)
+material = ExtResource("1_4idx5")
+
+[node name="PlayerPlayableCharacter" parent="." instance=ExtResource("2_4ti28")]
+
+[node name="KilobyteEntity" parent="." instance=ExtResource("3_4ti28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)

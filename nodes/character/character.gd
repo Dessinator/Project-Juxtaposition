@@ -5,12 +5,12 @@ extends Node3D
 # Should be the child of a PlayableCharacter node.
 
 @export var _character_metadata: CharacterMetadata
-
 @export var _character_model: Node3D
 @export var _character_stats: CharacterStats
+@export var _character_combo: CharacterCombo
 @export var _character_switcher_visual_packedscene: PackedScene
 @export var _character_status_visual_packedscene: PackedScene
-@export var _character_attack_state_machine: PackedScene
+#@export var _character_attack_state_machine_packedscene: PackedScene
 @export var _mantle_ray_cast: RayCast3D
 
 var _character_status: CharacterStatus
@@ -19,6 +19,7 @@ var _character_model_animation_names: Array[StringName]
 var _character_model_hitbox_animation_player: AnimationPlayer
 var _character_model_hitbox_animation_names: Array[StringName]
 
+@onready var _character_combat_manager: CharacterCombatManager = %CharacterCombatManager
 @onready var _character_attack_definition_manager: CharacterAttackDefinitionManager = %CharacterAttackDefinitionManager
 
 func _ready() -> void:
@@ -49,11 +50,14 @@ func get_character_status_visual_packedscene() -> PackedScene:
 	return _character_status_visual_packedscene
 func get_character_attack_definition_manager() -> CharacterAttackDefinitionManager:
 	return _character_attack_definition_manager
-func get_character_attack_state_machine() -> PackedScene:
-	return _character_attack_state_machine
+func get_character_attack_state_machine_packedscene() -> PackedScene:
+	return null
+	#return _character_attack_state_machine_packedscene
 
 func get_character_stats() -> CharacterStats:
 	return _character_stats
+func get_character_combo() -> CharacterCombo:
+	return _character_combo
 func get_character_status() -> CharacterStatus:
 	return _character_status
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterCombo" load_steps=3 format=3 uid="uid://btwyqltgcm486"]
+
+[ext_resource type="Script" uid="uid://c15j5i4o013fo" path="res://addons/character-combo-tree/resources/character_combo_chain.gd" id="1_ky4mg"]
+[ext_resource type="Script" uid="uid://c03wdfwn7myec" path="res://addons/character-combo-tree/resources/character_combo.gd" id="1_s37g7"]
+
+[resource]
+script = ExtResource("1_s37g7")
+chains = Array[ExtResource("1_ky4mg")]([])
+metadata/_custom_type_script = "uid://c03wdfwn7myec"

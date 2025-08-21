@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5mwib223gobd"]
+
+[ext_resource type="Script" uid="uid://c6jh3dqx67alh" path="res://addons/character-combo-tree/editor/chain_naming_popup.gd" id="1_daae7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymm7e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ev2on"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mmnpn"]
+
+[node name="ChainNamingPopup" type="Window"]
+auto_translate_mode = 1
+title = "Name Chain"
+initial_position = 4
+size = Vector2i(500, 100)
+unresizable = true
+popup_window = true
+script = ExtResource("1_daae7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 500.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Chain Name:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ymm7e")
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ev2on")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Cancel"
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mmnpn")
+
+[node name="OKButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "OK"
+
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/OKButton" to="." method="_on_ok_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://6bpnqrlkk3eb"]
+[gd_scene load_steps=45 format=3 uid="uid://6bpnqrlkk3eb"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_6rjky"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="2_ub0v0"]
@@ -1640,6 +1640,69 @@ _data = {
 &"wallslide_right": SubResource("Animation_f7q3t")
 }
 
+[sub_resource type="Gradient" id="Gradient_mkygj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.377804, 0.245176, 0.161571, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uptfo"]
+gradient = SubResource("Gradient_mkygj")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rjky"]
+render_priority = 0
+shader = ExtResource("2_ub0v0")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_uptfo")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6rjky"]
+material = SubResource("ShaderMaterial_6rjky")
+radius = 0.1
+height = 1.5
+
+[sub_resource type="Gradient" id="Gradient_ub0v0"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.154751, 0.15989, 0.235242, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mkygj"]
+gradient = SubResource("Gradient_ub0v0")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uptfo"]
+render_priority = 0
+shader = ExtResource("2_ub0v0")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_mkygj")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ub0v0"]
+material = SubResource("ShaderMaterial_uptfo")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eyr73"]
+gradient = SubResource("Gradient_ub0v0")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpase"]
+render_priority = 0
+shader = ExtResource("2_ub0v0")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_eyr73")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6rjky"]
+material = SubResource("ShaderMaterial_cpase")
+top_radius = 0.0
+bottom_radius = 0.095
+height = 0.3
+
 [node name="MiuCharacterModel" instance=ExtResource("1_6rjky")]
 
 [node name="dummy_root" type="Node3D" parent="." index="0"]
@@ -1659,3 +1722,17 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_nsq03")
 }
+
+[node name="brush_root" type="Node3D" parent="." index="3"]
+
+[node name="handle" type="MeshInstance3D" parent="brush_root" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("SphereMesh_6rjky")
+
+[node name="brush" type="MeshInstance3D" parent="brush_root/handle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+mesh = SubResource("SphereMesh_ub0v0")
+
+[node name="tip" type="MeshInstance3D" parent="brush_root/handle/brush" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161101, 0)
+mesh = SubResource("CylinderMesh_6rjky")

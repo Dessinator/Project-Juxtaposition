@@ -3,14 +3,20 @@ extends Node
 
 # responsible for holding a character's AttackDefinitions
 
-@export var _light_attack: AttackDefinition
-@export var _heavy_attack: AttackDefinition
+@export var _character_attack_definitions: Array[CharacterAttackDefinition]
 
-func _initialize():
-	_light_attack = _light_attack.duplicate()
-	_heavy_attack = _heavy_attack.duplicate()
+var _character_attack_definitions_dictionary: Dictionary = {}
 
-func get_light_attack() -> AttackDefinition:
-	return _light_attack
-func get_heavy_attack() -> AttackDefinition:
-	return _heavy_attack
+func _ready():
+	_populate_dictionary()
+
+func _populate_dictionary():
+	# Populate the dictionary for O(1) access time.
+	for character_attack_definition in _character_attack_definitions:
+		var internal_name = character_attack_definition.get_internal_name()
+		assert(not internal_name.is_empty(), "CharacterAttackDefinition on Character {character_name} is missing an internal name.".format({"character_name": get_parent().name}))
+		_character_attack_definitions_dictionary[internal_name] = character_attack_definition
+
+# Returns a specific CharacterAttackDefinition resource based on its ID.
+func get_character_attack_definition(character_attack_definition_internal_name: StringName) -> CharacterAttackDefinition:
+	return _character_attack_definitions_dictionary.get(character_attack_definition_internal_name, null)

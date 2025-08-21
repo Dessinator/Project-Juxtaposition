@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvw0ggc5xklmi"]
+[gd_scene load_steps=43 format=3 uid="uid://dvw0ggc5xklmi"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_ni667"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="2_vm080"]
+[ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/shaders/psx_render_material.tres" id="3_vm080"]
 
 [sub_resource type="Gradient" id="Gradient_ni667"]
 offsets = PackedFloat32Array(0)
@@ -42,6 +43,46 @@ shader_parameter/resolution = Vector2i(320, 240)
 [sub_resource type="BoxMesh" id="BoxMesh_c3blq"]
 material = SubResource("ShaderMaterial_1gssb")
 size = Vector3(0.8, 0.3, 0.4)
+
+[sub_resource type="Gradient" id="Gradient_vm080"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.476804, 0.413305, 0.479634, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fbn04"]
+gradient = SubResource("Gradient_vm080")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gm7sm"]
+render_priority = 0
+shader = ExtResource("2_vm080")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_fbn04")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ni667"]
+material = SubResource("ShaderMaterial_gm7sm")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_ni667"]
+material = SubResource("ShaderMaterial_gm7sm")
+radius = 0.3
+height = 0.3
+is_hemisphere = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vm080"]
+material = SubResource("ShaderMaterial_gm7sm")
+size = Vector3(1, 0.05, 0.05)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vm080"]
+material = ExtResource("3_vm080")
+top_radius = 0.02
+bottom_radius = 0.1
+height = 3.5
+radial_segments = 4
 
 [sub_resource type="Animation" id="Animation_c3blq"]
 length = 0.001
@@ -254,6 +295,84 @@ tracks/18/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0.1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("rapier_root:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/20/type = "bezier"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("rapier_root:position:x")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/21/type = "bezier"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("rapier_root:position:y")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/22/type = "bezier"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("rapier_root:position:z")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/23/type = "bezier"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("rapier_root:rotation:x")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/24/type = "bezier"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("rapier_root:rotation:y")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/25/type = "bezier"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("rapier_root:rotation:z")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_3n1r8"]
@@ -752,6 +871,108 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(1.17039, -0.25, 0, 0.25, 0, 0.75232, -0.1, 0, 0.1, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.150018, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_vm080"]
+resource_name = "light_attack_0"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rapier_root:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rapier_root:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rapier_root:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rapier_root:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.794429, -0.05, 0, 0, 0, -4.92122e-11, -0.05, 0, 0.05, 0, -4.92122e-11, -0.05, 0, 0.05, 0, -1.33415, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rapier_root:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.05, 0, 0, 0, 1.4, -0.05, 0, 0.05, 0, 1.4, -0.05, 0, 0.05, 0, 2.02859, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rapier_root:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.0974278, -0.05, 0, 0, 0, 2.19539, -0.05, 0, 0.05, 0, 2.19539, -0.05, 0, 0.05, 0, -0.273154, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rapier_root:rotation:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.35263, -0.05, 0, 0, 0, 1.24981, -0.05, 0, 0.05, 0, 1.24981, -0.05, 0, 0.05, 0, 0.886559, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.5)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("rapier_root:rotation:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-3.14159, -0.05, 0, 0, 0, 0, -0.05, 0, 0.05, 0, 0, -0.05, 0, 0.05, 0, 2.63785, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.5)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("rapier_root:rotation:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-2.82281, -0.05, 0, 0, 0, 0, -0.05, 0, 0.05, 0, 0, -0.05, 0, 0.05, 0, 2.1549, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.5)
 }
 
 [sub_resource type="Animation" id="Animation_gwjgb"]
@@ -1624,6 +1845,7 @@ _data = {
 &"jog_strafe_right": SubResource("Animation_0qwi7"),
 &"jump": SubResource("Animation_ymn2i"),
 &"landing": SubResource("Animation_j3rcu"),
+&"light_attack_0": SubResource("Animation_vm080"),
 &"mantle": SubResource("Animation_gwjgb"),
 &"skid": SubResource("Animation_fp7ly"),
 &"sprint": SubResource("Animation_1gssb"),
@@ -1654,7 +1876,27 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50228, 0.382005)
 mesh = SubResource("BoxMesh_c3blq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="rapier_root" type="Node3D" parent="." index="1"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="handle" type="MeshInstance3D" parent="rapier_root" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("CylinderMesh_ni667")
+
+[node name="cup" type="MeshInstance3D" parent="rapier_root/handle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("SphereMesh_ni667")
+
+[node name="hilt" type="MeshInstance3D" parent="rapier_root/handle/cup" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0.0584826, 0)
+mesh = SubResource("BoxMesh_vm080")
+
+[node name="blade" type="MeshInstance3D" parent="rapier_root/handle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16432, 0)
+mesh = SubResource("CylinderMesh_vm080")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_nsq03")

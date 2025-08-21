@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterAttackDefinition" load_steps=3 format=3 uid="uid://dsfa575lw46oy"]
+
+[ext_resource type="Script" uid="uid://bcfnhvhafkj3v" path="res://resources/character/character-attack/character_attack_definition_component.gd" id="1_qpfxu"]
+[ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/character/character-attack/character_attack_definition.gd" id="2_k37y4"]
+
+[resource]
+script = ExtResource("2_k37y4")
+_internal_name = &"light_attack_0"
+_readable_name = "Maika Light Attack 0"
+_description = ""
+_attack_components = Array[ExtResource("1_qpfxu")]([])
+metadata/_custom_type_script = "uid://0rqq8j1kh32y"

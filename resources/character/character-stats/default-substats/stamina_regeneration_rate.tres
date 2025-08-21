@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_tp6rs"]
 
 [sub_resource type="Curve" id="Curve_wytex"]
-_limits = [1.0, 20.0, 0.0, 9999.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(9999, 20), 0.00266027, 0.0, 0, 0]
+_limits = [2.0, 20.0, 0.0, 9999.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(9999, 20), 0.00266027, 0.0, 0, 0]
 point_count = 2
 
 [resource]

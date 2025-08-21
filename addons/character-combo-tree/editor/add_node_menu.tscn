@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3 uid="uid://chpp4at7db0cy"]
+
+[ext_resource type="Script" uid="uid://djmw4lmwj6mp5" path="res://addons/character-combo-tree/editor/add_node_menu.gd" id="1_timy3"]
+
+[node name="AddNodeMenu" type="Window"]
+auto_translate_mode = 1
+title = "Add New Node"
+initial_position = 4
+size = Vector2i(250, 250)
+transient = true
+popup_window = true
+script = ExtResource("1_timy3")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/AttackSeparator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AttackSeparator"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533943, 0.533943, 0.533943, 1)
+text = "Attacks"
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/AttackSeparator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LightAttackButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Light Attack"
+
+[node name="HeavyAttackButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Heavy Attack"
+
+[node name="SpecialsSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/SpecialsSeparator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/SpecialsSeparator"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533943, 0.533943, 0.533943, 1)
+text = "Specials"
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/SpecialsSeparator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DodgeButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dodge
+"
+
+[node name="ParryButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Parry
+"
+
+[node name="JuxtaposedSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533943, 0.533943, 0.533943, 1)
+text = "Juxtaposed"
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JuxDodgeButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jux-Dodge
+"
+
+[node name="JuxParryButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jux-Parry"
+
+[node name="JuxtaposeButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Juxtapose"
+
+[connection signal="close_requested" from="." to="." method="hide"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/LightAttackButton" to="." method="_on_light_attack_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HeavyAttackButton" to="." method="_on_heavy_attack_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/DodgeButton" to="." method="_on_dodge_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ParryButton" to="." method="_on_parry_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/JuxDodgeButton" to="." method="_on_jux_dodge_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/JuxParryButton" to="." method="_on_jux_parry_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/JuxtaposeButton" to="." method="_on_juxtapose_button_pressed"]

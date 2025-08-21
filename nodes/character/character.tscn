@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdsxjbfqrqtka"]
+[gd_scene load_steps=5 format=3 uid="uid://bdsxjbfqrqtka"]
 
 [ext_resource type="Script" uid="uid://dqa5gbg2wctf7" path="res://nodes/character/character.gd" id="1_pjags"]
+[ext_resource type="PackedScene" uid="uid://cd1v0xx68467" path="res://nodes/character/components/combat-manager/character_combat_manager.tscn" id="2_t22va"]
 [ext_resource type="Script" uid="uid://c2rvp0akqatlx" path="res://nodes/character/components/character_attack_definition_manager.gd" id="2_vyemw"]
 [ext_resource type="Script" uid="uid://bhvao17r6bahq" path="res://nodes/character/components/character_animation_tree_expression_base.gd" id="3_ohi4u"]
 
 [node name="Character" type="Node3D"]
 script = ExtResource("1_pjags")
+
+[node name="CharacterCombatManager" parent="." instance=ExtResource("2_t22va")]
+unique_name_in_owner = true
 
 [node name="CharacterAttackDefinitionManager" type="Node" parent="."]
 unique_name_in_owner = true

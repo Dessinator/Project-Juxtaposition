@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="AttackDefinition" load_steps=7 format=3 uid="uid://c7y5wo7l3dxa0"]
 
-[ext_resource type="Script" uid="uid://bcfnhvhafkj3v" path="res://resources/attacks/attack_component.gd" id="1_wu4wb"]
+[ext_resource type="Script" uid="uid://bcfnhvhafkj3v" path="res://resources/character/character-attack/character_attack_definition_component.gd" id="1_wu4wb"]
 [ext_resource type="Script" uid="uid://dg037gl1v2i6t" path="res://resources/attacks/component/attack_animation_handler.gd" id="2_6e8yl"]
 [ext_resource type="Script" uid="uid://dnlunstix2nb5" path="res://resources/attacks/component/attack_hitbox_handler.gd" id="3_usaav"]
-[ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/attacks/attack_definition.gd" id="4_85chc"]
+[ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/character/character-attack/character_attack_definition.gd" id="4_85chc"]
 
 [sub_resource type="Resource" id="Resource_sq0jn"]
 script = ExtResource("2_6e8yl")

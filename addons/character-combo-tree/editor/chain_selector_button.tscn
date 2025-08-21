@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1t3vees0sxsn"]
+
+[ext_resource type="Script" uid="uid://dh1381eu3djs1" path="res://addons/character-combo-tree/editor/chain_selector_button.gd" id="1_3uapa"]
+
+[node name="ChainSelectorButton" type="PanelContainer"]
+mouse_filter = 1
+script = ExtResource("1_3uapa")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "New Chain"
+flat = true
+alignment = 0

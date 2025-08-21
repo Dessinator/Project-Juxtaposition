@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd1v0xx68467"]
+
+[ext_resource type="Script" uid="uid://5dfjfppyj45l" path="res://nodes/character/components/combat-manager/character_combat_manager.gd" id="1_h817e"]
+[ext_resource type="Script" uid="uid://cnua50gh2p5im" path="res://nodes/character/components/combat-manager/attack_finite_state_machine.gd" id="2_wda5l"]
+[ext_resource type="Script" uid="uid://bcchpblwjvekh" path="res://nodes/character/components/combat-manager/states/idle.gd" id="3_wda5l"]
+[ext_resource type="Script" uid="uid://k5p6yghm7nrm" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="4_bcfqt"]
+
+[node name="CharacterCombatManager" type="Node"]
+script = ExtResource("1_h817e")
+
+[node name="AttackFiniteStateMachine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_wda5l")
+active = false
+metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
+
+[node name="Idle" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("3_wda5l")
+
+[node name="Light" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("4_bcfqt")
+
+[node name="LightCharge" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("4_bcfqt")
+
+[node name="Heavy" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("4_bcfqt")
+
+[node name="HeavyCharge" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("4_bcfqt")
+
+[node name="Parry" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("4_bcfqt")
+
+[node name="Dodge" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("4_bcfqt")
+
+[node name="Juxtapose" type="Node" parent="AttackFiniteStateMachine"]
+script = ExtResource("4_bcfqt")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_sa5hq"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_x4bvh"]
 [ext_resource type="Resource" uid="uid://c3q206vhsucig" path="res://resources/character/character-stats/prefabs/kaho_character_stats.tres" id="3_f6ugt"]
-[ext_resource type="PackedScene" uid="uid://d4fa6hfrd2p4q" path="res://nodes/character/components/character-attack-state-machine/prefabs/dummy/dummy_character_attack_state_machine.tscn" id="3_x4bvh"]
+[ext_resource type="Resource" uid="uid://byrtw5j0jhlpm" path="res://resources/character/character-combo/kaho_character_combo.tres" id="4_f6ugt"]
 [ext_resource type="PackedScene" uid="uid://dvh1txklr27o8" path="res://nodes/character_model/prefabs/kaho_character_model.tscn" id="4_sa5hq"]
 [ext_resource type="PackedScene" uid="uid://cj5vry40e3nwj" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/kaho_character_switcher_visual.tscn" id="4_x4bvh"]
 [ext_resource type="PackedScene" uid="uid://6weyk7jdqxip" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/kaho_character_status_visual.tscn" id="5_f6ugt"]
@@ -235,9 +235,9 @@ transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransit
 _character_metadata = SubResource("Resource_f6ugt")
 _character_model = NodePath("KahoCharacterModel")
 _character_stats = ExtResource("3_f6ugt")
+_character_combo = ExtResource("4_f6ugt")
 _character_switcher_visual_packedscene = ExtResource("4_x4bvh")
 _character_status_visual_packedscene = ExtResource("5_f6ugt")
-_character_attack_state_machine = ExtResource("3_x4bvh")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="KahoCharacterModel" parent="." index="1" instance=ExtResource("4_sa5hq")]

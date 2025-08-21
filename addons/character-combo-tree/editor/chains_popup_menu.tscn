@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://corunqa6tax0m"]
+
+[node name="ChainsPopupMenu" type="PopupMenu"]
+auto_translate_mode = 1
+size = Vector2i(156, 178)
+visible = true
+unfocusable = true
+item_count = 8
+item_0/text = "New Chain..."
+item_0/id = 0
+item_1/text = "Duplicate Chain..."
+item_1/id = 1
+item_1/disabled = true
+item_2/text = "Rename Chain..."
+item_2/id = 2
+item_2/disabled = true
+item_3/id = 3
+item_3/separator = true
+item_4/text = "Save Combo"
+item_4/id = 4
+item_5/text = "Save Combo As..."
+item_5/id = 5
+item_6/id = 6
+item_6/separator = true
+item_7/text = "Close File"
+item_7/id = 7

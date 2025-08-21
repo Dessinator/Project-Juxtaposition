@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_vvwqa"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_ujkna"]
 [ext_resource type="Resource" uid="uid://tdg3cjj1tp1c" path="res://resources/character/character-stats/prefabs/hideri_character_stats.tres" id="3_rkq2o"]
-[ext_resource type="PackedScene" uid="uid://d4fa6hfrd2p4q" path="res://nodes/character/components/character-attack-state-machine/prefabs/dummy/dummy_character_attack_state_machine.tscn" id="3_wp4sn"]
 [ext_resource type="PackedScene" uid="uid://bh6u358no2qw1" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/hideri_character_switcher_visual.tscn" id="4_mn44o"]
+[ext_resource type="Resource" uid="uid://qekg1bumlmvh" path="res://resources/character/character-combo/hideri_character_combo.tres" id="4_rkq2o"]
 [ext_resource type="PackedScene" uid="uid://cpus77gjgbfxf" path="res://nodes/character_model/prefabs/hideri_character_model.tscn" id="4_vvwqa"]
 [ext_resource type="PackedScene" uid="uid://ddt7xotm6yb3g" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/hideri_character_status_visual.tscn" id="5_rkq2o"]
 
@@ -235,9 +235,9 @@ transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransit
 _character_metadata = SubResource("Resource_mn44o")
 _character_model = NodePath("HideriCharacterModel")
 _character_stats = ExtResource("3_rkq2o")
+_character_combo = ExtResource("4_rkq2o")
 _character_switcher_visual_packedscene = ExtResource("4_mn44o")
 _character_status_visual_packedscene = ExtResource("5_rkq2o")
-_character_attack_state_machine = ExtResource("3_wp4sn")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="HideriCharacterModel" parent="." index="1" instance=ExtResource("4_vvwqa")]

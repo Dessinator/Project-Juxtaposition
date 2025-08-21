@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="AttackDefinition" load_steps=21 format=3 uid="uid://ckjrdqhj5cinv"]
 
-[ext_resource type="Script" uid="uid://bcfnhvhafkj3v" path="res://resources/attacks/attack_component.gd" id="1_rpavc"]
+[ext_resource type="Script" uid="uid://bcfnhvhafkj3v" path="res://resources/character/character-attack/character_attack_definition_component.gd" id="1_rpavc"]
 [ext_resource type="Script" uid="uid://bc8y3m7rn5qtk" path="res://resources/attacks/component/attack_combo_animation_handler.gd" id="2_vx7xm"]
-[ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/attacks/attack_definition.gd" id="3_3g13q"]
+[ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/character/character-attack/character_attack_definition.gd" id="3_3g13q"]
 [ext_resource type="Script" uid="uid://c8j2cfv1gwux0" path="res://resources/attacks/component/attack_combo_definition.gd" id="4_3g13q"]
 [ext_resource type="Script" uid="uid://cnkk347uus13r" path="res://resources/attacks/component/attack_combo_handler.gd" id="4_rwchr"]
 [ext_resource type="Script" uid="uid://dg037gl1v2i6t" path="res://resources/attacks/component/attack_animation_handler.gd" id="5_rwchr"]

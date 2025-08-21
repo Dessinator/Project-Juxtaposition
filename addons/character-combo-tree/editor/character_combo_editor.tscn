@@ -1,0 +1,288 @@
+[gd_scene load_steps=12 format=3 uid="uid://co1pjmjfcvl7p"]
+
+[ext_resource type="Script" uid="uid://dq2rm7ln0437n" path="res://addons/character-combo-tree/editor/character_combo_editor.gd" id="1_layws"]
+[ext_resource type="Texture2D" uid="uid://cnaec2obf4bfj" path="res://addons/character-combo-tree/icons/animation_preview_zoom.png" id="2_1ywvv"]
+[ext_resource type="PackedScene" uid="uid://chpp4at7db0cy" path="res://addons/character-combo-tree/editor/add_node_menu.tscn" id="3_pcs0m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ywvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_layws"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_layws"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcs0m"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_na4ul"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86nkw"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_na4ul"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymm7e"]
+
+[node name="CharacterComboEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_layws")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+split_offset = 200
+
+[node name="ChainsSidebar" type="VSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="VBoxContainer" parent="HSplitContainer/ChainsSidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/ChainsSidebar/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ChainsButton" type="MenuButton" parent="HSplitContainer/ChainsSidebar/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ywvv")
+text = "Chains
+"
+alignment = 0
+item_count = 4
+popup/item_0/text = "New Chain..."
+popup/item_0/id = 0
+popup/item_1/text = "Duplicate Chain..."
+popup/item_1/id = 1
+popup/item_1/disabled = true
+popup/item_2/text = "Rename Chain..."
+popup/item_2/id = 2
+popup/item_2/disabled = true
+popup/item_3/text = "Delete Chain..."
+popup/item_3/id = 3
+popup/item_3/disabled = true
+
+[node name="VSeparator" type="VSeparator" parent="HSplitContainer/ChainsSidebar/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_layws")
+
+[node name="ChainSelectorContainer" type="PanelContainer" parent="HSplitContainer/ChainsSidebar/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_layws")
+
+[node name="NoChainsLabel" type="Label" parent="HSplitContainer/ChainsSidebar/PanelContainer/ChainSelectorContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "No CharacterComboChains found. Create a new CharacterComboChain to start adding attacks."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/ChainsSidebar/PanelContainer/ChainSelectorContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ChainSelectorButtonContainer" type="VBoxContainer" parent="HSplitContainer/ChainsSidebar/PanelContainer/ChainSelectorContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="ChainDescriptionContainer" type="Control" parent="HSplitContainer/ChainsSidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/ChainsSidebar/ChainDescriptionContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/ChainsSidebar/ChainDescriptionContainer/VBoxContainer"]
+layout_mode = 2
+text = "Chain Description"
+
+[node name="Control" type="Control" parent="HSplitContainer/ChainsSidebar/ChainDescriptionContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChainDescriptionLabel" type="RichTextLabel" parent="HSplitContainer/ChainsSidebar/ChainDescriptionContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="ChainDescriptionEditor" type="TextEdit" parent="HSplitContainer/ChainsSidebar/ChainDescriptionContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 1
+placeholder_text = "Empty..."
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+scroll_fit_content_width = true
+
+[node name="ChainDescriptionDimmer" type="Panel" parent="HSplitContainer/ChainsSidebar/ChainDescriptionContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcs0m")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = -300
+
+[node name="ChainsEditorContainer" type="PanelContainer" parent="HSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_na4ul")
+
+[node name="GraphEdit" type="GraphEdit" parent="HSplitContainer/HSplitContainer/ChainsEditorContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+grid_pattern = 1
+minimap_enabled = false
+show_zoom_label = true
+show_minimap_button = false
+
+[node name="ChainsEditorDimmer" type="Panel" parent="HSplitContainer/HSplitContainer/ChainsEditorContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_86nkw")
+
+[node name="AnimationPreviewSidebar" type="VBoxContainer" parent="HSplitContainer/HSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PreviewContainer" type="PanelContainer" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/PreviewContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_na4ul")
+
+[node name="ControlsMarginContainer" type="MarginContainer" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/PreviewContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/PreviewContainer/ControlsMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/PreviewContainer/ControlsMarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_1ywvv")
+
+[node name="HSlider" type="HSlider" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/PreviewContainer/ControlsMarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ModelPreviewFieldContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/ModelPreviewFieldContainer"]
+layout_mode = 2
+text = "Preview Model:"
+
+[node name="VSeparator" type="VSeparator" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/ModelPreviewFieldContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ymm7e")
+
+[node name="Button" type="Button" parent="HSplitContainer/HSplitContainer/AnimationPreviewSidebar/ModelPreviewFieldContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<Empty>"
+
+[node name="ChainsPopupMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+size = Vector2i(156, 178)
+item_count = 4
+item_0/text = "New Chain..."
+item_0/id = 0
+item_1/text = "Duplicate Chain..."
+item_1/id = 1
+item_1/disabled = true
+item_2/text = "Rename Chain..."
+item_2/id = 2
+item_2/disabled = true
+item_3/text = "Delete Chain..."
+item_3/id = 3
+item_3/disabled = true
+
+[node name="DeleteChainConfirmationDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "Delete CharacterComboChain?"
+initial_position = 4
+size = Vector2i(482, 100)
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to delete this CharacterComboChain?"
+cancel_button_text = "No"
+
+[node name="DeleteNodeConfirmationDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+title = "Delete CharacterComboChainAttackNode"
+initial_position = 4
+size = Vector2i(573, 100)
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to delete this CharacterComboChainAttackNode?"
+cancel_button_text = "No"
+
+[node name="AddNodeMenu" parent="." instance=ExtResource("3_pcs0m")]
+unique_name_in_owner = true
+visible = false
+
+[node name="NodePopupMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+size = Vector2i(130, 62)
+item_count = 2
+item_0/text = "Add Node..."
+item_0/id = 0
+item_1/text = "Delete Node..."
+item_1/id = 1

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="CharacterCombo" load_steps=11 format=3 uid="uid://cj7ssuokg2eoa"]
+
+[ext_resource type="Script" uid="uid://c03wdfwn7myec" path="res://addons/character-combo-tree/resources/character_combo.gd" id="1_ncsje"]
+[ext_resource type="Script" uid="uid://c15j5i4o013fo" path="res://addons/character-combo-tree/resources/character_combo_chain.gd" id="1_u88wu"]
+[ext_resource type="Script" uid="uid://d3db8eoi4pijd" path="res://addons/character-combo-tree/resources/character_combo_chain_attack_node.gd" id="2_uu0af"]
+[ext_resource type="Script" uid="uid://bvstpoq05m3sb" path="res://addons/character-combo-tree/resources/character_combo_chain_root_node.gd" id="3_cgosi"]
+
+[sub_resource type="Resource" id="Resource_n4i6h"]
+script = ExtResource("3_cgosi")
+prerequisite_state = 0
+
+[sub_resource type="Resource" id="Resource_1gnwn"]
+script = ExtResource("1_u88wu")
+chain_name = &"Test Chain 1"
+chain_description = ""
+root_node = SubResource("Resource_n4i6h")
+nodes = Array[ExtResource("2_uu0af")]([])
+
+[sub_resource type="Resource" id="Resource_cgosi"]
+script = ExtResource("3_cgosi")
+prerequisite_state = 1
+
+[sub_resource type="Resource" id="Resource_1gimc"]
+script = ExtResource("1_u88wu")
+chain_name = &"Test Chain 2"
+chain_description = ""
+root_node = SubResource("Resource_cgosi")
+nodes = Array[ExtResource("2_uu0af")]([])
+
+[sub_resource type="Resource" id="Resource_v8ilt"]
+script = ExtResource("3_cgosi")
+prerequisite_state = 2
+
+[sub_resource type="Resource" id="Resource_j7d1g"]
+script = ExtResource("1_u88wu")
+chain_name = &"Test Chain 3"
+chain_description = ""
+root_node = SubResource("Resource_v8ilt")
+nodes = Array[ExtResource("2_uu0af")]([])
+
+[resource]
+script = ExtResource("1_ncsje")
+chains = Array[ExtResource("1_u88wu")]([SubResource("Resource_1gnwn"), SubResource("Resource_1gimc"), SubResource("Resource_j7d1g")])
+metadata/_custom_type_script = "uid://c03wdfwn7myec"

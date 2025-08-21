@@ -1,0 +1,635 @@
+[gd_scene load_steps=50 format=3 uid="uid://8nifftfw2omy"]
+
+[ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_6pa3a"]
+[ext_resource type="Script" uid="uid://ded5umnsqump5" path="res://nodes/entity/entity.gd" id="1_ts1bu"]
+[ext_resource type="PackedScene" uid="uid://c5j22jtwhkxmm" path="res://nodes/entity/components/entity-range/entity_range.tscn" id="2_qecbm"]
+[ext_resource type="Script" uid="uid://k5p6yghm7nrm" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="2_ts1bu"]
+[ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_fujbu"]
+[ext_resource type="Script" uid="uid://jjoacie7bvcr" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_wxprh"]
+[ext_resource type="Script" uid="uid://cagh5dfpu2nof" path="res://addons/beehave/nodes/composites/selector.gd" id="4_fujbu"]
+[ext_resource type="Script" uid="uid://dci6gyicpalev" path="res://addons/beehave/blackboard.gd" id="4_wxprh"]
+[ext_resource type="Script" uid="uid://d0grvpga6gitp" path="res://addons/beehave/nodes/composites/sequence.gd" id="5_6qbpo"]
+[ext_resource type="Script" uid="uid://beq4m3ptlkbmt" path="res://nodes/entity/states/idle.gd" id="5_eye3n"]
+[ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="6_2owo5"]
+[ext_resource type="Script" uid="uid://ekmdybu2kxlg" path="res://nodes/entity/states/walking.gd" id="6_6qhta"]
+[ext_resource type="Script" uid="uid://dsq54fchvncv6" path="res://nodes/entity/states/transitions/start_walking.gd" id="7_2owo5"]
+[ext_resource type="Script" uid="uid://bxxnojf81fve2" path="res://nodes/entity/states/transitions/start_sprinting.gd" id="8_gnder"]
+[ext_resource type="Script" uid="uid://dt08goxwqu6hc" path="res://addons/beehave/nodes/decorators/inverter.gd" id="9_la3n6"]
+[ext_resource type="Script" uid="uid://bydpk20xk676k" path="res://nodes/entity/states/transitions/start_idling.gd" id="9_ni2al"]
+[ext_resource type="Script" uid="uid://pef4wkg5837e" path="res://nodes/entity/states/sprinting.gd" id="10_mlwgf"]
+[ext_resource type="Script" uid="uid://c1hnqijxm6jm6" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="11_ateu6"]
+[ext_resource type="Script" uid="uid://bl4gvvi75bskn" path="res://nodes/entity/behaviour/leaves/is_player_in_follow_range.gd" id="11_jjtts"]
+[ext_resource type="Script" uid="uid://btct4nb7jv2jr" path="res://nodes/entity/behaviour/leaves/is_player_in_detection_range.gd" id="12_gk5bk"]
+[ext_resource type="Script" uid="uid://cfsh84dmwthgm" path="res://addons/beehave/nodes/composites/selector_random.gd" id="13_gk5bk"]
+[ext_resource type="Script" uid="uid://5weocuab3tfi" path="res://nodes/entity/behaviour/leaves/reset_wander_range.gd" id="13_ht6qv"]
+[ext_resource type="Script" uid="uid://brlrrhyn0fi4g" path="res://addons/beehave/nodes/decorators/delayer.gd" id="14_ht6qv"]
+[ext_resource type="Script" uid="uid://bpelc014bsch2" path="res://nodes/entity/behaviour/leaves/reset_follow_range.gd" id="14_ofnwe"]
+[ext_resource type="Script" uid="uid://dnwxub4wet4sa" path="res://nodes/entity/behaviour/leaves/walk_to_destination.gd" id="15_bggmr"]
+[ext_resource type="Script" uid="uid://cd7hmh7palf8e" path="res://nodes/entity/behaviour/leaves/is_search_timeout_set.gd" id="15_boh06"]
+[ext_resource type="Script" uid="uid://chb2l3367ruut" path="res://nodes/entity/behaviour/leaves/set_has_seen_target.gd" id="16_gk5bk"]
+[ext_resource type="Script" uid="uid://fofdtjjria4n" path="res://nodes/entity/behaviour/leaves/is_player_in_attack_range.gd" id="17_gk5bk"]
+[ext_resource type="Script" uid="uid://xa5bynn6rghm" path="res://nodes/entity/behaviour/leaves/set_new_destination_within_wander_range.gd" id="18_llqjs"]
+[ext_resource type="Script" uid="uid://ddwp8sx8rs88h" path="res://nodes/entity/behaviour/leaves/has_seen_target.gd" id="19_ofnwe"]
+[ext_resource type="Script" uid="uid://d26bsvq7thfou" path="res://nodes/entity/behaviour/leaves/grow_follow_range.gd" id="25_g8seb"]
+[ext_resource type="Script" uid="uid://b05soe2mpoidu" path="res://nodes/entity/behaviour/leaves/idle.gd" id="26_dgxa3"]
+[ext_resource type="Script" uid="uid://d4j3xo7bgjiqq" path="res://nodes/entity/behaviour/leaves/set_target_position_to_player.gd" id="27_u86c8"]
+[ext_resource type="Script" uid="uid://8e8u5oye5322" path="res://nodes/entity/behaviour/leaves/face_target.gd" id="28_i3mox"]
+[ext_resource type="Script" uid="uid://dob1i3c670jdh" path="res://nodes/entity/behaviour/leaves/max_follow_range.gd" id="30_fcchh"]
+[ext_resource type="Script" uid="uid://c1rjtolo5yd8j" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="31_e6j26"]
+[ext_resource type="Script" uid="uid://b5qluec5a38mu" path="res://nodes/entity/behaviour/leaves/recalculate_path_to_target.gd" id="33_au487"]
+[ext_resource type="Script" uid="uid://blrupghf0odny" path="res://nodes/entity/behaviour/leaves/attack_target.gd" id="35_iyxj4"]
+[ext_resource type="Script" uid="uid://ba7iqs11mehph" path="res://nodes/entity/behaviour/leaves/shrink_follow_range.gd" id="37_aiadu"]
+[ext_resource type="Script" uid="uid://bhpjl6swhwq0" path="res://nodes/entity/behaviour/leaves/set_wander_range_position_to_last_target_position.gd" id="38_bgkcf"]
+[ext_resource type="Script" uid="uid://bixw2meynr3dk" path="res://nodes/entity/behaviour/leaves/follow_target_sprint.gd" id="39_gnder"]
+[ext_resource type="Script" uid="uid://di3dmjrqn1mpx" path="res://nodes/entity/behaviour/leaves/set_search_timeout.gd" id="39_s4m82"]
+[ext_resource type="Script" uid="uid://c258ev8wra3ns" path="res://nodes/entity/behaviour/leaves/reset_wander_range_size.gd" id="40_dxu1x"]
+[ext_resource type="Script" uid="uid://b75aw2gk05u2v" path="res://nodes/entity/behaviour/leaves/run_search_timeout.gd" id="41_474dy"]
+[ext_resource type="Script" uid="uid://c5se8vwt80abr" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="41_vjkxo"]
+[ext_resource type="Script" uid="uid://cboi20p1gblne" path="res://nodes/entity/behaviour/leaves/shrink_wander_range.gd" id="42_xwq6n"]
+[ext_resource type="Script" uid="uid://ccj05kvaqstuv" path="res://nodes/entity/behaviour/leaves/is_search_timeout_reached.gd" id="43_vjkxo"]
+[ext_resource type="Script" uid="uid://cqluba13m7rrc" path="res://nodes/entity/behaviour/leaves/sprint_to_destination.gd" id="44_hyjc0"]
+
+[sub_resource type="Resource" id="Resource_6qbpo"]
+resource_local_to_scene = true
+script = ExtResource("3_fujbu")
+content = {}
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[node name="Entity" type="CharacterBody3D"]
+script = ExtResource("1_ts1bu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+target_desired_distance = 3.5
+debug_enabled = true
+
+[node name="EntityVisualController" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="EntityModelContainer" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="EntityHomeRange" parent="." instance=ExtResource("2_qecbm")]
+unique_name_in_owner = true
+top_level = true
+_is_static = true
+range = 20.0
+max_range = 20.0
+_debug_color = Color(1, 1, 1, 0.5)
+
+[node name="EntityWanderRange" parent="." instance=ExtResource("2_qecbm")]
+unique_name_in_owner = true
+top_level = true
+_is_static = true
+range = 20.0
+max_range = 20.0
+_debug_color = Color(1, 1, 1, 0.5)
+
+[node name="EntityDetectionRange" parent="." instance=ExtResource("2_qecbm")]
+unique_name_in_owner = true
+range = 12.5
+max_range = 12.5
+_debug_color = Color(0.658824, 0.701961, 0, 0.501961)
+
+[node name="EntityFollowRange" parent="." instance=ExtResource("2_qecbm")]
+unique_name_in_owner = true
+range = 8.0
+max_range = 12.5
+_debug_color = Color(0.701961, 0.419608, 0, 0.419608)
+
+[node name="EntityAttackRange" parent="." instance=ExtResource("2_qecbm")]
+unique_name_in_owner = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+unique_name_in_owner = true
+script = ExtResource("1_6pa3a")
+active = false
+initial_state = NodePath("Idle")
+actor = NodePath("..")
+blackboard = SubResource("Resource_6qbpo")
+verbose = true
+metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_eye3n")
+
+[node name="defeat" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Defeated")
+
+[node name="startWalking" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_2owo5")
+next_state = NodePath("../../Walking")
+
+[node name="startSprinting" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gnder")
+next_state = NodePath("../../Sprinting")
+
+[node name="startGroundedAttack" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedAttacking")
+
+[node name="startGroundedDamaged" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamaged")
+
+[node name="startJumping" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Jumping")
+
+[node name="startFalling" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Falling")
+
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource("6_6qhta")
+_speed = 3.0
+_acceleration = 20.0
+
+[node name="defeat" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Defeated")
+
+[node name="startIdling" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("9_ni2al")
+next_state = NodePath("../../Idle")
+
+[node name="startSprinting" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gnder")
+next_state = NodePath("../../Sprinting")
+
+[node name="startGroundedAttack" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedAttacking")
+
+[node name="startGroundedDamaged" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamaged")
+
+[node name="startJumping" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Jumping")
+
+[node name="startFalling" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Falling")
+
+[node name="Sprinting" type="Node" parent="StateMachine"]
+script = ExtResource("10_mlwgf")
+_acceleration = 20.0
+
+[node name="defeat" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Defeated")
+
+[node name="startIdling" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("9_ni2al")
+next_state = NodePath("../../Idle")
+
+[node name="startWalking" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_2owo5")
+next_state = NodePath("../../Walking")
+
+[node name="startGroundedAttack" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedAttacking")
+
+[node name="startGroundedDamaged" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamaged")
+
+[node name="startJumping" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Jumping")
+
+[node name="startFalling" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Falling")
+
+[node name="GroundedAttacking" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="GroundedDamaged" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="Landing" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="Airborne" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="ArialAttacking" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="ArialDamaged" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="Defeated" type="Node" parent="StateMachine"]
+script = ExtResource("2_ts1bu")
+
+[node name="BehaviourTreeBlackboard" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_wxprh")
+metadata/_custom_type_script = "uid://dci6gyicpalev"
+
+[node name="BehaviourTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+unique_name_in_owner = true
+script = ExtResource("3_wxprh")
+enabled = false
+actor_node_path = NodePath("..")
+blackboard = NodePath("../BehaviourTreeBlackboard")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://jjoacie7bvcr"
+
+[node name="BehaviourSelector" type="Node" parent="BehaviourTree"]
+script = ExtResource("4_fujbu")
+metadata/_custom_type_script = "uid://cagh5dfpu2nof"
+
+[node name="Wander" type="Node" parent="BehaviourTree/BehaviourSelector"]
+script = ExtResource("5_6qbpo")
+metadata/_custom_type_script = "uid://d0grvpga6gitp"
+
+[node name="IsSearchTimeoutNotSet" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsSearchTimeoutSet" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/IsSearchTimeoutNotSet"]
+script = ExtResource("15_boh06")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="HasNotSeenTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="HasSeenTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/HasNotSeenTarget"]
+script = ExtResource("19_ofnwe")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/IsPlayerOutsideFollowRange"]
+script = ExtResource("11_jjtts")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/IsPlayerOutsideDetectionRange"]
+script = ExtResource("12_gk5bk")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="ResetWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("13_ht6qv")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="ResetFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("14_ofnwe")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="WalkToDestination" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("15_bggmr")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="RandomWait" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("13_gk5bk")
+metadata/_custom_type_script = "uid://cfsh84dmwthgm"
+
+[node name="3Second" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 3.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetNewDestinationWithinWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/RandomWait/3Second"]
+script = ExtResource("18_llqjs")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="5Second" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 5.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetNewDestinationWithinWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/RandomWait/5Second"]
+script = ExtResource("18_llqjs")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="10Second" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 10.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetNewDestinationWithinWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/RandomWait/10Second"]
+script = ExtResource("18_llqjs")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="Alerted" type="Node" parent="BehaviourTree/BehaviourSelector"]
+script = ExtResource("5_6qbpo")
+metadata/_custom_type_script = "uid://d0grvpga6gitp"
+
+[node name="IsPlayerInDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("12_gk5bk")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted/IsPlayerOutsideFollowRange"]
+script = ExtResource("11_jjtts")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="SetSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("39_s4m82")
+ticks = -1
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="GrowFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("25_g8seb")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="Idle" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("26_dgxa3")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SetTargetPositionToPlayer" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("27_u86c8")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="FaceTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("28_i3mox")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="Follow" type="Node" parent="BehaviourTree/BehaviourSelector"]
+script = ExtResource("5_6qbpo")
+metadata/_custom_type_script = "uid://d0grvpga6gitp"
+
+[node name="IsPlayerInFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("11_jjtts")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideAttackRange" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInAttackRange" type="Node" parent="BehaviourTree/BehaviourSelector/Follow/IsPlayerOutsideAttackRange"]
+script = ExtResource("17_gk5bk")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="SetSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("39_s4m82")
+ticks = -1
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SetHasSeenTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("16_gk5bk")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="MaxFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("30_fcchh")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SetTargetPositionToPlayer" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("27_u86c8")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="AlwaysSucceedDecorator" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("11_ateu6")
+metadata/_custom_type_script = "uid://c1hnqijxm6jm6"
+
+[node name="PathRecalculationCooldown" type="Node" parent="BehaviourTree/BehaviourSelector/Follow/AlwaysSucceedDecorator"]
+script = ExtResource("31_e6j26")
+wait_time = 1.0
+metadata/_custom_type_script = "uid://c1rjtolo5yd8j"
+
+[node name="RecalculatePathToTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Follow/AlwaysSucceedDecorator/PathRecalculationCooldown"]
+script = ExtResource("33_au487")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="FollowTargetSprint" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("39_gnder")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="Attack" type="Node" parent="BehaviourTree/BehaviourSelector"]
+script = ExtResource("5_6qbpo")
+metadata/_custom_type_script = "uid://d0grvpga6gitp"
+
+[node name="IsPlayerInAttackRange" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("17_gk5bk")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="SetSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("39_s4m82")
+ticks = -1
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SetHasSeenTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("16_gk5bk")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SetTargetPositionToPlayer" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("27_u86c8")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="Idle" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("26_dgxa3")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="FaceTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("28_i3mox")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="DelayDecorator" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("14_ht6qv")
+wait_time = 1.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="AttackTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Attack/DelayDecorator"]
+script = ExtResource("35_iyxj4")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="LostTarget" type="Node" parent="BehaviourTree/BehaviourSelector"]
+script = ExtResource("41_vjkxo")
+metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsSearchTimeoutNotSet" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsSearchTimeoutSet" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/IsSearchTimeoutNotSet"]
+script = ExtResource("15_boh06")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="HasSeenTarget" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("19_ofnwe")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/IsPlayerOutsideFollowRange"]
+script = ExtResource("11_jjtts")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/IsPlayerOutsideDetectionRange"]
+script = ExtResource("12_gk5bk")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="ResetWanderRangeSize" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("40_dxu1x")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="ShrinkFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("37_aiadu")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SprintToDestination" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("44_hyjc0")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SetWanderRangePositionToLastTargetPosition" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("38_bgkcf")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="RandomWait" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("13_gk5bk")
+metadata/_custom_type_script = "uid://cfsh84dmwthgm"
+
+[node name="1Second" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 1.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/RandomWait/1Second"]
+script = ExtResource("39_s4m82")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="3Second" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 3.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/RandomWait/3Second"]
+script = ExtResource("39_s4m82")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="5Second" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 5.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/RandomWait/5Second"]
+script = ExtResource("39_s4m82")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="Search" type="Node" parent="BehaviourTree/BehaviourSelector"]
+script = ExtResource("41_vjkxo")
+metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsSearchTimeoutSet" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("15_boh06")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="HasSeenTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("19_ofnwe")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search/IsPlayerOutsideDetectionRange"]
+script = ExtResource("12_gk5bk")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsPlayerOutsideFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsPlayerInFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search/IsPlayerOutsideFollowRange"]
+script = ExtResource("11_jjtts")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="ShrinkFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("37_aiadu")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="ShrinkWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("42_xwq6n")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="RunSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("41_474dy")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="AlwaysSucceedDecorator" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("11_ateu6")
+metadata/_custom_type_script = "uid://c1hnqijxm6jm6"
+
+[node name="SetSeenPlayerIfSearchTimeoutReached" type="Node" parent="BehaviourTree/BehaviourSelector/Search/AlwaysSucceedDecorator"]
+script = ExtResource("5_6qbpo")
+metadata/_custom_type_script = "uid://d0grvpga6gitp"
+
+[node name="IsSearchTimeoutReached" type="Node" parent="BehaviourTree/BehaviourSelector/Search/AlwaysSucceedDecorator/SetSeenPlayerIfSearchTimeoutReached"]
+script = ExtResource("43_vjkxo")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="SetHasSeenTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Search/AlwaysSucceedDecorator/SetSeenPlayerIfSearchTimeoutReached"]
+script = ExtResource("16_gk5bk")
+_seen = false
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SetSearchTimeout" type="Node" parent="BehaviourTree/BehaviourSelector/Search/AlwaysSucceedDecorator/SetSeenPlayerIfSearchTimeoutReached"]
+script = ExtResource("39_s4m82")
+ticks = -1
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="SprintToDestination" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("44_hyjc0")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="RandomWait" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("13_gk5bk")
+metadata/_custom_type_script = "uid://cfsh84dmwthgm"
+
+[node name="0_5Second" type="Node" parent="BehaviourTree/BehaviourSelector/Search/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 0.5
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetNewDestinationWithinWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search/RandomWait/0_5Second"]
+script = ExtResource("18_llqjs")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="1Second" type="Node" parent="BehaviourTree/BehaviourSelector/Search/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 1.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetNewDestinationWithinWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search/RandomWait/1Second"]
+script = ExtResource("18_llqjs")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="2Second" type="Node" parent="BehaviourTree/BehaviourSelector/Search/RandomWait"]
+script = ExtResource("14_ht6qv")
+wait_time = 2.0
+metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
+
+[node name="SetNewDestinationWithinWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search/RandomWait/2Second"]
+script = ExtResource("18_llqjs")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"

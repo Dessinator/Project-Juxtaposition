@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://de1x44t81truo"]
+
+[ext_resource type="Script" uid="uid://dwn5y030ef5d7" path="res://addons/character-combo-tree/editor/graph-nodes/dodge/character_combo_chain_dodge_graph_node.gd" id="1_4amgs"]
+[ext_resource type="PackedScene" uid="uid://qndrwx7n0so3" path="res://addons/character-combo-tree/editor/graph-nodes/components/graph_node_horizontal_option_container.tscn" id="2_f4tty"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tkqst"]
+
+[node name="CharacterComboChainDodgeGraphNode" type="GraphNode"]
+offset_right = 350.0
+offset_bottom = 151.0
+title = "Dodge"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = true
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = true
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_4amgs")
+
+[node name="AnimationNameOption" parent="." instance=ExtResource("2_f4tty")]
+layout_mode = 2
+_label_text = "Animation Name"
+_input_type = 3
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="NextAttackContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NextAttackContainer"]
+layout_mode = 2
+text = "Next Type:"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="NextAttackContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tkqst")
+
+[node name="OptionButton" type="OptionButton" parent="NextAttackContainer"]
+layout_mode = 2
+alignment = 2
+item_count = 2
+popup/item_0/text = "Light Attack"
+popup/item_0/id = 0
+popup/item_1/text = "Heavy Attack"
+popup/item_1/id = 1

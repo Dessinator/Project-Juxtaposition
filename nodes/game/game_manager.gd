@@ -1,16 +1,26 @@
 class_name GameManager
 extends Node
 
-@export var _playable_character: PlayableCharacter
 
 @onready var _game_finite_state_machine: FiniteStateMachine = $GameFiniteStateMachine
 @onready var _world_render_handler: WorldRenderHandler = %WorldRenderHandler
 @onready var _ui_render_handler: UIRenderHandler = %UIRenderHandler
 
+static var _instance: GameManager
+
+@export var _playable_character: PlayableCharacter
+
+func _enter_tree() -> void:
+	if _instance == null:
+		_instance = self
+
 func _ready():
 	_start_game_finite_state_machine()
 	_initialize_world_render_handler()
 	_initialize_ui_render_handler()
+
+static func get_instance() -> GameManager:
+	return _instance
 
 func get_playable_character() -> PlayableCharacter:
 	return _playable_character

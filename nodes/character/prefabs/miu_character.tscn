@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_hj4o1"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_4y4et"]
-[ext_resource type="PackedScene" uid="uid://d4fa6hfrd2p4q" path="res://nodes/character/components/character-attack-state-machine/prefabs/dummy/dummy_character_attack_state_machine.tscn" id="3_4y4et"]
 [ext_resource type="Resource" uid="uid://dvyfvj1ymgjm7" path="res://resources/character/character-stats/prefabs/miu_character_stats.tres" id="3_ryv0y"]
 [ext_resource type="PackedScene" uid="uid://gf7nai16tjbr" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/miu_character_switcher_visual.tscn" id="4_4y4et"]
 [ext_resource type="PackedScene" uid="uid://6bpnqrlkk3eb" path="res://nodes/character_model/prefabs/miu_character_model.tscn" id="4_hj4o1"]
+[ext_resource type="Resource" uid="uid://bp3qjsobohgi7" path="res://resources/character/character-combo/miu_character_combo.tres" id="4_ryv0y"]
 [ext_resource type="PackedScene" uid="uid://qcvx55byd0td" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/miu_character_status_visual.tscn" id="5_ryv0y"]
 
 [sub_resource type="Resource" id="Resource_ryv0y"]
@@ -235,9 +235,9 @@ transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransit
 _character_metadata = SubResource("Resource_ryv0y")
 _character_model = NodePath("MiuCharacterModel")
 _character_stats = ExtResource("3_ryv0y")
+_character_combo = ExtResource("4_ryv0y")
 _character_switcher_visual_packedscene = ExtResource("4_4y4et")
 _character_status_visual_packedscene = ExtResource("5_ryv0y")
-_character_attack_state_machine = ExtResource("3_4y4et")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="MiuCharacterModel" parent="." index="1" instance=ExtResource("4_hj4o1")]

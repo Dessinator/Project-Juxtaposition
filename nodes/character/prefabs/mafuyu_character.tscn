@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_mwbfe"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_ge252"]
 [ext_resource type="Resource" uid="uid://d063bm1nfiqdk" path="res://resources/character/character-stats/prefabs/mafuyu_character_stats.tres" id="3_fxpv0"]
-[ext_resource type="PackedScene" uid="uid://d4fa6hfrd2p4q" path="res://nodes/character/components/character-attack-state-machine/prefabs/dummy/dummy_character_attack_state_machine.tscn" id="3_ge252"]
+[ext_resource type="Resource" uid="uid://btwyqltgcm486" path="res://resources/character/character-combo/mafuyu_character_combo.tres" id="4_fxpv0"]
 [ext_resource type="PackedScene" uid="uid://dlve1g2rnjvum" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/mafuyu_character_switcher_visual.tscn" id="4_ge252"]
 [ext_resource type="PackedScene" uid="uid://dihgxauj1p4wx" path="res://nodes/character_model/prefabs/mafuyu_character_model.tscn" id="4_mwbfe"]
 [ext_resource type="PackedScene" uid="uid://tmda3rg4g7yy" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/mafuyu_character_status_visual.tscn" id="5_fxpv0"]
@@ -235,9 +235,9 @@ transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransit
 _character_metadata = SubResource("Resource_fxpv0")
 _character_model = NodePath("MafuyuCharacterModel")
 _character_stats = ExtResource("3_fxpv0")
+_character_combo = ExtResource("4_fxpv0")
 _character_switcher_visual_packedscene = ExtResource("4_ge252")
 _character_status_visual_packedscene = ExtResource("5_fxpv0")
-_character_attack_state_machine = ExtResource("3_ge252")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="MafuyuCharacterModel" parent="." index="1" instance=ExtResource("4_mwbfe")]

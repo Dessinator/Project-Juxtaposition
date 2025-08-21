@@ -1,0 +1,4 @@
+class_name CharacterComboChainAttackNode
+extends Resource
+
+var next_node: CharacterComboChainAttackNode

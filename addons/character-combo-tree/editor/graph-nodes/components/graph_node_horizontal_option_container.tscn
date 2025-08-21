@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://qndrwx7n0so3"]
+
+[ext_resource type="Script" uid="uid://bab7vp63ormir" path="res://addons/character-combo-tree/editor/graph-nodes/components/graph_node_horizontal_option_container.gd" id="1_x4cgj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_86nkw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37clr"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="GraphNodeHorizontalOptionContainer" type="HBoxContainer"]
+offset_right = 199.0
+offset_bottom = 24.0
+script = ExtResource("1_x4cgj")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<Option Name>:"
+
+[node name="VSeparator" type="VSeparator" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_86nkw")
+
+[node name="IntInput" type="SpinBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+allow_greater = true
+custom_arrow_step = 1.0
+
+[node name="FloatInput" type="SpinBox" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.001
+
+[node name="StringInput" type="LineEdit" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Empty..."
+
+[node name="StringNameInputContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="StringNameInputContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_37clr")
+
+[node name="Label" type="Label" parent="StringNameInputContainer/PanelContainer"]
+layout_mode = 2
+text = "&"
+
+[node name="StringNameInput" type="LineEdit" parent="StringNameInputContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Empty..."
+
+[node name="BooleanInput" type="CheckBox" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="OptionInput" type="OptionButton" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="value_changed" from="IntInput" to="." method="_on_int_input_value_changed"]
+[connection signal="value_changed" from="FloatInput" to="." method="_on_float_input_value_changed"]
+[connection signal="text_changed" from="StringInput" to="." method="_on_string_input_text_changed"]
+[connection signal="text_changed" from="StringNameInputContainer/StringNameInput" to="." method="_on_string_name_input_text_changed"]
+[connection signal="toggled" from="BooleanInput" to="." method="_on_boolean_input_toggled"]
+[connection signal="item_selected" from="OptionInput" to="." method="_on_option_input_item_selected"]

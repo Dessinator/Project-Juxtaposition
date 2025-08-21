@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dihgxauj1p4wx"]
+[gd_scene load_steps=42 format=3 uid="uid://dihgxauj1p4wx"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_mvu8n"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="2_0uyob"]
@@ -1628,6 +1628,50 @@ _data = {
 &"wallslide_right": SubResource("Animation_f7q3t")
 }
 
+[sub_resource type="Gradient" id="Gradient_0uyob"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ccl7"]
+gradient = SubResource("Gradient_0uyob")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yrwmm"]
+render_priority = 0
+shader = ExtResource("2_0uyob")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_8ccl7")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mvu8n"]
+material = SubResource("ShaderMaterial_yrwmm")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 3.5
+
+[sub_resource type="Gradient" id="Gradient_jai3j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.5, 0.599684, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yrwmm"]
+gradient = SubResource("Gradient_jai3j")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdota"]
+render_priority = 0
+shader = ExtResource("2_0uyob")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_yrwmm")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0uyob"]
+material = SubResource("ShaderMaterial_mdota")
+height = 1.2
+
 [node name="MafuyuCharacterModel" instance=ExtResource("1_mvu8n")]
 
 [node name="dummy_root" type="Node3D" parent="." index="0"]
@@ -1647,3 +1691,14 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_nsq03")
 }
+
+[node name="hammer_root" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="shaft" type="MeshInstance3D" parent="hammer_root" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+mesh = SubResource("CylinderMesh_mvu8n")
+
+[node name="head" type="MeshInstance3D" parent="hammer_root/shaft" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.2, 0)
+mesh = SubResource("CylinderMesh_0uyob")

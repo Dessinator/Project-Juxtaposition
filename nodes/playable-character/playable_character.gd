@@ -33,7 +33,7 @@ func initialize(game_manager: GameManager) -> void:
 	_playable_character_stamina_meter.set_character_status(current_character.get_character_status())
 	
 	_playable_character_visual_controller.initialize(self)
-	_setup_character_attack_state_machine(current_character)
+	#_setup_character_attack_state_machine(current_character)
 	_start_state_machines()
 
 func _physics_process(delta: float) -> void:
@@ -61,16 +61,27 @@ func get_playable_character_character_container() -> PlayableCharacterCharacterC
 	return _playable_character_character_container
 
 func _on_current_character_changed(old: Character, new: Character):
+	#_update_character_attack_state_machine(new)
 	_handle_character_switch_cooldown()
 	_update_stamina_meter_character_status()
 
 func _setup_character_attack_state_machine(current_character: Character):
-	_character_attack_state_machine = current_character.get_character_attack_state_machine().instantiate()
-	add_child(_character_attack_state_machine)
+	assert(current_character.get_character_attack_state_machine(), "Character {character_name} is missing a CharacterAttackStateMachine PackedScene".format({"character_name" : current_character.name}))
+	var character_attack_state_machine_packedscene = current_character.get_character_attack_state_machine()
+	_character_attack_state_machine = character_attack_state_machine_packedscene.instantiate()
 	_character_attack_state_machine.actor = self
+	_character_attack_state_machine._character = current_character
+	
+	add_child(_character_attack_state_machine)
+func _update_character_attack_state_machine(new: Character):
+	if is_instance_valid(_character_attack_state_machine):
+		_character_attack_state_machine.queue_free()
+
+	_setup_character_attack_state_machine(new)
+	_character_attack_state_machine.start()
 
 func _start_state_machines():
-	_character_attack_state_machine.start()
+	#_character_attack_state_machine.start()
 	_animation_finite_state_machine.start()
 	_gameplay_finite_state_machine.start()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvh1txklr27o8"]
+[gd_scene load_steps=43 format=3 uid="uid://dvh1txklr27o8"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_vjkmm"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="2_lxn0n"]
@@ -1640,6 +1640,57 @@ _data = {
 &"wallslide_right": SubResource("Animation_f7q3t")
 }
 
+[sub_resource type="Gradient" id="Gradient_lxn0n"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.208088, 0.132782, 0.165833, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gfvlr"]
+gradient = SubResource("Gradient_lxn0n")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atwhp"]
+render_priority = 0
+shader = ExtResource("2_lxn0n")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_gfvlr")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3x0a3"]
+material = SubResource("ShaderMaterial_atwhp")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 3.5
+
+[sub_resource type="Gradient" id="Gradient_gfvlr"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.135864, 0.171446, 0.24882, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_atwhp"]
+gradient = SubResource("Gradient_gfvlr")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3x0a3"]
+render_priority = 0
+shader = ExtResource("2_lxn0n")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_atwhp")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6kwxq"]
+material = SubResource("ShaderMaterial_3x0a3")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vjkmm"]
+material = SubResource("ShaderMaterial_3x0a3")
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.3
+
 [node name="KahoCharacterModel" instance=ExtResource("1_vjkmm")]
 
 [node name="dummy_root" type="Node3D" parent="." index="0"]
@@ -1659,3 +1710,78 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_nsq03")
 }
+
+[node name="morningstar_root" type="Node3D" parent="." index="3"]
+
+[node name="shaft" type="MeshInstance3D" parent="morningstar_root" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+mesh = SubResource("CylinderMesh_3x0a3")
+
+[node name="star" type="MeshInstance3D" parent="morningstar_root/shaft" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+mesh = SubResource("SphereMesh_6kwxq")
+
+[node name="spike" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike6" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="1"]
+transform = Transform3D(0.5, 0.5, -0.707107, -0.707107, 0.707107, 0, 0.5, 0.5, 0.707107, 0.22, 0.31, 0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike7" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="2"]
+transform = Transform3D(-0.5, -0.5, -0.707107, -0.707107, 0.707107, 0, 0.5, 0.5, -0.707107, -0.22, 0.31, 0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike8" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="3"]
+transform = Transform3D(-0.5, -0.5, 0.707107, -0.707107, 0.707107, 0, -0.5, -0.5, -0.707107, -0.22, 0.31, -0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike9" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="4"]
+transform = Transform3D(0.5, 0.5, 0.707107, -0.707107, 0.707107, 0, -0.5, -0.5, 0.707107, 0.22, 0.31, -0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike10" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="5"]
+transform = Transform3D(0.5, 0.5, -0.707107, 0.707107, -0.707107, -6.18172e-08, -0.5, -0.5, -0.707107, 0.22, -0.31, -0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike11" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="6"]
+transform = Transform3D(-0.5, -0.5, -0.707107, 0.707107, -0.707107, 6.18172e-08, -0.5, -0.5, 0.707107, -0.22, -0.31, -0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike12" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="7"]
+transform = Transform3D(-0.5, -0.5, 0.707107, 0.707107, -0.707107, 6.18172e-08, 0.5, 0.5, 0.707107, -0.22, -0.31, 0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike13" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="8"]
+transform = Transform3D(0.5, 0.5, 0.707107, 0.707107, -0.707107, -6.18172e-08, 0.5, 0.5, -0.707107, 0.22, -0.31, 0.22)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike2" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="9"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.4, 0, 0)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike3" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="10"]
+transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, -0.4, 0, 0)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike4" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="11"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -1.74846e-08, 0, 0.4)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")
+
+[node name="spike5" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="12"]
+transform = Transform3D(-5.73206e-15, 1.31134e-07, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, 1.31134e-07, 1.74846e-08, 0, -0.4)
+mesh = SubResource("CylinderMesh_vjkmm")
+skeleton = NodePath("../..")

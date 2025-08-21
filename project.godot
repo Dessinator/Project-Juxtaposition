@@ -19,15 +19,15 @@ config/icon="res://icon.svg"
 
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+SignalBus="*res://nodes/globals/signal_bus.gd"
 AppConfig="*res://addons/maaacks_game_template/base/scenes/autoloads/app_config.tscn"
 SceneLoader="*res://addons/maaacks_game_template/base/scenes/autoloads/scene_loader.tscn"
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_music_controller.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
-SignalBus="*res://nodes/globals/signal_bus.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/b3rdpscam/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/behaviour_toolkit/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/third-person-camera/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/b3rdpscam/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/behaviour_toolkit/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/third-person-camera/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [filesystem]
 
@@ -158,8 +158,13 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 
 [layer_names]
 
-3d_physics/layer_2="HitboxLayer"
-3d_physics/layer_3="HurtboxLayer"
+3d_physics/layer_1="StaticEnvironmentLayer"
+3d_physics/layer_2="DynamicEnvironmentLayer"
+3d_physics/layer_3="PlayerLayer"
+3d_physics/layer_4="HitboxLayer"
+3d_physics/layer_5="HurtboxLayer"
+3d_physics/layer_6="EntityLayer"
+3d_physics/layer_7="EntityRangeLayer"
 
 [maaacks_game_template]
 

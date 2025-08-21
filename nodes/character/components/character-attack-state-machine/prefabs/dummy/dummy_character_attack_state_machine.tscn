@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4fa6hfrd2p4q"]
-
-[ext_resource type="PackedScene" uid="uid://056n3gghxmxn" path="res://nodes/character/components/character-attack-state-machine/character_attack_state_machine.tscn" id="1_s3ul3"]
-
-[node name="CharacterAttackStateMachine" instance=ExtResource("1_s3ul3")]
