@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 script = ExtResource("1_tverr")
 
 [node name="GameFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+unique_name_in_owner = true
 script = ExtResource("2_qjrq7")
 process_type = 0
 active = false

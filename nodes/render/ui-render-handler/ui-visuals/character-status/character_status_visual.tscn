@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqhtmx2xw45nj"]
+[gd_scene load_steps=16 format=3 uid="uid://cqhtmx2xw45nj"]
 
 [ext_resource type="Script" uid="uid://51ebp1lx6tip" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/character_status_visual.gd" id="1_imou3"]
-[ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/character-status-bar/character_status_bar.tscn" id="2_ra0fy"]
+[ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="2_ra0fy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ra0fy"]
 
@@ -11,19 +11,25 @@
 
 [sub_resource type="Gradient" id="Gradient_ra0fy"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
+colors = PackedColorArray(0.187722, 0.117317, 0.142165, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_yfuhx"]
 gradient = SubResource("Gradient_ra0fy")
 width = 1
 
-[sub_resource type="Gradient" id="Gradient_4qldq"]
+[sub_resource type="Gradient" id="Gradient_yfuhx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0.709804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jyx32"]
+gradient = SubResource("Gradient_yfuhx")
+
+[sub_resource type="Gradient" id="Gradient_id1ne"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 1, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jyx32"]
-gradient = SubResource("Gradient_4qldq")
-width = 1
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ml836"]
+gradient = SubResource("Gradient_id1ne")
 
 [sub_resource type="Animation" id="Animation_ra0fy"]
 length = 0.001
@@ -176,10 +182,10 @@ vertical_alignment = 2
 [node name="CharacterHealthBar" parent="CharacterStatusVisualContainer/VBoxContainer" instance=ExtResource("2_ra0fy")]
 unique_name_in_owner = true
 layout_mode = 2
-_show_status_label = true
 _label = "HPS"
 _under = SubResource("GradientTexture1D_yfuhx")
-_progress = SubResource("GradientTexture1D_jyx32")
+_ghost_progress = SubResource("GradientTexture1D_jyx32")
+_true_progress = SubResource("GradientTexture1D_ml836")
 
 [node name="CharacterStatusEffectVisualContainer" type="HBoxContainer" parent="CharacterStatusVisualContainer/VBoxContainer"]
 unique_name_in_owner = true

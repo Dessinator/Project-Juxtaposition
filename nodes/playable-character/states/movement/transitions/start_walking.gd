@@ -16,16 +16,15 @@ func is_valid(actor: Node, blackboard: BTBlackboard) -> bool:
 	var character = character_container.get_current_character()
 	var status = character.get_character_status()
 	
-	if blackboard.get_value("auto_jog"):
-		if blackboard.get_value("is_targeting"):
-			if Input.is_action_pressed("sprint") and (not status.is_exhausted()):
-				return false
-			var direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")
-			if direction.y > 0:
-				return true
+	if Input.is_action_pressed("sprint") and (not status.is_exhausted()):
 		return false
 	
-	if Input.is_action_pressed("sprint") and (not status.is_exhausted()):
+	if blackboard.get_value("is_targeting"):
+		var relative_direction = actor.get_relative_direction()
+		if relative_direction.z < 0:
+			return true
+	
+	if blackboard.get_value("auto_jog"):
 		return false
 	
 	return Input.is_action_pressed("move")

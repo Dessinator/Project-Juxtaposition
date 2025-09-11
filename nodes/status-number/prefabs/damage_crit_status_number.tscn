@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://btbm3tydstpq2"]
+
+[ext_resource type="PackedScene" uid="uid://dx514g6x2vvrl" path="res://nodes/status-number/status_number.tscn" id="1_7cxqk"]
+
+[node name="DamageCritStatusNumber" instance=ExtResource("1_7cxqk")]
+suffix = " dmg!!!"
+
+[node name="Label3D" parent="." index="1"]
+pixel_size = 0.0035
+text = "-1 dmg!!!"

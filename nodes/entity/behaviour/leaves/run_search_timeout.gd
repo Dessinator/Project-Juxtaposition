@@ -7,5 +7,4 @@ func tick(_actor: Node, blackboard: BHBlackboard):
 		new_ticks_value = 0
 	
 	blackboard.set_value("search_timeout", new_ticks_value, Entity.TIMEOUT_BLACKBOARD)
-	print(new_ticks_value)
 	return SUCCESS

@@ -37,24 +37,21 @@ grow_amount = 1.054
 [node name="Test" type="Node"]
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("_playable_character") instance=ExtResource("1_llmsn")]
-_playable_character = NodePath("WorldRenderHandler/SubViewportContainer/SubViewport/CombatTestMap/PlayerPlayableCharacter")
+_playable_character = NodePath("WorldRenderHandler/WorldSubViewportContainer/WorldSubViewport/CombatTestMap/PlayerPlayableCharacter")
 
 [node name="WorldRenderHandler" parent="GameManager" instance=ExtResource("1_ulxrs")]
 unique_name_in_owner = true
 
-[node name="CombatTestMap" parent="GameManager/WorldRenderHandler/SubViewportContainer/SubViewport" index="0" instance=ExtResource("3_gilvh")]
+[node name="CombatTestMap" parent="GameManager/WorldRenderHandler/WorldSubViewportContainer/WorldSubViewport" index="0" instance=ExtResource("3_gilvh")]
 
-[node name="floor" parent="GameManager/WorldRenderHandler/SubViewportContainer/SubViewport/CombatTestMap/NavigationRegion3D/CSGCombiner3D" index="0"]
+[node name="Walls" parent="GameManager/WorldRenderHandler/WorldSubViewportContainer/WorldSubViewport/CombatTestMap/NavigationRegion3D/CSGCombiner3D" index="0"]
 material = SubResource("StandardMaterial3D_caxff")
 
-[node name="walls" parent="GameManager/WorldRenderHandler/SubViewportContainer/SubViewport/CombatTestMap/NavigationRegion3D/CSGCombiner3D" index="1"]
-material = SubResource("StandardMaterial3D_caxff")
-
-[node name="CSGBox3D" parent="GameManager/WorldRenderHandler/SubViewportContainer/SubViewport/CombatTestMap/NavigationRegion3D/CSGCombiner3D/walls" index="0"]
+[node name="Walls2" parent="GameManager/WorldRenderHandler/WorldSubViewportContainer/WorldSubViewport/CombatTestMap/NavigationRegion3D/CSGCombiner3D/Walls" index="0"]
 material = SubResource("StandardMaterial3D_caxff")
 
 [node name="UIRenderHandler" parent="GameManager" instance=ExtResource("3_le35c")]
 unique_name_in_owner = true
 
 [editable path="GameManager/WorldRenderHandler"]
-[editable path="GameManager/WorldRenderHandler/SubViewportContainer/SubViewport/CombatTestMap"]
+[editable path="GameManager/WorldRenderHandler/WorldSubViewportContainer/WorldSubViewport/CombatTestMap"]

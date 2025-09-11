@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://c8v8rpm0nra0"]
+
+[ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_6qf5t"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="2_imyvy"]
+[ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_or4v1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ww0j"]
+
+[sub_resource type="Gradient" id="Gradient_3ww0j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.34356, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pwyk8"]
+gradient = SubResource("Gradient_3ww0j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0e3f"]
+render_priority = 0
+shader = ExtResource("2_imyvy")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_pwyk8")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0lojl"]
+material = SubResource("ShaderMaterial_n0e3f")
+height = 1.2
+
+[sub_resource type="Gradient" id="Gradient_7p1iv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0voeq"]
+gradient = SubResource("Gradient_7p1iv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tescc"]
+render_priority = 0
+shader = ExtResource("2_imyvy")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_0voeq")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eprog"]
+material = SubResource("ShaderMaterial_tescc")
+size = Vector3(0.922, 0.2, 0.5)
+
+[sub_resource type="Resource" id="Resource_n0e3f"]
+resource_local_to_scene = true
+script = ExtResource("3_or4v1")
+content = {}
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[node name="KilobyteEntity" instance=ExtResource("1_6qf5t")]
+_disabled = true
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_3ww0j")
+
+[node name="Model" type="Node3D" parent="EntityModelContainer" index="0"]
+
+[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("CapsuleMesh_0lojl")
+skeleton = NodePath("../..")
+
+[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151704, 0.3)
+mesh = SubResource("BoxMesh_eprog")
+
+[node name="EntityFloatingHealthBar" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="EntityTargetedIndicator" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+
+[node name="StateMachine" parent="." index="12"]
+blackboard = SubResource("Resource_n0e3f")

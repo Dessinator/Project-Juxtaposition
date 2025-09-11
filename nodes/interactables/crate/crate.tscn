@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bprhwfej2sngp"]
+
+[ext_resource type="PackedScene" uid="uid://b052snw6aca7r" path="res://nodes/trackable-target/trackable_target.tscn" id="1_nmafp"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="1_px3gj"]
+[ext_resource type="Texture2D" uid="uid://b21xo8qisuuml" path="res://addons/kenney_prototype_textures/light/texture_06.png" id="2_8kkqp"]
+[ext_resource type="PackedScene" uid="uid://3jvtf4vu20ht" path="res://nodes/entity/components/entity-targeted-indicator/targeted_indicator.tscn" id="4_8kkqp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wwom"]
+render_priority = 0
+shader = ExtResource("1_px3gj")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = ExtResource("2_8kkqp")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mo7lr"]
+material = SubResource("ShaderMaterial_7wwom")
+
+[node name="Crate" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_mo7lr")
+
+[node name="TrackableTarget" parent="." instance=ExtResource("1_nmafp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="TargetedIndicator" parent="." instance=ExtResource("4_8kkqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[connection signal="entered_target_range" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_entered_target_range"]
+[connection signal="exited_target_range" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_exited_target_range"]
+[connection signal="tracked" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_tracked"]
+[connection signal="untracked" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_untracked"]

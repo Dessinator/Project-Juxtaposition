@@ -29,7 +29,7 @@ const EMPTY_CHARACTER_NAME_PLACEHOLDER: String = "Character Name"
 @onready var _character_callout_container: Control = %CharacterCalloutContainer
 @onready var _character_name_label: Label = %CharacterNameLabel
 @onready var _character_level_label: Label = %CharacterLevelLabel
-@onready var _character_health_bar: CharacterStatusBar = %CharacterHealthBar
+@onready var _character_health_bar: StatusBar = %CharacterHealthBar
 @onready var _character_status_effect_visual_container: HBoxContainer = %CharacterStatusEffectVisualContainer
 
 func _ready() -> void:
@@ -42,5 +42,5 @@ func switch_off() -> void:
 	%AnimationPlayer.play("switch_off")
 
 func update_health_bar(current_health: int, max_health: int):
-	_character_health_bar.set_current_value(current_health)
-	_character_health_bar.set_max_value(max_health)
+	%CharacterHealthBar.set_max_value(max_health)
+	%CharacterHealthBar.set_current_value(current_health)

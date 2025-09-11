@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://3jvtf4vu20ht"]
+
+[ext_resource type="Script" uid="uid://btcw80go1o522" path="res://nodes/entity/components/entity-targeted-indicator/targeted_indicator.gd" id="1_wtf2q"]
+[ext_resource type="Texture2D" uid="uid://4e0nabuux6j3" path="res://resources/textures/targeted_icon_texture.png" id="2_dppdl"]
+[ext_resource type="Script" uid="uid://cr8pb3p5xkx75" path="res://nodes/render/world-ui-object-interface/world_ui_object_interface.gd" id="3_sy24i"]
+
+[node name="TargetedIndicator" type="Node3D"]
+visible = false
+script = ExtResource("1_wtf2q")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+layers = 2
+pixel_size = 0.02
+billboard = 1
+texture = ExtResource("2_dppdl")
+hframes = 2
+
+[node name="WorldUIObjectInterface" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_sy24i")
+_world_origin_initial_position_copy_type = 2
+metadata/_custom_type_script = "uid://cr8pb3p5xkx75"

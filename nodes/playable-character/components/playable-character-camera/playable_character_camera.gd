@@ -1,8 +1,8 @@
-@icon("./ThirdPersonCameraIcon.svg")
 @tool
 class_name PlayableCharacterCamera extends Node3D
 
-@onready var _camera := $Camera
+@onready var _camera := %WorldCamera
+@onready var _ui_camera := %WorldUICamera
 @onready var _camera_rotation_pivot = $RotationPivot
 @onready var _camera_offset_pivot = $RotationPivot/OffsetPivot
 @onready var _camera_spring_arm := $RotationPivot/OffsetPivot/CameraSpringArm
@@ -25,7 +25,7 @@ class_name PlayableCharacterCamera extends Node3D
 @export var current : bool = false :
 	set(value) :
 		current = value
-		_set_when_ready(^"Camera", &"current", value)
+		_set_when_ready(^"WorldCamera", &"current", value)
 
 @export_group("mouse")
 @export var mouse_follow : bool = false
@@ -65,6 +65,12 @@ class_name PlayableCharacterCamera extends Node3D
 var camera_tilt_deg := 0.
 var camera_horizontal_rotation_deg := 0.
 
+var enable_input: bool = true
+var enable_camera_follow: bool = true
+var enable_camera_zoom: bool = true
+var enable_camera_tilt: bool = true
+var enable_camera_horizontal_rotation: bool = true
+
 func _set_when_ready(node_path : NodePath, property_name : StringName, value : Variant) :
 	if not is_node_ready() :
 		await ready
@@ -83,16 +89,24 @@ func _physics_process(delta):
 		pass
 	#_camera.global_position = _camera_marker.global_position
 	tweenCameraToMarker()
+	
 	_camera_offset_pivot.global_position = _camera_offset_pivot.get_parent().to_global(Vector3(pivot_offset.x, pivot_offset.y, 0.0))
 	_camera_rotation_pivot.global_rotation_degrees.x = initial_dive_angle_deg
 	_camera_rotation_pivot.global_position = global_position
-	_process_zoom_input(delta)
-	_process_tilt_input()
-	_process_horizontal_rotation_input()
+	
+	if enable_input:
+		_process_zoom_input(delta)
+		_process_tilt_input()
+		_process_horizontal_rotation_input()
+	
+	_update_zoom()
 	_update_camera_tilt()
 	_update_camera_horizontal_rotation()
 
 func tweenCameraToMarker() :
+	if not enable_camera_follow:
+		return
+	
 	_camera.global_position = lerp(_camera.global_position, _camera_marker.global_position, camera_speed)
 
 func _process_horizontal_rotation_input() :
@@ -108,11 +122,9 @@ func _process_zoom_input(delta: float):
 	if Input.is_action_just_released("zoom_in"):
 		zoom = lerpf(zoom, zoom - zoom_speed, delta * 40)
 		zoom = clampf(zoom, max_zoom, min_zoom)
-		$RotationPivot/OffsetPivot/CameraSpringArm.spring_length = zoom
 	elif Input.is_action_just_released("zoom_out"):
 		zoom = lerpf(zoom, zoom + zoom_speed, delta * 40)
 		zoom = clampf(zoom, max_zoom, min_zoom)
-		$RotationPivot/OffsetPivot/CameraSpringArm.spring_length = zoom
 
 func _process_tilt_input() :
 	if InputMap.has_action("tp_camera_up") and InputMap.has_action("tp_camera_down") :
@@ -120,13 +132,25 @@ func _process_tilt_input() :
 		tilt_variation = tilt_variation * get_process_delta_time() * 5 * tilt_sensitiveness
 		camera_tilt_deg = clamp(camera_tilt_deg + tilt_variation, tilt_lower_limit_deg - initial_dive_angle_deg, tilt_upper_limit_deg - initial_dive_angle_deg)
 
+func _update_zoom():
+	if not enable_camera_zoom:
+		return
+	
+	$RotationPivot/OffsetPivot/CameraSpringArm.spring_length = zoom
+
 func _update_camera_tilt() :
+	if not enable_camera_tilt:
+		return
+	
 	var tilt_final_val = clampf(initial_dive_angle_deg + camera_tilt_deg, tilt_lower_limit_deg, tilt_upper_limit_deg)
 	var tween = create_tween()
 	tween.tween_property(_camera, "global_rotation_degrees:x", tilt_final_val, 0.1)
+	#tween.tween_property(_ui_camera, "global_rotation_degrees:x", tilt_final_val, 0.1)
 
 func _update_camera_horizontal_rotation() :
-	# TODO : inverse
+	if not enable_camera_horizontal_rotation:
+		return
+	
 	var tween = create_tween()
 	tween.tween_property(_camera_rotation_pivot, "global_rotation_degrees:y", camera_horizontal_rotation_deg * -1, 0.1).as_relative()
 	camera_horizontal_rotation_deg = 0.0 # reset the value
@@ -141,13 +165,14 @@ func apply_preset_shake(preset_number: int) :
 	_camera_shaker.apply_preset_shake(shake_presets[preset_number])
 
 func _unhandled_input(event):
+	if not enable_input:
+		return
+	
 	if mouse_follow and event is InputEventMouseMotion:
 		camera_horizontal_rotation_deg += event.relative.x * 0.1 * mouse_x_sensitiveness
 		camera_tilt_deg -= event.relative.y * 0.07 * mouse_y_sensitiveness
 		camera_tilt_deg = clampf(camera_tilt_deg, tilt_lower_limit_deg, tilt_upper_limit_deg)
 		return
-
-	pass
 
 func _update_camera_properties() :
 	_camera.keep_aspect = keep_aspect
@@ -161,9 +186,21 @@ func _update_camera_properties() :
 		_camera.environment = environment
 	if _camera.attributes != attributes :
 		_camera.attributes = attributes
+	
+	_ui_camera.keep_aspect = keep_aspect
+	#_ui_camera.cull_mask = cull_mask
+	_ui_camera.doppler_tracking = doppler_tracking
+	_ui_camera.projection = projection
+	_ui_camera.fov = FOV
+	_ui_camera.near = near
+	_ui_camera.far = far
+	if _ui_camera.environment != environment :
+		_ui_camera.environment = environment
+	if _ui_camera.attributes != attributes :
+		_ui_camera.attributes = attributes
 
 func get_camera() :
-	return $Camera
+	return _camera
 
 func get_front_direction() :
 	var dir : Vector3 = _camera_offset_pivot.global_position - _camera.global_position
@@ -181,4 +218,7 @@ func get_right_direction() :
 	return get_front_direction().rotated(Vector3.UP, -PI/2)
 
 func get_horizontal_rotation() -> float:
+	if not enable_input:
+		return _camera.global_rotation.y
+	
 	return _camera_rotation_pivot.global_rotation.y

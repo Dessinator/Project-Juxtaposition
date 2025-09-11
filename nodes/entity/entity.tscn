@@ -1,10 +1,14 @@
-[gd_scene load_steps=50 format=3 uid="uid://8nifftfw2omy"]
+[gd_scene load_steps=56 format=3 uid="uid://8nifftfw2omy"]
 
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_6pa3a"]
 [ext_resource type="Script" uid="uid://ded5umnsqump5" path="res://nodes/entity/entity.gd" id="1_ts1bu"]
+[ext_resource type="Script" uid="uid://bl5mwx4nlardy" path="res://nodes/entity/components/entity-visual-controller/entity_visual_controller.gd" id="2_58x2y"]
+[ext_resource type="PackedScene" uid="uid://bm3juln3l3i" path="res://nodes/entity/components/entity-floating-health-bar/entity_floating_health_bar.tscn" id="2_h7rau"]
 [ext_resource type="PackedScene" uid="uid://c5j22jtwhkxmm" path="res://nodes/entity/components/entity-range/entity_range.tscn" id="2_qecbm"]
 [ext_resource type="Script" uid="uid://k5p6yghm7nrm" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="2_ts1bu"]
+[ext_resource type="PackedScene" uid="uid://3jvtf4vu20ht" path="res://nodes/entity/components/entity-targeted-indicator/targeted_indicator.tscn" id="3_0hmms"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_fujbu"]
+[ext_resource type="PackedScene" uid="uid://b052snw6aca7r" path="res://nodes/trackable-target/trackable_target.tscn" id="3_pgryw"]
 [ext_resource type="Script" uid="uid://jjoacie7bvcr" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_wxprh"]
 [ext_resource type="Script" uid="uid://cagh5dfpu2nof" path="res://addons/beehave/nodes/composites/selector.gd" id="4_fujbu"]
 [ext_resource type="Script" uid="uid://dci6gyicpalev" path="res://addons/beehave/blackboard.gd" id="4_wxprh"]
@@ -14,6 +18,7 @@
 [ext_resource type="Script" uid="uid://ekmdybu2kxlg" path="res://nodes/entity/states/walking.gd" id="6_6qhta"]
 [ext_resource type="Script" uid="uid://dsq54fchvncv6" path="res://nodes/entity/states/transitions/start_walking.gd" id="7_2owo5"]
 [ext_resource type="Script" uid="uid://bxxnojf81fve2" path="res://nodes/entity/states/transitions/start_sprinting.gd" id="8_gnder"]
+[ext_resource type="Script" uid="uid://cefticp1pl04n" path="res://nodes/entity/states/transitions/start_falling.gd" id="8_hyfwl"]
 [ext_resource type="Script" uid="uid://dt08goxwqu6hc" path="res://addons/beehave/nodes/decorators/inverter.gd" id="9_la3n6"]
 [ext_resource type="Script" uid="uid://bydpk20xk676k" path="res://nodes/entity/states/transitions/start_idling.gd" id="9_ni2al"]
 [ext_resource type="Script" uid="uid://pef4wkg5837e" path="res://nodes/entity/states/sprinting.gd" id="10_mlwgf"]
@@ -26,6 +31,7 @@
 [ext_resource type="Script" uid="uid://bpelc014bsch2" path="res://nodes/entity/behaviour/leaves/reset_follow_range.gd" id="14_ofnwe"]
 [ext_resource type="Script" uid="uid://dnwxub4wet4sa" path="res://nodes/entity/behaviour/leaves/walk_to_destination.gd" id="15_bggmr"]
 [ext_resource type="Script" uid="uid://cd7hmh7palf8e" path="res://nodes/entity/behaviour/leaves/is_search_timeout_set.gd" id="15_boh06"]
+[ext_resource type="Script" uid="uid://b5gece3wrlj6y" path="res://nodes/entity/states/transitions/land.gd" id="15_naril"]
 [ext_resource type="Script" uid="uid://chb2l3367ruut" path="res://nodes/entity/behaviour/leaves/set_has_seen_target.gd" id="16_gk5bk"]
 [ext_resource type="Script" uid="uid://fofdtjjria4n" path="res://nodes/entity/behaviour/leaves/is_player_in_attack_range.gd" id="17_gk5bk"]
 [ext_resource type="Script" uid="uid://xa5bynn6rghm" path="res://nodes/entity/behaviour/leaves/set_new_destination_within_wander_range.gd" id="18_llqjs"]
@@ -56,6 +62,8 @@ content = {}
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
 [node name="Entity" type="CharacterBody3D"]
+collision_layer = 32
+collision_mask = 39
 script = ExtResource("1_ts1bu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -64,13 +72,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
 target_desired_distance = 3.5
-debug_enabled = true
 
-[node name="EntityVisualController" type="Node" parent="."]
+[node name="EntityVisualController" type="Node" parent="." node_paths=PackedStringArray("_health_bar")]
+unique_name_in_owner = true
+script = ExtResource("2_58x2y")
+_health_bar = NodePath("../EntityFloatingHealthBar")
+
+[node name="TrackableTarget" parent="." instance=ExtResource("3_pgryw")]
 unique_name_in_owner = true
 
 [node name="EntityModelContainer" type="Node3D" parent="."]
 unique_name_in_owner = true
+
+[node name="EntityFloatingHealthBar" parent="." instance=ExtResource("2_h7rau")]
+
+[node name="TargetedIndicator" parent="." instance=ExtResource("3_0hmms")]
 
 [node name="EntityHomeRange" parent="." instance=ExtResource("2_qecbm")]
 unique_name_in_owner = true
@@ -110,11 +126,14 @@ active = false
 initial_state = NodePath("Idle")
 actor = NodePath("..")
 blackboard = SubResource("Resource_6qbpo")
-verbose = true
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_eye3n")
+
+[node name="startFalling" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_hyfwl")
+next_state = NodePath("../../Falling")
 
 [node name="defeat" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
@@ -140,14 +159,14 @@ next_state = NodePath("../../GroundedDamaged")
 script = ExtResource("6_2owo5")
 next_state = NodePath("../../Jumping")
 
-[node name="startFalling" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
-script = ExtResource("6_2owo5")
-next_state = NodePath("../../Falling")
-
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource("6_6qhta")
 _speed = 3.0
 _acceleration = 20.0
+
+[node name="startFalling" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_hyfwl")
+next_state = NodePath("../../Falling")
 
 [node name="defeat" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
@@ -173,13 +192,13 @@ next_state = NodePath("../../GroundedDamaged")
 script = ExtResource("6_2owo5")
 next_state = NodePath("../../Jumping")
 
-[node name="startFalling" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
-script = ExtResource("6_2owo5")
-next_state = NodePath("../../Falling")
-
 [node name="Sprinting" type="Node" parent="StateMachine"]
 script = ExtResource("10_mlwgf")
 _acceleration = 20.0
+
+[node name="startFalling" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_hyfwl")
+next_state = NodePath("../../Falling")
 
 [node name="defeat" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
@@ -205,10 +224,6 @@ next_state = NodePath("../../GroundedDamaged")
 script = ExtResource("6_2owo5")
 next_state = NodePath("../../Jumping")
 
-[node name="startFalling" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
-script = ExtResource("6_2owo5")
-next_state = NodePath("../../Falling")
-
 [node name="GroundedAttacking" type="Node" parent="StateMachine"]
 script = ExtResource("2_ts1bu")
 
@@ -221,8 +236,32 @@ script = ExtResource("2_ts1bu")
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("2_ts1bu")
 
+[node name="land" type="Node" parent="StateMachine/Falling" node_paths=PackedStringArray("next_state")]
+script = ExtResource("15_naril")
+next_state = NodePath("../../Landing")
+
 [node name="Landing" type="Node" parent="StateMachine"]
 script = ExtResource("2_ts1bu")
+
+[node name="startFalling" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_hyfwl")
+next_state = NodePath("../../Falling")
+
+[node name="defeat" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../Defeated")
+
+[node name="startIdling" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+script = ExtResource("9_ni2al")
+next_state = NodePath("../../Idle")
+
+[node name="startWalking" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_2owo5")
+next_state = NodePath("../../Walking")
+
+[node name="startSprinting" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gnder")
+next_state = NodePath("../../Sprinting")
 
 [node name="Airborne" type="Node" parent="StateMachine"]
 script = ExtResource("2_ts1bu")
@@ -409,7 +448,7 @@ metadata/_custom_type_script = "uid://c1hnqijxm6jm6"
 
 [node name="PathRecalculationCooldown" type="Node" parent="BehaviourTree/BehaviourSelector/Follow/AlwaysSucceedDecorator"]
 script = ExtResource("31_e6j26")
-wait_time = 1.0
+wait_time = 0.5
 metadata/_custom_type_script = "uid://c1rjtolo5yd8j"
 
 [node name="RecalculatePathToTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Follow/AlwaysSucceedDecorator/PathRecalculationCooldown"]
@@ -633,3 +672,10 @@ metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
 [node name="SetNewDestinationWithinWanderRange" type="Node" parent="BehaviourTree/BehaviourSelector/Search/RandomWait/2Second"]
 script = ExtResource("18_llqjs")
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[connection signal="entered_target_range" from="TrackableTarget" to="EntityVisualController" method="_on_trackable_target_entered_target_range"]
+[connection signal="entered_target_range" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_entered_target_range"]
+[connection signal="exited_target_range" from="TrackableTarget" to="EntityVisualController" method="_on_trackable_target_exited_target_range"]
+[connection signal="exited_target_range" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_exited_target_range"]
+[connection signal="tracked" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_tracked"]
+[connection signal="untracked" from="TrackableTarget" to="TargetedIndicator" method="_on_trackable_target_untracked"]

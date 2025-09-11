@@ -6,8 +6,8 @@ signal health_modified(old: int, new: int)
 signal max_stamina_modified(old: int, new: int)
 signal stamina_modified(old: int, new: int)
 
-signal healed(amount: int)
-signal damaged(amount: int, crit: bool)
+signal healed(amount: int, show_status_number: bool)
+signal damaged(amount: int, crit: bool, show_status_number: bool)
 signal died
 signal revived
 
@@ -62,7 +62,7 @@ func initialize(character: Character, stats: CharacterStats):
 	_set_stamina(get_max_stamina())
 
 # damage
-func damage(base_amount: int, crit: bool = false, addend: int = 0):
+func damage(base_amount: int, crit: bool = false, addend: int = 0, show_damage_number: bool = false):
 	var defense_stat = _stats.get_stat(DEFENSE)
 	var defense_value = defense_stat.get_value(false)
 	var damage_resistance_stat = _stats.get_substat(DAMAGE_RESISTANCE)
@@ -71,10 +71,10 @@ func damage(base_amount: int, crit: bool = false, addend: int = 0):
 	var damage_negated = int((base_amount * damage_resistance_value) + 0.5)
 	var true_damage = base_amount - damage_negated + addend
 	_set_health(_health - true_damage)
-	damaged.emit(true_damage, crit)
-func heal(amount: int):
+	damaged.emit(true_damage, crit, show_damage_number)
+func heal(amount: int, show_status_number: bool = false):
 	_set_health(_health + amount)
-	healed.emit(amount)
+	healed.emit(amount, show_status_number)
 func revive(recover_health: int, recover_stamina: int):
 	_is_dead = false
 	_set_health(recover_health)

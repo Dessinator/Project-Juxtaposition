@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://bm3juln3l3i"]
+
+[ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="1_bjxs7"]
+[ext_resource type="Script" uid="uid://dfjfy0opnqhv6" path="res://nodes/entity/components/entity-floating-health-bar/entity_floating_health_bar.gd" id="1_ne7yr"]
+[ext_resource type="Script" uid="uid://cr8pb3p5xkx75" path="res://nodes/render/world-ui-object-interface/world_ui_object_interface.gd" id="3_cpapq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bjxs7"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_h7rau"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hyfwl"]
+gradient = SubResource("Gradient_h7rau")
+
+[sub_resource type="Gradient" id="Gradient_hyfwl"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0.937471, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_naril"]
+gradient = SubResource("Gradient_hyfwl")
+
+[sub_resource type="Gradient" id="Gradient_0hmms"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0.63723, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_58x2y"]
+gradient = SubResource("Gradient_0hmms")
+
+[node name="EntityFloatingHealthBar" type="Node3D"]
+script = ExtResource("1_ne7yr")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+layers = 2
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_bjxs7")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(200, 20)
+
+[node name="StatusBar" parent="SubViewport" instance=ExtResource("1_bjxs7")]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+_label = "HPS"
+_under = SubResource("GradientTexture1D_hyfwl")
+_ghost_progress = SubResource("GradientTexture1D_naril")
+_true_progress = SubResource("GradientTexture1D_58x2y")
+
+[node name="WorldUIObjectInterface" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_cpapq")
+_world_origin_initial_position_copy_type = 2
+metadata/_custom_type_script = "uid://cr8pb3p5xkx75"

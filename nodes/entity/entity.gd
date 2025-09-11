@@ -30,6 +30,7 @@ enum EntityType
 var player: PlayableCharacter
 
 @export var _entity_type: EntityType = EntityType.TYPE_KILOBYTE
+@export var _disabled: bool = false
 
 func _ready():
 	initialize()
@@ -49,12 +50,19 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
+func get_entity_visual_controller() -> EntityVisualController:
+	return _entity_visual_controller
+
 func _cache_player_reference():
 	player = GameManager.get_instance().get_playable_character()
 
 func _start_state_machine():
+	if _disabled:
+		return
 	_state_machine.start()
 func _start_behaviour_tree():
+	if _disabled:
+		return
 	_behaviour_tree.enable()
 	
 func _setup_navigation_agent_3d():
@@ -98,7 +106,6 @@ func _on_entity_attack_range_player_entered(_player: PlayableCharacter):
 func _on_entity_attack_range_player_exited(_player: PlayableCharacter):
 	_behaviour_tree_blackboard.set_value("is_player_in_attack_range", false)
 	#_behaviour_tree.interrupt()
-
 
 func _setup_timeouts():
 	pass

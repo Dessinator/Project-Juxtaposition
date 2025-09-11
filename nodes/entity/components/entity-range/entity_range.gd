@@ -91,7 +91,6 @@ func _on_body_entered(body: Node3D) -> void:
 	body = body as PlayableCharacter
 	player_entered.emit(body)
 	is_player_in_range = true
-	print("player entered range " + name)
 func _on_body_exited(body: Node3D) -> void:
 	if not body is PlayableCharacter:
 		# should never be the case
@@ -100,4 +99,3 @@ func _on_body_exited(body: Node3D) -> void:
 	body = body as PlayableCharacter
 	player_exited.emit(body)
 	is_player_in_range = false
-	print("player exited range " + name)

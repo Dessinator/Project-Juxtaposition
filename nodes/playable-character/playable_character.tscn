@@ -1,10 +1,12 @@
-[gd_scene load_steps=56 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=59 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
 [ext_resource type="PackedScene" uid="uid://dhal1wbe247ok" path="res://nodes/playable-character/components/playable-character-camera/playable_character_camera.tscn" id="2_b536o"]
 [ext_resource type="Script" uid="uid://b30qr6jj8jrtd" path="res://nodes/playable-character/components/playable-character-character-container/playable_character_character_container.gd" id="2_kbp4i"]
+[ext_resource type="PackedScene" uid="uid://d1vo24vn8cvlt" path="res://nodes/playable-character/components/playable-character-combat-manager/playable_character_combat_manager.tscn" id="2_rfhey"]
 [ext_resource type="PackedScene" uid="uid://dalxdx30uubou" path="res://nodes/playable-character/components/playable-character-stamina-meter/playable_character_stamina_meter.tscn" id="2_s6wqa"]
+[ext_resource type="Script" uid="uid://ukjio47rhx87" path="res://nodes/playable-character/components/playable-character-status-modifier/playable_character_status_modifier.gd" id="2_y5kg5"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_kwpjs"]
 [ext_resource type="Script" uid="uid://dc3gcbxjw1fl" path="res://nodes/playable-character/states/movement/idle_state.gd" id="4_kwpjs"]
 [ext_resource type="PackedScene" uid="uid://c8rgk5qujgtg6" path="res://nodes/playable-character/components/playable-character-visual-controller/playable_character_visual_controller.tscn" id="5_avwae"]
@@ -12,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bvkuv47v02wto" path="res://nodes/playable-character/states/movement/transitions/start_sprinting.gd" id="6_541kw"]
 [ext_resource type="Script" uid="uid://vyjbkqhnabi0" path="res://nodes/playable-character/states/movement/transitions/start_jogging.gd" id="7_beju2"]
 [ext_resource type="Script" uid="uid://1lowkxpph4vp" path="res://nodes/playable-character/states/movement/transitions/start_jumping.gd" id="7_hv23c"]
+[ext_resource type="PackedScene" uid="uid://lgs3klxru3sc" path="res://nodes/playable-character/components/playable-character-range/playable_character_range.tscn" id="8_2p2ad"]
 [ext_resource type="Script" uid="uid://dlq0i3jf6krly" path="res://nodes/playable-character/states/movement/transitions/start_falling.gd" id="8_b0vta"]
 [ext_resource type="Script" uid="uid://62fl0f3v5lvd" path="res://nodes/playable-character/states/movement/walking_state.gd" id="9_g13tn"]
 [ext_resource type="Script" uid="uid://di214gom16ila" path="res://nodes/playable-character/states/movement/transitions/start_ilding.gd" id="10_qyjwt"]
@@ -74,12 +77,27 @@ content = {
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
 [node name="PlayableCharacter" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 39
 script = ExtResource("1_quqvc")
 metadata/_custom_type_script = "uid://bjx0nfkhbn162"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_b0vta")
+
+[node name="PlayableCharacterCombatManager" parent="." node_paths=PackedStringArray("camera", "target_range", "_gameplay_finite_state_machine", "_animation_finite_state_machine") instance=ExtResource("2_rfhey")]
+unique_name_in_owner = true
+camera = NodePath("../PlayableCharacterCamera")
+target_range = NodePath("../PlayableCharacterTargetRange")
+_gameplay_finite_state_machine = NodePath("../GameplayFiniteStateMachine")
+_animation_finite_state_machine = NodePath("../AnimationFiniteStateMachine")
+
+[node name="PlayableCharacterStatusModifier" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_y5kg5")
+_damage_amount = 20
+_heal_amount = 20
 
 [node name="PlayableCharacterVisualController" parent="." instance=ExtResource("5_avwae")]
 unique_name_in_owner = true
@@ -88,12 +106,33 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 script = ExtResource("2_kbp4i")
 
+[node name="PlayableCharacterStaminaMeter" parent="." instance=ExtResource("2_s6wqa")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 0, 0)
+
 [node name="PlayableCharacterCamera" parent="." instance=ExtResource("2_b536o")]
 unique_name_in_owner = true
+top_level = true
 
-[node name="PlayableCharacterStaminaMeter" parent="PlayableCharacterCamera/RotationPivot" index="0" instance=ExtResource("2_s6wqa")]
+[node name="RotationPivot" parent="PlayableCharacterCamera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
+
+[node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" index="0"]
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9448e-07, 0.999999, 5.65648e-05, -2.27374e-11, -5.70416e-05, 1, 0, 1.3, 0)
+
+[node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
+transform = Transform3D(1, 7.73588e-08, 3.50877e-07, 1.27421e-08, 1.00001, 0.000274926, 2.14419e-07, 2.68221e-07, 1.00147, -3.34859e-09, -0.000283003, 5)
+
+[node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
+transform = Transform3D(1, -4.68761e-15, 8.12683e-15, 1.62537e-15, 0.939693, 0.34202, -9.23998e-15, -0.34202, 0.939693, 4.06341e-14, 2.9317, 4.25383)
+
+[node name="PlayableCharacterSprintingParticles" parent="." instance=ExtResource("48_avwae")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.939692, -0.34202, 0, 0.34202, 0.939692, 1, 1.87938, 0.68404)
+
+[node name="PlayableCharacterTargetRange" parent="." instance=ExtResource("8_2p2ad")]
+range = 25.0
+max_range = 25.0
+_debug_color = Color(0, 1, 0, 0.501961)
 
 [node name="RegenerateStaminaTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -798,9 +837,8 @@ script = ExtResource("44_m65ax")
 [node name="MantleAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 script = ExtResource("45_kbp4i")
 
-[node name="PlayableCharacterSprintingParticles" parent="." instance=ExtResource("48_avwae")]
-unique_name_in_owner = true
-
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="." method="_on_current_character_changed"]
+[connection signal="target_entered" from="PlayableCharacterTargetRange" to="PlayableCharacterCombatManager" method="_on_playable_character_target_range_target_entered"]
+[connection signal="target_exited" from="PlayableCharacterTargetRange" to="PlayableCharacterCombatManager" method="_on_playable_character_target_range_target_exited"]
 
 [editable path="PlayableCharacterCamera"]

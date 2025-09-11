@@ -18,6 +18,8 @@ func _ready():
 	_start_game_finite_state_machine()
 	_initialize_world_render_handler()
 	_initialize_ui_render_handler()
+	
+	DebugDraw3D.scoped_config().set_viewport(_world_render_handler.get_node("%WorldSubViewport"))
 
 static func get_instance() -> GameManager:
 	return _instance
@@ -37,3 +39,9 @@ func _initialize_world_render_handler():
 	_world_render_handler.initialize(self)
 func _initialize_ui_render_handler():
 	_ui_render_handler.initialize(self)
+
+static func get_world_ui_sub_viewport() -> SubViewport:
+	if not _instance.is_node_ready():
+		await _instance.ready
+	
+	return _instance._world_render_handler._world_ui_sub_viewport

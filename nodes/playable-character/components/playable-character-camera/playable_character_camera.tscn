@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhal1wbe247ok"]
+[gd_scene load_steps=11 format=3 uid="uid://dhal1wbe247ok"]
 
 [ext_resource type="Script" uid="uid://bdxi51g8owl6j" path="res://addons/third-person-camera/third_person_camera/CameraShakePreset.gd" id="2_ib3bf"]
 [ext_resource type="Script" uid="uid://c7wajn8apkxug" path="res://nodes/playable-character/components/playable-character-camera/playable_character_camera.gd" id="2_x870f"]
 [ext_resource type="Resource" uid="uid://8wq0le7mywh4" path="res://addons/third-person-camera/third_person_camera/camera-shake-presets/DefaultCameraShakePreset.tres" id="3_v1vh1"]
 [ext_resource type="Resource" uid="uid://cn4iinuc23o7j" path="res://addons/third-person-camera/third_person_camera/camera-shake-presets/GentleSway.tres" id="4_j0vu2"]
 [ext_resource type="Script" uid="uid://c7xing6r7bnef" path="res://addons/third-person-camera/third_person_camera/CameraShake.gd" id="5_cb6ec"]
+[ext_resource type="Script" uid="uid://cr8pb3p5xkx75" path="res://nodes/render/world-ui-object-interface/world_ui_object_interface.gd" id="6_38y35"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_84uqy"]
 margin = 1.135
@@ -32,6 +33,7 @@ mouse_y_sensitiveness = 3.0
 max_zoom = 2.0
 min_zoom = 10.0
 shake_presets = Array[ExtResource("2_ib3bf")]([ExtResource("3_v1vh1"), ExtResource("4_j0vu2")])
+cull_mask = 1
 
 [node name="RotationPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
@@ -54,14 +56,31 @@ mesh = SubResource("SphereMesh_ag7lb")
 
 [node name="CameraShaker" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("5_cb6ec")
-camera = NodePath("../Camera")
+camera = NodePath("../WorldCamera")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="WorldCamera" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, -2.95792e-15, 8.12683e-15, 0, 0.939693, 0.34202, -8.64839e-15, -0.34202, 0.939693, 4.06341e-14, 2.9317, 4.25384)
 top_level = true
+cull_mask = 1
 current = true
 
-[node name="CameraDebug" type="MeshInstance3D" parent="Camera"]
+[node name="CameraDebug" type="MeshInstance3D" parent="WorldCamera"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.570638)
 visible = false
 mesh = SubResource("CylinderMesh_ybkhn")
+
+[node name="WorldUICamera" type="Camera3D" parent="WorldCamera"]
+unique_name_in_owner = true
+transform = Transform3D(1, -2.95792e-15, 8.12683e-15, 0, 0.939693, 0.34202, -8.64839e-15, -0.34202, 0.939693, 4.06341e-14, 2.9317, 4.25384)
+top_level = true
+cull_mask = 2
+
+[node name="CameraDebug" type="MeshInstance3D" parent="WorldCamera/WorldUICamera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.570638)
+visible = false
+mesh = SubResource("CylinderMesh_ybkhn")
+
+[node name="WorldUIObjectInterface" type="Node" parent="WorldCamera/WorldUICamera"]
+script = ExtResource("6_38y35")
+metadata/_custom_type_script = "uid://cr8pb3p5xkx75"

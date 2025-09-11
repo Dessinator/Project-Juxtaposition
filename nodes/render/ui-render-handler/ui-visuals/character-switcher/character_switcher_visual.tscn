@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cad4mvjfw42dv"]
+[gd_scene load_steps=21 format=3 uid="uid://cad4mvjfw42dv"]
 
 [ext_resource type="Script" uid="uid://646bbatk5cun" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.gd" id="1_p0fui"]
-[ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/character-status-bar/character_status_bar.tscn" id="2_ygow3"]
+[ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="2_ygow3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8jt8"]
 bg_color = Color(0, 0, 0, 0.196078)
@@ -17,21 +17,33 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_ygow3")
 width = 1
 
-[sub_resource type="Gradient" id="Gradient_4qldq"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 1, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jdj2u"]
-gradient = SubResource("Gradient_4qldq")
-width = 1
-
 [sub_resource type="Gradient" id="Gradient_4c5i4"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 0, 1)
+colors = PackedColorArray(1, 0, 0.709804, 0.596078)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4qldq"]
 gradient = SubResource("Gradient_4c5i4")
-width = 1
+
+[sub_resource type="Gradient" id="Gradient_jdj2u"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81yij"]
+gradient = SubResource("Gradient_jdj2u")
+
+[sub_resource type="Gradient" id="Gradient_4qldq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.0077635, 0, 0.596078)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jdj2u"]
+gradient = SubResource("Gradient_4qldq")
+
+[sub_resource type="Gradient" id="Gradient_23a33"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xfnta"]
+gradient = SubResource("Gradient_23a33")
 
 [sub_resource type="Gradient" id="Gradient_8n8rt"]
 offsets = PackedFloat32Array(0)
@@ -168,7 +180,8 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 _show_status_label = false
 _under = SubResource("GradientTexture1D_4c5i4")
-_progress = SubResource("GradientTexture1D_jdj2u")
+_ghost_progress = SubResource("GradientTexture1D_4qldq")
+_true_progress = SubResource("GradientTexture1D_81yij")
 
 [node name="CharacterStaminaBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
 unique_name_in_owner = true
@@ -176,7 +189,8 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 _show_status_label = false
 _under = SubResource("GradientTexture1D_4c5i4")
-_progress = SubResource("GradientTexture1D_4qldq")
+_ghost_progress = SubResource("GradientTexture1D_jdj2u")
+_true_progress = SubResource("GradientTexture1D_xfnta")
 
 [node name="KeyHint" type="Control" parent="CharacterSwitcherVisualContainer"]
 layout_mode = 2

@@ -25,6 +25,14 @@ SceneLoader="*res://addons/maaacks_game_template/base/scenes/autoloads/scene_loa
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_music_controller.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
+[display]
+
+window/layer_2="WorldUILayer"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/b3rdpscam/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/behaviour_toolkit/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/third-person-camera/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
@@ -151,6 +159,35 @@ switch_character={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"location":0,"echo":false,"script":null)
 ]
 }
+debug_damage_player={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
+]
+}
+debug_heal_player={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
+]
+}
+debug_crit_damage_player={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
+]
+}
+stay_camera={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+track_next_target={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+track_previous_target={
+"deadzone": 0.2,
+"events": []
+}
 
 [internationalization]
 
@@ -158,6 +195,10 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 
 [layer_names]
 
+2d_render/layer_1="WorldLayer"
+3d_render/layer_1="WorldLayer"
+2d_render/layer_2="WorldUILayer"
+3d_render/layer_2="WorldUILayer"
 3d_physics/layer_1="StaticEnvironmentLayer"
 3d_physics/layer_2="DynamicEnvironmentLayer"
 3d_physics/layer_3="PlayerLayer"
@@ -165,6 +206,8 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 3d_physics/layer_5="HurtboxLayer"
 3d_physics/layer_6="EntityLayer"
 3d_physics/layer_7="EntityRangeLayer"
+3d_physics/layer_8="PlayerRangeLayer"
+3d_physics/layer_9="TrackableTargetLayer"
 
 [maaacks_game_template]
 

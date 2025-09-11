@@ -68,5 +68,11 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151704, 0.3)
 mesh = SubResource("BoxMesh_eprog")
 
-[node name="StateMachine" parent="." index="9"]
+[node name="EntityFloatingHealthBar" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="TargetedIndicator" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="StateMachine" parent="." index="12"]
 blackboard = SubResource("Resource_n0e3f")

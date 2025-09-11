@@ -12,6 +12,11 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_qr26c")
 
+[node name="WorldUICameraTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="PlayableCharacterGameplayUIMarginContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1

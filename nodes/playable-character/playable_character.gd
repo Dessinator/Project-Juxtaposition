@@ -14,9 +14,15 @@ var _can_switch_characters: bool = true
 var _character_attack_state_machine: CharacterAttackStateMachine
 var _stamina_regeneration_timer: float = STAMINA_REGENERATION_INTERVAL
 
+var _direction: Vector3
+var _relative_direction: Vector3
+
 @onready var _character_switch_cooldown_timer: Timer = %CharacterSwitchCooldownTimer
+
+@onready var _playable_character_combat_manager: PlayableCharacterCombatManager = %PlayableCharacterCombatManager
 @onready var _playable_character_visual_controller: PlayableCharacterVisualController = %PlayableCharacterVisualController
 @onready var _playable_character_character_container: PlayableCharacterCharacterContainer = %PlayableCharacterCharacterContainer
+@onready var _playable_character_camera: PlayableCharacterCamera = %PlayableCharacterCamera
 @onready var _playable_character_stamina_meter: PlayableCharacterStaminaMeter = %PlayableCharacterStaminaMeter
 
 @onready var _gameplay_finite_state_machine: FiniteStateMachine = %GameplayFiniteStateMachine
@@ -32,19 +38,33 @@ func initialize(game_manager: GameManager) -> void:
 	var current_character = _playable_character_character_container.get_current_character()
 	_playable_character_stamina_meter.set_character_status(current_character.get_character_status())
 	
+	_playable_character_combat_manager.initialize(self)
 	_playable_character_visual_controller.initialize(self)
 	#_setup_character_attack_state_machine(current_character)
 	_start_state_machines()
+	%PlayableCharacterStatusModifier.initialize()
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
 	_gameplay_blackboard.set_value("auto_jog", _handle_toggle_auto_jog(_gameplay_blackboard.get_value("auto_jog")))
-	_gameplay_blackboard.set_value("is_targeting", _handling_toggle_targeting(_gameplay_blackboard.get_value("is_targeting")))
-	_animation_blackboard.set_value("is_targeting", _handling_toggle_targeting(_animation_blackboard.get_value("is_targeting")))
 	
 	_handle_stamina_regeneration(_gameplay_blackboard.get_value("regenerate_stamina"), delta)
+	
+	DebugDraw3D.draw_arrow(global_position, global_position + get_front_direction(), Color.RED)
+	DebugDraw3D.draw_arrow(global_position, global_position + get_back_direction(), Color.BLUE)
+	DebugDraw3D.draw_arrow(global_position, global_position + get_right_direction(), Color.YELLOW)
+	DebugDraw3D.draw_arrow(global_position, global_position + get_left_direction(), Color.GREEN)
+	
+	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")
+	_direction = Vector3(input_direction.x, 0, input_direction.y).rotated(Vector3.UP, _playable_character_camera.get_horizontal_rotation()).normalized()
+	var dot = _direction.dot(get_front_direction())
+	var cross = _direction.cross(get_front_direction())
+	_relative_direction = Vector3(cross.y, 0, dot).normalized()
+	
+	DebugDraw3D.draw_arrow(global_position, global_position + (_direction * 1.5), Color.BLACK, 0.2)
+	DebugDraw2D.set_text("relative_direction", str(_relative_direction))
 
 func can_switch_characters() -> bool:
 	return _can_switch_characters and (not _character_switch_cooling_down)
@@ -59,6 +79,11 @@ func get_playable_character_visual_controller() -> PlayableCharacterVisualContro
 	return _playable_character_visual_controller
 func get_playable_character_character_container() -> PlayableCharacterCharacterContainer:
 	return _playable_character_character_container
+func get_playable_character_camera() -> PlayableCharacterCamera:
+	return _playable_character_camera
+
+func get_relative_direction() -> Vector3:
+	return _relative_direction
 
 func _on_current_character_changed(old: Character, new: Character):
 	#_update_character_attack_state_machine(new)
@@ -90,11 +115,6 @@ func _handle_toggle_auto_jog(auto_jog: bool) -> bool:
 		return auto_jog
 	
 	return not auto_jog
-func _handling_toggle_targeting(is_targeting: bool) -> bool:
-	if not Input.is_action_just_pressed("target"):
-		return is_targeting
-	
-	return not is_targeting
 
 func _handle_stamina_regeneration(regenerate_stamina: bool, delta: float):
 	var current_character = _playable_character_character_container.get_current_character()
@@ -131,3 +151,12 @@ func _update_stamina_meter_character_status():
 
 func _on_died():
 	pass
+
+func get_front_direction() -> Vector3:
+	return Vector3.FORWARD.rotated(Vector3.UP, _playable_character_character_container.global_rotation.y + PI).normalized()
+func get_back_direction() -> Vector3:
+	return -get_front_direction().normalized()
+func get_left_direction() :
+	return get_front_direction().rotated(Vector3.UP, PI/2).normalized()
+func get_right_direction() :
+	return get_front_direction().rotated(Vector3.UP, -PI/2).normalized()

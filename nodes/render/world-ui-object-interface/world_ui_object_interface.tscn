@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1cy363mspww"]
+
+[ext_resource type="Script" uid="uid://cr8pb3p5xkx75" path="res://nodes/render/world-ui-object-interface/world_ui_object_interface.gd" id="1_l22cq"]
+
+[node name="WorldUIObjectInterface" type="Node"]
+script = ExtResource("1_l22cq")

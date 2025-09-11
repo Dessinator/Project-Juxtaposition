@@ -4,8 +4,8 @@
 
 [sub_resource type="Curve" id="Curve_ue2uy"]
 _limits = [100.0, 9999.0, 0.0, 9999.0]
-_data = [Vector2(0, 100), 0.0, 1.386, 0, 0, Vector2(9999, 9999), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 100), 0.0, 1.5, 0, 1, Vector2(100, 250), 1.27249, 1.27249, 0, 0, Vector2(9999, 9999), 0.0, 1.386, 0, 0]
+point_count = 3
 
 [resource]
 resource_name = "MAX HPS"

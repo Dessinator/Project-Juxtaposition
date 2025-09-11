@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=3 uid="uid://d1vo24vn8cvlt"]
+
+[ext_resource type="Script" uid="uid://dp1yakagm5381" path="res://nodes/playable-character/components/playable-character-combat-manager/playable_character_combat_manager.gd" id="1_f0sem"]
+[ext_resource type="Script" uid="uid://jjoacie7bvcr" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_owx4n"]
+[ext_resource type="Script" uid="uid://cagh5dfpu2nof" path="res://addons/beehave/nodes/composites/selector.gd" id="3_a8avk"]
+[ext_resource type="Script" uid="uid://c5se8vwt80abr" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="4_4dwek"]
+[ext_resource type="Script" uid="uid://dt08goxwqu6hc" path="res://addons/beehave/nodes/decorators/inverter.gd" id="5_owii3"]
+[ext_resource type="Script" uid="uid://djxfh75i6mrd7" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/is_staying.gd" id="6_owii3"]
+[ext_resource type="Script" uid="uid://cr3jef5g4whug" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/are_targets_in_range.gd" id="7_o73ps"]
+[ext_resource type="Script" uid="uid://btvkind3l3kls" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/follow_player.gd" id="8_o73ps"]
+[ext_resource type="Script" uid="uid://b1kc66qoqaq50" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/is_target_tracked.gd" id="9_hkuqr"]
+[ext_resource type="Script" uid="uid://dci6gyicpalev" path="res://addons/beehave/blackboard.gd" id="9_si2tm"]
+[ext_resource type="Script" uid="uid://bf3bc8usrxefd" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/track_player.gd" id="9_toiou"]
+[ext_resource type="Script" uid="uid://dq1ovn4mmpro7" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/position_between_all_targets.gd" id="10_2pst8"]
+[ext_resource type="Script" uid="uid://8qnq4fabhsby" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/zoom_out.gd" id="10_fhfsd"]
+[ext_resource type="Script" uid="uid://6xcxl15a5nba" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/position_between_tracked_target.gd" id="13_34nt3"]
+[ext_resource type="Script" uid="uid://bo11okhd0d05j" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/track_target.gd" id="14_34nt3"]
+
+[node name="PlayableCharacterCombatManager" type="Node"]
+script = ExtResource("1_f0sem")
+metadata/_custom_type_script = "uid://dp1yakagm5381"
+
+[node name="CameraBehaviourTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+unique_name_in_owner = true
+script = ExtResource("2_owx4n")
+enabled = false
+actor_node_path = NodePath("..")
+blackboard = NodePath("../CameraBehaviourTreeBlackboard")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://jjoacie7bvcr"
+
+[node name="SelectorComposite" type="Node" parent="CameraBehaviourTree"]
+script = ExtResource("3_a8avk")
+metadata/_custom_type_script = "uid://cagh5dfpu2nof"
+
+[node name="FollowPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+script = ExtResource("4_4dwek")
+metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer"]
+script = ExtResource("5_owii3")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer/IsNotStaying"]
+script = ExtResource("6_owii3")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="AreTargetsNotInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer"]
+script = ExtResource("5_owii3")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer/AreTargetsNotInRange"]
+script = ExtResource("7_o73ps")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="FollowPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer"]
+script = ExtResource("8_o73ps")
+_time = 0.5
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="StayTrackPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+script = ExtResource("4_4dwek")
+metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/StayTrackPlayer"]
+script = ExtResource("6_owii3")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="TrackPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite/StayTrackPlayer"]
+script = ExtResource("9_toiou")
+_track_speed = 5.0
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="PositionBetweenTargets" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+script = ExtResource("4_4dwek")
+metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+script = ExtResource("5_owii3")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets/IsNotStaying"]
+script = ExtResource("6_owii3")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+script = ExtResource("7_o73ps")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsNoTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+script = ExtResource("5_owii3")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets/IsNoTargetTracked"]
+script = ExtResource("9_hkuqr")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="ZoomOut" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+script = ExtResource("10_fhfsd")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="PositionBetweenAllTargets" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+script = ExtResource("10_2pst8")
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="PositionBetweenTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+script = ExtResource("4_4dwek")
+metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+script = ExtResource("5_owii3")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked/IsNotStaying"]
+script = ExtResource("6_owii3")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+script = ExtResource("7_o73ps")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="IsTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+script = ExtResource("9_hkuqr")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
+[node name="PositionBetweenTrackedTarget" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+script = ExtResource("13_34nt3")
+_time = 1.5
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="TrackTarget" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+script = ExtResource("14_34nt3")
+_track_speed = 5.0
+metadata/_custom_type_script = "uid://8pfgt0txo3gg"
+
+[node name="CameraBehaviourTreeBlackboard" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_si2tm")
+metadata/_custom_type_script = "uid://dci6gyicpalev"

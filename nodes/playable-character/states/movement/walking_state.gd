@@ -1,6 +1,9 @@
 @tool
 extends PlayableCharacterGameplayState
 
+const IS_TARGETING: String = "is_targeting"
+const TRACKED_TARGET_POSITION: String = "tracked_target_position"
+
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
 
@@ -33,7 +36,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 		var velocity_normalized = velocity.normalized()
 		_playable_character_character_container.rotation.y = atan2(velocity_normalized.x, velocity_normalized.z)
 	
-	_handle_targeting(blackboard.get_value("is_targeting"))
+	_handle_targeting(actor, blackboard)
 
 # Executes before the state is exited.
 func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
@@ -50,16 +53,20 @@ func _handle_walking(current_velocity: Vector3, direction: Vector3, speed: float
 	var velocity = current_velocity.move_toward(direction * speed, _acceleration * delta)
 	return velocity
 
-func _handle_targeting(is_targeting: bool):
+func _handle_targeting(actor: PlayableCharacter, blackboard: BTBlackboard):
 	var character_animation_tree_expression_base = _character.get_node("%CharacterAnimationTreeExpressionBase")
 	
-	if not is_targeting:
+	if not blackboard.get_value(IS_TARGETING):
 		character_animation_tree_expression_base.travel_to_non_targeting_movement()
 		return
 	
+	var tracked_target_position = blackboard.get_value(TRACKED_TARGET_POSITION)
+	if tracked_target_position == null:
+		return
 	character_animation_tree_expression_base.travel_to_targeting_movement()
-	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
-	_playable_character_character_container.rotation.y = horizontal_camera_rotation + PI
+	var direction = tracked_target_position - actor.global_position
+	var rotation = atan2(direction.x, direction.z)
+	_playable_character_character_container.rotation.y = rotation
 
 func _handle_stamina_regeneration_delay(blackboard: BTBlackboard):
 	_stamina_regeneration_delay_timer.timeout.connect(_on_stamina_regeneration_delay_timer_timeout.bind(blackboard))
