@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://djxf8p7k2ll00"]
 
-[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render.gdshader" id="1_08m7t"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="1_08m7t"]
 [ext_resource type="Texture2D" uid="uid://cn57l1m38jcs8" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_d717b"]
 [ext_resource type="Texture2D" uid="uid://244bq3ey4m4a" path="res://addons/kenney_prototype_textures/light/texture_13.png" id="3_rb6f0"]
 [ext_resource type="PackedScene" uid="uid://dxe5jhys8u15c" path="res://nodes/playable-character/prefabs/player_playable_character.tscn" id="4_rb6f0"]

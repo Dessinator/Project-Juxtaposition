@@ -22,11 +22,14 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_xxgub"]
+[sub_resource type="Resource" id="Resource_wng8g"]
 resource_local_to_scene = true
 script = ExtResource("2_77ffc")
 content = {
 "auto_jog": false,
+"holding_heavy_attack_input": false,
+"holding_light_attack_input": false,
+"is_juxtaposed": false,
 "is_targeting": false,
 "regenerate_stamina": false
 }
@@ -48,8 +51,14 @@ transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 3, 0)
 [node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
 transform = Transform3D(1, -2.95792e-15, 8.12683e-15, 0, 0.939693, 0.34202, -8.64839e-15, -0.34202, 0.939693, 4.06341e-14, 2.9317, 4.25384)
 
-[node name="GameplayFiniteStateMachine" parent="." index="13"]
-blackboard = SubResource("Resource_xxgub")
+[node name="LightChargeThresholdTimer" parent="." index="14"]
+wait_time = 0.2
+
+[node name="HeavyChargeThresholdTimer" parent="." index="15"]
+wait_time = 0.2
+
+[node name="GameplayFiniteStateMachine" parent="." index="18"]
+blackboard = SubResource("Resource_wng8g")
 
 [node name="JumpState" parent="GameplayFiniteStateMachine" index="5"]
 _can_switch_characters = false
@@ -59,6 +68,12 @@ _can_switch_characters = false
 
 [node name="LandingState" parent="GameplayFiniteStateMachine" index="7"]
 _can_switch_characters = false
+
+[node name="GroundedLightChargeAttackState" parent="GameplayFiniteStateMachine" index="11"]
+_can_switch_characters = true
+
+[node name="GroundedHeavyChargeAttackState" parent="GameplayFiniteStateMachine" index="13"]
+_can_switch_characters = true
 
 [node name="WallrunState" parent="GameplayFiniteStateMachine" index="20"]
 _can_switch_characters = false
@@ -75,7 +90,10 @@ _can_switch_characters = false
 [node name="WallJumpState" parent="GameplayFiniteStateMachine" index="24"]
 _can_switch_characters = false
 
-[node name="AnimationFiniteStateMachine" parent="." index="14"]
+[node name="ReplaceState" parent="GameplayFiniteStateMachine" index="28"]
+_can_switch_characters = true
+
+[node name="AnimationFiniteStateMachine" parent="." index="19"]
 verbose = false
 
 [editable path="PlayableCharacterCamera"]

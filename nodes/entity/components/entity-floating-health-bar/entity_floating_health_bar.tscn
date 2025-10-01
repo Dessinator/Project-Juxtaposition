@@ -29,6 +29,7 @@ colors = PackedColorArray(1, 0, 0.63723, 1)
 gradient = SubResource("Gradient_0hmms")
 
 [node name="EntityFloatingHealthBar" type="Node3D"]
+visible = false
 script = ExtResource("1_ne7yr")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

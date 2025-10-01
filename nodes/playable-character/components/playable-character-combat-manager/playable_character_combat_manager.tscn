@@ -20,6 +20,9 @@
 script = ExtResource("1_f0sem")
 metadata/_custom_type_script = "uid://dp1yakagm5381"
 
+[node name="DamageInterruptTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [node name="CameraBehaviourTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_owx4n")

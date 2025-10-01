@@ -76,3 +76,7 @@ func travel_to_landing():
 func travel_to_mantle():
 	var state_machine = _animation_tree["parameters/Passive/playback"]
 	state_machine.travel("mantle")
+
+func travel_to_death():
+	var state_machine = _animation_tree["parameters/Passive/playback"]
+	state_machine.travel("die")

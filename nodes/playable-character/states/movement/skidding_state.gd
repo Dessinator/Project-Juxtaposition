@@ -38,15 +38,15 @@ func _handle_skidding(current_velocity: Vector3) -> Vector3:
 func _handle_transition_events(actor: Node, blackboard: BTBlackboard):
 	if Input.is_action_pressed("move"):
 		if Input.is_action_pressed("sprint"):
-			get_parent().fire_event("on_start_sprinting")
+			get_parent().fire_event(ON_START_SPRINTING)
 			return
 
 		blackboard.remove_value("is_skidding_allowed_while_running")
-		get_parent().fire_event("on_start_walking")
+		get_parent().fire_event(ON_START_WALKING)
 		return 
 	
 	blackboard.remove_value("is_skidding_allowed_while_running")
-	get_parent().fire_event("on_start_idling")
+	get_parent().fire_event(ON_START_IDLING)
 	return
 
 func _on_skid_duration_timer_timeout():

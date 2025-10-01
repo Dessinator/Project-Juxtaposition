@@ -30,6 +30,7 @@ const EMPTY_CHARACTER_NAME_PLACEHOLDER: String = "Character Name"
 @onready var _character_name_label: Label = %CharacterNameLabel
 @onready var _character_level_label: Label = %CharacterLevelLabel
 @onready var _character_health_bar: StatusBar = %CharacterHealthBar
+@onready var _character_juxtometer_bar: StatusBar = %CharacterJuxtometerBar
 @onready var _character_status_effect_visual_container: HBoxContainer = %CharacterStatusEffectVisualContainer
 
 func _ready() -> void:
@@ -44,3 +45,7 @@ func switch_off() -> void:
 func update_health_bar(current_health: int, max_health: int):
 	%CharacterHealthBar.set_max_value(max_health)
 	%CharacterHealthBar.set_current_value(current_health)
+
+func update_juxtometer_bar(current_juxtometer_reading: float):
+	%CharacterJuxtometerBar.set_max_value(CharacterStatus.JUXTOMETER_MAX_READING)
+	%CharacterJuxtometerBar.set_current_value(current_juxtometer_reading)

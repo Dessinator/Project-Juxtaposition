@@ -4,12 +4,8 @@ extends PlayableCharacterGameplayState
 @export var _gravity: float = 9.8
 @export var _acceleration: int = 40
 
-@onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
-
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)
-	_stamina_regeneration_delay_timer.stop()
-	blackboard.set_value("regenerate_stamina", false)
 
 func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter

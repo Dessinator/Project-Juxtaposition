@@ -1,5 +1,6 @@
 class_name PlayableCharacterVisualController
 extends Node
+
 const SWITCH_CHARACTER_VISUALS_DELAY = 0.3
 const PLAYABLE_CHARACTER_GAMEPLAY_UI_SCENE = preload("res://nodes/playable-character/components/playable-character-gameplay-ui/playable_character_gameplay_ui.tscn")
 
@@ -7,15 +8,25 @@ const DAMAGE_CRIT_STATUS_NUMBER_SCENE = preload("res://nodes/status-number/prefa
 const DAMAGE_STATUS_NUMBER_SCENE = preload("res://nodes/status-number/prefabs/damage_status_number.tscn")
 const HEAL_STATUS_NUMBER_SCENE = preload("res://nodes/status-number/prefabs/heal_status_number.tscn")
 
+const PLACEHOLDER_FLASH_POSITION: Vector3 = Vector3(0, 1.5, 0)
+const AVOID_FLASH_PARTICLE_SCENE = preload("res://nodes/particles/combat/warning-flashes/avoid_flash_particle.tscn")
+const DODGE_FLASH_PARTICLE_SCENE = preload("res://nodes/particles/combat/warning-flashes/dodge_flash_particle.tscn")
+const PARRY_FLASH_PARTICLE_SCENE = preload("res://nodes/particles/combat/warning-flashes/parry_flash_particle.tscn")
+
+@onready var _playable_character_combat_manager: PlayableCharacterCombatManager = %PlayableCharacterCombatManager
+@onready var _character_replace_immunity_timer: Timer = %CharacterReplaceImmunityTimer
+
 var _playable_character_gameplay_ui_instance: PlayableCharacterGameplayUI
 var _playable_character: PlayableCharacter
 var _playable_character_character_container: PlayableCharacterCharacterContainer
 
+var _internal_immunity_flickering_time: int
+
+@export var _immunity_flickering_time: int
+
 func _process(delta: float) -> void:
 	_handle_update_character_switcher_cooldown_progress()
-	#_handle_update_character_status_health_bar()
-	#_handle_update_character_switcher_health_bar()
-	#_handle_update_character_switcher_stamina_bar()
+	_handle_replacement_immunity_flickering()
 
 func initialize(playable_character: PlayableCharacter) -> void:
 	_playable_character = playable_character
@@ -23,9 +34,11 @@ func initialize(playable_character: PlayableCharacter) -> void:
 	_playable_character_character_container.current_character_changed.connect(_on_current_character_changed)
 	
 	var current_character = _playable_character_character_container.get_current_character()
+	var status = current_character.get_character_status()
 	
-	current_character.get_character_status().healed.connect(_on_current_character_healed)
-	current_character.get_character_status().damaged.connect(_on_current_character_damaged)
+	status.healed.connect(_on_current_character_healed)
+	status.damaged.connect(_on_current_character_damaged)
+	status.about_to_be_damaged.connect(_on_current_character_about_to_be_damaged.bind(current_character))
 	
 	_setup_character_status_signals()
 
@@ -55,12 +68,15 @@ func _setup_character_status_signals():
 		character_status.max_health_modified.connect(_on_character_max_health_modified.bind(character))
 		character_status.stamina_modified.connect(_on_character_stamina_modified.bind(character))
 		character_status.max_stamina_modified.connect(_on_character_max_stamina_modified.bind(character))
+		character_status.juxtometer_modified.connect(_on_current_character_juxtometer_modified.bind(character))
 
 func _update_all_character_visuals():
 	for character in _playable_character_character_container.get_characters():
 		_handle_update_character_status_health_bar(character)
+		_handle_update_character_status_juxtometer_bar(character)
 		_handle_update_character_switcher_health_bar(character)
 		_handle_update_character_switcher_stamina_bar(character)
+		_handle_update_character_switcher_juxtometer_bar(character)
 
 func _update_character_switcher_visuals() -> void:
 	var character_container = _playable_character.get_playable_character_character_container()
@@ -97,8 +113,10 @@ func _on_current_character_changed(old: Character, new: Character):
 	var new_character_status = new.get_character_status()
 	
 	old_character_status.healed.disconnect(_on_current_character_healed)
+	old_character_status.about_to_be_damaged.disconnect(_on_current_character_about_to_be_damaged)
 	old_character_status.damaged.disconnect(_on_current_character_damaged)
 	new_character_status.healed.connect(_on_current_character_healed)
+	new_character_status.about_to_be_damaged.connect(_on_current_character_about_to_be_damaged.bind(new))
 	new_character_status.damaged.connect(_on_current_character_damaged)
 
 func _on_character_max_health_modified(_old: int, _new: int, character: Character):
@@ -111,6 +129,9 @@ func _on_character_max_stamina_modified(_old: int, _new: int, character: Charact
 	_handle_update_character_switcher_stamina_bar(character)
 func _on_character_stamina_modified(_old: int, _new: int, character: Character):
 	_handle_update_character_switcher_stamina_bar(character)
+func _on_current_character_juxtometer_modified(old: float, new: float, character: Character):
+	_handle_update_character_status_juxtometer_bar(character)
+	_handle_update_character_switcher_juxtometer_bar(character)
 
 func _switch_active_character_visuals(old_character: Character, new_character: Character):
 	if old_character:
@@ -158,6 +179,15 @@ func _handle_update_character_status_health_bar(character: Character):
 	var max_health = character_status.get_max_health()
 	
 	character_status_visual.update_health_bar(current_health, max_health)
+func _handle_update_character_status_juxtometer_bar(character: Character):
+	var metadata = character.get_character_metadata()
+	var character_name = metadata.get_character_name()
+	var character_status_visual = _playable_character_gameplay_ui_instance.get_character_status_visual(character_name)
+	
+	var character_status = character.get_character_status()
+	var current_juxtometer_reading = character_status.get_juxtometer_reading()
+	character_status_visual.update_juxtometer_bar(current_juxtometer_reading)
+
 func _handle_update_character_switcher_health_bar(character: Character):
 	var metadata = character.get_character_metadata()
 	var character_name = metadata.get_character_name()
@@ -178,15 +208,30 @@ func _handle_update_character_switcher_stamina_bar(character: Character):
 	var max_stamina = character_status.get_max_stamina()
 	
 	character_switcher_visual.update_stamina_bar(current_stamina, max_stamina)
+func _handle_update_character_switcher_juxtometer_bar(character: Character):
+	var metadata = character.get_character_metadata()
+	var character_name = metadata.get_character_name()
+	var character_switcher_visual = _playable_character_gameplay_ui_instance.get_character_switcher_visual(character_name)
+	
+	var character_status = character.get_character_status()
+	var current_juxtometer_reading = character_status.get_juxtometer_reading()
+	character_switcher_visual.update_juxtometer_bar(current_juxtometer_reading)
 
-func _on_current_character_damaged(amount: int, crit: bool, show_status_number: bool):
-	if not show_status_number:
+func _handle_replacement_immunity_flickering():
+	if not _character_replace_immunity_timer.is_stopped():
+		_internal_immunity_flickering_time += 1
+		if _internal_immunity_flickering_time >= _immunity_flickering_time:
+			_internal_immunity_flickering_time = 0
+			_playable_character_character_container.visible = !_playable_character_character_container.visible
+
+func _on_current_character_damaged(damage_instance: DamageInstance):
+	if not damage_instance.spawn_damage_number:
 		return
-	_handle_damage_status_number_instantiation(amount, crit)
-func _on_current_character_healed(amount: int, show_status_number: bool):
-	if not show_status_number:
+	_handle_damage_status_number_instantiation(damage_instance.base_damage, damage_instance.is_crit)
+func _on_current_character_healed(heal_instance: HealInstance):
+	if not heal_instance.spawn_heal_number:
 		return
-	_handle_heal_status_number_instantiation(amount)
+	_handle_heal_status_number_instantiation(heal_instance.heal)
 func _handle_damage_status_number_instantiation(amount: int, crit: bool):
 	if crit:
 		var instance = DAMAGE_CRIT_STATUS_NUMBER_SCENE.instantiate()
@@ -202,5 +247,46 @@ func _handle_heal_status_number_instantiation(amount: int):
 	instance.value = amount
 	_playable_character.add_child(instance)
 
+func _on_current_character_about_to_be_damaged(damage_instance: DamageInstance, interrupt_callback, character: Character):
+	var character_status = character.get_character_status()
+	var can_parry = character_status.get_stamina() - _playable_character_combat_manager.get_parry_stamina_cost() >= 0
+	var can_dodge = character_status.get_stamina() - _playable_character_combat_manager.get_dodge_stamina_cost() >= 0
+	
+	if (not can_parry) and (not can_dodge):
+		var avoid_flash_instance = AVOID_FLASH_PARTICLE_SCENE.instantiate()
+		damage_instance.source.add_child(avoid_flash_instance)
+		avoid_flash_instance.position = PLACEHOLDER_FLASH_POSITION
+		return
+	if (not damage_instance.can_parry) and (not damage_instance.can_dodge):
+		var avoid_flash_instance = AVOID_FLASH_PARTICLE_SCENE.instantiate()
+		damage_instance.source.add_child(avoid_flash_instance)
+		avoid_flash_instance.position = PLACEHOLDER_FLASH_POSITION
+		return
+	
+	if damage_instance.can_dodge and (not damage_instance.can_parry):
+		if not can_dodge:
+			var avoid_flash_instance = AVOID_FLASH_PARTICLE_SCENE.instantiate()
+			damage_instance.source.add_child(avoid_flash_instance)
+			avoid_flash_instance.position = PLACEHOLDER_FLASH_POSITION
+			return
+		var dodge_flash_instance = DODGE_FLASH_PARTICLE_SCENE.instantiate()
+		damage_instance.source.add_child(dodge_flash_instance)
+		dodge_flash_instance.position = PLACEHOLDER_FLASH_POSITION
+		return
+	if damage_instance.can_parry:
+		if not can_parry:
+			var avoid_flash_instance = AVOID_FLASH_PARTICLE_SCENE.instantiate()
+			damage_instance.source.add_child(avoid_flash_instance)
+			avoid_flash_instance.position = PLACEHOLDER_FLASH_POSITION
+			return
+		var parry_flash_instance = PARRY_FLASH_PARTICLE_SCENE.instantiate()
+		damage_instance.source.add_child(parry_flash_instance)
+		parry_flash_instance.position = PLACEHOLDER_FLASH_POSITION
+
 func _dispose_of_current_playable_character_gameplay_ui_instance() -> void:
 	_playable_character_gameplay_ui_instance.queue_free()
+
+func _on_playable_character_combat_manager_start_targeting() -> void:
+	GameManager.get_instance().get_ui_render_handler().get_cinematic_bars().activate()
+func _on_playable_character_combat_manager_stop_targeting() -> void:
+	GameManager.get_instance().get_ui_render_handler().get_cinematic_bars().deactivate()

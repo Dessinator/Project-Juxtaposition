@@ -17,7 +17,7 @@ func initialize():
 func _on_current_character_changed(_old, _new):
 	_current_character_status = _new.get_character_status()
 
-func _input(event: InputEvent) -> void:
+func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_damage_player"):
 		_damage(_current_character_status)
 	if event.is_action_pressed("debug_crit_damage_player"):
@@ -26,11 +26,19 @@ func _input(event: InputEvent) -> void:
 		_heal(_current_character_status)
 
 func _damage(status: CharacterStatus):
-	status.damage(_damage_amount, false, 0, true)
+	var damage_instance = DamageInstance.new(self, _damage_amount)
+	damage_instance.is_crit = false
+	damage_instance.spawn_damage_number = true
+	status.damage(damage_instance)
 
 func _damage_crit(status: CharacterStatus):
-	status.damage(_damage_amount, true, 0, true)
+	var damage_instance = DamageInstance.new(self, _damage_amount)
+	damage_instance.is_crit = true
+	damage_instance.spawn_damage_number = true
+	status.damage(damage_instance)
 
 func _heal(status: CharacterStatus):
-	status.heal(_heal_amount, true)
+	var heal_instance = HealInstance.new(self, _heal_amount)
+	heal_instance.spawn_heal_number = true
+	status.heal(heal_instance)
 	

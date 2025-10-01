@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cad4mvjfw42dv"]
+[gd_scene load_steps=27 format=3 uid="uid://cad4mvjfw42dv"]
 
 [ext_resource type="Script" uid="uid://646bbatk5cun" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.gd" id="1_p0fui"]
 [ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="2_ygow3"]
@@ -44,6 +44,28 @@ colors = PackedColorArray(1, 1, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xfnta"]
 gradient = SubResource("Gradient_23a33")
+
+[sub_resource type="Gradient" id="Gradient_ra0fy"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.187722, 0.117317, 0.142165, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_87ab6"]
+gradient = SubResource("Gradient_ra0fy")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_hyfwl"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0.937471, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_23a33"]
+gradient = SubResource("Gradient_hyfwl")
+
+[sub_resource type="Gradient" id="Gradient_yfuhx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0.709804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oc1h8"]
+gradient = SubResource("Gradient_yfuhx")
 
 [sub_resource type="Gradient" id="Gradient_8n8rt"]
 offsets = PackedFloat32Array(0)
@@ -149,14 +171,15 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -28.0
+offset_top = -35.0
 offset_right = 163.0
-offset_bottom = 32.0
+offset_bottom = 33.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q8jt8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CharacterSwitcherVisualContainer"]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="CharacterMetadataContainer" type="HBoxContainer" parent="CharacterSwitcherVisualContainer/VBoxContainer"]
 layout_mode = 2
@@ -185,12 +208,23 @@ _true_progress = SubResource("GradientTexture1D_81yij")
 
 [node name="CharacterStaminaBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 _show_status_label = false
 _under = SubResource("GradientTexture1D_4c5i4")
 _ghost_progress = SubResource("GradientTexture1D_jdj2u")
 _true_progress = SubResource("GradientTexture1D_xfnta")
+
+[node name="CharacterJuxtometerBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+_show_status_label = false
+_label = "JUX"
+_suffix = "%"
+_under = SubResource("GradientTexture1D_87ab6")
+_ghost_progress = SubResource("GradientTexture1D_23a33")
+_true_progress = SubResource("GradientTexture1D_oc1h8")
 
 [node name="KeyHint" type="Control" parent="CharacterSwitcherVisualContainer"]
 layout_mode = 2

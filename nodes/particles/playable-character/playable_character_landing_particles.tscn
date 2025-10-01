@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://crd2m5e5if8e1"]
 
-[ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/shaders/psx_render_material.tres" id="1_a73if"]
+[ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/shaders/psx_render_lit_material.tres" id="1_a73if"]
 
 [sub_resource type="Curve" id="Curve_30lsf"]
 _data = [Vector2(0, 1), 0.0, -2.20121, 0, 0, Vector2(1, 0), -0.0568357, 0.0, 0, 0]

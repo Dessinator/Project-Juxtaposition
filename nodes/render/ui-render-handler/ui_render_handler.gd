@@ -7,6 +7,7 @@ var _playable_character_visual_controller: PlayableCharacterVisualController
 var _current_playable_character_gameplay_ui: PlayableCharacterGameplayUI
 
 @onready var _playable_character_gameplay_ui_container: Control = %PlayableCharacterGameplayUIMarginContainer
+@onready var _cinematic_bars: CinematicBars = %CinematicBars
 
 func initialize(game_manager: GameManager) -> void:
 	_game_manager = game_manager
@@ -23,4 +24,6 @@ func _process(delta: float) -> void:
 
 func get_playable_character_gameplay_ui_container() -> Control:
 	return _playable_character_gameplay_ui_container
-	
+
+func get_cinematic_bars() -> CinematicBars:
+	return _cinematic_bars

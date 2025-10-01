@@ -1,8 +1,6 @@
 @tool
 extends FSMTransition
 
-const INPUT_BLACKBOARD: String = "INPUT"
-
 @onready var _behaviour_tree_blackboard: BHBlackboard = %BehaviourTreeBlackboard
 
 # handles the transition from * -> idling
@@ -22,7 +20,7 @@ func is_valid(actor: Node, _blackboard: BTBlackboard) -> bool:
 	if not actor.velocity.is_zero_approx():
 		return false
 	
-	var input_direction: Vector3 = _behaviour_tree_blackboard.get_value("input_direction", Vector3.ZERO, INPUT_BLACKBOARD)
+	var input_direction: Vector3 = _behaviour_tree_blackboard.get_value("input_direction", Vector3.ZERO, Entity.INPUT_BLACKBOARD)
 	
 	return input_direction.is_zero_approx()
 

@@ -1,10 +1,7 @@
 @tool
-extends FSMState
+extends EntityState
 
 const INPUT_BLACKBOARD: String = "INPUT"
-
-@onready var _entity_model_container: Node3D = %EntityModelContainer
-@onready var _behaviour_tree_blackboard: BHBlackboard = %BehaviourTreeBlackboard
 
 @export var _speed: float = 10.0
 @export var _acceleration: float = 10.0

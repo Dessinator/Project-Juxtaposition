@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dmb2w42ar2vo2"]
+[gd_scene load_steps=64 format=3 uid="uid://dmb2w42ar2vo2"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_4to8m"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_4p6p2"]
@@ -155,6 +155,9 @@ blend_point_1/pos = 1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_te2m4")
 blend_point_2/pos = -1.0
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4b4g"]
+animation = &"die"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2kw50"]
 animation = &"dodge"
 
@@ -215,6 +218,8 @@ states/Wallrunning/node = SubResource("AnimationNodeBlendSpace2D_3he8t")
 states/Wallrunning/position = Vector2(645, -285)
 states/Wallsliding/node = SubResource("AnimationNodeBlendSpace1D_3jcs7")
 states/Wallsliding/position = Vector2(645, -215)
+states/die/node = SubResource("AnimationNodeAnimation_c4b4g")
+states/die/position = Vector2(645, -141.518)
 states/dodge/node = SubResource("AnimationNodeAnimation_2kw50")
 states/dodge/position = Vector2(86, -141.518)
 states/fall/node = SubResource("AnimationNodeAnimation_0svs2")
@@ -247,12 +252,18 @@ _character_switcher_visual_packedscene = ExtResource("4_4p6p2")
 _character_status_visual_packedscene = ExtResource("5_3bkpy")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="CharacterAttackDefinitionManager" parent="." index="0"]
-_character_attack_definitions = Array[ExtResource("7_wccao")]([ExtResource("8_kb2cy"), ExtResource("9_mn1e1"), ExtResource("10_c4b4g"), ExtResource("11_c4b4g"), ExtResource("12_nc2q0"), ExtResource("13_b21de")])
-
 [node name="MaikaCharacterModel" parent="." index="1" instance=ExtResource("4_4to8m")]
 
-[node name="AnimationTree" parent="." index="3"]
+[node name="CharacterAttackDefinitionManager" parent="." index="2"]
+_character_attack_definitions = Array[ExtResource("7_wccao")]([ExtResource("8_kb2cy"), ExtResource("9_mn1e1"), ExtResource("10_c4b4g"), ExtResource("11_c4b4g"), ExtResource("12_nc2q0"), ExtResource("13_b21de")])
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="AnimationTree" parent="." index="5"]
 root_node = NodePath("%AnimationTree/../MaikaCharacterModel")
 tree_root = SubResource("AnimationNodeStateMachine_cm2we")
 anim_player = NodePath("../MaikaCharacterModel/AnimationPlayer")
@@ -260,11 +271,5 @@ parameters/Passive/NonTargetingMovement/blend_position = -0.00623327
 parameters/Passive/TargetingMovement/blend_position = Vector2(-0.00289297, -0.0329671)
 parameters/Passive/Wallrunning/blend_position = Vector2(-0.00268096, -0.0626704)
 parameters/Passive/Wallsliding/blend_position = 0.00248969
-
-[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
-target_position = Vector3(0, -2, 0)
-debug_shape_custom_color = Color(0, 1, 0, 1)
-debug_shape_thickness = 5
 
 [editable path="MaikaCharacterModel"]

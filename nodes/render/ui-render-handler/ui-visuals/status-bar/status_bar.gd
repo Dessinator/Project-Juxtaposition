@@ -14,7 +14,20 @@ const PLACEHOLDER_STATUS_LABEL: String = "PTS"
 		if _label.is_empty():
 			_label = PLACEHOLDER_STATUS_LABEL
 		if %Label:
-			%Label.text = "{label}: {current_value}".format({"label": _label, "current_value": _current_value})
+			%Label.text = "{label}: {current_value}{suffix}".format({
+				"label": _label,
+				"current_value": _current_value,
+				"suffix": _suffix
+			})
+@export var _suffix: String:
+	set(value):
+		_suffix = value
+		if %Label:
+				%Label.text = "{label}: {current_value}{suffix}".format({
+					"label": _label,
+					"current_value": _current_value,
+					"suffix": _suffix
+				})
 
 @export_category("Progress Bar Appearance")
 @export var _under: Texture2D:
@@ -46,27 +59,31 @@ const PLACEHOLDER_STATUS_LABEL: String = "PTS"
 			return
 		%TrueValueTextureProgressBar.texture_progress = _true_progress
 
-var _current_value: int:
+var _current_value: float:
 	set(value):
-		_current_value = clampi(value, 0, _max_value)
+		_current_value = clampf(value, 0, _max_value)
 		if %TrueValueTextureProgressBar:
 			%TrueValueTextureProgressBar.value = _current_value
 		
 		if %Label:
-			%Label.text = "{label}: {current_value}".format({"label": _label, "current_value": _current_value})
-var _ghost_value: int:
+			%Label.text = "{label}: {current_value}{suffix}".format({
+					"label": _label,
+					"current_value": _current_value,
+					"suffix": _suffix
+				})
+var _ghost_value: float:
 	set(value):
-		_ghost_value = clampi(value, _current_value, _max_value)
+		_ghost_value = clampf(value, _current_value, _max_value)
 		if %GhostValueTextureProgressBar: 
 			%GhostValueTextureProgressBar.value = _ghost_value
-var _max_value: int:
+var _max_value: float:
 	set(value):
 		if value < 0:
 			_max_value = 0
 		else:
 			_max_value = value
-		_current_value = clampi(_current_value, 0, _max_value)
-		_ghost_value = clampi(_ghost_value, _current_value, _max_value)
+		_current_value = clampf(_current_value, 0, _max_value)
+		_ghost_value = clampf(_ghost_value, _current_value, _max_value)
 		if %TrueValueTextureProgressBar:
 			%TrueValueTextureProgressBar.max_value = _max_value
 		if %GhostValueTextureProgressBar: 
@@ -80,12 +97,16 @@ var _max_value: int:
 var _is_updating_ghost_value: bool = false
 
 func _ready():
-	_status_label.text = "{label}: {current_value}".format({"label": _label, "current_value": _current_value})
+	_status_label.text = "{label}: {current_value}{suffix}".format({
+					"label": _label,
+					"current_value": _current_value,
+					"suffix": _suffix
+				})
 
 func _process(delta: float) -> void:
 	_handle_update_ghost_value(delta)
 
-func set_current_value(value: int):
+func set_current_value(value: float):
 	var old = _current_value
 	_current_value = value
 	

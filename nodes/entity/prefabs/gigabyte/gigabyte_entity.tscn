@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://cops1twnxwlv6"]
+
+[ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_vwrsg"]
+[ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_48dms"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="2_idpjl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_48dms"]
+radius = 0.75
+height = 2.75
+
+[sub_resource type="Gradient" id="Gradient_48dms"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0.439364, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7xyxm"]
+gradient = SubResource("Gradient_48dms")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_idpjl"]
+render_priority = 0
+shader = ExtResource("2_idpjl")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_7xyxm")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_unglp"]
+material = SubResource("ShaderMaterial_idpjl")
+radius = 0.75
+height = 2.75
+
+[sub_resource type="Gradient" id="Gradient_xhs0g"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dhl00"]
+gradient = SubResource("Gradient_xhs0g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7xyxm"]
+render_priority = 0
+shader = ExtResource("2_idpjl")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_dhl00")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vf5v7"]
+material = SubResource("ShaderMaterial_7xyxm")
+size = Vector3(1, 0.2, 0.5)
+
+[sub_resource type="Resource" id="Resource_idpjl"]
+resource_local_to_scene = true
+script = ExtResource("2_48dms")
+content = {}
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[node name="GigabyteEntity" instance=ExtResource("1_vwrsg")]
+_entity_type = 2
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+shape = SubResource("CapsuleShape3D_48dms")
+
+[node name="StatusInterface" parent="." index="2"]
+_max_health = 600
+
+[node name="Model" type="Node3D" parent="EntityModelContainer" index="0"]
+
+[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.374, 0)
+mesh = SubResource("CapsuleMesh_unglp")
+skeleton = NodePath("../..")
+
+[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651704, 0.6)
+mesh = SubResource("BoxMesh_vf5v7")
+
+[node name="EntityFloatingHealthBar" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+
+[node name="TargetedIndicator" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="EntityHomeRange" parent="." index="10"]
+range = 30.0
+max_range = 30.0
+
+[node name="EntityWanderRange" parent="." index="11"]
+range = 30.0
+max_range = 30.0
+
+[node name="EntityDetectionRange" parent="." index="12"]
+range = 17.5
+max_range = 17.5
+
+[node name="StateMachine" parent="." index="16"]
+blackboard = SubResource("Resource_idpjl")

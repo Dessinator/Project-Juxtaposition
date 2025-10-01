@@ -1,20 +1,14 @@
 @tool
 extends PlayableCharacterGameplayState
 
-const IS_TARGETING: String = "is_targeting"
-const TRACKED_TARGET_POSITION: String = "tracked_target_position"
-
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
 
 @export var _acceleration: float = 10.0
 
-@onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
-
 # Executes after the state is entered.
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)
-	_handle_stamina_regeneration_delay(blackboard)
 
 # Executes every _process call, if the state is active.
 func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
@@ -67,12 +61,3 @@ func _handle_targeting(actor: PlayableCharacter, blackboard: BTBlackboard):
 	var direction = tracked_target_position - actor.global_position
 	var rotation = atan2(direction.x, direction.z)
 	_playable_character_character_container.rotation.y = rotation
-
-func _handle_stamina_regeneration_delay(blackboard: BTBlackboard):
-	_stamina_regeneration_delay_timer.timeout.connect(_on_stamina_regeneration_delay_timer_timeout.bind(blackboard))
-	if not blackboard.get_value("regenerate_stamina") and _stamina_regeneration_delay_timer.is_stopped():
-		blackboard.set_value("regenerate_stamina", false)
-		_stamina_regeneration_delay_timer.start()
-
-func _on_stamina_regeneration_delay_timer_timeout(blackboard: BTBlackboard):
-	blackboard.set_value("regenerate_stamina", true)

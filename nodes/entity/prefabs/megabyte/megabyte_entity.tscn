@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1qul7v66a744"]
+
+[ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_rcrpp"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="2_pn6jj"]
+[ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_7p21p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rcrpp"]
+
+[sub_resource type="Gradient" id="Gradient_rcrpp"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.0170505, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6j02d"]
+gradient = SubResource("Gradient_rcrpp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pn6jj"]
+render_priority = 0
+shader = ExtResource("2_pn6jj")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_6j02d")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5duer"]
+material = SubResource("ShaderMaterial_pn6jj")
+
+[sub_resource type="Gradient" id="Gradient_7p21p"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qfxqt"]
+gradient = SubResource("Gradient_7p21p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s58xa"]
+render_priority = 0
+shader = ExtResource("2_pn6jj")
+shader_parameter/affine_mapping = true
+shader_parameter/albedo = SubResource("GradientTexture1D_qfxqt")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="BoxMesh" id="BoxMesh_notip"]
+material = SubResource("ShaderMaterial_s58xa")
+size = Vector3(0.922, 0.2, 0.5)
+
+[sub_resource type="Resource" id="Resource_omakp"]
+resource_local_to_scene = true
+script = ExtResource("3_7p21p")
+content = {}
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[node name="MegabyteEntity" instance=ExtResource("1_rcrpp")]
+_entity_type = 1
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_rcrpp")
+
+[node name="StatusInterface" parent="." index="3"]
+_max_health = 99999
+
+[node name="Model" type="Node3D" parent="EntityModelContainer" index="0"]
+
+[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_5duer")
+skeleton = NodePath("../..")
+
+[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451704, 0.3)
+mesh = SubResource("BoxMesh_notip")
+
+[node name="EntityFloatingHealthBar" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="TargetedIndicator" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="StateMachine" parent="." index="18"]
+blackboard = SubResource("Resource_omakp")
+
+[node name="GroundedAttackingState" parent="StateMachine" index="3"]
+damage = 10
+
+[node name="ArialAttackingState" parent="StateMachine" index="10"]
+damage = 15

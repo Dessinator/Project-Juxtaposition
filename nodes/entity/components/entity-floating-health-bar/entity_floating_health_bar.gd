@@ -2,6 +2,8 @@
 class_name EntityFloatingHealthBar
 extends Node3D
 
+@onready var status_bar: StatusBar = %StatusBar
+
 var _world_origin: Marker3D
 
 @export var _length: int = 200:

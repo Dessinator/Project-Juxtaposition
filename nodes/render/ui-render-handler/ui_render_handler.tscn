@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuh7qfq65d3ce"]
+[gd_scene load_steps=3 format=3 uid="uid://cuh7qfq65d3ce"]
 
 [ext_resource type="Script" uid="uid://5lk8qe3odubk" path="res://nodes/render/ui-render-handler/ui_render_handler.gd" id="1_qr26c"]
+[ext_resource type="PackedScene" uid="uid://bdegwynvk20hk" path="res://nodes/render/ui-render-handler/ui-visuals/cinematic-bars/cinematic_bars.tscn" id="2_q8jt8"]
 
 [node name="UIRenderHandler" type="Control"]
 layout_mode = 3
@@ -12,10 +13,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_qr26c")
 
-[node name="WorldUICameraTextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CinematicBars" parent="." instance=ExtResource("2_q8jt8")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [node name="PlayableCharacterGameplayUIMarginContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true

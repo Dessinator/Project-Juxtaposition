@@ -13,7 +13,9 @@ enum EntityType
 }
 
 @onready var _navigation_agent_3d: NavigationAgent3D = %NavigationAgent3D
-@onready var _entity_visual_controller: Node = %EntityVisualController
+@onready var _entity_combat_manager: EntityCombatManager = %EntityCombatManager
+@onready var _status_interface: StatusInterface = %StatusInterface
+@onready var _entity_visual_controller: EntityVisualController = %EntityVisualController
 @onready var _entity_model_container: Node3D = %EntityModelContainer
 
 @onready var _entity_home_range: EntityRange = %EntityHomeRange
@@ -36,22 +38,32 @@ func _ready():
 	initialize()
 
 func initialize():
+	_entity_combat_manager.initialize(self)
+	_entity_visual_controller.initialize()
+	
+	_connect_status_signals()
 	_cache_player_reference()
 	_setup_navigation_agent_3d()
 	_setup_ranges()
-	_setup_timeouts()
 	_start_state_machine()
 	_start_behaviour_tree()
 
 func _process(delta: float) -> void:
 	pass
-	#print(_behaviour_tree_blackboard.get_value("input_direction", Vector3.ZERO, INPUT_BLACKBOARD))
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func get_entity_visual_controller() -> EntityVisualController:
 	return _entity_visual_controller
+func get_state_machine() -> FiniteStateMachine:
+	return _state_machine
+func get_behaviour_tree() -> BeehaveTree:
+	return _behaviour_tree
+
+func _connect_status_signals():
+	var status = _status_interface.get_status()
+	status.died.connect(_on_died)
 
 func _cache_player_reference():
 	player = GameManager.get_instance().get_playable_character()
@@ -107,5 +119,6 @@ func _on_entity_attack_range_player_exited(_player: PlayableCharacter):
 	_behaviour_tree_blackboard.set_value("is_player_in_attack_range", false)
 	#_behaviour_tree.interrupt()
 
-func _setup_timeouts():
-	pass
+func _on_died():
+	_behaviour_tree.disable()
+	_state_machine.fire_event("on_died")

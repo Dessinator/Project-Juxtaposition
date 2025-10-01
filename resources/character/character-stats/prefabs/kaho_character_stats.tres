@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=21 format=3 uid="uid://c3q206vhsucig"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=25 format=3 uid="uid://c3q206vhsucig"]
 
+[ext_resource type="Script" uid="uid://b6lp74gqsj10d" path="res://resources/alignment/alignment.gd" id="1_c8dex"]
 [ext_resource type="Script" uid="uid://dkwx2cueh4lp1" path="res://resources/character/character-stats/stat.gd" id="1_g5h7s"]
 [ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="2_0d2qk"]
 [ext_resource type="Resource" uid="uid://dew3wshj0c7uo" path="res://resources/character/character-stats/default-substats/attack_damage.tres" id="3_x1r0f"]
@@ -16,6 +17,21 @@
 [ext_resource type="Resource" uid="uid://pu4pfkj7h841" path="res://resources/character/character-stats/default-substats/maximum_stamina.tres" id="14_v60us"]
 [ext_resource type="Script" uid="uid://24nukwcutln8" path="res://resources/status_effects/status_effect.gd" id="15_1wxaj"]
 [ext_resource type="Script" uid="uid://3qgt3g5o34v3" path="res://resources/character/character-stats/character_stats.gd" id="16_noq6t"]
+
+[sub_resource type="Resource" id="Resource_56lqe"]
+script = ExtResource("1_c8dex")
+_alignment = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://b6lp74gqsj10d"
+
+[sub_resource type="Curve" id="Curve_c8dex"]
+_limits = [0.0, 20.0, 0.0, 200.0]
+_data = [Vector2(0, 0), 0.0, 0.1, 0, 1, Vector2(200, 20), 0.1, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_56lqe"]
+_limits = [0.0, 40.0, 0.0, 100.0]
+_data = [Vector2(0, 0), 0.0, 0.4, 0, 1, Vector2(100, 40), 0.4, 0.0, 1, 0]
+point_count = 2
 
 [sub_resource type="Resource" id="Resource_cqnmv"]
 resource_name = "ATTK"
@@ -58,4 +74,7 @@ script = ExtResource("16_noq6t")
 _stats = Array[ExtResource("1_g5h7s")]([SubResource("Resource_cqnmv"), SubResource("Resource_hd2jt"), SubResource("Resource_tc4ov"), SubResource("Resource_phunj")])
 _substats = Array[ExtResource("2_0d2qk")]([ExtResource("3_x1r0f"), ExtResource("4_bsa38"), ExtResource("5_sbivv"), ExtResource("6_eamab"), ExtResource("7_q2mat"), ExtResource("8_bck3e"), ExtResource("9_1rmse"), ExtResource("10_141jn"), ExtResource("11_lod65"), ExtResource("12_f2qou"), ExtResource("13_nr3bn"), ExtResource("14_v60us")])
 _wards = Array[ExtResource("15_1wxaj")]([])
+_alignment = SubResource("Resource_56lqe")
+_juxtometer_damage_dealt_curve = SubResource("Curve_c8dex")
+_juxtometer_damage_taken_curve = SubResource("Curve_56lqe")
 metadata/_custom_type_script = "uid://3qgt3g5o34v3"

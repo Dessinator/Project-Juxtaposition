@@ -156,6 +156,9 @@ func change_state(state: FSMState) -> void:
 	# Exit the current state
 	active_state._on_exit(actor, blackboard)
 
+	# save current state as last state
+	last_active_state = active_state
+
 	# Change the current state
 	active_state = state
 

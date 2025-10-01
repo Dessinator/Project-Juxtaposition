@@ -1,10 +1,5 @@
 @tool
-extends FSMState
-
-const INPUT_BLACKBOARD: String = "INPUT"
-
-@onready var _entity_model_container: Node3D = %EntityModelContainer
-@onready var _behaviour_tree_blackboard: BHBlackboard = %BehaviourTreeBlackboard
+extends EntityState
 
 @export var _speed: float = 6.0
 @export var _acceleration: float = 15.0
@@ -44,7 +39,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 func _handle_direction_input() -> Vector3:
-	var input_direction = _behaviour_tree_blackboard.get_value("input_direction", Vector3.ZERO, INPUT_BLACKBOARD)
+	var input_direction = _behaviour_tree_blackboard.get_value("input_direction", Vector3.ZERO, Entity.INPUT_BLACKBOARD)
 	return input_direction
 
 func _handle_sprinting(current_velocity: Vector3, direction: Vector3, delta: float) -> Vector3:

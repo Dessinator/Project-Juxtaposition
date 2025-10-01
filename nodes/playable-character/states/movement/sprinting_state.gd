@@ -12,7 +12,6 @@ const MOVEMENT_SPEED: StringName = &"movement_speed"
 @export var _allow_skidding_delay_timer: Timer
 @export var _skid_cooldown_timer: Timer
 
-@onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
 @onready var _playable_character_sprinting_particles: Node3D = %PlayableCharacterSprintingParticles
 
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
@@ -25,9 +24,6 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	
 	var particle_system = _playable_character_sprinting_particles.get_node("%GPUParticles3D")
 	particle_system.emitting = true
-	
-	_stamina_regeneration_delay_timer.stop()
-	blackboard.set_value("regenerate_stamina", false)
 	
 	status.stamina_modified.connect(_on_status_stamina_modified.bind(status, blackboard))
 	
@@ -92,7 +88,8 @@ func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
 	_drain_stamina_timer.timeout.disconnect(_on_drain_stamina_timer_timeout)
 	_drain_stamina_timer.paused = true
 	
-	_allow_skidding_delay_timer.timeout.disconnect(_on_allow_skidding_delay_timer_timeout)
+	if _allow_skidding_delay_timer.timeout.is_connected(_on_allow_skidding_delay_timer_timeout):
+		_allow_skidding_delay_timer.timeout.disconnect(_on_allow_skidding_delay_timer_timeout)
 	if not _allow_skidding_delay_timer.is_stopped():
 		_allow_skidding_delay_timer.paused = true
 

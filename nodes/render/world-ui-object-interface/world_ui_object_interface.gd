@@ -33,10 +33,11 @@ func _create_world_origin():
 			_world_origin.position = parent.position
 	
 	grandparent.add_child(_world_origin)
-	
 	parent.reparent(world_ui_sub_viewport, true)
 
 func _copy_world_origin_position_and_rotation():
+	if not _world_origin:
+		return
 	var parent = get_parent()
 	
 	parent.global_position = _world_origin.global_position

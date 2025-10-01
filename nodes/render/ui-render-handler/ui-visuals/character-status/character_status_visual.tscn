@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqhtmx2xw45nj"]
+[gd_scene load_steps=18 format=3 uid="uid://cqhtmx2xw45nj"]
 
 [ext_resource type="Script" uid="uid://51ebp1lx6tip" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/character_status_visual.gd" id="1_imou3"]
 [ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="2_ra0fy"]
@@ -30,6 +30,13 @@ colors = PackedColorArray(0, 1, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ml836"]
 gradient = SubResource("Gradient_id1ne")
+
+[sub_resource type="Gradient" id="Gradient_jyx32"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0.937471, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ra0fy"]
+gradient = SubResource("Gradient_jyx32")
 
 [sub_resource type="Animation" id="Animation_ra0fy"]
 length = 0.001
@@ -183,9 +190,19 @@ vertical_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 _label = "HPS"
+_suffix = null
 _under = SubResource("GradientTexture1D_yfuhx")
 _ghost_progress = SubResource("GradientTexture1D_jyx32")
 _true_progress = SubResource("GradientTexture1D_ml836")
+
+[node name="CharacterJuxtometerBar" parent="CharacterStatusVisualContainer/VBoxContainer" instance=ExtResource("2_ra0fy")]
+unique_name_in_owner = true
+layout_mode = 2
+_label = "JUX"
+_suffix = "%"
+_under = SubResource("GradientTexture1D_yfuhx")
+_ghost_progress = SubResource("GradientTexture1D_ra0fy")
+_true_progress = SubResource("GradientTexture1D_jyx32")
 
 [node name="CharacterStatusEffectVisualContainer" type="HBoxContainer" parent="CharacterStatusVisualContainer/VBoxContainer"]
 unique_name_in_owner = true

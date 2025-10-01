@@ -3,6 +3,12 @@ class_name CharacterStats extends Resource
 @export var _stats: Array[Stat]
 @export var _substats: Array[Substat]
 @export var _wards: Array[StatusEffect]
+@export var _alignment: Alignment = Alignment.new()
+
+# sampled when damage is dealt to determine how much to add to the juxtometer.
+@export var _juxtometer_damage_dealt_curve: Curve = Curve.new()
+# sampled when damage is taken to determine how much to subtract from the juxtometer.
+@export var _juxtometer_damage_taken_curve: Curve = Curve.new()
 
 var _internal_stats: Dictionary
 var _internal_substats: Dictionary
@@ -28,6 +34,14 @@ func get_substat(internal_name: StringName) -> Substat:
 
 func get_wards() -> Array[StatusEffect]:
 	return _wards
+
+func get_alignment() -> Alignment:
+	return _alignment
+
+func sample_juxtometer_damage_dealt_curve(damage: int) -> float:
+	return _juxtometer_damage_dealt_curve.sample(damage)
+func sample_juxtometer_damage_taken_curve(damage: int) -> float:
+	return _juxtometer_damage_taken_curve.sample(damage)
 
 func _duplicate_stat_resources():
 	for stat in _stats:

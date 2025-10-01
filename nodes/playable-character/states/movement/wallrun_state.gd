@@ -14,8 +14,6 @@ const MOVEMENT_SPEED: StringName = &"movement_speed"
 @export var _stamina_drain: int
 @export var _drain_stamina_timer: Timer
 
-@onready var _stamina_regeneration_delay_timer: Timer = %StaminaRegenerationDelayTimer
-
 # Executes after the state is entered.
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)

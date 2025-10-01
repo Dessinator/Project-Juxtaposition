@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnga388alrwrh"]
+
+[ext_resource type="Script" uid="uid://b30qr6jj8jrtd" path="res://nodes/playable-character/components/playable-character-character-container/playable_character_character_container.gd" id="1_h0vci"]
+
+[node name="PlayableCharacterCharacterContainer" type="Node3D"]
+script = ExtResource("1_h0vci")
+
+[node name="JuxtometerDecayTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="JuxtometerDecayTimer" to="." method="_on_juxtapometer_decay_timer_timeout"]

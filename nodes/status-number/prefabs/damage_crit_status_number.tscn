@@ -6,5 +6,4 @@
 suffix = " dmg!!!"
 
 [node name="Label3D" parent="." index="1"]
-pixel_size = 0.0035
 text = "-1 dmg!!!"

@@ -29,6 +29,7 @@ var _cached_child_index: int
 @onready var _key_hint_label: Label = %KeyHintLabel
 @onready var _character_health_bar: StatusBar = %CharacterHealthBar
 @onready var _character_stamina_bar: StatusBar = %CharacterStaminaBar
+@onready var _character_juxtometer_bar: StatusBar = %CharacterJuxtometerBar
 @onready var _character_switch_cooldown_texture_progress_bar: TextureProgressBar = %CharacterSwitchCooldownTextureProgressBar
 
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer
@@ -55,3 +56,6 @@ func update_health_bar(current_health: int, max_health: int):
 func update_stamina_bar(current_stamina: int, max_stamina: int):
 	%CharacterStaminaBar.set_max_value(max_stamina)
 	%CharacterStaminaBar.set_current_value(current_stamina)
+func update_juxtometer_bar(current_juxtometer_reading: float):
+	%CharacterJuxtometerBar.set_max_value(CharacterStatus.JUXTOMETER_MAX_READING)
+	%CharacterJuxtometerBar.set_current_value(current_juxtometer_reading)

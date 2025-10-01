@@ -1,15 +1,17 @@
-[gd_scene load_steps=56 format=3 uid="uid://8nifftfw2omy"]
+[gd_scene load_steps=71 format=3 uid="uid://8nifftfw2omy"]
 
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_6pa3a"]
 [ext_resource type="Script" uid="uid://ded5umnsqump5" path="res://nodes/entity/entity.gd" id="1_ts1bu"]
 [ext_resource type="Script" uid="uid://bl5mwx4nlardy" path="res://nodes/entity/components/entity-visual-controller/entity_visual_controller.gd" id="2_58x2y"]
+[ext_resource type="Script" uid="uid://dfqjiv1qtnkbd" path="res://nodes/status-interface/status_interface.gd" id="2_badw8"]
 [ext_resource type="PackedScene" uid="uid://bm3juln3l3i" path="res://nodes/entity/components/entity-floating-health-bar/entity_floating_health_bar.tscn" id="2_h7rau"]
+[ext_resource type="Script" uid="uid://bak60gqep71q7" path="res://nodes/entity/components/entity-combat-manager/entity_combat_manager.gd" id="2_p8k0s"]
 [ext_resource type="PackedScene" uid="uid://c5j22jtwhkxmm" path="res://nodes/entity/components/entity-range/entity_range.tscn" id="2_qecbm"]
-[ext_resource type="Script" uid="uid://k5p6yghm7nrm" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="2_ts1bu"]
 [ext_resource type="PackedScene" uid="uid://3jvtf4vu20ht" path="res://nodes/entity/components/entity-targeted-indicator/targeted_indicator.tscn" id="3_0hmms"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_fujbu"]
 [ext_resource type="PackedScene" uid="uid://b052snw6aca7r" path="res://nodes/trackable-target/trackable_target.tscn" id="3_pgryw"]
 [ext_resource type="Script" uid="uid://jjoacie7bvcr" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_wxprh"]
+[ext_resource type="Script" uid="uid://3npkgn33pjju" path="res://nodes/launch-controller/launch_controller.gd" id="4_5vreu"]
 [ext_resource type="Script" uid="uid://cagh5dfpu2nof" path="res://addons/beehave/nodes/composites/selector.gd" id="4_fujbu"]
 [ext_resource type="Script" uid="uid://dci6gyicpalev" path="res://addons/beehave/blackboard.gd" id="4_wxprh"]
 [ext_resource type="Script" uid="uid://d0grvpga6gitp" path="res://addons/beehave/nodes/composites/sequence.gd" id="5_6qbpo"]
@@ -17,6 +19,7 @@
 [ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="6_2owo5"]
 [ext_resource type="Script" uid="uid://ekmdybu2kxlg" path="res://nodes/entity/states/walking.gd" id="6_6qhta"]
 [ext_resource type="Script" uid="uid://dsq54fchvncv6" path="res://nodes/entity/states/transitions/start_walking.gd" id="7_2owo5"]
+[ext_resource type="PackedScene" uid="uid://cmin6dhtla3dd" path="res://nodes/particles/combat/spike_trail_particles.tscn" id="8_7dplb"]
 [ext_resource type="Script" uid="uid://bxxnojf81fve2" path="res://nodes/entity/states/transitions/start_sprinting.gd" id="8_gnder"]
 [ext_resource type="Script" uid="uid://cefticp1pl04n" path="res://nodes/entity/states/transitions/start_falling.gd" id="8_hyfwl"]
 [ext_resource type="Script" uid="uid://dt08goxwqu6hc" path="res://addons/beehave/nodes/decorators/inverter.gd" id="9_la3n6"]
@@ -36,10 +39,22 @@
 [ext_resource type="Script" uid="uid://fofdtjjria4n" path="res://nodes/entity/behaviour/leaves/is_player_in_attack_range.gd" id="17_gk5bk"]
 [ext_resource type="Script" uid="uid://xa5bynn6rghm" path="res://nodes/entity/behaviour/leaves/set_new_destination_within_wander_range.gd" id="18_llqjs"]
 [ext_resource type="Script" uid="uid://ddwp8sx8rs88h" path="res://nodes/entity/behaviour/leaves/has_seen_target.gd" id="19_ofnwe"]
+[ext_resource type="Script" uid="uid://d3jlmhue4bx6" path="res://nodes/entity/states/falling.gd" id="20_6g1ri"]
+[ext_resource type="Script" uid="uid://cbjmdk5vqyjjh" path="res://nodes/entity/states/grounded_damaged.gd" id="20_q0ahn"]
+[ext_resource type="Script" uid="uid://c870k8kxcc2jq" path="res://nodes/entity/states/defeated.gd" id="20_wwixe"]
+[ext_resource type="Script" uid="uid://bksvqp4x6o04y" path="res://nodes/entity/states/launched.gd" id="21_fx0ss"]
+[ext_resource type="Script" uid="uid://dbohm6wwnhmyc" path="res://nodes/entity/states/grounded_attacking.gd" id="21_pm07g"]
+[ext_resource type="Script" uid="uid://drxx1bq5txf60" path="res://nodes/entity/states/airborne.gd" id="22_kf8dg"]
+[ext_resource type="Script" uid="uid://uejdxoesvuws" path="res://nodes/entity/states/jumping.gd" id="23_mtrgt"]
+[ext_resource type="Script" uid="uid://bc8knpah6o03h" path="res://nodes/entity/behaviour/leaves/is_dead.gd" id="24_8i26b"]
+[ext_resource type="Script" uid="uid://bu8yjxvkfwm4q" path="res://nodes/entity/states/arial_damaged.gd" id="24_k8t3x"]
 [ext_resource type="Script" uid="uid://d26bsvq7thfou" path="res://nodes/entity/behaviour/leaves/grow_follow_range.gd" id="25_g8seb"]
+[ext_resource type="Script" uid="uid://c6bily4xhngh6" path="res://nodes/entity/states/spiked.gd" id="26_86qvg"]
 [ext_resource type="Script" uid="uid://b05soe2mpoidu" path="res://nodes/entity/behaviour/leaves/idle.gd" id="26_dgxa3"]
+[ext_resource type="Script" uid="uid://ccxjwg7bweduh" path="res://nodes/entity/states/landing.gd" id="26_v5wfl"]
 [ext_resource type="Script" uid="uid://d4j3xo7bgjiqq" path="res://nodes/entity/behaviour/leaves/set_target_position_to_player.gd" id="27_u86c8"]
 [ext_resource type="Script" uid="uid://8e8u5oye5322" path="res://nodes/entity/behaviour/leaves/face_target.gd" id="28_i3mox"]
+[ext_resource type="Script" uid="uid://dh38llg5yel41" path="res://nodes/entity/states/arial_attacking.gd" id="28_mtrgt"]
 [ext_resource type="Script" uid="uid://dob1i3c670jdh" path="res://nodes/entity/behaviour/leaves/max_follow_range.gd" id="30_fcchh"]
 [ext_resource type="Script" uid="uid://c1rjtolo5yd8j" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="31_e6j26"]
 [ext_resource type="Script" uid="uid://b5qluec5a38mu" path="res://nodes/entity/behaviour/leaves/recalculate_path_to_target.gd" id="33_au487"]
@@ -73,10 +88,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 unique_name_in_owner = true
 target_desired_distance = 3.5
 
+[node name="EntityCombatManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_p8k0s")
+
+[node name="StatusInterface" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_badw8")
+_max_health = 100
+metadata/_custom_type_script = "uid://dfqjiv1qtnkbd"
+
 [node name="EntityVisualController" type="Node" parent="." node_paths=PackedStringArray("_health_bar")]
 unique_name_in_owner = true
 script = ExtResource("2_58x2y")
 _health_bar = NodePath("../EntityFloatingHealthBar")
+
+[node name="LaunchController" type="Node" parent="." node_paths=PackedStringArray("_state_machine")]
+unique_name_in_owner = true
+script = ExtResource("4_5vreu")
+_launch_force = 30.0
+_spike_force = 50.0
+_state_machine = NodePath("../StateMachine")
+metadata/_custom_type_script = "uid://3npkgn33pjju"
 
 [node name="TrackableTarget" parent="." instance=ExtResource("3_pgryw")]
 unique_name_in_owner = true
@@ -85,8 +118,13 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="EntityFloatingHealthBar" parent="." instance=ExtResource("2_h7rau")]
+unique_name_in_owner = true
 
 [node name="TargetedIndicator" parent="." instance=ExtResource("3_0hmms")]
+unique_name_in_owner = true
+
+[node name="SpikeTrailParticles" parent="." instance=ExtResource("8_7dplb")]
+unique_name_in_owner = true
 
 [node name="EntityHomeRange" parent="." instance=ExtResource("2_qecbm")]
 unique_name_in_owner = true
@@ -119,161 +157,490 @@ _debug_color = Color(0.701961, 0.419608, 0, 0.419608)
 [node name="EntityAttackRange" parent="." instance=ExtResource("2_qecbm")]
 unique_name_in_owner = true
 
+[node name="AirborneTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true
+
+[node name="DamageTakenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("1_6pa3a")
 active = false
-initial_state = NodePath("Idle")
+initial_state = NodePath("IdleState")
 actor = NodePath("..")
 blackboard = SubResource("Resource_6qbpo")
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
 script = ExtResource("5_eye3n")
 
-[node name="startFalling" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_hyfwl")
-next_state = NodePath("../../Falling")
+next_state = NodePath("../../FallingState")
 
-[node name="defeat" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+[node name="defeat" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../Defeated")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
 
-[node name="startWalking" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+[node name="onLaunched" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartGroundedDamaged" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamagedState")
+use_event = true
+event = "on_damaged"
+
+[node name="startWalking" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_2owo5")
-next_state = NodePath("../../Walking")
+next_state = NodePath("../../WalkingState")
 
-[node name="startSprinting" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_gnder")
-next_state = NodePath("../../Sprinting")
+next_state = NodePath("../../SprintingState")
 
-[node name="startGroundedAttack" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedAttack" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../GroundedAttacking")
+next_state = NodePath("../../GroundedAttackingState")
+use_event = true
+event = "on_attack"
 
-[node name="startGroundedDamaged" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="StateMachine/IdleState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../GroundedDamaged")
+next_state = NodePath("../../JumpingState")
 
-[node name="startJumping" type="Node" parent="StateMachine/Idle" node_paths=PackedStringArray("next_state")]
-script = ExtResource("6_2owo5")
-next_state = NodePath("../../Jumping")
-
-[node name="Walking" type="Node" parent="StateMachine"]
+[node name="WalkingState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
 script = ExtResource("6_6qhta")
 _speed = 3.0
 _acceleration = 20.0
 
-[node name="startFalling" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_hyfwl")
-next_state = NodePath("../../Falling")
+next_state = NodePath("../../FallingState")
 
-[node name="defeat" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+[node name="defeat" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../Defeated")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
 
-[node name="startIdling" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+[node name="onLaunched" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartGroundedDamaged" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamagedState")
+use_event = true
+event = "on_damaged"
+
+[node name="startIdling" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("9_ni2al")
-next_state = NodePath("../../Idle")
+next_state = NodePath("../../IdleState")
 
-[node name="startSprinting" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_gnder")
-next_state = NodePath("../../Sprinting")
+next_state = NodePath("../../SprintingState")
 
-[node name="startGroundedAttack" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedAttack" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../GroundedAttacking")
+next_state = NodePath("../../GroundedAttackingState")
+use_event = true
+event = "on_attack"
 
-[node name="startGroundedDamaged" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="StateMachine/WalkingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../GroundedDamaged")
+next_state = NodePath("../../JumpingState")
 
-[node name="startJumping" type="Node" parent="StateMachine/Walking" node_paths=PackedStringArray("next_state")]
-script = ExtResource("6_2owo5")
-next_state = NodePath("../../Jumping")
-
-[node name="Sprinting" type="Node" parent="StateMachine"]
+[node name="SprintingState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
 script = ExtResource("10_mlwgf")
 _acceleration = 20.0
 
-[node name="startFalling" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_hyfwl")
-next_state = NodePath("../../Falling")
+next_state = NodePath("../../FallingState")
 
-[node name="defeat" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+[node name="defeat" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../Defeated")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
 
-[node name="startIdling" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+[node name="onLaunched" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartGroundedDamaged" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamagedState")
+use_event = true
+event = "on_damaged"
+
+[node name="startIdling" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("9_ni2al")
-next_state = NodePath("../../Idle")
+next_state = NodePath("../../IdleState")
 
-[node name="startWalking" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+[node name="startWalking" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_2owo5")
-next_state = NodePath("../../Walking")
+next_state = NodePath("../../WalkingState")
 
-[node name="startGroundedAttack" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedAttack" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../GroundedAttacking")
+next_state = NodePath("../../GroundedAttackingState")
+use_event = true
+event = "on_attack"
 
-[node name="startGroundedDamaged" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="StateMachine/SprintingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../GroundedDamaged")
+next_state = NodePath("../../JumpingState")
 
-[node name="startJumping" type="Node" parent="StateMachine/Sprinting" node_paths=PackedStringArray("next_state")]
+[node name="GroundedAttackingState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("21_pm07g")
+can_dodge = true
+can_parry = true
+
+[node name="defeat" type="Node" parent="StateMachine/GroundedAttackingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../Jumping")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
 
-[node name="GroundedAttacking" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="onLaunched" type="Node" parent="StateMachine/GroundedAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="GroundedDamaged" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="onStartGroundedDamaged" type="Node" parent="StateMachine/GroundedAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamagedState")
+use_event = true
+event = "on_damaged"
 
-[node name="Jumping" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="onStartFalling" type="Node" parent="StateMachine/GroundedAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../FallingState")
+use_event = true
+event = "on_start_falling"
 
-[node name="Falling" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="onStartSprinting" type="Node" parent="StateMachine/GroundedAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../SprintingState")
+use_event = true
+event = "on_start_sprinting"
 
-[node name="land" type="Node" parent="StateMachine/Falling" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="StateMachine/GroundedAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../WalkingState")
+use_event = true
+event = "on_start_walking"
+
+[node name="onStartIdling" type="Node" parent="StateMachine/GroundedAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../IdleState")
+use_event = true
+event = "on_start_idling"
+
+[node name="GroundedDamagedState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("20_q0ahn")
+
+[node name="defeat" type="Node" parent="StateMachine/GroundedDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
+
+[node name="onLaunched" type="Node" parent="StateMachine/GroundedDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartGroundedDamaged" type="Node" parent="StateMachine/GroundedDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("..")
+use_event = true
+event = "on_damaged"
+
+[node name="onStartIdling" type="Node" parent="StateMachine/GroundedDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../IdleState")
+use_event = true
+event = "on_start_idling"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartWalking" type="Node" parent="StateMachine/GroundedDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../WalkingState")
+use_event = true
+event = "on_start_walking"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartSprinting" type="Node" parent="StateMachine/GroundedDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../SprintingState")
+use_event = true
+event = "on_start_sprinting"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartFalling" type="Node" parent="StateMachine/GroundedDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../FallingState")
+use_event = true
+event = "on_start_falling"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="JumpingState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("23_mtrgt")
+
+[node name="defeat" type="Node" parent="StateMachine/JumpingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
+
+[node name="onLaunched" type="Node" parent="StateMachine/JumpingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartArialDamaged" type="Node" parent="StateMachine/JumpingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../ArialDamagedState")
+use_event = true
+event = "on_damaged"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="FallingState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("20_6g1ri")
+
+[node name="land" type="Node" parent="StateMachine/FallingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("15_naril")
-next_state = NodePath("../../Landing")
+next_state = NodePath("../../LandingState")
 
-[node name="Landing" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
-
-[node name="startFalling" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
-script = ExtResource("8_hyfwl")
-next_state = NodePath("../../Falling")
-
-[node name="defeat" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+[node name="onLaunched" type="Node" parent="StateMachine/FallingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_2owo5")
-next_state = NodePath("../../Defeated")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startIdling" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDamaged" type="Node" parent="StateMachine/FallingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../ArialDamagedState")
+use_event = true
+event = "on_damaged"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="LandingState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("26_v5wfl")
+
+[node name="startFalling" type="Node" parent="StateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_hyfwl")
+next_state = NodePath("../../FallingState")
+
+[node name="defeat" type="Node" parent="StateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
+
+[node name="onLaunched" type="Node" parent="StateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../LaunchedState")
+use_event = true
+event = "on_launched"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartGroundedDamaged" type="Node" parent="StateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../GroundedDamagedState")
+use_event = true
+event = "on_damaged"
+
+[node name="startIdling" type="Node" parent="StateMachine/LandingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("9_ni2al")
-next_state = NodePath("../../Idle")
+next_state = NodePath("../../IdleState")
 
-[node name="startWalking" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+[node name="startWalking" type="Node" parent="StateMachine/LandingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_2owo5")
-next_state = NodePath("../../Walking")
+next_state = NodePath("../../WalkingState")
 
-[node name="startSprinting" type="Node" parent="StateMachine/Landing" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="StateMachine/LandingState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_gnder")
-next_state = NodePath("../../Sprinting")
+next_state = NodePath("../../SprintingState")
 
-[node name="Airborne" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="LaunchedState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("21_fx0ss")
 
-[node name="ArialAttacking" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="defeat" type="Node" parent="StateMachine/LaunchedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
 
-[node name="ArialDamaged" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="onStartAirborne" type="Node" parent="StateMachine/LaunchedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../AirborneState")
+use_event = true
+event = "on_start_airborne"
 
-[node name="Defeated" type="Node" parent="StateMachine"]
-script = ExtResource("2_ts1bu")
+[node name="AirborneState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("22_kf8dg")
+_gravity = 1.0
+
+[node name="defeat" type="Node" parent="StateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
+
+[node name="land" type="Node" parent="StateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("15_naril")
+next_state = NodePath("../../LandingState")
+
+[node name="onStartFalling" type="Node" parent="StateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../FallingState")
+use_event = true
+event = "on_start_falling"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onSpiked" type="Node" parent="StateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../SpikedState")
+use_event = true
+event = "on_spiked"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="startArialAttack" type="Node" parent="StateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../ArialAttackingState")
+use_event = true
+event = "on_attack"
+
+[node name="onStartArialDamaged" type="Node" parent="StateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../ArialDamagedState")
+use_event = true
+event = "on_damaged"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="ArialAttackingState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("28_mtrgt")
+can_dodge = true
+can_parry = true
+
+[node name="defeat" type="Node" parent="StateMachine/ArialAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
+
+[node name="onSpiked" type="Node" parent="StateMachine/ArialAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../SpikedState")
+use_event = true
+event = "on_spiked"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartArialDamaged" type="Node" parent="StateMachine/ArialAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../ArialDamagedState")
+use_event = true
+event = "on_damaged"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartAirborne" type="Node" parent="StateMachine/ArialAttackingState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../AirborneState")
+use_event = true
+event = "on_start_airborne"
+
+[node name="ArialDamagedState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("24_k8t3x")
+_gravity = 1.5
+_boost_force = 15.0
+
+[node name="defeat" type="Node" parent="StateMachine/ArialDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
+
+[node name="onSpiked" type="Node" parent="StateMachine/ArialDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../SpikedState")
+use_event = true
+event = "on_spiked"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartArialDamaged" type="Node" parent="StateMachine/ArialDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("..")
+use_event = true
+event = "on_damaged"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartAirborne" type="Node" parent="StateMachine/ArialDamagedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../AirborneState")
+use_event = true
+event = "on_start_airborne"
+
+[node name="SpikedState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("26_86qvg")
+
+[node name="defeat" type="Node" parent="StateMachine/SpikedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_2owo5")
+next_state = NodePath("../../DefeatedState")
+use_event = true
+event = "on_died"
+
+[node name="land" type="Node" parent="StateMachine/SpikedState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("15_naril")
+next_state = NodePath("../../LandingState")
+
+[node name="DefeatedState" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("20_wwixe")
 
 [node name="BehaviourTreeBlackboard" type="Node" parent="."]
 unique_name_in_owner = true
@@ -296,6 +663,14 @@ metadata/_custom_type_script = "uid://cagh5dfpu2nof"
 [node name="Wander" type="Node" parent="BehaviourTree/BehaviourSelector"]
 script = ExtResource("5_6qbpo")
 metadata/_custom_type_script = "uid://d0grvpga6gitp"
+
+[node name="IsNotDead" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsDead" type="Node" parent="BehaviourTree/BehaviourSelector/Wander/IsNotDead"]
+script = ExtResource("24_8i26b")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
 [node name="IsSearchTimeoutNotSet" type="Node" parent="BehaviourTree/BehaviourSelector/Wander"]
 script = ExtResource("9_la3n6")
@@ -376,6 +751,14 @@ metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 script = ExtResource("5_6qbpo")
 metadata/_custom_type_script = "uid://d0grvpga6gitp"
 
+[node name="IsNotDead" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsDead" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted/IsNotDead"]
+script = ExtResource("24_8i26b")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
+
 [node name="IsPlayerInDetectionRange" type="Node" parent="BehaviourTree/BehaviourSelector/Alerted"]
 script = ExtResource("12_gk5bk")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
@@ -412,6 +795,14 @@ metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 [node name="Follow" type="Node" parent="BehaviourTree/BehaviourSelector"]
 script = ExtResource("5_6qbpo")
 metadata/_custom_type_script = "uid://d0grvpga6gitp"
+
+[node name="IsNotDead" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsDead" type="Node" parent="BehaviourTree/BehaviourSelector/Follow/IsNotDead"]
+script = ExtResource("24_8i26b")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
 [node name="IsPlayerInFollowRange" type="Node" parent="BehaviourTree/BehaviourSelector/Follow"]
 script = ExtResource("11_jjtts")
@@ -460,8 +851,16 @@ script = ExtResource("39_gnder")
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
 [node name="Attack" type="Node" parent="BehaviourTree/BehaviourSelector"]
-script = ExtResource("5_6qbpo")
-metadata/_custom_type_script = "uid://d0grvpga6gitp"
+script = ExtResource("41_vjkxo")
+metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsNotDead" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsDead" type="Node" parent="BehaviourTree/BehaviourSelector/Attack/IsNotDead"]
+script = ExtResource("24_8i26b")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
 [node name="IsPlayerInAttackRange" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
 script = ExtResource("17_gk5bk")
@@ -488,18 +887,21 @@ metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 script = ExtResource("28_i3mox")
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
-[node name="DelayDecorator" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
-script = ExtResource("14_ht6qv")
-wait_time = 1.0
-metadata/_custom_type_script = "uid://brlrrhyn0fi4g"
-
-[node name="AttackTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Attack/DelayDecorator"]
+[node name="AttackTarget" type="Node" parent="BehaviourTree/BehaviourSelector/Attack"]
 script = ExtResource("35_iyxj4")
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
 [node name="LostTarget" type="Node" parent="BehaviourTree/BehaviourSelector"]
 script = ExtResource("41_vjkxo")
 metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsNotDead" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsDead" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget/IsNotDead"]
+script = ExtResource("24_8i26b")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
 [node name="IsSearchTimeoutNotSet" type="Node" parent="BehaviourTree/BehaviourSelector/LostTarget"]
 script = ExtResource("9_la3n6")
@@ -579,6 +981,14 @@ metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 [node name="Search" type="Node" parent="BehaviourTree/BehaviourSelector"]
 script = ExtResource("41_vjkxo")
 metadata/_custom_type_script = "uid://c5se8vwt80abr"
+
+[node name="IsNotDead" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
+script = ExtResource("9_la3n6")
+metadata/_custom_type_script = "uid://dt08goxwqu6hc"
+
+[node name="IsDead" type="Node" parent="BehaviourTree/BehaviourSelector/Search/IsNotDead"]
+script = ExtResource("24_8i26b")
+metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
 [node name="IsSearchTimeoutSet" type="Node" parent="BehaviourTree/BehaviourSelector/Search"]
 script = ExtResource("15_boh06")
