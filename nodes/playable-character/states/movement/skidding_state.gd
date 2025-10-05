@@ -24,7 +24,9 @@ func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor.velocity = Vector3.ZERO
 	_handle_transition_events(actor, blackboard)
 
-func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
+# Executes before the state is exited.
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	_skid_duration_timer.timeout.disconnect(_on_skid_duration_timer_timeout)
 
 func _handle_skidding(current_velocity: Vector3) -> Vector3:

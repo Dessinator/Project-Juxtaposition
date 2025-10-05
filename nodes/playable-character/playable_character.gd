@@ -6,7 +6,20 @@ const STAMINA_REGENERATION_INTERVAL: float = 0.5
 const AGILITY: StringName = &"agility"
 const STAMINA_REGENERATION_RATE: StringName = &"stamina_regeneration_rate"
 
-@export var _playable_character_gameplay_ui_packedscene: PackedScene
+## emitted when an action is performed.
+signal action_performed(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, holding: bool)
+## emitted when an action is interrupted.
+signal action_interrupted(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType)
+## emitted when an action has concluded.
+signal action_concluded(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType)
+## emitted when an action is set as unavailable.
+signal action_set_unavailable(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType)
+## emitted when an action is set as available.
+signal action_set_available(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType)
+## emitted when an action is set as unavailable for a set period of time in seconds.
+signal action_set_unavailable_duration(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, duration_seconds: float)
+## emitted when an action is set as available for a set period of time in seconds.
+signal action_set_available_duration(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, duration_seconds: float)
 
 var _game_manager: GameManager
 var _character_switch_cooling_down: bool = false
@@ -87,8 +100,6 @@ func get_character_switch_cooldown_timer() -> Timer:
 	return _character_switch_cooldown_timer
 func get_character_attack_state_machine() -> CharacterAttackStateMachine:
 	return _character_attack_state_machine
-func get_playable_character_gameplay_ui_packedscene() -> PackedScene:
-	return _playable_character_gameplay_ui_packedscene
 func get_playable_character_visual_controller() -> PlayableCharacterVisualController:
 	return _playable_character_visual_controller
 func get_playable_character_character_container() -> PlayableCharacterCharacterContainer:
@@ -98,6 +109,21 @@ func get_playable_character_camera() -> PlayableCharacterCamera:
 
 func get_relative_direction() -> Vector3:
 	return _relative_direction
+
+func emit_action_performed(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, holding: bool):
+	action_performed.emit(action_type, holding)
+func emit_action_interrupted(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType):
+	action_interrupted.emit(action_type)
+func emit_action_concluded(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType):
+	action_concluded.emit(action_type)
+func emit_action_set_unavailable(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType):
+	action_set_unavailable.emit(action_type)
+func emit_action_set_available(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType):
+	action_set_available.emit(action_type)
+func emit_action_set_unavailable_duration(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, duration_seconds: float):
+	action_set_unavailable_duration.emit(action_type, duration_seconds)
+func emit_action_set_available_duration(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, duration_seconds: float):
+	action_set_available_duration.emit(action_type, duration_seconds)
 
 func _on_current_character_changed(old: Character, new: Character):
 	#_update_character_attack_state_machine(new)

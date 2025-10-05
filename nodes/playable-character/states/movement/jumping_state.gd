@@ -30,8 +30,9 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
 		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
-func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
-	pass
+# Executes before the state is exited.
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 
 func _handle_direction_input(horizontal_rotation: float) -> Vector3:
 	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")

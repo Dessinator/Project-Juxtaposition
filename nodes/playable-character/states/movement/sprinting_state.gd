@@ -73,7 +73,9 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 		var velocity_normalized = velocity.normalized()
 		_playable_character_character_container.rotation.y = atan2(velocity_normalized.x, velocity_normalized.z)
 
-func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
+# Executes before the state is exited.
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
 	
 	var character_container = actor.get_playable_character_character_container()

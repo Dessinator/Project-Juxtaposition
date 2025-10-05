@@ -70,6 +70,10 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 		var horizontal_velocity_normalized = horizontal_velocity.normalized()
 		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
+# Executes before the state is exited.
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
+
 func _handle_mantle_force(normalized_direction: Vector3, speed: float) -> Vector3:
 	var velocity = Vector3(
 		normalized_direction.x * speed,

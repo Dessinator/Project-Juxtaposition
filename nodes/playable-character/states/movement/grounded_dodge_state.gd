@@ -45,6 +45,7 @@ func _on_update(_delta: float, _actor: Node, _blackboard: BTBlackboard) -> void:
 
 # Executes before the state is exited.
 func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
 	
 	var character_container = actor.get_playable_character_character_container()

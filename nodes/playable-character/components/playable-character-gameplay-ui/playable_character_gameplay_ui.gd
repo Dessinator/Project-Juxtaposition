@@ -5,9 +5,11 @@ const CHARACTER_SWITCHER_VISUAL_SCENE = preload("res://nodes/render/ui-render-ha
 
 var _character_switcher_visuals: Dictionary
 var _character_status_visuals: Dictionary
+var _character_action_visuals: Dictionary[String, Array]
 
 @onready var _character_switcher_visual_container: Control = %CharacterSwitcherVisualContainer
 @onready var _character_status_panel_container: Control = %CharacterStatusPanelContainer
+@onready var _character_action_visual_container: Control = %CharacterActionVisualContainer
 
 func add_character_switcher_visual(character_name: String, character_switcher_visual_packedscene: PackedScene, key_hint: String) -> void:
 	var instance = character_switcher_visual_packedscene.instantiate()
@@ -19,6 +21,13 @@ func add_character_status_visual(character_name: String, character_status_visual
 	var instance = character_status_visual_packedscene.instantiate()
 	_character_status_visuals[character_name] = instance
 	%CharacterStatusPanelContainer.add_child(instance)
+func add_character_action_visual(character_name: String, character_action_visual_packedscene: PackedScene):
+	var instance = character_action_visual_packedscene.instantiate()
+	if _character_action_visuals.has(character_name):
+		_character_action_visuals[character_name].append(instance)
+	else:
+		_character_action_visuals[character_name] = [instance]
+	%CharacterActionVisualContainer.add_child(instance)
 
 func get_character_switcher_visuals() -> Array:
 	return _character_switcher_visuals.values()
@@ -30,6 +39,11 @@ func get_character_status_visuals() -> Array:
 func get_character_status_visual(character_name: String) -> CharacterStatusVisual:
 	assert(_character_status_visuals.has(character_name), "No CharacterStatusVisual exists by name '{characer_name}'".format({"character_name": character_name}))
 	return _character_status_visuals[character_name]
+func get_all_character_action_visuals() -> Array[Array]:
+	return _character_action_visuals.values()
+func get_character_action_visuals(character_name: String) -> Array:
+	assert(_character_action_visuals.has(character_name), "No CharacterActionVisuals exist by name '{characer_name}'".format({"character_name": character_name}))
+	return _character_action_visuals[character_name]
 
 func remove_character_switcher_visual(character_name: String) -> void:
 	assert(_character_switcher_visuals.has(character_name), "No CharacterSwitcherVisual exists by name '{characer_name}'".format({"character_name": character_name}))
@@ -41,3 +55,9 @@ func remove_character_status_visual(character_name: String) -> void:
 	var instance = _character_status_visuals[character_name]
 	_character_status_visuals.erase(character_name)
 	instance.queue_free()
+func remove_character_status_visuals(character_name: String) -> void:
+	assert(_character_action_visuals.has(character_name), "No CharacterActionVisuals exist by name '{characer_name}'".format({"character_name": character_name}))
+	var instances = _character_action_visuals[character_name]
+	_character_action_visuals.erase(character_name)
+	for instance in instances:
+		instance.queue_free()

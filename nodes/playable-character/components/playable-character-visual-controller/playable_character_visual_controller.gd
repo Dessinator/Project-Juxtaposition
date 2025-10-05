@@ -30,17 +30,7 @@ func _process(delta: float) -> void:
 
 func initialize(playable_character: PlayableCharacter) -> void:
 	_playable_character = playable_character
-	_playable_character_character_container = _playable_character.get_playable_character_character_container()
-	_playable_character_character_container.current_character_changed.connect(_on_current_character_changed)
-	
-	var current_character = _playable_character_character_container.get_current_character()
-	var status = current_character.get_character_status()
-	
-	status.healed.connect(_on_current_character_healed)
-	status.damaged.connect(_on_current_character_damaged)
-	status.about_to_be_damaged.connect(_on_current_character_about_to_be_damaged.bind(current_character))
-	
-	_setup_character_status_signals()
+	_setup_signals()
 
 func get_new_playable_character_gameplay_ui_instance() -> PlayableCharacterGameplayUI:
 	if _playable_character_gameplay_ui_instance:
@@ -58,9 +48,27 @@ func get_playable_character_gameplay_ui_instance() -> PlayableCharacterGameplayU
 func _setup_playable_character_gameplay_ui_instance() -> void:
 	_update_character_switcher_visuals()
 	_update_character_status_visual()
+	_update_character_action_visuals()
 	_update_all_character_visuals()
 
-func _setup_character_status_signals():
+func _setup_signals():
+	_playable_character_character_container = _playable_character.get_playable_character_character_container()
+	_playable_character_character_container.current_character_changed.connect(_on_current_character_changed)
+	
+	var current_character = _playable_character_character_container.get_current_character()
+	var status = current_character.get_character_status()
+	
+	status.healed.connect(_on_current_character_healed)
+	status.damaged.connect(_on_current_character_damaged)
+	status.about_to_be_damaged.connect(_on_current_character_about_to_be_damaged.bind(current_character))
+	_playable_character.action_performed.connect(_on_action_performed.bind(current_character))
+	_playable_character.action_interrupted.connect(_on_action_interrupted.bind(current_character))
+	_playable_character.action_concluded.connect(_on_action_concluded.bind(current_character))
+	_playable_character.action_set_unavailable.connect(_on_action_set_unavailable.bind(current_character))
+	_playable_character.action_set_available.connect(_on_action_set_available.bind(current_character))
+	_playable_character.action_set_unavailable_duration.connect(_on_action_set_unavailable_duration.bind(current_character))
+	_playable_character.action_set_available_duration.connect(_on_action_set_available_duration.bind(current_character))
+	
 	for character in _playable_character_character_container.get_characters():
 		var character_status = character.get_character_status()
 		
@@ -78,20 +86,6 @@ func _update_all_character_visuals():
 		_handle_update_character_switcher_stamina_bar(character)
 		_handle_update_character_switcher_juxtometer_bar(character)
 
-func _update_character_switcher_visuals() -> void:
-	var character_container = _playable_character.get_playable_character_character_container()
-	var characters = character_container.get_characters()
-	
-	for i in characters.size():
-		var character = characters[i]
-		var metadata = character.get_character_metadata()
-		var character_name = metadata.get_character_name()
-		var character_switcher_visual_packedscene = character.get_character_switcher_visual_packedscene()
-		
-		_playable_character_gameplay_ui_instance.add_character_switcher_visual(
-			character_name,
-			character_switcher_visual_packedscene,
-			str(i + 1))
 func _update_character_status_visual():
 	var character_container = _playable_character.get_playable_character_character_container()
 	var characters = character_container.get_characters()
@@ -105,16 +99,62 @@ func _update_character_status_visual():
 		_playable_character_gameplay_ui_instance.add_character_status_visual(
 			character_name,
 			character_status_visual_packedscene)
+func _update_character_switcher_visuals():
+	var character_container = _playable_character.get_playable_character_character_container()
+	var characters = character_container.get_characters()
+	
+	for i in characters.size():
+		var character = characters[i]
+		var metadata = character.get_character_metadata()
+		var character_name = metadata.get_character_name()
+		var character_switcher_visual_packedscene = character.get_character_switcher_visual_packedscene()
+		
+		_playable_character_gameplay_ui_instance.add_character_switcher_visual(
+			character_name,
+			character_switcher_visual_packedscene,
+			str(i + 1))
+func _update_character_action_visuals():
+	var character_container = _playable_character.get_playable_character_character_container()
+	var characters = character_container.get_characters()
+	
+	for i in characters.size():
+		var character = characters[i]
+		var metadata = character.get_character_metadata()
+		var character_name = metadata.get_character_name()
+		
+		_playable_character_gameplay_ui_instance.add_character_action_visual(character_name, character.dodge_character_action_visual_packedscene)
+		_playable_character_gameplay_ui_instance.add_character_action_visual(character_name, character.parry_character_action_visual_packedscene)
+		_playable_character_gameplay_ui_instance.add_character_action_visual(character_name, character.jump_character_action_visual_packedscene)
+		_playable_character_gameplay_ui_instance.add_character_action_visual(character_name, character.light_attack_character_action_visual_packedscene)
+		_playable_character_gameplay_ui_instance.add_character_action_visual(character_name, character.heavy_attack_character_action_visual_packedscene)
+		_playable_character_gameplay_ui_instance.add_character_action_visual(character_name, character.juxtapose_character_action_visual_packedscene)
 
 func _on_current_character_changed(old: Character, new: Character):
 	_switch_active_character_visuals(old, new)
 	
-	var old_character_status = old.get_character_status()
-	var new_character_status = new.get_character_status()
+	if old:
+		_playable_character.action_performed.disconnect(_on_action_performed)
+		_playable_character.action_interrupted.disconnect(_on_action_interrupted)
+		_playable_character.action_concluded.disconnect(_on_action_concluded)
+		_playable_character.action_set_unavailable.disconnect(_on_action_set_unavailable)
+		_playable_character.action_set_available.disconnect(_on_action_set_available)
+		_playable_character.action_set_unavailable_duration.disconnect(_on_action_set_unavailable_duration)
+		_playable_character.action_set_available_duration.disconnect(_on_action_set_available_duration)
+		
+		var old_character_status = old.get_character_status()
+		old_character_status.healed.disconnect(_on_current_character_healed)
+		old_character_status.about_to_be_damaged.disconnect(_on_current_character_about_to_be_damaged)
+		old_character_status.damaged.disconnect(_on_current_character_damaged)
 	
-	old_character_status.healed.disconnect(_on_current_character_healed)
-	old_character_status.about_to_be_damaged.disconnect(_on_current_character_about_to_be_damaged)
-	old_character_status.damaged.disconnect(_on_current_character_damaged)
+	_playable_character.action_performed.connect(_on_action_performed.bind(new))
+	_playable_character.action_interrupted.connect(_on_action_interrupted.bind(new))
+	_playable_character.action_concluded.connect(_on_action_concluded.bind(new))
+	_playable_character.action_set_unavailable.connect(_on_action_set_unavailable.bind(new))
+	_playable_character.action_set_available.connect(_on_action_set_available.bind(new))
+	_playable_character.action_set_unavailable_duration.connect(_on_action_set_unavailable_duration.bind(new))
+	_playable_character.action_set_available_duration.connect(_on_action_set_available_duration.bind(new))
+	
+	var new_character_status = new.get_character_status()
 	new_character_status.healed.connect(_on_current_character_healed)
 	new_character_status.about_to_be_damaged.connect(_on_current_character_about_to_be_damaged.bind(new))
 	new_character_status.damaged.connect(_on_current_character_damaged)
@@ -141,11 +181,19 @@ func _switch_active_character_visuals(old_character: Character, new_character: C
 		var old_character_status_visual = _playable_character_gameplay_ui_instance.get_character_status_visual(old_character_name)
 		old_character_switcher_visual.switch_off()
 		old_character_status_visual.switch_off()
+		
+		var old_character_action_visuals = _playable_character_gameplay_ui_instance.get_character_action_visuals(old_character_name)
+		for action_visual in old_character_action_visuals:
+			action_visual.visible = false
 	
 	var new_character_metadata = new_character.get_character_metadata()
 	var new_character_name = new_character_metadata.get_character_name()
 	var new_character_switcher_visual = _playable_character_gameplay_ui_instance.get_character_switcher_visual(new_character_name)
 	var new_character_status_visual = _playable_character_gameplay_ui_instance.get_character_status_visual(new_character_name)
+	var new_character_action_visuals = _playable_character_gameplay_ui_instance.get_character_action_visuals(new_character_name)
+	for action_visual in new_character_action_visuals:
+		action_visual.visible = true
+	
 	new_character_switcher_visual.switch_on()
 	await get_tree().create_timer(SWITCH_CHARACTER_VISUALS_DELAY).timeout
 	new_character_status_visual.switch_on()
@@ -216,6 +264,62 @@ func _handle_update_character_switcher_juxtometer_bar(character: Character):
 	var character_status = character.get_character_status()
 	var current_juxtometer_reading = character_status.get_juxtometer_reading()
 	character_switcher_visual.update_juxtometer_bar(current_juxtometer_reading)
+
+func _get_matching_action_visual_for_character(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, character: Character) -> CharacterActionVisual:
+	if not _playable_character_gameplay_ui_instance:
+		return
+	
+	var metadata = character.get_character_metadata()
+	var character_name = metadata.get_character_name()
+	var character_action_visuals = _playable_character_gameplay_ui_instance.get_character_action_visuals(character_name)
+	
+	var matching_action_visual = null
+	for action_visual in character_action_visuals:
+		if not action_visual.action_visual_type == action_type:
+			continue
+		matching_action_visual = action_visual
+	
+	return matching_action_visual
+
+func _on_action_performed(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, holding: bool, character: Character):
+	var matching_action_visual = _get_matching_action_visual_for_character(action_type, character)
+	if not matching_action_visual:
+		return
+	
+	if not holding:
+		matching_action_visual.press()
+		return
+	matching_action_visual.hold()
+func _on_action_interrupted(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, character: Character):
+	var matching_action_visual = _get_matching_action_visual_for_character(action_type, character)
+	if not matching_action_visual:
+		return
+	matching_action_visual.release()
+func _on_action_concluded(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, character: Character):
+	var matching_action_visual = _get_matching_action_visual_for_character(action_type, character)
+	if not matching_action_visual:
+		return
+	matching_action_visual.release()
+func _on_action_set_unavailable(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, character: Character):
+	var matching_action_visual = _get_matching_action_visual_for_character(action_type, character)
+	if not matching_action_visual:
+		return
+	matching_action_visual.set_unavailable()
+func _on_action_set_available(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, character: Character):
+	var matching_action_visual = _get_matching_action_visual_for_character(action_type, character)
+	if not matching_action_visual:
+		return
+	matching_action_visual.set_available()
+func _on_action_set_unavailable_duration(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, duration_seconds: float, character: Character):
+	var matching_action_visual = _get_matching_action_visual_for_character(action_type, character)
+	if not matching_action_visual:
+		return
+	matching_action_visual.set_unavailable_duration(duration_seconds)
+func _on_action_set_available_duration(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, duration_seconds: float, character: Character):
+	var matching_action_visual = _get_matching_action_visual_for_character(action_type, character)
+	if not matching_action_visual:
+		return
+	matching_action_visual.set_available_duration(duration_seconds)
 
 func _handle_replacement_immunity_flickering():
 	if not _character_replace_immunity_timer.is_stopped():

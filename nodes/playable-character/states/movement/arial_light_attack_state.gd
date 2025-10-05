@@ -53,7 +53,8 @@ func _on_update(delta: float, actor: Node, _blackboard: BTBlackboard) -> void:
 	actor.velocity = velocity
 
 # Executes before the state is exited.
-func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	_airborne_timer.timeout.disconnect(_on_airborne_timer_timeout)
 
 func _handle_starting_airborne_timer():

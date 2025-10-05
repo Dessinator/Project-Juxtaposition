@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://5a754smhrn7s"]
+[gd_scene load_steps=63 format=3 uid="uid://5a754smhrn7s"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_mwbfe"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_ge252"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dlve1g2rnjvum" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/mafuyu_character_switcher_visual.tscn" id="4_ge252"]
 [ext_resource type="PackedScene" uid="uid://dihgxauj1p4wx" path="res://nodes/character_model/prefabs/mafuyu_character_model.tscn" id="4_mwbfe"]
 [ext_resource type="PackedScene" uid="uid://tmda3rg4g7yy" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/mafuyu_character_status_visual.tscn" id="5_fxpv0"]
+[ext_resource type="PackedScene" uid="uid://cfhbtd83k2hjn" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/mafuyu/mafuyu_dodge_character_action_visual.tscn" id="7_wcn6x"]
+[ext_resource type="PackedScene" uid="uid://drji5k8o48ggs" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/mafuyu/mafuyu_parry_character_action_visual.tscn" id="8_4d54h"]
+[ext_resource type="PackedScene" uid="uid://d2ya0yxdnq23p" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/mafuyu/mafuyu_jump_character_action_visual.tscn" id="9_rsvui"]
+[ext_resource type="PackedScene" uid="uid://cu6rtooxqvph6" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/mafuyu/mafuyu_light_attack_character_action_visual.tscn" id="10_wcn6x"]
+[ext_resource type="PackedScene" uid="uid://rtevo2gtuc4r" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/mafuyu/mafuyu_heavy_attack_character_action_visual.tscn" id="11_4d54h"]
+[ext_resource type="PackedScene" uid="uid://bmbucku33ktgi" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/mafuyu/mafuyu_juxtapose_character_action_visual.tscn" id="12_rsvui"]
 
 [sub_resource type="Resource" id="Resource_fxpv0"]
 script = ExtResource("2_ge252")
@@ -243,6 +249,12 @@ _character_stats = ExtResource("3_fxpv0")
 _character_combo = ExtResource("4_fxpv0")
 _character_switcher_visual_packedscene = ExtResource("4_ge252")
 _character_status_visual_packedscene = ExtResource("5_fxpv0")
+dodge_character_action_visual_packedscene = ExtResource("7_wcn6x")
+parry_character_action_visual_packedscene = ExtResource("8_4d54h")
+jump_character_action_visual_packedscene = ExtResource("9_rsvui")
+light_attack_character_action_visual_packedscene = ExtResource("10_wcn6x")
+heavy_attack_character_action_visual_packedscene = ExtResource("11_4d54h")
+juxtapose_character_action_visual_packedscene = ExtResource("12_rsvui")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="MafuyuCharacterModel" parent="." index="1" instance=ExtResource("4_mwbfe")]

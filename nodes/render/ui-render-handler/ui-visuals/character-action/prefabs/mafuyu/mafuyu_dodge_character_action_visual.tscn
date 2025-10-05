@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfhbtd83k2hjn"]
+
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_p05nm"]
+
+[node name="MafuyuDodgeCharacterActionVisual" instance=ExtResource("1_p05nm")]
+_action_name = "Mafuyu Dodge"
+action_visual_type = 1
+
+[node name="Button" parent="Control" index="0"]
+theme_override_font_sizes/font_size = 14
+text = "Mafuyu Dodge"

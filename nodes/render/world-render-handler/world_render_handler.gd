@@ -24,7 +24,7 @@ func initialize(game_manager: GameManager):
 	_game_manager = game_manager
 	
 	#_preselect_resolution()
-	_set_resolution(PS2_RESOLUTION)
+	_set_resolution(PS3_RESOLUTION)
 	_preselect_affine_mapping()
 	_preselect_jitter_strength()
 	_preselect_dithering()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=106 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://do8qvn25kxfru" path="res://nodes/playable-character/states/movement/transitions/start_grounded_light_attack.gd" id="13_mb8j0"]
 [ext_resource type="Script" uid="uid://byqadyig0lmi3" path="res://nodes/playable-character/states/movement/skidding_state.gd" id="13_owwb0"]
 [ext_resource type="Script" uid="uid://lkn5j7bwbwbb" path="res://nodes/playable-character/states/movement/falling_state.gd" id="14_fc7wd"]
+[ext_resource type="Script" uid="uid://blo0nkwmfb0y5" path="res://nodes/playable-character/components/playable-character-gameplay-state-machine/action_type_availability_modifier.gd" id="15_kykue"]
 [ext_resource type="Script" uid="uid://b1vq26ajolojt" path="res://nodes/playable-character/states/movement/landing_state.gd" id="16_fc7wd"]
 [ext_resource type="Script" uid="uid://d1lb4ri15h3sf" path="res://nodes/playable-character/states/movement/transitions/start_grounded_heavy_attack.gd" id="16_nv747"]
 [ext_resource type="Script" uid="uid://h81tgnuo3cfv" path="res://nodes/playable-character/states/movement/transitions/start_normalizing.gd" id="16_vodfd"]
@@ -53,7 +54,6 @@
 [ext_resource type="Script" uid="uid://bp3tfb82chts3" path="res://nodes/playable-character/states/movement/transitions/start_mantling.gd" id="29_4yxhn"]
 [ext_resource type="Script" uid="uid://bha2v0jkxk21b" path="res://nodes/playable-character/states/animation/dodge_animation_state.gd" id="30_dkfog"]
 [ext_resource type="Script" uid="uid://c1ayujh3ioiw2" path="res://nodes/playable-character/states/movement/grounded_heavy_attack_state.gd" id="30_k3myv"]
-[ext_resource type="Script" uid="uid://k5p6yghm7nrm" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="31_4jjem"]
 [ext_resource type="Script" uid="uid://dicp70ytv2j24" path="res://nodes/playable-character/states/animation/landing_animation_state.gd" id="34_m348m"]
 [ext_resource type="Script" uid="uid://ccr7fxvjfnrcd" path="res://nodes/playable-character/states/movement/grounded_parry_state.gd" id="38_3npex"]
 [ext_resource type="Script" uid="uid://d08sctsinsytu" path="res://nodes/playable-character/states/movement/grounded_light_charge_attack_state.gd" id="40_o2shg"]
@@ -66,6 +66,7 @@
 [ext_resource type="Script" uid="uid://bu40nfnoj3gl0" path="res://nodes/playable-character/states/animation/mantle_animation_state.gd" id="45_kbp4i"]
 [ext_resource type="Script" uid="uid://8cagqi4a4rmm" path="res://nodes/playable-character/states/movement/transitions/start_arial_light_charge_attack.gd" id="45_omajm"]
 [ext_resource type="Script" uid="uid://cva3cjt6jimyk" path="res://nodes/playable-character/states/movement/replace_state.gd" id="46_meuyo"]
+[ext_resource type="Script" uid="uid://e2x00qlu0wrs" path="res://nodes/playable-character/states/movement/launched_state.gd" id="46_qbeoo"]
 [ext_resource type="Script" uid="uid://5juaf12idcnk" path="res://nodes/playable-character/states/movement/transitions/start_arial_spike.gd" id="46_sjhaw"]
 [ext_resource type="Script" uid="uid://bxfjc4b7nb2t1" path="res://nodes/playable-character/states/movement/arial_light_attack_state.gd" id="47_wtmr8"]
 [ext_resource type="PackedScene" uid="uid://bgnq2vj4f5nni" path="res://nodes/particles/playable-character/playable_character_sprinting_particles.tscn" id="48_avwae"]
@@ -75,6 +76,7 @@
 [ext_resource type="Script" uid="uid://cjealf3cx5u37" path="res://nodes/playable-character/states/movement/arial_heavy_attack_state.gd" id="49_englh"]
 [ext_resource type="Script" uid="uid://c4wd1bodipma" path="res://nodes/playable-character/states/movement/arial_spike_state.gd" id="50_3npex"]
 [ext_resource type="Script" uid="uid://cuhp33k84ndpt" path="res://nodes/playable-character/states/animation/death_animation_state.gd" id="56_8pdar"]
+[ext_resource type="Script" uid="uid://duc2f4dbp2bwt" path="res://nodes/playable-character/states/movement/spiked_state.gd" id="56_qbeoo"]
 [ext_resource type="Script" uid="uid://d2ti4ot5fitpr" path="res://nodes/playable-character/states/movement/juxtapose_state.gd" id="63_qbeoo"]
 [ext_resource type="Script" uid="uid://b3dvu7ygca2tx" path="res://nodes/playable-character/states/movement/normalize_state.gd" id="64_kykue"]
 
@@ -93,6 +95,213 @@ content = {
 "regenerate_stamina": false
 }
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
+
+[sub_resource type="Resource" id="Resource_bocou"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_kykue"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = true
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_vb6qd"]
+script = ExtResource("15_kykue")
+action_type = 1
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.3
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_kxva5"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.3
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_ga6v7"]
+script = ExtResource("15_kykue")
+action_type = 4
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.3
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_gdylm"]
+script = ExtResource("15_kykue")
+action_type = 5
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.3
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_3tara"]
+script = ExtResource("15_kykue")
+action_type = 2
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.4
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_3xoba"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.4
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_y1bfg"]
+script = ExtResource("15_kykue")
+action_type = 4
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.4
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_2d1wq"]
+script = ExtResource("15_kykue")
+action_type = 5
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.4
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_vodfd"]
+script = ExtResource("15_kykue")
+action_type = 1
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.5
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_572xm"]
+script = ExtResource("15_kykue")
+action_type = 2
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.5
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_3uqe5"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.5
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_1byfn"]
+script = ExtResource("15_kykue")
+action_type = 5
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.5
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_vwxx6"]
+script = ExtResource("15_kykue")
+action_type = 4
+set_action_available = false
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.5
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_3f7k8"]
+script = ExtResource("15_kykue")
+action_type = 1
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_tjxje"]
+script = ExtResource("15_kykue")
+action_type = 2
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_4wlak"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_4r7f7"]
+script = ExtResource("15_kykue")
+action_type = 4
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_6lacv"]
+script = ExtResource("15_kykue")
+action_type = 5
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_ovx60"]
+script = ExtResource("15_kykue")
+action_type = 6
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_nikr2"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = false
+set_action_unavailable = true
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
+
+[sub_resource type="Resource" id="Resource_jc5d3"]
+script = ExtResource("15_kykue")
+action_type = 3
+set_action_available = true
+set_action_unavailable = false
+set_action_available_duration = 0.0
+set_action_unavailable_duration = 0.0
+metadata/_custom_type_script = "uid://blo0nkwmfb0y5"
 
 [sub_resource type="Resource" id="Resource_s6wqa"]
 script = ExtResource("3_kwpjs")
@@ -660,6 +869,8 @@ unique_name_in_owner = true
 script = ExtResource("12_nfjh7")
 _set_can_arial_dodge = 1
 _animation_state = NodePath("../../AnimationFiniteStateMachine/JumpAnimationState")
+_action_type = 3
+_set_action_unavailable = true
 
 [node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
@@ -708,6 +919,7 @@ next_state = NodePath("../../GroundedHeavyAttackState")
 unique_name_in_owner = true
 script = ExtResource("14_fc7wd")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/FallAnimationState")
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_bocou")])
 
 [node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
@@ -755,6 +967,7 @@ unique_name_in_owner = true
 script = ExtResource("16_fc7wd")
 _set_can_arial_dodge = 2
 _animation_state = NodePath("../../AnimationFiniteStateMachine/LandingAnimationState")
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_kykue")])
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
 [node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
@@ -831,6 +1044,9 @@ unique_name_in_owner = true
 script = ExtResource("38_3npex")
 _slow_motion = 0.5
 _can_switch_characters = false
+_action_type = 2
+_set_action_unavailable_duration = 0.3
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vb6qd"), SubResource("Resource_kxva5"), SubResource("Resource_ga6v7"), SubResource("Resource_gdylm")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -874,6 +1090,9 @@ _force = 12.0
 _slow_motion = 0.5
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/DodgeAnimationState")
+_action_type = 1
+_set_action_unavailable_duration = 0.4
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_3tara"), SubResource("Resource_3xoba"), SubResource("Resource_y1bfg"), SubResource("Resource_2d1wq")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -925,6 +1144,9 @@ unique_name_in_owner = true
 script = ExtResource("25_mb8j0")
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_action_type = 4
+_set_action_unavailable_duration = 0.5
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_3uqe5"), SubResource("Resource_1byfn")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -978,6 +1200,9 @@ unique_name_in_owner = true
 script = ExtResource("40_o2shg")
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_action_type = 4
+_hold_action = true
+_set_action_available_duration = 0.4
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1038,6 +1263,9 @@ unique_name_in_owner = true
 script = ExtResource("30_k3myv")
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_action_type = 5
+_set_action_unavailable_duration = 0.5
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_3uqe5"), SubResource("Resource_vwxx6")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1091,6 +1319,9 @@ unique_name_in_owner = true
 script = ExtResource("42_uy0g6")
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_action_type = 5
+_hold_action = true
+_set_action_available_duration = 0.6
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1151,6 +1382,7 @@ unique_name_in_owner = true
 script = ExtResource("43_uy0g6")
 _set_can_arial_dodge = 1
 _can_switch_characters = false
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_3f7k8"), SubResource("Resource_tjxje"), SubResource("Resource_4wlak"), SubResource("Resource_4r7f7"), SubResource("Resource_6lacv"), SubResource("Resource_ovx60")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/SelfLaunchState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1165,7 +1397,8 @@ event = "on_start_airborne"
 
 [node name="LaunchedState" type="Node" parent="GameplayFiniteStateMachine"]
 unique_name_in_owner = true
-script = ExtResource("31_4jjem")
+script = ExtResource("46_qbeoo")
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_3f7k8"), SubResource("Resource_tjxje"), SubResource("Resource_4wlak"), SubResource("Resource_4r7f7"), SubResource("Resource_6lacv"), SubResource("Resource_ovx60")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1200,6 +1433,7 @@ _gravity = 1.0
 _acceleration = 20
 _set_can_arial_dodge = 1
 _can_switch_characters = false
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_nikr2")])
 
 [node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
@@ -1272,6 +1506,9 @@ _gravity = 1.5
 _boost_force = 15.0
 _slow_motion = 0.5
 _can_switch_characters = false
+_action_type = 2
+_set_action_unavailable_duration = 0.3
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vb6qd"), SubResource("Resource_kxva5"), SubResource("Resource_ga6v7"), SubResource("Resource_gdylm")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialParryState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1299,6 +1536,9 @@ _force = 12.0
 _slow_motion = 0.5
 _set_can_arial_dodge = 2
 _can_switch_characters = false
+_action_type = 1
+_set_action_unavailable_duration = 0.4
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_3tara"), SubResource("Resource_3xoba"), SubResource("Resource_y1bfg"), SubResource("Resource_2d1wq")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialDodgeState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1324,6 +1564,9 @@ _stamina_drain = 2.0
 _gravity = 1.5
 _boost_force = 15.0
 _can_switch_characters = false
+_action_type = 4
+_set_action_unavailable_duration = 0.5
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_1byfn")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1355,6 +1598,9 @@ _stamina_drain = 3.0
 _gravity = 1.5
 _boost_force = 15.0
 _can_switch_characters = false
+_action_type = 4
+_hold_action = true
+_set_action_available_duration = 0.4
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1386,6 +1632,9 @@ _stamina_drain = 4
 _gravity = 1.5
 _boost_force = 15.0
 _can_switch_characters = false
+_action_type = 5
+_set_action_unavailable_duration = 0.5
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_vwxx6")])
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1415,6 +1664,9 @@ unique_name_in_owner = true
 script = ExtResource("50_3npex")
 _stamina_drain = 5.0
 _can_switch_characters = false
+_action_type = 5
+_hold_action = true
+_set_action_available_duration = 0.6
 
 [node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
@@ -1441,7 +1693,8 @@ event = "on_start_airborne"
 
 [node name="SpikedState" type="Node" parent="GameplayFiniteStateMachine"]
 unique_name_in_owner = true
-script = ExtResource("31_4jjem")
+script = ExtResource("56_qbeoo")
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_3f7k8"), SubResource("Resource_tjxje"), SubResource("Resource_4wlak"), SubResource("Resource_4r7f7"), SubResource("Resource_6lacv"), SubResource("Resource_ovx60")])
 
 [node name="land" type="Node" parent="GameplayFiniteStateMachine/SpikedState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
@@ -1455,6 +1708,7 @@ _stamina_drain = 2
 _drain_stamina_timer = NodePath("../../DrainStaminaTimer")
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/WallrunAnimationState")
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_jc5d3")])
 
 [node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
@@ -1498,6 +1752,7 @@ _acceleration = 25.0
 _speed_multiplier = 2.0
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/WallslideAnimationState")
+_action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_jc5d3")])
 
 [node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
@@ -1560,6 +1815,8 @@ script = ExtResource("27_1uog8")
 _set_can_arial_dodge = 1
 _can_switch_characters = false
 _animation_state = NodePath("../../AnimationFiniteStateMachine/JumpAnimationState")
+_action_type = 3
+_set_action_unavailable = true
 
 [node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")

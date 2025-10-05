@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dd2y8gmrc02cs"]
+[gd_scene load_steps=63 format=3 uid="uid://dd2y8gmrc02cs"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_sa5hq"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_x4bvh"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dvh1txklr27o8" path="res://nodes/character_model/prefabs/kaho_character_model.tscn" id="4_sa5hq"]
 [ext_resource type="PackedScene" uid="uid://cj5vry40e3nwj" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/kaho_character_switcher_visual.tscn" id="4_x4bvh"]
 [ext_resource type="PackedScene" uid="uid://6weyk7jdqxip" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/kaho_character_status_visual.tscn" id="5_f6ugt"]
+[ext_resource type="PackedScene" uid="uid://bchwh4lfk1r1r" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_dodge_character_action_visual.tscn" id="7_f8x8i"]
+[ext_resource type="PackedScene" uid="uid://6ijh7yxrksvc" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_parry_character_action_visual.tscn" id="8_l3ae1"]
+[ext_resource type="PackedScene" uid="uid://cpxiyuaykuqvb" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_jump_character_action_visual.tscn" id="9_7x442"]
+[ext_resource type="PackedScene" uid="uid://3g387x12m27p" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_light_attack_character_action_visual.tscn" id="10_xgotm"]
+[ext_resource type="PackedScene" uid="uid://dasosd7yq7mbh" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_heavy_attack_character_action_visual.tscn" id="11_4cesd"]
+[ext_resource type="PackedScene" uid="uid://bokivp8eni4dt" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_juxtapose_character_action_visual.tscn" id="12_l1v2o"]
 
 [sub_resource type="Resource" id="Resource_f6ugt"]
 script = ExtResource("2_x4bvh")
@@ -243,6 +249,12 @@ _character_stats = ExtResource("3_f6ugt")
 _character_combo = ExtResource("4_f6ugt")
 _character_switcher_visual_packedscene = ExtResource("4_x4bvh")
 _character_status_visual_packedscene = ExtResource("5_f6ugt")
+dodge_character_action_visual_packedscene = ExtResource("7_f8x8i")
+parry_character_action_visual_packedscene = ExtResource("8_l3ae1")
+jump_character_action_visual_packedscene = ExtResource("9_7x442")
+light_attack_character_action_visual_packedscene = ExtResource("10_xgotm")
+heavy_attack_character_action_visual_packedscene = ExtResource("11_4cesd")
+juxtapose_character_action_visual_packedscene = ExtResource("12_l1v2o")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="KahoCharacterModel" parent="." index="1" instance=ExtResource("4_sa5hq")]

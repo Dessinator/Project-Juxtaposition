@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dmb2w42ar2vo2"]
+[gd_scene load_steps=70 format=3 uid="uid://dmb2w42ar2vo2"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_4to8m"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_4p6p2"]
@@ -7,11 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://b8bm0r27t0ukw" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/maika_character_switcher_visual.tscn" id="4_4p6p2"]
 [ext_resource type="PackedScene" uid="uid://dvw0ggc5xklmi" path="res://nodes/character_model/prefabs/maika_character_model.tscn" id="4_4to8m"]
 [ext_resource type="PackedScene" uid="uid://hb8jtknxv7w6" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/maika_character_status_visual.tscn" id="5_3bkpy"]
+[ext_resource type="PackedScene" uid="uid://dbm48kruvuea8" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/maika/maika_dodge_character_action_visual.tscn" id="7_0dkee"]
 [ext_resource type="Script" uid="uid://0rqq8j1kh32y" path="res://resources/character/character-attack/character_attack_definition.gd" id="7_wccao"]
+[ext_resource type="PackedScene" uid="uid://ci6o2ebo8ln4h" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/maika/maika_parry_character_action_visual.tscn" id="8_dnkfo"]
 [ext_resource type="Resource" uid="uid://dsfa575lw46oy" path="res://resources/character/character-attack/prefabs/maika/maika_light_attack_0.tres" id="8_kb2cy"]
+[ext_resource type="PackedScene" uid="uid://bnglsepnqitt5" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/maika/maika_jump_character_action_visual.tscn" id="9_4yfnn"]
 [ext_resource type="Resource" uid="uid://cvcgrpy4vd2lx" path="res://resources/character/character-attack/prefabs/maika/maika_light_attack_1.tres" id="9_mn1e1"]
 [ext_resource type="Resource" uid="uid://il1muprpijf2" path="res://resources/character/character-attack/prefabs/maika/maika_light_attack_2.tres" id="10_c4b4g"]
+[ext_resource type="PackedScene" uid="uid://bb4owwpekivbq" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/maika/maika_light_attack_character_action_visual.tscn" id="10_hfgu2"]
 [ext_resource type="Resource" uid="uid://c6rmp1attokhd" path="res://resources/character/character-attack/prefabs/maika/maika_heavy_attack_0.tres" id="11_c4b4g"]
+[ext_resource type="PackedScene" uid="uid://bk0h3a3bcns4w" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/maika/maika_heavy_attack_character_action_visual.tscn" id="11_w6x52"]
+[ext_resource type="PackedScene" uid="uid://bgr1a663uiffp" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/maika/maika_juxtapose_character_action_visual.tscn" id="12_4a0k8"]
 [ext_resource type="Resource" uid="uid://bf7qc2ehn5o4w" path="res://resources/character/character-attack/prefabs/maika/maika_heavy_attack_1.tres" id="12_nc2q0"]
 [ext_resource type="Resource" uid="uid://cx8sw4nbl4ihx" path="res://resources/character/character-attack/prefabs/maika/maika_heavy_attack_2.tres" id="13_b21de"]
 
@@ -250,6 +256,12 @@ _character_stats = ExtResource("3_3bkpy")
 _character_combo = ExtResource("4_3bkpy")
 _character_switcher_visual_packedscene = ExtResource("4_4p6p2")
 _character_status_visual_packedscene = ExtResource("5_3bkpy")
+dodge_character_action_visual_packedscene = ExtResource("7_0dkee")
+parry_character_action_visual_packedscene = ExtResource("8_dnkfo")
+jump_character_action_visual_packedscene = ExtResource("9_4yfnn")
+light_attack_character_action_visual_packedscene = ExtResource("10_hfgu2")
+heavy_attack_character_action_visual_packedscene = ExtResource("11_w6x52")
+juxtapose_character_action_visual_packedscene = ExtResource("12_4a0k8")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
 [node name="MaikaCharacterModel" parent="." index="1" instance=ExtResource("4_4to8m")]

@@ -40,6 +40,16 @@ const ON_START_WALL_JUMP: String = "on_start_wall_jump"
 const ON_START_GROUNDED_JUX_PARRY: String = "on_start_grounded_jux-parry"
 const ON_START_GROUNDED_JUX_DODGE: String = "on_start_grounded_jux-dodge"
 
+enum PlayableCharacterActionType
+{
+	TYPE_OTHER,
+	TYPE_DODGE,
+	TYPE_PARRY,
+	TYPE_JUMP,
+	TYPE_LIGHT_ATTACK,
+	TYPE_HEAVY_ATTACK,
+	TYPE_JUXTAPOSE
+}
 enum GameplayStateSetValueMode
 {
 	MODE_DONT_CHANGE,
@@ -55,11 +65,19 @@ enum GameplayStateSetValueMode
 
 var _character: Character
 
+@export_subgroup("Functionality")
 @export var _set_can_arial_dodge: GameplayStateSetValueMode = GameplayStateSetValueMode.MODE_DONT_CHANGE
 @export var _can_regenerate_stamina: bool = false
 @export var _can_switch_characters: bool = true
+
+@export_subgroup("Visuals")
 @export var _animation_state: PlayableCharacterAnimationState
-@export var _gameplay_action_visual_packedscene: PackedScene
+@export var _action_type: PlayableCharacterActionType = PlayableCharacterActionType.TYPE_OTHER
+@export var _hold_action: bool = false
+@export var _set_action_unavailable: bool = false
+@export var _set_action_unavailable_duration: float = 0
+@export var _set_action_available_duration: float = 0
+@export var _action_types_modifiers: Array[ActionTypeAvailabilityModifier]
 
 func _enter_tree() -> void:
 	%PlayableCharacterCharacterContainer.current_character_changed.connect(_on_current_character_changed)
@@ -68,35 +86,73 @@ func _enter_tree() -> void:
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	
-	actor._can_switch_characters = _can_switch_characters
-	
-	match _set_can_arial_dodge:
-		GameplayStateSetValueMode.MODE_SET_TRUE:
-			blackboard.set_value(CAN_ARIAL_DODGE, true)
-		GameplayStateSetValueMode.MODE_SET_FALSE:
-			blackboard.set_value(CAN_ARIAL_DODGE, false)
-	
-	if not _can_regenerate_stamina:
-		_stamina_regeneration_delay_timer.stop()
-		blackboard.set_value(REGENERATE_STAMINA, false)
-	else:
-		_handle_stamina_regeneration_delay(blackboard)
-	
-	if _animation_state:
-		_animation_finite_state_machine.change_state(_animation_state)
+	_handle_can_switch_characters(actor)
+	_handle_can_arial_dodge(blackboard)
+	_handle_can_regenerate_stamina(blackboard)
+	_handle_animation_state_change()
+	_handle_action_performed(actor)
+	_handle_action_availability(actor)
 
 # Executes every _process call, if the state is active.
 func _on_update(_delta: float, _actor: Node, _blackboard: BTBlackboard) -> void:
 	pass
 
 # Executes before the state is exited.
-func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
+func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
+	actor = actor as PlayableCharacter
+	
+	_handle_action_conclusion(actor)
+	
 	if _can_regenerate_stamina:
 		_stamina_regeneration_delay_timer.timeout.disconnect(_on_stamina_regeneration_delay_timer_timeout)
 
+func _handle_can_switch_characters(playable_character: PlayableCharacter):
+	playable_character._can_switch_characters = _can_switch_characters
+func _handle_can_arial_dodge(blackboard: BTBlackboard):
+	match _set_can_arial_dodge:
+		GameplayStateSetValueMode.MODE_SET_TRUE:
+			blackboard.set_value(CAN_ARIAL_DODGE, true)
+		GameplayStateSetValueMode.MODE_SET_FALSE:
+			blackboard.set_value(CAN_ARIAL_DODGE, false)
+func _handle_can_regenerate_stamina(blackboard: BTBlackboard):
+	if not _can_regenerate_stamina:
+		_stamina_regeneration_delay_timer.stop()
+		blackboard.set_value(REGENERATE_STAMINA, false)
+	else:
+		_handle_stamina_regeneration_delay(blackboard)
+
+func _handle_animation_state_change():
+	if _animation_state:
+		_animation_finite_state_machine.change_state(_animation_state)
+func _handle_action_performed(playable_character: PlayableCharacter):
+	playable_character.emit_action_performed(_action_type, _hold_action)
+func _handle_action_conclusion(playable_character: PlayableCharacter):
+	if not _hold_action:
+		return
+	playable_character.emit_action_concluded(_action_type)
+func _handle_action_availability(playable_character: PlayableCharacter):
+	if _set_action_unavailable:
+		playable_character.emit_action_set_unavailable(_action_type)
+	elif _set_action_unavailable_duration > 0:
+		playable_character.emit_action_set_unavailable_duration(_action_type, _set_action_unavailable_duration)
+	elif _set_action_available_duration > 0:
+		playable_character.emit_action_set_available_duration(_action_type, _set_action_available_duration)
+	
+	if _action_types_modifiers.is_empty():
+		return
+	
+	for _action_type_modifier in _action_types_modifiers:
+		if _action_type_modifier.set_action_available:
+			playable_character.emit_action_set_available(_action_type_modifier.action_type)
+		elif _action_type_modifier.set_action_available_duration > 0:
+			playable_character.emit_action_set_available_duration(_action_type_modifier.action_type, _action_type_modifier.set_action_available_duration)
+		elif _action_type_modifier.set_action_unavailable:
+			playable_character.emit_action_set_unavailable(_action_type_modifier.action_type)
+		elif _action_type_modifier.set_action_unavailable_duration > 0:
+			playable_character.emit_action_set_unavailable_duration(_action_type_modifier.action_type, _action_type_modifier.set_action_unavailable_duration)
+
 func _on_current_character_changed(_old: Character, new: Character):
 	_set_character(new)
-
 func _set_character(character: Character):
 	_character = character
 
@@ -106,6 +162,5 @@ func _handle_stamina_regeneration_delay(blackboard: BTBlackboard):
 	if not blackboard.get_value("regenerate_stamina") and _stamina_regeneration_delay_timer.is_stopped():
 		blackboard.set_value("regenerate_stamina", false)
 		_stamina_regeneration_delay_timer.start()
-
 func _on_stamina_regeneration_delay_timer_timeout(blackboard: BTBlackboard):
 	blackboard.set_value("regenerate_stamina", true)

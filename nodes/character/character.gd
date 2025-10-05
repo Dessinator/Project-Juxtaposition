@@ -4,14 +4,8 @@ extends Node3D
 # Responsible for essentially defining a character, their attacks, their model, animations, etc.
 # Should be the child of a PlayableCharacter node.
 
-@export var _character_metadata: CharacterMetadata
-@export var _character_model: Node3D
-@export var _character_stats: CharacterStats
-@export var _character_combo: CharacterCombo
-@export var _character_switcher_visual_packedscene: PackedScene
-@export var _character_status_visual_packedscene: PackedScene
-#@export var _character_attack_state_machine_packedscene: PackedScene
-@export var _mantle_ray_cast: RayCast3D
+@onready var _character_combat_manager: CharacterCombatManager = %CharacterCombatManager
+@onready var _character_attack_definition_manager: CharacterAttackDefinitionManager = %CharacterAttackDefinitionManager
 
 var _character_status: CharacterStatus
 var _character_model_animation_player: AnimationPlayer
@@ -19,8 +13,23 @@ var _character_model_animation_names: Array[StringName]
 var _character_model_hitbox_animation_player: AnimationPlayer
 var _character_model_hitbox_animation_names: Array[StringName]
 
-@onready var _character_combat_manager: CharacterCombatManager = %CharacterCombatManager
-@onready var _character_attack_definition_manager: CharacterAttackDefinitionManager = %CharacterAttackDefinitionManager
+@export var _character_metadata: CharacterMetadata
+@export var _character_model: Node3D
+@export var _character_stats: CharacterStats
+@export var _character_combo: CharacterCombo
+
+@export var _character_switcher_visual_packedscene: PackedScene
+@export var _character_status_visual_packedscene: PackedScene
+@export var dodge_character_action_visual_packedscene: PackedScene
+@export var parry_character_action_visual_packedscene: PackedScene
+@export var jump_character_action_visual_packedscene: PackedScene
+@export var light_attack_character_action_visual_packedscene: PackedScene
+@export var heavy_attack_character_action_visual_packedscene: PackedScene
+@export var juxtapose_character_action_visual_packedscene:  PackedScene
+
+#@export var _character_attack_state_machine_packedscene: PackedScene
+@export var _mantle_ray_cast: RayCast3D
+
 
 func _ready() -> void:
 	_initialize_character_stats()

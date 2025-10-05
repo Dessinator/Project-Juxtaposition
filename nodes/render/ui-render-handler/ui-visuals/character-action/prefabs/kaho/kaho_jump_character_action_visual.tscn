@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpxiyuaykuqvb"]
+
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_gox1y"]
+
+[node name="KahoJumpCharacterActionVisual" instance=ExtResource("1_gox1y")]
+_action_name = "Kaho Jump"
+action_visual_type = 3
+
+[node name="Button" parent="Control" index="0"]
+text = "Kaho Jump"

@@ -31,9 +31,6 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	# stop the player's y velocity so that they dont slide down the wall
 	actor.velocity.y = 0
 	
-	_stamina_regeneration_delay_timer.stop()
-	blackboard.set_value("regenerate_stamina", false)
-	
 	status.stamina_modified.connect(_on_status_stamina_modified.bind(actor))
 	
 	_drain_stamina_timer.timeout.connect(_on_drain_stamina_timer_timeout.bind(status))
@@ -79,23 +76,17 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
 
 # Executes before the state is exited.
-func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	actor = actor as PlayableCharacter
 	var character_container = actor.get_playable_character_character_container()
 	var character = character_container.get_current_character()
 	var status = character.get_character_status()
 	
-	#var particle_system = _playable_character_sprinting_particles.get_node("%GPUParticles3D")
-	#particle_system.emitting = false
-	
 	status.stamina_modified.disconnect(_on_status_stamina_modified)
 	
 	_drain_stamina_timer.timeout.disconnect(_on_drain_stamina_timer_timeout)
 	_drain_stamina_timer.paused = true
-	
-	#_allow_skidding_delay_timer.timeout.disconnect(_on_allow_skidding_delay_timer_timeout)
-	#if not _allow_skidding_delay_timer.is_stopped():
-		#_allow_skidding_delay_timer.paused = true
 
 func _handle_direction_input(horizontal_rotation: float) -> Vector3:
 	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")

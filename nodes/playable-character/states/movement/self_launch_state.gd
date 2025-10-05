@@ -25,8 +25,8 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor.velocity = velocity
 
 # Executes before the state is exited.
-func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
-	pass
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 
 func _handle_launch(current_velocity: Vector3, delta: float) -> Vector3:
 	var velocity = current_velocity.move_toward(Vector3.DOWN * _gravity, _acceleration * delta)

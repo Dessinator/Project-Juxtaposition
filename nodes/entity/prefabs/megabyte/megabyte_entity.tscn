@@ -78,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 [node name="TargetedIndicator" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="StateMachine" parent="." index="18"]
+[node name="StateMachine" parent="." index="19"]
 blackboard = SubResource("Resource_omakp")
 
 [node name="GroundedAttackingState" parent="StateMachine" index="3"]

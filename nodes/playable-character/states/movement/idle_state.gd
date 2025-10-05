@@ -9,8 +9,8 @@ func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	
 	_handle_targeting(actor, blackboard)
 
-func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
-	pass
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 
 func _handle_targeting(actor: PlayableCharacter, blackboard: BTBlackboard):
 	var character_animation_tree_expression_base = _character.get_node("%CharacterAnimationTreeExpressionBase")

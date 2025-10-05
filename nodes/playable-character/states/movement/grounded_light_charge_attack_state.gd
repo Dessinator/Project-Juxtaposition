@@ -25,10 +25,12 @@ func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 		return
 	
 	_light_charge_attack_timer.stop()
+	actor.emit_action_interrupted(_action_type)
 	_handle_transitions(actor, blackboard)
 
 # Executes before the state is exited.
-func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	_light_charge_attack_timer.timeout.disconnect(_on_light_charge_attack_timer_timeout)
 
 func _on_light_charge_attack_timer_timeout(actor: PlayableCharacter, blackboard: BTBlackboard):

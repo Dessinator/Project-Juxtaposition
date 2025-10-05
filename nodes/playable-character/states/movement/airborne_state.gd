@@ -31,7 +31,8 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	_handle_targeting(actor, blackboard)
 
 # Executes before the state is exited.
-func _on_exit(_actor: Node, _blackboard: BTBlackboard) -> void:
+func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
+	super(actor, blackboard)
 	_airborne_timer.timeout.disconnect(_on_airborne_timer_timeout)
 
 func _handle_starting_airborne_timer():
