@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=22 format=3 uid="uid://csxvkfqvs8ue1"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=26 format=3 uid="uid://csxvkfqvs8ue1"]
 
 [ext_resource type="Script" uid="uid://dkwx2cueh4lp1" path="res://resources/character/character-stats/stat.gd" id="1_1ohfm"]
+[ext_resource type="Script" uid="uid://b6lp74gqsj10d" path="res://resources/alignment/alignment.gd" id="1_qrb4d"]
 [ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="2_neqvn"]
 [ext_resource type="Resource" uid="uid://dew3wshj0c7uo" path="res://resources/character/character-stats/default-substats/attack_damage.tres" id="3_88hd1"]
 [ext_resource type="Script" uid="uid://24nukwcutln8" path="res://resources/status_effects/status_effect.gd" id="3_buxes"]
@@ -8,13 +9,26 @@
 [ext_resource type="Script" uid="uid://3qgt3g5o34v3" path="res://resources/character/character-stats/character_stats.gd" id="4_voc8m"]
 [ext_resource type="Resource" uid="uid://baeldudlcjgto" path="res://resources/character/character-stats/default-substats/critical_multiplier.tres" id="5_y4dt2"]
 [ext_resource type="Resource" uid="uid://b3mqjburvhdry" path="res://resources/character/character-stats/default-substats/damage_resistance.tres" id="6_5syb2"]
-[ext_resource type="Resource" uid="uid://2ufvi0lih60t" path="res://resources/character/character-stats/default-substats/buff_retention.tres" id="7_nno01"]
 [ext_resource type="Resource" uid="uid://djhpmlpasusss" path="res://resources/character/character-stats/default-substats/movement_speed.tres" id="8_ht8yr"]
+[ext_resource type="Resource" uid="uid://cw585xg2f2jyl" path="res://resources/character/character-stats/default-substats/debuff_resistance.tres" id="8_qrb4d"]
 [ext_resource type="Resource" uid="uid://dydl2m6dpx8h0" path="res://resources/character/character-stats/default-substats/attack_speed.tres" id="9_o4r0q"]
 [ext_resource type="Resource" uid="uid://cwbkwrcdjuhtg" path="res://resources/character/character-stats/default-substats/stamina_regeneration_rate.tres" id="10_g3sxk"]
 [ext_resource type="Resource" uid="uid://1j87o24pix7w" path="res://resources/character/character-stats/default-substats/maximum_health.tres" id="11_j75hm"]
 [ext_resource type="Resource" uid="uid://dmewkfi1er0r1" path="res://resources/character/character-stats/default-substats/health_regeneration_rate.tres" id="12_y2ixl"]
 [ext_resource type="Resource" uid="uid://pu4pfkj7h841" path="res://resources/character/character-stats/default-substats/maximum_stamina.tres" id="13_b67hx"]
+
+[sub_resource type="Resource" id="Resource_y4dt2"]
+script = ExtResource("1_qrb4d")
+_alignment = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://b6lp74gqsj10d"
+
+[sub_resource type="Curve" id="Curve_5syb2"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nno01"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
 
 [sub_resource type="Resource" id="Resource_iikov"]
 resource_name = "ATTK"
@@ -69,6 +83,9 @@ metadata/_custom_type_script = "uid://cnekm5ikmah4x"
 [resource]
 script = ExtResource("4_voc8m")
 _stats = Array[ExtResource("1_1ohfm")]([SubResource("Resource_iikov"), SubResource("Resource_s1vqs"), SubResource("Resource_x2jdf"), SubResource("Resource_phunj")])
-_substats = Array[ExtResource("2_neqvn")]([ExtResource("3_88hd1"), ExtResource("4_qrb4d"), ExtResource("5_y4dt2"), ExtResource("6_5syb2"), ExtResource("7_nno01"), SubResource("Resource_kc2mp"), ExtResource("8_ht8yr"), ExtResource("9_o4r0q"), ExtResource("10_g3sxk"), ExtResource("11_j75hm"), ExtResource("12_y2ixl"), ExtResource("13_b67hx")])
+_substats = Array[ExtResource("2_neqvn")]([ExtResource("3_88hd1"), ExtResource("4_qrb4d"), ExtResource("5_y4dt2"), ExtResource("6_5syb2"), ExtResource("8_qrb4d"), SubResource("Resource_kc2mp"), ExtResource("8_ht8yr"), ExtResource("9_o4r0q"), ExtResource("10_g3sxk"), ExtResource("11_j75hm"), ExtResource("12_y2ixl"), ExtResource("13_b67hx")])
 _wards = Array[ExtResource("3_buxes")]([])
+_alignment = SubResource("Resource_y4dt2")
+_juxtometer_damage_dealt_curve = SubResource("Curve_5syb2")
+_juxtometer_damage_taken_curve = SubResource("Curve_nno01")
 metadata/_custom_type_script = "uid://3qgt3g5o34v3"

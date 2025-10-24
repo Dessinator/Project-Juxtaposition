@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmfiekgxx8svy"]
+
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_hlegy"]
+
+[node name="DizzyParryCharacterActionVisual" instance=ExtResource("1_hlegy")]
+visible = true
+_action_name = "Dizzy Parry"
+action_visual_type = 2
+
+[node name="Button" parent="Control" index="0"]
+offset_right = 0.0
+offset_bottom = 0.0
+text = "Dizzy Parry"

@@ -31,12 +31,14 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 
 [display]
 
+window/size/window_width_override=1152
+window/size/window_height_override=648
 window/stretch/mode="viewport"
 window/layer_2="WorldUILayer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/b3rdpscam/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/behaviour_toolkit/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/third-person-camera/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/b3rdpscam/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/behaviour_toolkit/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/jigglebones/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/third-person-camera/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [filesystem]
 
@@ -214,3 +216,9 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 
 disable_plugin_dialogues=true
 copy_path="res://nodes/game"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+textures/lossless_compression/force_png=true
+textures/webp_compression/compression_method=0

@@ -45,5 +45,5 @@ func _handle_wallrun_vector() -> Vector2:
 	return wallrun_vector
 
 func _update_character_animation_tree_expression_base():
-	_character_animation_tree_expression_base.travel_to_wallrunning()
-	_character_animation_tree_expression_base.set_wallrun_vector(_wallrun_vector)
+	character_animation_tree_expression_base.travel_to_wallrunning()
+	character_animation_tree_expression_base.set_wall_movement_vector(_wallrun_vector)

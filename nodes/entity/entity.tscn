@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://8nifftfw2omy"]
+[gd_scene load_steps=72 format=3 uid="uid://8nifftfw2omy"]
 
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_6pa3a"]
 [ext_resource type="Script" uid="uid://ded5umnsqump5" path="res://nodes/entity/entity.gd" id="1_ts1bu"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://dt08goxwqu6hc" path="res://addons/beehave/nodes/decorators/inverter.gd" id="9_la3n6"]
 [ext_resource type="Script" uid="uid://bydpk20xk676k" path="res://nodes/entity/states/transitions/start_idling.gd" id="9_ni2al"]
 [ext_resource type="Script" uid="uid://pef4wkg5837e" path="res://nodes/entity/states/sprinting.gd" id="10_mlwgf"]
+[ext_resource type="PackedScene" uid="uid://qidsnpuib6v0" path="res://nodes/areas/hurtbox/prefabs/entity-hurtbox/entity_hurtbox.tscn" id="10_v5wfl"]
 [ext_resource type="Script" uid="uid://c1hnqijxm6jm6" path="res://addons/beehave/nodes/decorators/succeeder.gd" id="11_ateu6"]
 [ext_resource type="Script" uid="uid://bl4gvvi75bskn" path="res://nodes/entity/behaviour/leaves/is_player_in_follow_range.gd" id="11_jjtts"]
 [ext_resource type="Script" uid="uid://btct4nb7jv2jr" path="res://nodes/entity/behaviour/leaves/is_player_in_detection_range.gd" id="12_gk5bk"]
@@ -125,6 +126,10 @@ unique_name_in_owner = true
 
 [node name="SpikeTrailParticles" parent="." instance=ExtResource("8_7dplb")]
 unique_name_in_owner = true
+
+[node name="EntityHurtbox" parent="." node_paths=PackedStringArray("status_interface") instance=ExtResource("10_v5wfl")]
+unique_name_in_owner = true
+status_interface = NodePath("../StatusInterface")
 
 [node name="EntityHomeRange" parent="." instance=ExtResource("2_qecbm")]
 unique_name_in_owner = true

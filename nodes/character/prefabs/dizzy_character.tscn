@@ -1,69 +1,573 @@
-[gd_scene load_steps=14 format=3 uid="uid://hwm20jjo22ad"]
+[gd_scene load_steps=111 format=3 uid="uid://ckyv6l3ncojyr"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_n352f"]
 [ext_resource type="Resource" uid="uid://csxvkfqvs8ue1" path="res://resources/character/character-stats/prefabs/dizzy/dizzy_character_stats.tres" id="2_n352f"]
-[ext_resource type="PackedScene" uid="uid://fq6koepqyxc2" path="res://resources/models/characters/dizzy/dizzy_character_model.tscn" id="2_ykt8n"]
-[ext_resource type="Resource" uid="uid://ckjrdqhj5cinv" path="res://resources/attacks/character-attacks/dizzy/monsoon-chorus-combo/monsoon_chorus.tres" id="3_sc15y"]
-[ext_resource type="PackedScene" uid="uid://bd2jee8xqwwqs" path="res://nodes/character/components/character-attack-state-machine/prefabs/dizzy/dizzy_character_attack_state_machine.tscn" id="3_vieyh"]
+[ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_sc15y"]
+[ext_resource type="PackedScene" uid="uid://nskfke4m644m" path="res://nodes/character_model/prefabs/dizzy_character_model.tscn" id="2_ykt8n"]
+[ext_resource type="PackedScene" uid="uid://ck4rwfoq8ta3p" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/dizzy_character_switcher_visual.tscn" id="4_gtaau"]
+[ext_resource type="PackedScene" uid="uid://dcelsd82ekrkb" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/dizzy_character_status_visual.tscn" id="5_uvvh6"]
+[ext_resource type="PackedScene" uid="uid://cxu3qcjgbr5dx" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/dizzy/dizzy_dodge_character_action_visual.tscn" id="6_wa1o5"]
+[ext_resource type="PackedScene" uid="uid://cmfiekgxx8svy" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/dizzy/dizzy_parry_character_action_visual.tscn" id="7_b8sr1"]
+[ext_resource type="PackedScene" uid="uid://buddasgd2ew33" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/dizzy/dizzy_jump_character_action_visual.tscn" id="8_83kvv"]
+[ext_resource type="PackedScene" uid="uid://cq3gfuy77wcl" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/dizzy/dizzy_light_attack_character_action_visual.tscn" id="9_4brxd"]
+[ext_resource type="PackedScene" uid="uid://br7so3w5q2uef" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/dizzy/dizzy_heavy_attack_character_action_visual.tscn" id="10_6gkel"]
+[ext_resource type="PackedScene" uid="uid://b210lme20na1c" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/dizzy/dizzy_juxtapose_character_action_visual.tscn" id="11_ytd5f"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vieyh"]
-animation = &"G_combat_idle"
+[sub_resource type="Resource" id="Resource_vieyh"]
+script = ExtResource("2_sc15y")
+_name = "Dizzy Demon"
+_nickname = "Dizzy"
+_pronouns = "They/Them/Theirs"
+_lore = ""
+metadata/_custom_type_script = "uid://cf8q48g7hjdjb"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtaau"]
-animation = &"G_combat_walk"
+[sub_resource type="BoxShape3D" id="BoxShape3D_wa1o5"]
+size = Vector3(1, 2, 1)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvvh6"]
-animation = &"G_combat_walk_strafe_right"
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wa1o5"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_33f00"]
-animation = &"G_combat_walk"
-play_mode = 1
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kxa5t"]
+animation = &"grounded_charged_light_attack"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7xlm5"]
-animation = &"G_combat_walk_strafe_right"
-play_mode = 1
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wa1o5"]
+animation = &"RESET"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_vieyh"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_vieyh")
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b8sr1"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ytd5f"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3oq4w"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83kvv"]
+animation = &"grounded_light_attack_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4brxd"]
+animation = &"grounded_light_attack_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6gkel"]
+animation = &"grounded_light_attack_3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m75j5"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iketm"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6c076"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0cds6"]
+animation = &"jog"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wsqtw"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mkn6w"]
+animation = &"jog_lean_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tfkyl"]
+animation = &"jog_lean_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8gcht"]
+animation = &"sprint_lean_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fi6on"]
+animation = &"sprint_lean_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m3um4"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dxop7"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_iketm"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_iketm")
 blend_point_0/pos = Vector2(0, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_gtaau")
-blend_point_1/pos = Vector2(0, 0.5)
-blend_point_2/node = SubResource("AnimationNodeAnimation_uvvh6")
-blend_point_2/pos = Vector2(0.3, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_33f00")
-blend_point_3/pos = Vector2(0, -0.5)
-blend_point_4/node = SubResource("AnimationNodeAnimation_7xlm5")
-blend_point_4/pos = Vector2(-0.3, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_6c076")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_0cds6")
+blend_point_2/pos = Vector2(0, 2)
+blend_point_3/node = SubResource("AnimationNodeAnimation_wsqtw")
+blend_point_3/pos = Vector2(0, 3)
+blend_point_4/node = SubResource("AnimationNodeAnimation_mkn6w")
+blend_point_4/pos = Vector2(1, 2)
+blend_point_5/node = SubResource("AnimationNodeAnimation_tfkyl")
+blend_point_5/pos = Vector2(-1, 2)
+blend_point_6/node = SubResource("AnimationNodeAnimation_8gcht")
+blend_point_6/pos = Vector2(1, 3)
+blend_point_7/node = SubResource("AnimationNodeAnimation_fi6on")
+blend_point_7/pos = Vector2(-1, 3)
+blend_point_8/node = SubResource("AnimationNodeAnimation_m3um4")
+blend_point_8/pos = Vector2(1, 1)
+blend_point_9/node = SubResource("AnimationNodeAnimation_dxop7")
+blend_point_9/pos = Vector2(-1, 1)
+min_space = Vector2(-5, -5)
+max_space = Vector2(5, 5)
 sync = true
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vieyh"]
-states/WalkBlendSpace/node = SubResource("AnimationNodeBlendSpace2D_vieyh")
-states/WalkBlendSpace/position = Vector2(356, 100)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_78lg5"]
+animation = &"RESET"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xi512"]
-states/CombatStateMachine/node = SubResource("AnimationNodeStateMachine_vieyh")
-states/CombatStateMachine/position = Vector2(500, 100)
-graph_offset = Vector2(-42, 73)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3yhka"]
+animation = &"RESET"
 
-[node name="DizzyCharacter" node_paths=PackedStringArray("_character_model") instance=ExtResource("1_n352f")]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5314v"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5q8sa"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k7jcd"]
+animation = &"skid"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aimva"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kr5ce"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8fedg"]
+animation = &"walk_strafe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_myjfv"]
+animation = &"walk_strafe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0kjxe"]
+animation = &"walk_backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_btgy1"]
+animation = &"jog"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_63xd7"]
+animation = &"jog_strafe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e64iv"]
+animation = &"jog_strafe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_udc3t"]
+animation = &"sprint"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_6c076"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_aimva")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_kr5ce")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_8fedg")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_myjfv")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_0kjxe")
+blend_point_4/pos = Vector2(0, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_btgy1")
+blend_point_5/pos = Vector2(0, 2)
+blend_point_6/node = SubResource("AnimationNodeAnimation_63xd7")
+blend_point_6/pos = Vector2(-2, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_e64iv")
+blend_point_7/pos = Vector2(2, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_udc3t")
+blend_point_8/pos = Vector2(0, 3)
+min_space = Vector2(-5, -5)
+max_space = Vector2(5, 5)
+snap = Vector2(1, 1)
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3gy5k"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_m75j5"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_m3um4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0cds6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wsqtw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mkn6w"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tfkyl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8gcht"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fi6on"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aimva"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kr5ce"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8fedg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_myjfv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kjxe"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_btgy1"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63xd7"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e64iv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_udc3t"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3gy5k"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m75j5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m3um4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dxop7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kxa5t"]
+advance_mode = 2
+advance_expression = "!is_targeting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_78lg5"]
+advance_mode = 2
+advance_expression = "is_targeting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4brxd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6gkel"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytd5f"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_520eo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b3oog"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o0pjs"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_re1vm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iwabh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bct6r"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ehe2n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tfshh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8e5oc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wa1o5"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8sr1"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_83kvv"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iketm"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3yhka"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5314v"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vv382"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cuhwl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u0bck"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rr8r1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3f5fr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5v07n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkopd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5q8sa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7jcd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6c076"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_532h0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_30s35"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_id3ie"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_520eo"]
+states/End/position = Vector2(499, 174)
+states/Start/position = Vector2(499, 100)
+states/charged_light_attack/node = SubResource("AnimationNodeAnimation_kxa5t")
+states/charged_light_attack/position = Vector2(832, -524)
+states/dodge/node = SubResource("AnimationNodeAnimation_wa1o5")
+states/dodge/position = Vector2(1064, 301)
+states/fall/node = SubResource("AnimationNodeAnimation_b8sr1")
+states/fall/position = Vector2(499, -87)
+states/jump/node = SubResource("AnimationNodeAnimation_ytd5f")
+states/jump/position = Vector2(600, -177)
+states/land/node = SubResource("AnimationNodeAnimation_3oq4w")
+states/land/position = Vector2(499, 2)
+states/light_attack_1/node = SubResource("AnimationNodeAnimation_83kvv")
+states/light_attack_1/position = Vector2(830, -262)
+states/light_attack_2/node = SubResource("AnimationNodeAnimation_4brxd")
+states/light_attack_2/position = Vector2(1064, -262)
+states/light_attack_3/node = SubResource("AnimationNodeAnimation_6gkel")
+states/light_attack_3/position = Vector2(1305, -262)
+states/mantle/node = SubResource("AnimationNodeAnimation_m75j5")
+states/mantle/position = Vector2(600, -87)
+states/non_targeting_movement/node = SubResource("AnimationNodeBlendSpace2D_iketm")
+states/non_targeting_movement/position = Vector2(910, 174)
+states/return_from_charged_light_attack/node = SubResource("AnimationNodeAnimation_78lg5")
+states/return_from_charged_light_attack/position = Vector2(833, -385)
+states/return_from_light_attack_1/node = SubResource("AnimationNodeAnimation_3yhka")
+states/return_from_light_attack_1/position = Vector2(835, -87)
+states/return_from_light_attack_2/node = SubResource("AnimationNodeAnimation_5314v")
+states/return_from_light_attack_2/position = Vector2(1064, -87)
+states/return_from_light_attack_3/node = SubResource("AnimationNodeAnimation_5q8sa")
+states/return_from_light_attack_3/position = Vector2(1305, -87)
+states/skid/node = SubResource("AnimationNodeAnimation_k7jcd")
+states/skid/position = Vector2(910, 301)
+states/targeting_movement/node = SubResource("AnimationNodeBlendSpace2D_6c076")
+states/targeting_movement/position = Vector2(1220, 174)
+states/walljump/node = SubResource("AnimationNodeAnimation_3gy5k")
+states/walljump/position = Vector2(428, -177)
+states/wallrun_movement/node = SubResource("AnimationNodeBlendSpace2D_m75j5")
+states/wallrun_movement/position = Vector2(200, -87)
+states/wallslide_movement/node = SubResource("AnimationNodeBlendSpace2D_m3um4")
+states/wallslide_movement/position = Vector2(202, 2)
+transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_0cds6"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_wsqtw"), "land", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_mkn6w"), "land", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_tfkyl"), "skid", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_8gcht"), "skid", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_fi6on"), "light_attack_1", "light_attack_2", SubResource("AnimationNodeStateMachineTransition_aimva"), "light_attack_2", "light_attack_3", SubResource("AnimationNodeStateMachineTransition_kr5ce"), "non_targeting_movement", "light_attack_1", SubResource("AnimationNodeStateMachineTransition_8fedg"), "targeting_movement", "light_attack_1", SubResource("AnimationNodeStateMachineTransition_myjfv"), "light_attack_3", "return_from_light_attack_3", SubResource("AnimationNodeStateMachineTransition_0kjxe"), "light_attack_2", "return_from_light_attack_2", SubResource("AnimationNodeStateMachineTransition_btgy1"), "light_attack_1", "return_from_light_attack_1", SubResource("AnimationNodeStateMachineTransition_63xd7"), "return_from_light_attack_1", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_e64iv"), "return_from_light_attack_1", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_udc3t"), "return_from_light_attack_2", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_3gy5k"), "return_from_light_attack_2", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_m75j5"), "return_from_light_attack_3", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_m3um4"), "return_from_light_attack_3", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_dxop7"), "Start", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_kxa5t"), "Start", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_78lg5"), "dodge", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_4brxd"), "dodge", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_6gkel"), "dodge", "fall", SubResource("AnimationNodeStateMachineTransition_ytd5f"), "jump", "wallrun_movement", SubResource("AnimationNodeStateMachineTransition_520eo"), "jump", "wallslide_movement", SubResource("AnimationNodeStateMachineTransition_b3oog"), "fall", "wallrun_movement", SubResource("AnimationNodeStateMachineTransition_o0pjs"), "fall", "wallslide_movement", SubResource("AnimationNodeStateMachineTransition_re1vm"), "wallslide_movement", "land", SubResource("AnimationNodeStateMachineTransition_iwabh"), "wallrun_movement", "walljump", SubResource("AnimationNodeStateMachineTransition_bct6r"), "walljump", "fall", SubResource("AnimationNodeStateMachineTransition_ehe2n"), "wallslide_movement", "walljump", SubResource("AnimationNodeStateMachineTransition_tfshh"), "mantle", "fall", SubResource("AnimationNodeStateMachineTransition_8e5oc"), "light_attack_3", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_wa1o5"), "light_attack_2", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_b8sr1"), "light_attack_1", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_83kvv"), "light_attack_1", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_iketm"), "light_attack_2", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_3yhka"), "light_attack_3", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_5314v"), "charged_light_attack", "return_from_charged_light_attack", SubResource("AnimationNodeStateMachineTransition_vv382"), "return_from_charged_light_attack", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_cuhwl"), "return_from_charged_light_attack", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_u0bck"), "non_targeting_movement", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_rr8r1"), "targeting_movement", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_3f5fr"), "charged_light_attack", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_5v07n"), "charged_light_attack", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_hkopd"), "charged_light_attack", "light_attack_1", SubResource("AnimationNodeStateMachineTransition_5q8sa"), "charged_light_attack", "light_attack_2", SubResource("AnimationNodeStateMachineTransition_k7jcd"), "charged_light_attack", "light_attack_3", SubResource("AnimationNodeStateMachineTransition_6c076"), "light_attack_1", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_532h0"), "light_attack_2", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_30s35"), "light_attack_3", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_id3ie")]
+graph_offset = Vector2(428, 106)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yey0f"]
+advance_expression = "is_airborne"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tbiqx"]
+advance_expression = "!is_airborne"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3oq4w"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gtaau"]
+states/airborne_state_machine/node = SubResource("AnimationNodeStateMachine_wa1o5")
+states/airborne_state_machine/position = Vector2(393, 19)
+states/grounded_state_machine/node = SubResource("AnimationNodeStateMachine_520eo")
+states/grounded_state_machine/position = Vector2(393, 100)
+transitions = ["grounded_state_machine", "airborne_state_machine", SubResource("AnimationNodeStateMachineTransition_yey0f"), "airborne_state_machine", "grounded_state_machine", SubResource("AnimationNodeStateMachineTransition_tbiqx"), "Start", "grounded_state_machine", SubResource("AnimationNodeStateMachineTransition_3oq4w")]
+graph_offset = Vector2(-15, -29)
+
+[node name="DizzyCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_n352f")]
+_character_metadata = SubResource("Resource_vieyh")
 _character_model = NodePath("DizzyCharacterModel")
 _character_stats = ExtResource("2_n352f")
-_character_attack_state_machine = ExtResource("3_vieyh")
+_character_switcher_visual_packedscene = ExtResource("4_gtaau")
+_character_status_visual_packedscene = ExtResource("5_uvvh6")
+dodge_character_action_visual_packedscene = ExtResource("6_wa1o5")
+parry_character_action_visual_packedscene = ExtResource("7_b8sr1")
+jump_character_action_visual_packedscene = ExtResource("8_83kvv")
+light_attack_character_action_visual_packedscene = ExtResource("9_4brxd")
+heavy_attack_character_action_visual_packedscene = ExtResource("10_6gkel")
+juxtapose_character_action_visual_packedscene = ExtResource("11_ytd5f")
+_mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="CharacterAttackDefinitionManager" parent="." index="0"]
-_light_attack = ExtResource("3_sc15y")
+[node name="CharacterHurtbox" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_wa1o5")
 
-[node name="DizzyCharacterModel" parent="." index="1" instance=ExtResource("2_ykt8n")]
+[node name="CharacterAnimationTreeExpressionBase" parent="." index="3"]
+grounded_light_attack_phase_count = 3
 
-[node name="RootMotionView" type="RootMotionView" parent="." index="2"]
-animation_path = NodePath("../AnimationTree")
-
-[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
-root_node = NodePath("../DizzyCharacterModel")
-root_motion_track = NodePath("dizzy_root_002/Skeleton3D:root")
-root_motion_local = true
-tree_root = SubResource("AnimationNodeStateMachine_xi512")
+[node name="AnimationTree" parent="." index="4"]
+root_node = NodePath("%AnimationTree/../DizzyCharacterModel")
+root_motion_track = NodePath("%GeneralSkeleton:Root")
+root_motion_local = false
+tree_root = SubResource("AnimationNodeStateMachine_gtaau")
 anim_player = NodePath("../DizzyCharacterModel/AnimationPlayer")
-parameters/CombatStateMachine/WalkBlendSpace/blend_position = Vector2(0.295716, -0.0044843)
+parameters/grounded_state_machine/non_targeting_movement/blend_position = Vector2(-0.287475, 1.2381)
+parameters/grounded_state_machine/targeting_movement/blend_position = Vector2(0, 0)
+parameters/grounded_state_machine/wallrun_movement/blend_position = Vector2(0, 0)
+parameters/grounded_state_machine/wallslide_movement/blend_position = Vector2(0, 0)
+
+[node name="DizzyCharacterModel" parent="." index="5" instance=ExtResource("2_ykt8n")]
+
+[node name="DEF-headband_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="1"]
+transform = Transform3D(0.887211, 0.459339, -0.043172, -0.357024, 0.624284, -0.69484, -0.292216, 0.631884, 0.717867, -3.76447e-14, 1.03592, -0.0132848)
+
+[node name="DEF-headband_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="2"]
+transform = Transform3D(0.855272, 0.517713, -0.021998, -0.220425, 0.32507, -0.919642, -0.46896, 0.791393, 0.39214, 0.0573041, 1.1138, 0.065545)
+
+[node name="DEF-headband_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="3"]
+transform = Transform3D(0.834549, 0.550835, -0.0104307, -0.119447, 0.162423, -0.979464, -0.537829, 0.818657, 0.201345, 0.109682, 1.14669, 0.145611)
+
+[node name="DEF-headband_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="4"]
+transform = Transform3D(0.887211, -0.459339, 0.043172, 0.357024, 0.624284, -0.69484, 0.292216, 0.631884, 0.717867, -3.76447e-14, 1.03592, -0.0132848)
+
+[node name="DEF-headband_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="5"]
+transform = Transform3D(0.855272, -0.517713, 0.0219981, 0.220425, 0.32507, -0.919642, 0.46896, 0.791393, 0.39214, -0.0573039, 1.1138, 0.065545)
+
+[node name="DEF-headband_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="6"]
+transform = Transform3D(0.834549, -0.550835, 0.0104308, 0.119447, 0.162423, -0.979464, 0.537829, 0.818657, 0.201345, -0.109682, 1.14669, 0.145611)
+
+[node name="DEF-raincoat_hood_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="7"]
+transform = Transform3D(1, -2.22144e-10, 6.13453e-06, -5.73893e-06, 0.353259, 0.935525, -2.16729e-06, -0.935525, 0.353259, 4.34764e-14, 0.679343, -0.520216)
+
+[node name="DEF-raincoat_hood_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="8"]
+transform = Transform3D(1, 5.71353e-06, -6.73756e-05, -7.66743e-06, 0.999578, -0.0290358, 6.71813e-05, 0.0290358, 0.999578, -2.38419e-07, 1.6799, -1.26303)
+
+[node name="DEF-raincoat_hood_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="9"]
+transform = Transform3D(1, 3.2933e-05, -9.77963e-05, 7.15718e-06, 0.92329, 0.384104, 0.000102944, -0.384104, 0.92329, -2.38419e-07, 1.34141, -1.18432)
+
+[node name="DEF-breast_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="10"]
+transform = Transform3D(-1, 9.30586e-05, -1.74361e-07, -1.27671e-07, 0.000501692, 1, 9.30587e-05, 1, -0.000501752, 0.105862, 1.51082, 0.990319)
+
+[node name="DEF-breast_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="11"]
+transform = Transform3D(-1, -4.354e-07, -1.5107e-07, -1.51069e-07, -2.50339e-06, 1, -4.35401e-07, 1, 2.563e-06, -0.105862, 1.51082, 0.990319)
+
+[node name="DEF-skirt_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="12"]
+transform = Transform3D(1, -0.000143773, 2.27163e-07, -0.00012903, -0.898149, -0.439691, 6.34198e-05, 0.439691, -0.898149, 2.7571e-14, 0.390574, 0.549443)
+
+[node name="DEF-skirt_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="13"]
+transform = Transform3D(-1, -1.04164e-05, 6.0933e-06, 1.20619e-05, -0.87851, 0.477722, 3.76869e-07, 0.477722, 0.878511, 6.50634e-14, 0.239096, 0.671631)
+
+[node name="DEF-skirt_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="14"]
+transform = Transform3D(0.953316, 0.298064, -0.0484364, 0.280856, -0.934096, -0.220418, -0.110943, 0.196524, -0.974202, 0.420525, -0.0235873, 0.437105)
+
+[node name="DEF-skirt_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="15"]
+transform = Transform3D(0.824915, 0.296345, -0.481348, 0.0655409, -0.895956, -0.43928, -0.561445, 0.33082, -0.75851, 0.406966, 0.390037, 0.418552)
+
+[node name="DEF-skirt_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="16"]
+transform = Transform3D(0.952426, 0.29331, -0.0827945, 0.251602, -0.910007, -0.329519, -0.171995, 0.293011, -0.940512, 0.459203, 0.208909, 0.442845)
+
+[node name="DEF-skirt_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="17"]
+transform = Transform3D(-0.0231309, 0.198455, -0.979837, -0.313154, -0.932214, -0.181417, -0.949421, 0.302643, 0.0837097, 0.431947, -0.0229307, 0.51997)
+
+[node name="DEF-skirt_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="18"]
+transform = Transform3D(0.824849, -0.296336, 0.481466, -0.065739, -0.896116, -0.438924, 0.561518, 0.330395, -0.758641, -0.406965, 0.390037, 0.418552)
+
+[node name="DEF-skirt_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="19"]
+transform = Transform3D(0.952427, -0.293305, 0.0828018, -0.251599, -0.910015, -0.3295, 0.171995, 0.292992, -0.940518, -0.459204, 0.20891, 0.442845)
+
+[node name="DEF-skirt_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="20"]
+transform = Transform3D(-0.0231235, -0.198461, 0.979836, 0.313204, -0.932196, -0.181421, 0.949405, 0.302693, 0.0837145, -0.431946, -0.0229303, 0.519971)
+
+[node name="DEF-skirt_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="21"]
+transform = Transform3D(-0.146791, -0.195424, 0.969669, -0.273338, -0.934105, -0.229635, 0.95065, -0.298757, 0.0837016, -0.42829, -0.0144765, -0.55238)
+
+[node name="DEF-skirt_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="22"]
+transform = Transform3D(-0.146728, 0.195077, -0.969749, 0.273007, -0.934296, -0.229252, -0.950755, -0.298387, 0.0838304, 0.428291, -0.0144767, -0.55238)
+
+[node name="DEF-skirt_008" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="23"]
+transform = Transform3D(-0.163754, 0.000140503, -0.986501, 0.432822, -0.898602, -0.0719742, -0.886481, -0.438766, 0.147089, 8.89155e-09, 0.0274026, -0.780394)
+
+[node name="DEF-raincoat_robe_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="24"]
+transform = Transform3D(0.485853, 0.400913, -0.776669, 0.101432, -0.908455, -0.405488, -0.868135, 0.118229, -0.482041, 0.522542, 0.416712, 0.266431)
+
+[node name="DEF-raincoat_robe_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="25"]
+transform = Transform3D(0.337848, 0.334737, -0.879664, 0.0266837, -0.93765, -0.346555, -0.940822, 0.0936101, -0.325716, 0.557408, 0.158582, 0.209292)
+
+[node name="DEF-raincoat_robe_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="26"]
+transform = Transform3D(0.664385, 0.331018, -0.670089, 0.164752, -0.939381, -0.300697, -0.729005, 0.0893802, -0.678647, 0.649591, -0.11167, 0.232252)
+
+[node name="DEF-raincoat_robe_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="27"]
+transform = Transform3D(-0.17669, 0.32697, -0.92837, 0.114166, -0.930035, -0.349285, -0.977624, -0.167703, 0.126999, 0.479777, 0.40886, -0.0929068)
+
+[node name="DEF-raincoat_robe_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="28"]
+transform = Transform3D(-0.645546, 0.368325, 0.669035, -0.349475, -0.921386, 0.170047, 0.679072, -0.124038, 0.723517, 0.592575, 0.214938, -0.147715)
+
+[node name="DEF-raincoat_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="29"]
+transform = Transform3D(-0.153567, 0.294044, -0.943374, 0.0715538, -0.948884, -0.307409, -0.985544, -0.11471, 0.124677, 0.641172, -0.0359094, -0.163393)
+
+[node name="DEF-raincoat_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="30"]
+transform = Transform3D(-0.153502, 0.294099, -0.943368, 0.0713416, -0.948892, -0.30743, -0.98557, -0.114493, 0.124676, 0.666595, -0.117934, -0.173289)
+
+[node name="DEF-raincoat_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="31"]
+transform = Transform3D(0.618038, 0.312577, 0.721335, 0.0974857, -0.940947, 0.324215, 0.78008, -0.130057, -0.612013, 0.710487, -0.192006, -0.198815)
+
+[node name="DEF-raincoat_robe_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="32"]
+transform = Transform3D(-0.630212, 0.319854, -0.707478, -0.148908, -0.944079, -0.294178, -0.76201, -0.0800455, 0.642599, 0.6438, -0.0568616, -0.136822)
+
+[node name="DEF-raincoat_robe_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="33"]
+transform = Transform3D(-0.765715, 0.190534, -0.614309, 0.0744061, -0.92246, -0.378853, -0.638861, -0.335803, 0.692164, 0.304279, 0.454487, -0.416872)
+
+[node name="DEF-raincoat_robe_008_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="34"]
+transform = Transform3D(0.227918, 0.219992, 0.948501, -0.291421, -0.914073, 0.282033, 0.929045, -0.340694, -0.144224, 0.368635, 0.29578, -0.544686)
+
+[node name="DEF-raincoat_robe_009_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="35"]
+transform = Transform3D(-0.464937, 0.207996, -0.860563, 0.208769, -0.918844, -0.334874, -0.860376, -0.335355, 0.383782, 0.397235, 0.122288, -0.602238)
+
+[node name="DEF-raincoat_robe_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="36"]
+transform = Transform3D(0.485537, -0.40123, 0.776703, -0.102149, -0.908409, -0.405412, 0.868228, 0.117503, -0.482052, -0.522542, 0.416712, 0.266431)
+
+[node name="DEF-raincoat_robe_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="37"]
+transform = Transform3D(0.337753, -0.334794, 0.879679, -0.0269502, -0.937658, -0.346513, 0.940849, 0.0933282, -0.32572, -0.557408, 0.158582, 0.209292)
+
+[node name="DEF-raincoat_robe_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="38"]
+transform = Transform3D(0.664405, -0.331064, 0.670046, -0.164692, -0.939352, -0.30082, 0.729, 0.0895148, -0.678635, -0.649592, -0.11167, 0.232252)
+
+[node name="DEF-raincoat_robe_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="39"]
+transform = Transform3D(-0.176967, -0.326674, 0.928422, -0.114954, -0.929994, -0.349138, 0.977481, -0.168512, 0.127025, -0.479778, 0.40886, -0.0929063)
+
+[node name="DEF-raincoat_robe_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="40"]
+transform = Transform3D(-0.645547, -0.368335, -0.669028, 0.349471, -0.921384, 0.170065, -0.679072, -0.124021, 0.723519, -0.592576, 0.214938, -0.147715)
+
+[node name="DEF-raincoat_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="41"]
+transform = Transform3D(-0.153567, -0.294073, 0.943365, -0.0715607, -0.948874, -0.307439, 0.985544, -0.11472, 0.124672, -0.641173, -0.0359091, -0.163393)
+
+[node name="DEF-raincoat_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="42"]
+transform = Transform3D(-0.153611, -0.294116, 0.943345, -0.0716979, -0.948841, -0.307505, 0.985527, -0.114872, 0.124665, -0.666596, -0.117934, -0.173288)
+
+[node name="DEF-raincoat_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="43"]
+transform = Transform3D(0.618067, -0.31264, -0.721283, -0.0973764, -0.940897, 0.32439, -0.780071, -0.130259, -0.611982, -0.710489, -0.192006, -0.198814)
+
+[node name="DEF-raincoat_robe_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="44"]
+transform = Transform3D(-0.630067, -0.319951, 0.707564, 0.149335, -0.94409, -0.293927, 0.762047, -0.0795298, 0.64262, -0.6438, -0.0568615, -0.136822)
+
+[node name="DEF-raincoat_robe_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="45"]
+transform = Transform3D(-0.765894, -0.189719, 0.614338, -0.0752754, -0.922447, -0.378714, 0.638544, -0.3363, 0.692215, -0.304279, 0.454487, -0.416872)
+
+[node name="DEF-raincoat_robe_008_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="46"]
+transform = Transform3D(0.227976, -0.220301, -0.948415, 0.29166, -0.913887, 0.282388, -0.928955, -0.340993, -0.144091, -0.368635, 0.29578, -0.544686)
+
+[node name="DEF-raincoat_robe_009_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="47"]
+transform = Transform3D(-0.46497, -0.208311, 0.860469, -0.208903, -0.918664, -0.335284, 0.860325, -0.335652, 0.383634, -0.397235, 0.122289, -0.602241)
+
+[node name="DEF-raincoat_robe_010" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="48"]
+transform = Transform3D(-1, 0.000492343, 6.46629e-07, -0.000441017, -0.895165, -0.445734, -0.000218875, -0.445734, 0.895165, 5.90248e-14, 0.49299, -0.557919)
+
+[node name="DEF-raincoat_robe_011" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="49"]
+transform = Transform3D(1, 2.28922e-05, 4.49745e-10, 1.97622e-05, -0.863285, 0.504717, 1.15545e-05, -0.504717, -0.863284, -6.40098e-15, 0.371505, -0.755608)
+
+[node name="DEF-raincoat_robe_012" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="50"]
+transform = Transform3D(-1, -3.5227e-05, -9.35319e-07, 3.14556e-05, -0.880345, -0.474333, 1.5886e-05, -0.474334, 0.880345, 5.79027e-14, 0.210975, -0.80903)
+
+[node name="BoneAttachment3D" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="51"]
+transform = Transform3D(1, -3.57628e-07, -1.63063e-06, -1.63063e-06, -2.5332e-07, -1, 3.57628e-07, 1, -2.5332e-07, -0.729422, 1.24356, -0.0769725)
+
+[node name="AnimationPlayer" parent="DizzyCharacterModel" index="1"]
+root_motion_track = NodePath("../dizzy_rig/GeneralSkeleton")
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="Arial Light Attack 1" parent="CharacterAttackFiniteStateMachine" index="5"]
+_animation_name = &""
+
+[node name="Arial Charged Light Attack 1" parent="CharacterAttackFiniteStateMachine" index="6"]
+_animation_name = &""
+
+[node name="Arial Heavy Attack 1" parent="CharacterAttackFiniteStateMachine" index="7"]
+_animation_name = &""
+
+[node name="Arial Charged Heavy Attack 1" parent="CharacterAttackFiniteStateMachine" index="8"]
+_animation_name = &""
 
 [editable path="DizzyCharacterModel"]

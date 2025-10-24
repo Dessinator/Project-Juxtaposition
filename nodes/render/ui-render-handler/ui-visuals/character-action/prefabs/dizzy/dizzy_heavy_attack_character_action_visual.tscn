@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://br7so3w5q2uef"]
+
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_t1o7p"]
+
+[node name="DizzyHeavyAttackCharacterActionVisual" instance=ExtResource("1_t1o7p")]
+_action_name = "Dizzy Heavy Attack"
+action_visual_type = 5
+
+[node name="Button" parent="Control" index="0"]
+offset_right = 0.0
+offset_bottom = 0.0
+theme_override_font_sizes/font_size = 12
+text = "Dizzy Heavy Attack"

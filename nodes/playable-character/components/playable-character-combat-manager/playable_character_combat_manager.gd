@@ -1,6 +1,8 @@
 class_name PlayableCharacterCombatManager
 extends Node
 
+const HITBOX_SCENE = preload("res://nodes/areas/hitbox/hitbox.tscn")
+
 const IS_STAYING: String = "is_staying"
 const IS_TARGETING: String = "is_targeting"
 const TRACKED_TARGET_POSITION: String = "tracked_target_position"
@@ -12,9 +14,14 @@ const CRITICAL_MULTIPLIER_STAT: StringName = &"critical_multiplier"
 
 const PLACEHOLDER_POSITION_DISTANCE: float = 20.0
 
+const CURRENT_ATTACK_PHASE: String = "current_attack_phase"
+
 signal stop_targeting
 signal start_targeting
 signal damage_dealt(damage: int)
+
+signal await_attack_phase_advance_input_requested
+signal ignore_attack_phase_advance_input_requested
 
 @onready var _camera_behaviour_tree: BeehaveTree = %CameraBehaviourTree
 @onready var _camera_behaviour_tree_blackboard: BHBlackboard = %CameraBehaviourTreeBlackboard
@@ -163,6 +170,80 @@ func _on_playable_character_target_range_target_exited(target: TrackableTarget) 
 		_tracked_target.set_tracked(false)
 		_tracked_target = null
 
+# attacking
+
+func start_attack(animation_state: PlayableCharacterAnimationState, phase: int) -> AttackInstance:
+	_gameplay_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+	_animation_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+	_animation_finite_state_machine.change_state(animation_state)
+	
+	var attack_instance = AttackInstance.new()
+	var character_model = _current_character.get_character_model()
+	
+	character_model.request_spawn_hitbox_on_target.connect(_on_request_spawn_hitbox_on_target)
+	character_model.request_await_attack_phase_advance_input.connect(attack_instance.emit_await_attack_phase_advance_input_requested)
+	character_model.request_ignore_attack_phase_advance_input.connect(attack_instance.emit_ignore_attack_phase_advance_input_requested)
+	character_model.attack_concluded.connect(attack_instance.emit_attack_concluded)
+	
+	return attack_instance
+
+func start_charged_attack(animation_state: PlayableCharacterAnimationState, phase: int) -> AttackInstance:
+	_gameplay_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+	_animation_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+	_animation_finite_state_machine.change_state(animation_state)
+	
+	var attack_instance = AttackInstance.new()
+	var character_model = _current_character.get_character_model()
+	
+	character_model.request_spawn_hitbox_on_target.connect(_on_request_spawn_hitbox_on_target)
+	character_model.request_charge_attack_advance.connect(attack_instance.emit_charge_attack_advance_requested)
+	character_model.request_await_attack_phase_advance_input.connect(attack_instance.emit_await_attack_phase_advance_input_requested)
+	character_model.request_ignore_attack_phase_advance_input.connect(attack_instance.emit_ignore_attack_phase_advance_input_requested)
+	character_model.attack_concluded.connect(attack_instance.emit_attack_concluded)
+	
+	return attack_instance
+
+func conclude_attack():
+	var character_model = _current_character.get_character_model()
+	
+	character_model.request_spawn_hitbox_on_target.disconnect(_on_request_spawn_hitbox_on_target)
+	_gameplay_finite_state_machine.blackboard.remove_value(CURRENT_ATTACK_PHASE)
+	_animation_finite_state_machine.blackboard.remove_value(CURRENT_ATTACK_PHASE)
+
+func _on_request_spawn_hitbox_on_target():
+	var hitbox: Hitbox = HITBOX_SCENE.instantiate()
+	playable_character.add_child(hitbox)
+	
+	var hitbox_position: Vector3
+	if not _tracked_target:
+		# if no tracked target, the hitbox will be spawned 10 units away from
+		# the PlayableCharacter in the forward position.
+		
+		hitbox_position = (playable_character.get_front_direction() * 10) + playable_character.global_position
+	else:
+		hitbox_position = _tracked_target.global_position
+	
+	var damage_instance = DamageInstance.new()
+	damage_instance.source = playable_character
+	damage_instance.base_damage = 10
+	damage_instance.can_dodge = false
+	damage_instance.can_parry = false
+	damage_instance.is_crit = false
+	damage_instance.spawn_damage_number = true
+	
+	var shape = BoxShape3D.new()
+	shape.size = Vector3.ONE * 5
+	
+	hitbox.source = playable_character
+	hitbox.damage_instance = damage_instance
+	hitbox.shape = shape
+	
+	hitbox.top_level = true
+	hitbox.global_position = hitbox_position
+	hitbox.enable()
+	await get_tree().create_timer(0.1).timeout
+	hitbox.queue_free()
+
 # damaging
 
 func deal_damage(status_interface: StatusInterface, damage_multiplier: float = 1, can_dodge: bool = true, can_parry: bool = true):
@@ -184,7 +265,9 @@ func deal_damage(status_interface: StatusInterface, damage_multiplier: float = 1
 		damage += damage * critical_multiplier_value
 	damage = int(damage + 0.5)
 	
-	var damage_instance = DamageInstance.new(playable_character, damage)
+	var damage_instance = DamageInstance.new()
+	damage_instance.source = playable_character
+	damage_instance.base_damage = damage
 	damage_instance.can_dodge = can_dodge
 	damage_instance.can_parry = can_parry
 	damage_instance.is_crit = crit

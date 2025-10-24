@@ -20,7 +20,7 @@ signal attack_ended()
 @export var _attack_components: Array[CharacterAttackDefinitionComponent]
 
 func do(playable_character: PlayableCharacter) -> AttackInstance:
-	var attack_instance = AttackInstance.new(0, null)
+	var attack_instance = AttackInstance.new()
 	
 	if _attack_components.is_empty():
 		end()

@@ -6,6 +6,9 @@ const STAMINA_REGENERATION_INTERVAL: float = 0.5
 const AGILITY: StringName = &"agility"
 const STAMINA_REGENERATION_RATE: StringName = &"stamina_regeneration_rate"
 
+signal pressed_light_attack_input
+signal pressed_heavy_attack_input
+
 ## emitted when an action is performed.
 signal action_performed(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, holding: bool)
 ## emitted when an action is interrupted.
@@ -31,11 +34,13 @@ var _direction: Vector3
 var _relative_direction: Vector3
 
 @onready var _playable_character_combat_manager: PlayableCharacterCombatManager = %PlayableCharacterCombatManager
+@onready var playable_character_mover: PlayableCharacterMover = %PlayableCharacterMover
 @onready var _playable_character_juxtometer_manager: PlayableCharacterJuxtometerManager = %PlayableCharacterJuxtometerManager
 @onready var _playable_character_visual_controller: PlayableCharacterVisualController = %PlayableCharacterVisualController
 @onready var _playable_character_character_container: PlayableCharacterCharacterContainer = %PlayableCharacterCharacterContainer
 @onready var _playable_character_camera: PlayableCharacterCamera = %PlayableCharacterCamera
 @onready var _playable_character_stamina_meter: PlayableCharacterStaminaMeter = %PlayableCharacterStaminaMeter
+@onready var _playable_character_hurtbox: PlayableCharacterHurtbox = $PlayableCharacterHurtbox
 
 @onready var _gameplay_finite_state_machine: FiniteStateMachine = %GameplayFiniteStateMachine
 @onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
@@ -57,15 +62,10 @@ func initialize(game_manager: GameManager) -> void:
 	_light_charge_threshold_timer.timeout.connect(_on_light_charge_threshold_timer_timeout)
 	_heavy_charge_threshold_timer.timeout.connect(_on_heavy_charge_threshold_timer_timeout)
 	
-	_playable_character_combat_manager.initialize(self)
-	_playable_character_juxtometer_manager.initialize(self)
-	_playable_character_visual_controller.initialize(self)
+	_initialize_components()
 	#_setup_character_attack_state_machine(current_character)
 	_start_state_machines()
 	%PlayableCharacterStatusModifier.initialize()
-
-func _physics_process(delta: float) -> void:
-	move_and_slide()
 
 func _process(delta: float) -> void:
 	_handle_stamina_regeneration(_gameplay_blackboard.get_value("regenerate_stamina"), delta)
@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 	DebugDraw3D.draw_arrow(global_position, global_position + (_direction * 1.5), Color.BLACK, 0.25)
 	DebugDraw2D.set_text("relative_direction", str(_relative_direction))
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	_gameplay_blackboard.set_value("auto_jog", _handle_toggle_auto_jog(_gameplay_blackboard.get_value("auto_jog")))
 	
 	var holding_light_attack_input = _gameplay_blackboard.get_value("holding_light_attack_input")
@@ -125,10 +125,17 @@ func emit_action_set_unavailable_duration(action_type: PlayableCharacterGameplay
 func emit_action_set_available_duration(action_type: PlayableCharacterGameplayState.PlayableCharacterActionType, duration_seconds: float):
 	action_set_available_duration.emit(action_type, duration_seconds)
 
-func _on_current_character_changed(old: Character, new: Character):
+func _on_current_character_changed(_old: Character, _new: Character):
 	#_update_character_attack_state_machine(new)
 	_handle_character_switch_cooldown()
 	_update_stamina_meter_character_status()
+
+func _initialize_components():
+	_playable_character_combat_manager.initialize(self)
+	playable_character_mover.initialize(self)
+	_playable_character_juxtometer_manager.initialize(self)
+	_playable_character_visual_controller.initialize(self)
+	_playable_character_hurtbox.initialize(self)
 
 func _setup_character_attack_state_machine(current_character: Character):
 	assert(current_character.get_character_attack_state_machine(), "Character {character_name} is missing a CharacterAttackStateMachine PackedScene".format({"character_name" : current_character.name}))
@@ -168,6 +175,7 @@ func _handle_holding_light_attack_input(is_holding: bool) -> bool:
 			# Stop the timer to prevent the hold action from firing.
 			_light_charge_threshold_timer.stop()
 			_gameplay_finite_state_machine.fire_event("pressed_light_attack_input")
+			pressed_light_attack_input.emit()
 			return is_holding
 		
 		return false
@@ -185,6 +193,7 @@ func _handle_holding_heavy_attack_input(is_holding: bool) -> bool:
 			# Stop the timer to prevent the hold action from firing.
 			_heavy_charge_threshold_timer.stop()
 			_gameplay_finite_state_machine.fire_event("pressed_heavy_attack_input")
+			pressed_heavy_attack_input.emit()
 			return is_holding
 		
 		return false

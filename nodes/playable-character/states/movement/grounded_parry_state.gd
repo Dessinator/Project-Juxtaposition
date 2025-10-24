@@ -30,7 +30,7 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_method(_set_slow_motion, _slow_motion, 1.0, _slow_motion_fade_time)
 	
-	_parry_time_timer.timeout.connect(_on_parry_time_timer_timer_timeout.bind(actor, blackboard.get_value("auto_jog")))
+	_parry_time_timer.timeout.connect(_on_parry_time_timer_timer_timeout.bind(actor, blackboard.get_value(AUTO_JOG)))
 	_parry_time_timer.start()
 
 # Executes every _process call, if the state is active.

@@ -264,7 +264,7 @@ heavy_attack_character_action_visual_packedscene = ExtResource("11_w6x52")
 juxtapose_character_action_visual_packedscene = ExtResource("12_4a0k8")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="MaikaCharacterModel" parent="." index="1" instance=ExtResource("4_4to8m")]
+[node name="MaikaCharacterModel" parent="." index="0" instance=ExtResource("4_4to8m")]
 
 [node name="CharacterAttackDefinitionManager" parent="." index="2"]
 _character_attack_definitions = Array[ExtResource("7_wccao")]([ExtResource("8_kb2cy"), ExtResource("9_mn1e1"), ExtResource("10_c4b4g"), ExtResource("11_c4b4g"), ExtResource("12_nc2q0"), ExtResource("13_b21de")])

@@ -1,7 +1,7 @@
 @tool
 extends PlayableCharacterAnimationState
 
-var _wallslide_position: float
+var _wallslide_vector: Vector2
 
 @onready var _camera: PlayableCharacterCamera = %PlayableCharacterCamera
 @onready var _gameplay_finite_state_machine: FiniteStateMachine = %GameplayFiniteStateMachine
@@ -14,7 +14,7 @@ func _on_enter(_actor: Node, _blackboard: BTBlackboard) -> void:
 func _on_update(_delta: float, actor: Node, _blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	
-	_wallslide_position = _handle_wallslide_position()
+	_wallslide_vector = _handle_wallslide_vector()
 	
 	_update_character_animation_tree_expression_base()
 
@@ -24,7 +24,7 @@ func _handle_direction_input() -> Vector2:
 	
 	return direction
 
-func _handle_wallslide_position() -> float:
+func _handle_wallslide_vector() -> Vector2:
 	var cam_basis = _camera.get_camera().global_transform.basis
 	var input_vector = _handle_direction_input()
 	var move_dir = (cam_basis.x * input_vector.x) + (cam_basis.z * input_vector.y)
@@ -35,13 +35,15 @@ func _handle_wallslide_position() -> float:
 	wall_move_dir = wall_move_dir.normalized()
 
 	var world_up = Vector3.UP
+	var vertical_amount = wall_move_dir.dot(world_up)
 	var wall_right = wall_normal.cross(world_up).normalized()
 	var lateral_amount = -wall_move_dir.dot(wall_right)
 	
-	var wallslide_position = lateral_amount
+	var wallrun_vector = Vector2(lateral_amount, vertical_amount)
+	wallrun_vector = wallrun_vector.normalized()
 	
-	return wallslide_position
+	return wallrun_vector
 
 func _update_character_animation_tree_expression_base():
-	_character_animation_tree_expression_base.travel_to_wallsliding()
-	_character_animation_tree_expression_base.set_wallslide_vector(_wallslide_position)
+	character_animation_tree_expression_base.travel_to_wallsliding()
+	character_animation_tree_expression_base.set_wall_movement_vector(_wallslide_vector)

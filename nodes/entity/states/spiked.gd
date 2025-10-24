@@ -42,7 +42,9 @@ func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
 		particle_system.emitting = false
 	
 	var status = _status_interface.get_status()
-	var damage_instance = DamageInstance.new(actor, blackboard.get_value(ACCUMULATED_SPIKE_DAMAGE_STRING))
+	var damage_instance = DamageInstance.new()
+	damage_instance.source = actor
+	damage_instance.base_damage = blackboard.get_value(ACCUMULATED_SPIKE_DAMAGE_STRING)
 	damage_instance.spawn_damage_number = true
 	status.damage(damage_instance)
 

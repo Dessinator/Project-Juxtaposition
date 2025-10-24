@@ -18,7 +18,7 @@ var _characters: Array[Character]
 var _current_character: Character
 
 @onready var _playable_character: PlayableCharacter = $".."
-@onready var _juxtapometer_decay_timer: Timer = $JuxtapometerDecayTimer
+@onready var _juxtapometer_decay_timer: Timer = %JuxtapometerDecayTimer
 
 func _ready() -> void:
 	_setup_characters()
@@ -58,6 +58,8 @@ func all_characters_dead() -> bool:
 
 func _setup_characters():
 	for child in get_children():
+		if not child is Character:
+			continue
 		_characters.append(child)
 	
 	for character in _characters:

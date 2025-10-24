@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://5a754smhrn7s"]
+[gd_scene load_steps=64 format=3 uid="uid://5a754smhrn7s"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_mwbfe"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_ge252"]
@@ -21,6 +21,9 @@ _nickname = "Mafuyu"
 _pronouns = "She/Her/Hers"
 _lore = ""
 metadata/_custom_type_script = "uid://cf8q48g7hjdjb"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wcn6x"]
+size = Vector3(1, 1.8, 1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fw5je"]
 animation = &"RESET"
@@ -257,18 +260,11 @@ heavy_attack_character_action_visual_packedscene = ExtResource("11_4d54h")
 juxtapose_character_action_visual_packedscene = ExtResource("12_rsvui")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="MafuyuCharacterModel" parent="." index="1" instance=ExtResource("4_mwbfe")]
+[node name="CharacterHurtbox" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("BoxShape3D_wcn6x")
 
-[node name="dummy_root" parent="MafuyuCharacterModel" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
-target_position = Vector3(0, -2, 0)
-debug_shape_custom_color = Color(0, 1, 0, 1)
-debug_shape_thickness = 5
-
-[node name="AnimationTree" parent="." index="5"]
+[node name="AnimationTree" parent="." index="4"]
 root_node = NodePath("%AnimationTree/../MafuyuCharacterModel")
 tree_root = SubResource("AnimationNodeStateMachine_cm2we")
 anim_player = NodePath("../MafuyuCharacterModel/AnimationPlayer")
@@ -276,5 +272,16 @@ parameters/Passive/NonTargetingMovement/blend_position = -0.00623327
 parameters/Passive/TargetingMovement/blend_position = Vector2(-0.00289297, -0.0329671)
 parameters/Passive/Wallrunning/blend_position = Vector2(-0.00268096, -0.0626704)
 parameters/Passive/Wallsliding/blend_position = 0.00248969
+
+[node name="MafuyuCharacterModel" parent="." index="6" instance=ExtResource("4_mwbfe")]
+
+[node name="dummy_root" parent="MafuyuCharacterModel" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
 
 [editable path="MafuyuCharacterModel"]

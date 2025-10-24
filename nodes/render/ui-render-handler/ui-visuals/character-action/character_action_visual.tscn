@@ -180,6 +180,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 60.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -187,6 +189,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n718m")
 text = "Action Name"
 text_overrun_behavior = 4
 autowrap_mode = 3
+clip_text = true
 metadata/_edit_group_ = true
 
 [node name="CooldownProgressBar" type="TextureProgressBar" parent="Control/Button"]

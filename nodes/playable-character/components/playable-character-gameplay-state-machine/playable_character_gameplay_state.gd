@@ -3,10 +3,17 @@ class_name PlayableCharacterGameplayState
 extends FSMState
 
 const AUTO_JOG: String = "auto_jog"
-const IS_TARGETING: String = "is_targeting"
-const TRACKED_TARGET_POSITION: String = "tracked_target_position"
 const CAN_ARIAL_DODGE: String = "can_arial_dodge"
 const REGENERATE_STAMINA: String = "regenerate_stamina"
+
+const IS_TARGETING: String = "is_targeting"
+const TRACKED_TARGET_POSITION: String = "tracked_target_position"
+
+const CURRENT_ATTACK_PHASE: String = "current_attack_phase"
+const CURRENT_GROUNDED_LIGHT_ATTACK_PHASE: String = "current_grounded_light_attack_phase"
+const CURRENT_ARIAL_LIGHT_ATTACK_PHASE: String = "current_arial_light_attack_phase"
+const CURRENT_GROUNDED_HEAVY_ATTACK_PHASE: String = "current_grounded_heavy_attack_phase"
+const CURRENT_ARIAL_HEAVY_ATTACK_PHASE: String = "current_arial_heavy_attack_phase"
 
 const ON_START_IDLING: String = "on_start_idling"
 const ON_START_WALKING: String = "on_start_walking"
@@ -58,6 +65,7 @@ enum GameplayStateSetValueMode
 }
 
 @onready var _playable_character_character_container: PlayableCharacterCharacterContainer = %PlayableCharacterCharacterContainer
+@onready var _playable_character_mover: PlayableCharacterMover = %PlayableCharacterMover
 @onready var _camera: PlayableCharacterCamera = %PlayableCharacterCamera
 @onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
 @onready var _transitions: Array = get_children()
@@ -72,6 +80,7 @@ var _character: Character
 
 @export_subgroup("Visuals")
 @export var _animation_state: PlayableCharacterAnimationState
+@export var _auto_switch_animation_state: bool = true
 @export var _action_type: PlayableCharacterActionType = PlayableCharacterActionType.TYPE_OTHER
 @export var _hold_action: bool = false
 @export var _set_action_unavailable: bool = false
@@ -122,6 +131,9 @@ func _handle_can_regenerate_stamina(blackboard: BTBlackboard):
 		_handle_stamina_regeneration_delay(blackboard)
 
 func _handle_animation_state_change():
+	if not _auto_switch_animation_state:
+		return
+	
 	if _animation_state:
 		_animation_finite_state_machine.change_state(_animation_state)
 func _handle_action_performed(playable_character: PlayableCharacter):

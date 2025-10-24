@@ -6,6 +6,7 @@
 script = ExtResource("1_h0vci")
 
 [node name="JuxtometerDecayTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
 

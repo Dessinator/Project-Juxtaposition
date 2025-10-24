@@ -10,23 +10,16 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	
 	var velocity = _handle_skidding(actor.velocity)
-	actor.velocity = velocity
+	_playable_character_mover.use_root_motion = false
+	_playable_character_mover.set_velocity(velocity)
 	
-	_skid_duration_timer.timeout.connect(_on_skid_duration_timer_timeout)
+	_skid_duration_timer.timeout.connect(_on_skid_duration_timer_timeout.bind(actor, blackboard))
 	_skid_duration_timer.start()
-
-func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
-	actor = actor as PlayableCharacter
-	
-	if not _skid_duration_timer.is_stopped():
-		return
-	
-	actor.velocity = Vector3.ZERO
-	_handle_transition_events(actor, blackboard)
 
 # Executes before the state is exited.
 func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)
+	_playable_character_mover.use_root_motion = true
 	_skid_duration_timer.timeout.disconnect(_on_skid_duration_timer_timeout)
 
 func _handle_skidding(current_velocity: Vector3) -> Vector3:
@@ -51,5 +44,7 @@ func _handle_transition_events(actor: Node, blackboard: BTBlackboard):
 	get_parent().fire_event(ON_START_IDLING)
 	return
 
-func _on_skid_duration_timer_timeout():
+func _on_skid_duration_timer_timeout(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	_playable_character_mover.set_velocity(Vector3.ZERO)
+	_handle_transition_events(playable_character, blackboard)
 	_skid_cooldown_timer.start()

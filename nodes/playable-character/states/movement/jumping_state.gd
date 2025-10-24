@@ -11,28 +11,25 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	
 	var velocity = _handle_jump_force(actor.velocity)
-	actor.velocity = velocity
+	_playable_character_mover.use_root_motion = false
+	_playable_character_mover.set_velocity(velocity)
 
-func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
+func _on_update(delta: float, actor: Node, _blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	
 	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
 	var direction = _handle_direction_input(horizontal_camera_rotation)
 	var velocity = _handle_jumping(actor.velocity, direction, delta)
 	if velocity.y < 0:
-		get_parent().fire_event("on_start_falling")
+		get_parent().fire_event(ON_START_FALLING)
 		return
 	
-	var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
-	
-	actor.velocity = velocity
-	if not horizontal_velocity.is_zero_approx():
-		var horizontal_velocity_normalized = horizontal_velocity.normalized()
-		_playable_character_character_container.rotation.y = atan2(horizontal_velocity_normalized.x, horizontal_velocity_normalized.z)
+	_playable_character_mover.set_velocity(velocity)
 
 # Executes before the state is exited.
 func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)
+	_playable_character_mover.use_root_motion = true
 
 func _handle_direction_input(horizontal_rotation: float) -> Vector3:
 	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")

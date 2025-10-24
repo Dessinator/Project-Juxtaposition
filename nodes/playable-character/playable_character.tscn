@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=112 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1vo24vn8cvlt" path="res://nodes/playable-character/components/playable-character-combat-manager/playable_character_combat_manager.tscn" id="2_rfhey"]
 [ext_resource type="PackedScene" uid="uid://dalxdx30uubou" path="res://nodes/playable-character/components/playable-character-stamina-meter/playable_character_stamina_meter.tscn" id="2_s6wqa"]
 [ext_resource type="Script" uid="uid://ukjio47rhx87" path="res://nodes/playable-character/components/playable-character-status-modifier/playable_character_status_modifier.gd" id="2_y5kg5"]
+[ext_resource type="Script" uid="uid://cupduph5pqjer" path="res://nodes/playable-character/components/playable-character-mover/playable_character_mover.gd" id="3_3uqe5"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_kwpjs"]
 [ext_resource type="Script" uid="uid://dses4kjrpugsp" path="res://nodes/playable-character/components/playable-character-juxtometer-manager/playable_character_juxtometer_manager.gd" id="3_l2qdo"]
 [ext_resource type="Script" uid="uid://qhvhuttmj4gj" path="res://nodes/playable-character/components/playable-character-status-interface/playable_character_status_interface.gd" id="3_vodfd"]
@@ -20,6 +21,7 @@
 [ext_resource type="Script" uid="uid://dlq0i3jf6krly" path="res://nodes/playable-character/states/movement/transitions/start_falling.gd" id="8_b0vta"]
 [ext_resource type="Script" uid="uid://62fl0f3v5lvd" path="res://nodes/playable-character/states/movement/walking_state.gd" id="9_g13tn"]
 [ext_resource type="Script" uid="uid://di214gom16ila" path="res://nodes/playable-character/states/movement/transitions/start_ilding.gd" id="10_qyjwt"]
+[ext_resource type="PackedScene" uid="uid://db7xt2j2blft5" path="res://nodes/areas/hurtbox/prefabs/playable-character-hurtbox/playable_character_hurtbox.tscn" id="11_1byfn"]
 [ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="11_1jk2l"]
 [ext_resource type="Script" uid="uid://y1sf7ui7b42n" path="res://nodes/playable-character/states/movement/sprinting_state.gd" id="11_c3dl5"]
 [ext_resource type="Script" uid="uid://cwt6i1vl4f3b2" path="res://nodes/playable-character/states/movement/transitions/land.gd" id="12_jtxij"]
@@ -79,6 +81,10 @@
 [ext_resource type="Script" uid="uid://duc2f4dbp2bwt" path="res://nodes/playable-character/states/movement/spiked_state.gd" id="56_qbeoo"]
 [ext_resource type="Script" uid="uid://d2ti4ot5fitpr" path="res://nodes/playable-character/states/movement/juxtapose_state.gd" id="63_qbeoo"]
 [ext_resource type="Script" uid="uid://b3dvu7ygca2tx" path="res://nodes/playable-character/states/movement/normalize_state.gd" id="64_kykue"]
+[ext_resource type="Script" uid="uid://due0w3dwps3au" path="res://nodes/playable-character/states/animation/charged_light_attack_animation_state.gd" id="78_572xm"]
+[ext_resource type="Script" uid="uid://crqmdnkhyqyfl" path="res://nodes/playable-character/states/animation/light_attack_animation_state.gd" id="79_3uqe5"]
+[ext_resource type="Script" uid="uid://pdw3ocb1jif6" path="res://nodes/playable-character/states/animation/heavy_attack_animation_state.gd" id="80_3tara"]
+[ext_resource type="Script" uid="uid://dedk1kv1yf6ll" path="res://nodes/playable-character/states/animation/charged_heavy_attack_animation_state.gd" id="80_vb6qd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0vta"]
 
@@ -327,6 +333,10 @@ target_range = NodePath("../PlayableCharacterTargetRange")
 _gameplay_finite_state_machine = NodePath("../GameplayFiniteStateMachine")
 _animation_finite_state_machine = NodePath("../AnimationFiniteStateMachine")
 
+[node name="PlayableCharacterMover" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_3uqe5")
+
 [node name="StatusInterface" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_vodfd")
@@ -372,6 +382,10 @@ transform = Transform3D(1, -4.68761e-15, 8.12683e-15, 1.62537e-15, 0.939693, 0.3
 
 [node name="PlayableCharacterSprintingParticles" parent="." instance=ExtResource("48_avwae")]
 unique_name_in_owner = true
+
+[node name="PlayableCharacterHurtbox" parent="." node_paths=PackedStringArray("status_interface") instance=ExtResource("11_1byfn")]
+unique_name_in_owner = true
+status_interface = NodePath("../StatusInterface")
 
 [node name="PlayableCharacterTargetRange" parent="." instance=ExtResource("8_2p2ad")]
 range = 25.0
@@ -446,7 +460,6 @@ active = false
 initial_state = NodePath("IdleState")
 actor = NodePath("..")
 blackboard = SubResource("Resource_t22va")
-verbose = true
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
 [node name="IdleState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
@@ -867,6 +880,7 @@ metadata/_custom_type_script = "uid://1h0braq41vwb"
 [node name="JumpState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("12_nfjh7")
+_vertical_force = 12.0
 _set_can_arial_dodge = 1
 _animation_state = NodePath("../../AnimationFiniteStateMachine/JumpAnimationState")
 _action_type = 3
@@ -1143,7 +1157,8 @@ next_state = NodePath("../../MantleState")
 unique_name_in_owner = true
 script = ExtResource("25_mb8j0")
 _can_switch_characters = false
-_animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/LightAttackAnimationState")
+_auto_switch_animation_state = null
 _action_type = 4
 _set_action_unavailable_duration = 0.5
 _action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_3uqe5"), SubResource("Resource_1byfn")])
@@ -1195,11 +1210,30 @@ next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
+[node name="onStartGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedLightChargeAttackState")
+use_event = true
+event = "on_start_grounded_light_charge_attack"
+
+[node name="onStartGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedHeavyAttackState")
+use_event = true
+event = "on_start_grounded_heavy_attack"
+
+[node name="onStartGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedHeavyChargeAttackState")
+use_event = true
+event = "on_start_grounded_heavy_charge_attack"
+
 [node name="GroundedLightChargeAttackState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("40_o2shg")
 _can_switch_characters = false
-_animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/ChargedLightAttackAnimationState")
+_auto_switch_animation_state = null
 _action_type = 4
 _hold_action = true
 _set_action_available_duration = 0.4
@@ -1258,11 +1292,30 @@ use_event = true
 event = "on_start_self_launch"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
+[node name="onStartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedLightAttackState")
+use_event = true
+event = "on_start_grounded_light_attack"
+
+[node name="onStartGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedHeavyAttackState")
+use_event = true
+event = "on_start_grounded_heavy_attack"
+
+[node name="onStartGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedHeavyChargeAttackState")
+use_event = true
+event = "on_start_grounded_heavy_charge_attack"
+
 [node name="GroundedHeavyAttackState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("30_k3myv")
 _can_switch_characters = false
-_animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/HeavyAttackAnimationState")
+_auto_switch_animation_state = null
 _action_type = 5
 _set_action_unavailable_duration = 0.5
 _action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_3uqe5"), SubResource("Resource_vwxx6")])
@@ -1314,11 +1367,30 @@ next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
+[node name="onStartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedLightAttackState")
+use_event = true
+event = "on_start_grounded_light_attack"
+
+[node name="onStartGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedLightChargeAttackState")
+use_event = true
+event = "on_start_grounded_light_charge_attack"
+
+[node name="onStartGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedHeavyChargeAttackState")
+use_event = true
+event = "on_start_grounded_heavy_charge_attack"
+
 [node name="GroundedHeavyChargeAttackState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("42_uy0g6")
 _can_switch_characters = false
-_animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
+_animation_state = NodePath("../../AnimationFiniteStateMachine/ChargedHeavyAttackAnimationState")
+_auto_switch_animation_state = null
 _action_type = 5
 _hold_action = true
 _set_action_available_duration = 0.6
@@ -1376,6 +1448,24 @@ next_state = NodePath("../../SelfLaunchState")
 use_event = true
 event = "on_start_self_launch"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onStartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedLightAttackState")
+use_event = true
+event = "on_start_grounded_light_attack"
+
+[node name="onStartGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedLightChargeAttackState")
+use_event = true
+event = "on_start_grounded_light_charge_attack"
+
+[node name="onStartGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../GroundedHeavyAttackState")
+use_event = true
+event = "on_start_grounded_heavy_attack"
 
 [node name="SelfLaunchState" type="Node" parent="GameplayFiniteStateMachine"]
 unique_name_in_owner = true
@@ -1564,6 +1654,7 @@ _stamina_drain = 2.0
 _gravity = 1.5
 _boost_force = 15.0
 _can_switch_characters = false
+_auto_switch_animation_state = false
 _action_type = 4
 _set_action_unavailable_duration = 0.5
 _action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_1byfn")])
@@ -1598,6 +1689,7 @@ _stamina_drain = 3.0
 _gravity = 1.5
 _boost_force = 15.0
 _can_switch_characters = false
+_auto_switch_animation_state = null
 _action_type = 4
 _hold_action = true
 _set_action_available_duration = 0.4
@@ -1632,6 +1724,7 @@ _stamina_drain = 4
 _gravity = 1.5
 _boost_force = 15.0
 _can_switch_characters = false
+_auto_switch_animation_state = null
 _action_type = 5
 _set_action_unavailable_duration = 0.5
 _action_types_modifiers = Array[ExtResource("15_kykue")]([SubResource("Resource_vodfd"), SubResource("Resource_572xm"), SubResource("Resource_vwxx6")])
@@ -1664,6 +1757,7 @@ unique_name_in_owner = true
 script = ExtResource("50_3npex")
 _stamina_drain = 5.0
 _can_switch_characters = false
+_auto_switch_animation_state = null
 _action_type = 5
 _hold_action = true
 _set_action_available_duration = 0.6
@@ -2024,6 +2118,18 @@ script = ExtResource("34_m348m")
 [node name="DodgeAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 script = ExtResource("30_dkfog")
 
+[node name="LightAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+script = ExtResource("79_3uqe5")
+
+[node name="ChargedLightAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+script = ExtResource("78_572xm")
+
+[node name="HeavyAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+script = ExtResource("80_3tara")
+
+[node name="ChargedHeavyAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+script = ExtResource("80_vb6qd")
+
 [node name="WallrunAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
 script = ExtResource("43_ug6ed")
 
@@ -2037,13 +2143,12 @@ script = ExtResource("45_kbp4i")
 script = ExtResource("56_8pdar")
 metadata/_custom_type_script = "uid://ckcspu8iefpxp"
 
-[connection signal="damage_dealt" from="PlayableCharacterCombatManager" to="PlayableCharacterJuxtometerManager" method="_on_playable_character_combat_manager_damage_dealt"]
-[connection signal="start_targeting" from="PlayableCharacterCombatManager" to="PlayableCharacterVisualController" method="_on_playable_character_combat_manager_start_targeting"]
-[connection signal="stop_targeting" from="PlayableCharacterCombatManager" to="PlayableCharacterVisualController" method="_on_playable_character_combat_manager_stop_targeting"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="." method="_on_current_character_changed"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterCombatManager" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="StatusInterface" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterJuxtometerManager" method="_on_playable_character_character_container_current_character_changed"]
+[connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterHurtbox" method="_on_playable_character_character_container_current_character_changed"]
+[connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterMover" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="target_entered" from="PlayableCharacterTargetRange" to="PlayableCharacterCombatManager" method="_on_playable_character_target_range_target_entered"]
 [connection signal="target_exited" from="PlayableCharacterTargetRange" to="PlayableCharacterCombatManager" method="_on_playable_character_target_range_target_exited"]
 [connection signal="timeout" from="CharacterReplaceImmunityTimer" to="." method="_on_character_replace_immunity_timer_timeout"]

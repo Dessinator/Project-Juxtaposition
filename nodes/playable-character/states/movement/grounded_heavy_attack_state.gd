@@ -1,10 +1,10 @@
 @tool
 extends PlayableCharacterGameplayState
 
-const ATTACK_STAT: StringName = &"attack"
-const ATTACK_DAMAGE_STAT: StringName = &"attack_damage"
-
 @onready var _playable_character_combat_manager: PlayableCharacterCombatManager = %PlayableCharacterCombatManager
+
+var _attack_instance: AttackInstance
+var _attack_instance_awaiting_phase_advance_input: bool
 
 @export var _damage_multiplier: float = 1
 
@@ -12,31 +12,131 @@ const ATTACK_DAMAGE_STAT: StringName = &"attack_damage"
 func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)
 	actor = actor as PlayableCharacter
-	
-	var tracked_target = _playable_character_combat_manager.get_tracked_target()
-	if tracked_target == null:
-		_handle_transitions(actor, blackboard)
-		return
-	
-	var target_node = tracked_target.get_parent()
-	var status_interface = target_node.get_node("%StatusInterface") as StatusInterface
-	if status_interface == null:
-		_handle_transitions(actor, blackboard)
-		return
-	_playable_character_combat_manager.deal_damage(status_interface, _damage_multiplier)
-	
-	actor.velocity = Vector3.ZERO
-	await get_tree().create_timer(0.5).timeout
-	
-	_handle_transitions(actor, blackboard)
+
+	_handle_attack_chain_start(actor, blackboard)
 	
 # Executes every _process call, if the state is active.
-func _on_update(_delta: float, _actor: Node, _blackboard: BTBlackboard) -> void:
-	pass
+func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
+	_handle_attack_phase_advance_input(actor, blackboard)
 
 # Executes before the state is exited.
 func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)
+
+	if _attack_instance:
+		_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
+		_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
+		_attack_instance.attack_concluded.disconnect(_on_attack_concluded)
+		_attack_instance = null
+	_attack_instance_awaiting_phase_advance_input = false
+
+func _handle_attack_chain_start(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	if _animation_state.character_animation_tree_expression_base.grounded_heavy_attack_phase_count <= 0:
+		_handle_transitions(playable_character, blackboard)
+		return
+	
+	if blackboard.get_value(CURRENT_ATTACK_PHASE):
+		_handle_attack_chain_continue(playable_character, blackboard)
+		return
+	
+	_attack_instance = _playable_character_combat_manager.start_attack(_animation_state, 1)
+	_attack_instance.await_attack_phase_advance_input_requested.connect(_on_await_attack_phase_advance_input_requested.bind(playable_character, blackboard))
+	_attack_instance.ignore_attack_phase_advance_input_requested.connect(_on_ignore_attack_phase_advance_input_requested.bind(playable_character, blackboard))
+	_attack_instance.attack_concluded.connect(_on_attack_concluded.bind(playable_character, blackboard))
+
+func _handle_attack_chain_continue(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	var next_phase = blackboard.get_value(CURRENT_ATTACK_PHASE) + 1
+	if next_phase > 3:
+		next_phase = 1
+	
+	_attack_instance = _playable_character_combat_manager.start_attack(_animation_state, next_phase)
+	_attack_instance.await_attack_phase_advance_input_requested.connect(_on_await_attack_phase_advance_input_requested.bind(playable_character, blackboard))
+	_attack_instance.ignore_attack_phase_advance_input_requested.connect(_on_ignore_attack_phase_advance_input_requested.bind(playable_character, blackboard))
+	_attack_instance.attack_concluded.connect(_on_attack_concluded.bind(playable_character, blackboard))
+
+func _handle_attack_phase_advance_input(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	if not _attack_instance_awaiting_phase_advance_input:
+		return
+	
+	if blackboard.get_value("holding_light_attack_input"):
+		playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
+		playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
+		_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
+		_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
+		_attack_instance.attack_concluded.disconnect(_on_attack_concluded)
+		_attack_instance_awaiting_phase_advance_input = false
+		
+		# wait for the attack animation to end before transitioning to the next
+		# (this should allow for input buffering)
+		await _attack_instance.attack_concluded
+		
+		
+		get_parent().fire_event(ON_START_GROUNDED_LIGHT_CHARGE_ATTACK)
+		return
+	if blackboard.get_value("holding_heavy_attack_input"):
+		playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
+		playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
+		_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
+		_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
+		_attack_instance.attack_concluded.disconnect(_on_attack_concluded)
+		_attack_instance_awaiting_phase_advance_input = false
+		
+		# wait for the attack animation to end before transitioning to the next
+		# (this should allow for input buffering)
+		await _attack_instance.attack_concluded
+		
+		get_parent().fire_event(ON_START_GROUNDED_HEAVY_CHARGE_ATTACK)
+		return
+func _handle_attack_phase_advance(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
+	playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
+	_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
+	_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
+	_attack_instance.attack_concluded.disconnect(_on_attack_concluded)
+	_attack_instance_awaiting_phase_advance_input = false
+	
+	# wait for the attack animation to end before transitioning to the next
+	# (this should allow for input buffering)
+	await _attack_instance.attack_concluded
+	
+	_attack_instance = null
+	
+	_handle_attack_chain_continue(playable_character, blackboard)
+
+func _on_await_attack_phase_advance_input_requested(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	_attack_instance_awaiting_phase_advance_input = true
+
+	playable_character.pressed_light_attack_input.connect(_on_pressed_light_attack_input.bind(playable_character, blackboard))
+	playable_character.pressed_heavy_attack_input.connect(_on_pressed_heavy_attack_input.bind(playable_character, blackboard))
+func _on_ignore_attack_phase_advance_input_requested(playable_character: PlayableCharacter, _blackboard: BTBlackboard):
+	if (_attack_instance == null) or (not _attack_instance_awaiting_phase_advance_input):
+		return
+	
+	_attack_instance_awaiting_phase_advance_input = false
+
+	playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
+	playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
+	_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
+	_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
+func _on_attack_concluded(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	_playable_character_combat_manager.conclude_attack()
+	_handle_transitions(playable_character, blackboard)
+
+func _on_pressed_light_attack_input(playable_character: PlayableCharacter, _blackboard: BTBlackboard):
+	playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
+	playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
+	_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
+	_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
+	_attack_instance.attack_concluded.disconnect(_on_attack_concluded)
+	_attack_instance_awaiting_phase_advance_input = false
+	
+	# wait for the attack animation to end before transitioning to the next
+	# (this should allow for input buffering)
+	await _attack_instance.attack_concluded
+	
+	get_parent().fire_event(ON_START_GROUNDED_LIGHT_ATTACK)
+func _on_pressed_heavy_attack_input(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	_handle_attack_phase_advance(playable_character, blackboard)
 
 func _handle_transitions(actor: PlayableCharacter, blackboard: BTBlackboard):
 	if not actor.is_on_floor():

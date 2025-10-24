@@ -4,8 +4,18 @@ extends Node3D
 # Responsible for essentially defining a character, their attacks, their model, animations, etc.
 # Should be the child of a PlayableCharacter node.
 
+enum CharacterAttackType
+{
+	TYPE_GROUNDED_LIGHT_ATTACK,
+	TYPE_ARIAL_LIGHT_ATTACK,
+	TYPE_GROUNDED_HEAVY_ATTACK,
+	TYPE_ARIAL_HEAVY_ATTACK
+}
+
+@onready var _character_hurtbox: CharacterHurtbox = %CharacterHurtbox
 @onready var _character_combat_manager: CharacterCombatManager = %CharacterCombatManager
 @onready var _character_attack_definition_manager: CharacterAttackDefinitionManager = %CharacterAttackDefinitionManager
+@onready var animation_tree: AnimationTree = %AnimationTree
 
 var _character_status: CharacterStatus
 var _character_model_animation_player: AnimationPlayer
@@ -34,6 +44,7 @@ var _character_model_hitbox_animation_names: Array[StringName]
 func _ready() -> void:
 	_initialize_character_stats()
 	_initialize_character_status()
+	_initialize_hurtbox()
 	
 	var data = _grab_model_data(_character_model)
 	_character_model_animation_player = data["animation_player"]
@@ -43,6 +54,8 @@ func _ready() -> void:
 
 func get_character_metadata() -> CharacterMetadata:
 	return _character_metadata
+func get_character_model() -> CharacterModel:
+	return _character_model
 
 func get_character_model_animation_player() -> AnimationPlayer:
 	return _character_model_animation_player
@@ -70,6 +83,12 @@ func get_character_combo() -> CharacterCombo:
 func get_character_status() -> CharacterStatus:
 	return _character_status
 
+func get_hitboxes_for_attack_phase(attack_type: CharacterAttackType, phase: int) -> Array[Hitbox]:
+	return []
+
+func get_character_hurtbox() -> CharacterHurtbox:
+	return _character_hurtbox
+
 func get_mantle_ray_cast() -> RayCast3D:
 	return _mantle_ray_cast
 
@@ -79,6 +98,8 @@ func _initialize_character_status():
 	_character_status = CharacterStatus.new()
 	_character_status.died.connect(_on_died)
 	_character_status.initialize(self, _character_stats)
+func _initialize_hurtbox():
+	_character_hurtbox.initialize(self)
 
 func _grab_model_data(model: Node3D):
 	var data = {}

@@ -26,19 +26,25 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_heal(_current_character_status)
 
 func _damage(status: CharacterStatus):
-	var damage_instance = DamageInstance.new(self, _damage_amount)
+	var damage_instance = DamageInstance.new()
+	damage_instance.source = self
+	damage_instance.base_damage = _damage_amount
 	damage_instance.is_crit = false
 	damage_instance.spawn_damage_number = true
 	status.damage(damage_instance)
 
 func _damage_crit(status: CharacterStatus):
-	var damage_instance = DamageInstance.new(self, _damage_amount)
+	var damage_instance = DamageInstance.new()
+	damage_instance.source = self
+	damage_instance.base_damage = _damage_amount
 	damage_instance.is_crit = true
 	damage_instance.spawn_damage_number = true
 	status.damage(damage_instance)
 
 func _heal(status: CharacterStatus):
-	var heal_instance = HealInstance.new(self, _heal_amount)
+	var heal_instance = HealInstance.new()
+	heal_instance.source = self
+	heal_instance.heal = _heal_amount
 	heal_instance.spawn_heal_number = true
 	status.heal(heal_instance)
 	

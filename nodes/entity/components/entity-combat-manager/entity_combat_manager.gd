@@ -20,7 +20,9 @@ func initialize(entity: Entity) -> void:
 func deal_damage(status_interface: StatusInterface, damage: int, can_dodge: bool, can_parry: bool):
 	var status = status_interface.get_status()
 	
-	var damage_instance = DamageInstance.new(entity, damage)
+	var damage_instance = DamageInstance.new()
+	damage_instance.source = entity
+	damage_instance.base_damage = damage
 	damage_instance.can_dodge = can_dodge
 	damage_instance.can_parry = can_parry
 	damage_instance.spawn_damage_number = true

@@ -4,8 +4,6 @@ extends PlayableCharacterGameplayState
 const AGILITY: StringName = &"agility"
 const MOVEMENT_SPEED: StringName = &"movement_speed"
 
-@export var _acceleration: float = 25.0
-@export var _speed_multiplier: float = 3.0
 @export var _skid_threshold: float = 0.5
 @export var _stamina_drain: int = 1
 @export var _drain_stamina_timer: Timer
@@ -50,7 +48,7 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 		
 		_allow_skidding_delay_timer.start()
 
-func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
+func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
 	
 	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
@@ -59,19 +57,7 @@ func _on_update(delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	if will_skid:
 		return
 	
-	var stats = _character.get_character_stats()
-	var agility_stat = stats.get_stat(AGILITY)
-	var agility_value = agility_stat.get_value(false)
-	var movement_speed_stat = stats.get_substat(MOVEMENT_SPEED)
-	var movement_speed_value = movement_speed_stat.sample(agility_value, false)
-	var speed = movement_speed_value * _speed_multiplier
-	
-	var velocity = _handle_running(actor.velocity, direction, speed, delta)
-	
-	actor.velocity = velocity
-	if not velocity.is_zero_approx():
-		var velocity_normalized = velocity.normalized()
-		_playable_character_character_container.rotation.y = atan2(velocity_normalized.x, velocity_normalized.z)
+	_playable_character_mover.direction = direction
 
 # Executes before the state is exited.
 func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
@@ -117,10 +103,6 @@ func _handle_skidding(actor: Node, is_skidding_allowed_while_running: bool, dire
 	
 	return false
 
-func _handle_running(current_velocity: Vector3, direction: Vector3, speed: float, delta: float) -> Vector3:
-	var velocity = current_velocity.move_toward(direction * speed, _acceleration * delta)
-	return velocity
-
 func _handle_stamina_drained(status: CharacterStatus, auto_jog: bool) -> bool:
 	if not status.is_exhausted():
 		return false
@@ -132,8 +114,8 @@ func _handle_stamina_drained(status: CharacterStatus, auto_jog: bool) -> bool:
 	get_parent().fire_event("on_start_walking")
 	return true
 
-func _on_status_stamina_modified(old: int, new: int, status: CharacterStatus, blackboard: BTBlackboard):
-	var transitioned = _handle_stamina_drained(status, blackboard.get_value("auto_jog"))
+func _on_status_stamina_modified(_old: int, _new: int, status: CharacterStatus, blackboard: BTBlackboard):
+	_handle_stamina_drained(status, blackboard.get_value("auto_jog"))
 
 func _on_drain_stamina_timer_timeout(character_status: CharacterStatus):
 	character_status.exhaust(_stamina_drain)

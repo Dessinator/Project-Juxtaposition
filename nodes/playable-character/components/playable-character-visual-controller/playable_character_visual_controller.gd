@@ -352,6 +352,10 @@ func _handle_heal_status_number_instantiation(amount: int):
 	_playable_character.add_child(instance)
 
 func _on_current_character_about_to_be_damaged(damage_instance: DamageInstance, interrupt_callback, character: Character):
+	# no point in showing a flash if theres no time to interrupt
+	if not damage_instance.time_to_interrupt > 0:
+		return
+	
 	var character_status = character.get_character_status()
 	var can_parry = character_status.get_stamina() - _playable_character_combat_manager.get_parry_stamina_cost() >= 0
 	var can_dodge = character_status.get_stamina() - _playable_character_combat_manager.get_dodge_stamina_cost() >= 0

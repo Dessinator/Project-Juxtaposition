@@ -18,6 +18,7 @@ enum EntityType
 @onready var _entity_visual_controller: EntityVisualController = %EntityVisualController
 @onready var _entity_model_container: Node3D = %EntityModelContainer
 
+@onready var _entity_hurtbox: EntityHurtbox = %EntityHurtbox
 @onready var _entity_home_range: EntityRange = %EntityHomeRange
 @onready var _entity_wander_range: EntityRange = %EntityWanderRange
 @onready var _entity_detection_range: EntityRange = %EntityDetectionRange
@@ -40,6 +41,7 @@ func _ready():
 func initialize():
 	_entity_combat_manager.initialize(self)
 	_entity_visual_controller.initialize()
+	_entity_hurtbox.initialize(self)
 	
 	_connect_status_signals()
 	_cache_player_reference()

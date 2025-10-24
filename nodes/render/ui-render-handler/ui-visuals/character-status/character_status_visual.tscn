@@ -190,7 +190,6 @@ vertical_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 _label = "HPS"
-_suffix = null
 _under = SubResource("GradientTexture1D_yfuhx")
 _ghost_progress = SubResource("GradientTexture1D_jyx32")
 _true_progress = SubResource("GradientTexture1D_ml836")

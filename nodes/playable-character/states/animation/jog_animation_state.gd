@@ -18,15 +18,16 @@ func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 	_update_character_animation_tree_expression_base()
 
 func _handle_direction(relative_direction: Vector3) -> Vector2:
-	var direction = Vector2(relative_direction.x, -relative_direction.z)
+	var direction = Vector2(relative_direction.x, relative_direction.z)
 	return direction
 
 func _update_character_animation_tree_expression_base():
 	if _is_targeting:
-		_character_animation_tree_expression_base.travel_to_targeting_movement()
+		character_animation_tree_expression_base.travel_to_targeting_movement()
 	else:
-		_character_animation_tree_expression_base.travel_to_non_targeting_movement()
-	_character_animation_tree_expression_base.set_movement_vector(
+		character_animation_tree_expression_base.travel_to_non_targeting_movement()
+	
+	character_animation_tree_expression_base.set_lateral_movement_vector(
 		_normalized_direction,
 		CharacterAnimationTreeExpressionBase.CharacterAnimationMovementLevel.LEVEL_JOG
 	)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dd2y8gmrc02cs"]
+[gd_scene load_steps=64 format=3 uid="uid://dd2y8gmrc02cs"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_sa5hq"]
 [ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_x4bvh"]
@@ -21,6 +21,9 @@ _nickname = "Kaho"
 _pronouns = "She/Her/Hers"
 _lore = ""
 metadata/_custom_type_script = "uid://cf8q48g7hjdjb"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8x8i"]
+size = Vector3(1, 2.3, 1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fw5je"]
 animation = &"RESET"
@@ -257,15 +260,11 @@ heavy_attack_character_action_visual_packedscene = ExtResource("11_4cesd")
 juxtapose_character_action_visual_packedscene = ExtResource("12_l1v2o")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="KahoCharacterModel" parent="." index="1" instance=ExtResource("4_sa5hq")]
+[node name="CharacterHurtbox" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991639, 0)
+shape = SubResource("BoxShape3D_f8x8i")
 
-[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
-target_position = Vector3(0, -2, 0)
-debug_shape_custom_color = Color(0, 1, 0, 1)
-debug_shape_thickness = 5
-
-[node name="AnimationTree" parent="." index="5"]
+[node name="AnimationTree" parent="." index="4"]
 root_node = NodePath("%AnimationTree/../KahoCharacterModel")
 tree_root = SubResource("AnimationNodeStateMachine_cm2we")
 anim_player = NodePath("../KahoCharacterModel/AnimationPlayer")
@@ -273,5 +272,13 @@ parameters/Passive/NonTargetingMovement/blend_position = -0.00623327
 parameters/Passive/TargetingMovement/blend_position = Vector2(-0.00289297, -0.0329671)
 parameters/Passive/Wallrunning/blend_position = Vector2(-0.00268096, -0.0626704)
 parameters/Passive/Wallsliding/blend_position = 0.00248969
+
+[node name="KahoCharacterModel" parent="." index="5" instance=ExtResource("4_sa5hq")]
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
 
 [editable path="KahoCharacterModel"]
