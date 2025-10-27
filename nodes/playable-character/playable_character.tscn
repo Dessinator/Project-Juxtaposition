@@ -461,6 +461,7 @@ active = false
 initial_state = NodePath("IdleState")
 actor = NodePath("..")
 blackboard = SubResource("Resource_t22va")
+verbose = true
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
 [node name="IdleState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]

@@ -33,11 +33,12 @@ func _on_update(_delta: float, actor: Node, blackboard: BTBlackboard) -> void:
 		_handle_transitions(actor, blackboard)
 		return
 	
-	# rotate the character to face the direction held by the player
-	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
-	var direction = _handle_direction_input(horizontal_camera_rotation)
-	
-	_playable_character_mover.direction = direction
+	if _can_interrupt:
+		# rotate the character to face the direction held by the player
+		var horizontal_camera_rotation = _camera.get_horizontal_rotation()
+		var direction = _handle_direction_input(horizontal_camera_rotation)
+		
+		_playable_character_mover.direction = direction
 
 	_handle_attack_phase_advance_input(actor, blackboard)
 
