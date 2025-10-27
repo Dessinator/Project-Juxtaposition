@@ -76,16 +76,22 @@ func _handle_switching_input(can_switch_characters: bool) -> bool:
 	var switched = false
 	
 	if Input.is_action_just_pressed("character_1"):
+		if _characters.size() < 1:
+			return false
 		if _current_character == _characters[0]:
 			#character_switch_failed.emit()
 			return false
 		switched = handle_switch_to_character(0)
 	elif Input.is_action_just_pressed("character_2"):
+		if _characters.size() < 2:
+			return false
 		if _current_character == _characters[1]:
 			#character_switch_failed.emit()
 			return false
 		switched = handle_switch_to_character(1)
 	elif Input.is_action_just_pressed("character_3"):
+		if _characters.size() < 3:
+			return false
 		if _current_character == _characters[2]:
 			#character_switch_failed.emit()
 			return false

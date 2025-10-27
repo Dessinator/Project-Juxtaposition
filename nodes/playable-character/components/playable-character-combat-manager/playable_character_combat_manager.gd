@@ -14,7 +14,10 @@ const CRITICAL_MULTIPLIER_STAT: StringName = &"critical_multiplier"
 
 const PLACEHOLDER_POSITION_DISTANCE: float = 20.0
 
-const CURRENT_ATTACK_PHASE: String = "current_attack_phase"
+# const CURRENT_ATTACK_PHASE: String = "current_attack_phase"
+const COMBO_ACTIVE: String = "combo_active"
+const CURRENT_ATTACK_ANIMATION_NAME: String = "current_attack_animation_name"
+const ATTACK_CONCLUDED: String = "attack_concluded"
 
 signal stop_targeting
 signal start_targeting
@@ -163,7 +166,7 @@ func _find_previous_target_in_target_range(current_target: Node) -> TrackableTar
 		next_index = target_range.targets_in_range.size() - 1
 	
 	return target_range.targets_in_range[next_index]
-func _on_playable_character_target_range_target_entered(target: TrackableTarget) -> void:
+func _on_playable_character_target_range_target_entered(_target: TrackableTarget) -> void:
 	pass
 func _on_playable_character_target_range_target_exited(target: TrackableTarget) -> void:
 	if target == _tracked_target:
@@ -172,43 +175,112 @@ func _on_playable_character_target_range_target_exited(target: TrackableTarget) 
 
 # attacking
 
-func start_attack(animation_state: PlayableCharacterAnimationState, phase: int) -> AttackInstance:
-	_gameplay_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
-	_animation_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+func can_do_attack(attack_type: CharacterAttackState.AttackType) -> bool:
+	var attack_state_machine = _current_character.get_character_attack_state_machine()
+	var current_attack_state = attack_state_machine.active_state
+
+	var next_state: CharacterAttackState
+	for transition in current_attack_state.transitions:
+		var possible_next_state = transition.next_state as CharacterAttackState
+		assert(possible_next_state, "State {state} is not a CharacterAttackState!".format({"state" : possible_next_state}))
+		
+		if not possible_next_state.attack_type == attack_type:
+			continue
+		
+		return true
+	
+
+	return false
+
+func start_attack(attack_type: CharacterAttackState.AttackType, animation_state: PlayableCharacterAnimationState) -> AttackInstance:
+	var attack_state_machine = _current_character.get_character_attack_state_machine()
+	var current_attack_state = attack_state_machine.active_state
+
+	var next_state: CharacterAttackState
+	for transition in current_attack_state.transitions:
+		var possible_next_state = transition.next_state as CharacterAttackState
+		assert(possible_next_state, "State {state} is not a CharacterAttackState!".format({"state" : possible_next_state}))
+		
+		if not possible_next_state.attack_type == attack_type:
+			continue
+		
+		next_state = possible_next_state
+	
+	# if there are no attacks that match the given attack type,
+	# do not proceed!
+	# (can_do_attack() should still be ran before even trying, though.)
+	if not next_state:
+		return null
+	
+	attack_state_machine.change_state(next_state)
+	_gameplay_blackboard.set_value(COMBO_ACTIVE, true)
+	_animation_blackboard.set_value(CURRENT_ATTACK_ANIMATION_NAME, next_state.animation_name)
 	_animation_finite_state_machine.change_state(animation_state)
 	
 	var attack_instance = AttackInstance.new()
 	var character_model = _current_character.get_character_model()
-	
+
 	character_model.request_spawn_hitbox_on_target.connect(_on_request_spawn_hitbox_on_target)
 	character_model.request_await_attack_phase_advance_input.connect(attack_instance.emit_await_attack_phase_advance_input_requested)
 	character_model.request_ignore_attack_phase_advance_input.connect(attack_instance.emit_ignore_attack_phase_advance_input_requested)
 	character_model.attack_concluded.connect(attack_instance.emit_attack_concluded)
+
+	## if this attack is a charged attack (CHLA or CHHA), connect the request_charge_attack_advance
+	## signal to the attack_instance, too.
+	if (attack_type == CharacterAttackState.AttackType.TYPE_CHARGED_LIGHT_ATTACK) or (attack_type == CharacterAttackState.AttackType.TYPE_CHARGED_HEAVY_ATTACK):
+		character_model.request_charge_attack_advance.connect(attack_instance.emit_charge_attack_advance_requested)
 	
 	return attack_instance
 
-func start_charged_attack(animation_state: PlayableCharacterAnimationState, phase: int) -> AttackInstance:
-	_gameplay_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
-	_animation_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
-	_animation_finite_state_machine.change_state(animation_state)
+# func start_attack(animation_state: PlayableCharacterAnimationState, phase: int) -> AttackInstance:
+# 	_gameplay_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+# 	_animation_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+# 	_animation_finite_state_machine.change_state(animation_state)
 	
-	var attack_instance = AttackInstance.new()
+# 	var attack_instance = AttackInstance.new()
+# 	var character_model = _current_character.get_character_model()
+	
+# 	character_model.request_spawn_hitbox_on_target.connect(_on_request_spawn_hitbox_on_target)
+# 	character_model.request_await_attack_phase_advance_input.connect(attack_instance.emit_await_attack_phase_advance_input_requested)
+# 	character_model.request_ignore_attack_phase_advance_input.connect(attack_instance.emit_ignore_attack_phase_advance_input_requested)
+# 	character_model.attack_concluded.connect(attack_instance.emit_attack_concluded)
+	
+# 	return attack_instance
+
+# func start_charged_attack(animation_state: PlayableCharacterAnimationState, phase: int) -> AttackInstance:
+# 	_gameplay_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+# 	_animation_finite_state_machine.blackboard.set_value(CURRENT_ATTACK_PHASE, phase)
+# 	_animation_finite_state_machine.change_state(animation_state)
+	
+# 	var attack_instance = AttackInstance.new()
+# 	var character_model = _current_character.get_character_model()
+	
+# 	character_model.request_spawn_hitbox_on_target.connect(_on_request_spawn_hitbox_on_target)
+# 	character_model.request_charge_attack_advance.connect(attack_instance.emit_charge_attack_advance_requested)
+# 	character_model.request_await_attack_phase_advance_input.connect(attack_instance.emit_await_attack_phase_advance_input_requested)
+# 	character_model.request_ignore_attack_phase_advance_input.connect(attack_instance.emit_ignore_attack_phase_advance_input_requested)
+# 	character_model.attack_concluded.connect(attack_instance.emit_attack_concluded)
+	
+# 	return attack_instance
+
+# NOTE: not sure if this function is really necessary right now. but. just in case. -Pastiree
+func interrupt_attack():
+	var attack_state_machine = _current_character.get_character_attack_state_machine()
 	var character_model = _current_character.get_character_model()
 	
-	character_model.request_spawn_hitbox_on_target.connect(_on_request_spawn_hitbox_on_target)
-	character_model.request_charge_attack_advance.connect(attack_instance.emit_charge_attack_advance_requested)
-	character_model.request_await_attack_phase_advance_input.connect(attack_instance.emit_await_attack_phase_advance_input_requested)
-	character_model.request_ignore_attack_phase_advance_input.connect(attack_instance.emit_ignore_attack_phase_advance_input_requested)
-	character_model.attack_concluded.connect(attack_instance.emit_attack_concluded)
-	
-	return attack_instance
+	attack_state_machine.fire_event(ATTACK_CONCLUDED)
+	character_model.request_spawn_hitbox_on_target.disconnect(_on_request_spawn_hitbox_on_target)
+	_gameplay_blackboard.set_value(COMBO_ACTIVE, false)
+	_animation_finite_state_machine.blackboard.remove_value(CURRENT_ATTACK_ANIMATION_NAME)
 
 func conclude_attack():
+	var attack_state_machine = _current_character.get_character_attack_state_machine()
 	var character_model = _current_character.get_character_model()
 	
+	attack_state_machine.fire_event(ATTACK_CONCLUDED)
 	character_model.request_spawn_hitbox_on_target.disconnect(_on_request_spawn_hitbox_on_target)
-	_gameplay_finite_state_machine.blackboard.remove_value(CURRENT_ATTACK_PHASE)
-	_animation_finite_state_machine.blackboard.remove_value(CURRENT_ATTACK_PHASE)
+	_gameplay_blackboard.set_value(COMBO_ACTIVE, false)
+	_animation_finite_state_machine.blackboard.remove_value(CURRENT_ATTACK_ANIMATION_NAME)
 
 func _on_request_spawn_hitbox_on_target():
 	var hitbox: Hitbox = HITBOX_SCENE.instantiate()

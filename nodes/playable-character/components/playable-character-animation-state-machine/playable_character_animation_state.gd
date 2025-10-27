@@ -2,6 +2,7 @@
 class_name PlayableCharacterAnimationState
 extends FSMState
 
+const CURRENT_ATTACK_ANIMATION_NAME: String = "current_attack_animation_name"
 const CURRENT_ATTACK_PHASE: String = "current_attack_phase"
 
 @onready var _playable_character_character_container: PlayableCharacterCharacterContainer = %PlayableCharacterCharacterContainer

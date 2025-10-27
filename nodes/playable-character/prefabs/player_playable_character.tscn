@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxe5jhys8u15c"]
+[gd_scene load_steps=5 format=3 uid="uid://dxe5jhys8u15c"]
 
 [ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_afw0l"]
 [ext_resource type="PackedScene" uid="uid://ckyv6l3ncojyr" path="res://nodes/character/prefabs/dizzy_character.tscn" id="2_7vwhn"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_77ffc"]
-[ext_resource type="PackedScene" uid="uid://5a754smhrn7s" path="res://nodes/character/prefabs/mafuyu_character.tscn" id="4_wng8g"]
-[ext_resource type="PackedScene" uid="uid://dd2y8gmrc02cs" path="res://nodes/character/prefabs/kaho_character.tscn" id="5_xxgub"]
 
 [sub_resource type="Resource" id="Resource_wng8g"]
 resource_local_to_scene = true
@@ -23,10 +21,6 @@ metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 collision_mask = 3
 
 [node name="DizzyCharacter" parent="PlayableCharacterCharacterContainer" index="0" instance=ExtResource("2_7vwhn")]
-
-[node name="KahoCharacter" parent="PlayableCharacterCharacterContainer" index="1" instance=ExtResource("5_xxgub")]
-
-[node name="MafuyuCharacter" parent="PlayableCharacterCharacterContainer" index="2" instance=ExtResource("4_wng8g")]
 
 [node name="PlayableCharacterStaminaMeter" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 3, 0)
@@ -74,15 +68,6 @@ _auto_switch_animation_state = false
 [node name="GroundedHeavyChargeAttackState" parent="GameplayFiniteStateMachine" index="13"]
 _can_switch_characters = true
 _auto_switch_animation_state = false
-
-[node name="ArialLightChargeAttackState" parent="GameplayFiniteStateMachine" index="20"]
-_auto_switch_animation_state = true
-
-[node name="ArialHeavyAttackState" parent="GameplayFiniteStateMachine" index="21"]
-_auto_switch_animation_state = true
-
-[node name="ArialSpikeState" parent="GameplayFiniteStateMachine" index="22"]
-_auto_switch_animation_state = true
 
 [node name="AnimationFiniteStateMachine" parent="." index="26"]
 verbose = false

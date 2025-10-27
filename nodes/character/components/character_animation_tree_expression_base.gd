@@ -129,12 +129,7 @@ func travel_to_heavy_attack(phase: int):
 	var animation_name = "heavy_attack_" + str(phase)
 	state_machine.travel(animation_name)
 
-func travel_to_charged_light_attack():
+func travel_to(animation_name: String):
 	var path = top_level_state_machine + "/playback"
 	var state_machine = _animation_tree[path]
-	state_machine.travel(CHARGED_LIGHT_ATTACK)
-
-func travel_to_charged_heavy_attack():
-	var path = top_level_state_machine + "/playback"
-	var state_machine = _animation_tree[path]
-	state_machine.travel(CHARGED_HEAVY_ATTACK)
+	state_machine.travel(animation_name)

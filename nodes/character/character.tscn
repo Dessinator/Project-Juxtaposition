@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdsxjbfqrqtka"]
+[gd_scene load_steps=9 format=3 uid="uid://bdsxjbfqrqtka"]
 
 [ext_resource type="Script" uid="uid://dqa5gbg2wctf7" path="res://nodes/character/character.gd" id="1_pjags"]
 [ext_resource type="PackedScene" uid="uid://cr4gs41vhswi0" path="res://nodes/areas/hurtbox/prefabs/character-hurtbox/character_hurtbox.tscn" id="2_narmg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bhvao17r6bahq" path="res://nodes/character/components/character_animation_tree_expression_base.gd" id="3_ohi4u"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="6_s53um"]
 [ext_resource type="Script" uid="uid://tl0tnpytooyj" path="res://nodes/character/attack-states/character_attack_state.gd" id="7_hi0yn"]
+[ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="8_gxfqh"]
 
 [node name="Character" type="Node3D"]
 script = ExtResource("1_pjags")
@@ -33,40 +34,77 @@ advance_expression_base_node = NodePath("../CharacterAnimationTreeExpressionBase
 [node name="CharacterAttackFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("6_s53um")
+autostart = true
 process_type = 0
 active = false
-initial_state = NodePath("Idle")
+initial_state = NodePath("NoAttack")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
-[node name="Idle" type="Node" parent="CharacterAttackFiniteStateMachine"]
+[node name="NoAttack" type="Node" parent="CharacterAttackFiniteStateMachine"]
 script = ExtResource("7_hi0yn")
 metadata/_custom_type_script = "uid://tl0tnpytooyj"
 
-[node name="Grounded Light Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
-script = ExtResource("7_hi0yn")
+[node name="toLA" type="Node" parent="CharacterAttackFiniteStateMachine/NoAttack" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../LA1")
 
-[node name="Grounded Charged Light Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
-script = ExtResource("7_hi0yn")
+[node name="toCHLA" type="Node" parent="CharacterAttackFiniteStateMachine/NoAttack" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../CHLA1")
 
-[node name="Grounded Heavy Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
-script = ExtResource("7_hi0yn")
+[node name="toHA" type="Node" parent="CharacterAttackFiniteStateMachine/NoAttack" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../HA1")
 
-[node name="Grounded Charged Heavy Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
-script = ExtResource("7_hi0yn")
+[node name="toCHHA" type="Node" parent="CharacterAttackFiniteStateMachine/NoAttack" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../CHHA1")
 
-[node name="Arial Light Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
+[node name="LA1" type="Node" parent="CharacterAttackFiniteStateMachine"]
 script = ExtResource("7_hi0yn")
-_animation_name = null
+attack_type = 1
+animation_name = "light_attack"
+metadata/_custom_type_script = "uid://tl0tnpytooyj"
 
-[node name="Arial Charged Light Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
-script = ExtResource("7_hi0yn")
-_animation_name = null
+[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/LA1" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../NoAttack")
+use_event = true
+event = "attack_concluded"
 
-[node name="Arial Heavy Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
+[node name="CHLA1" type="Node" parent="CharacterAttackFiniteStateMachine"]
 script = ExtResource("7_hi0yn")
-_animation_name = null
+attack_type = 2
+animation_name = "charged_light_attack"
+metadata/_custom_type_script = "uid://tl0tnpytooyj"
 
-[node name="Arial Charged Heavy Attack 1" type="Node" parent="CharacterAttackFiniteStateMachine"]
+[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/CHLA1" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../NoAttack")
+use_event = true
+event = "attack_concluded"
+
+[node name="HA1" type="Node" parent="CharacterAttackFiniteStateMachine"]
 script = ExtResource("7_hi0yn")
-_animation_name = null
+attack_type = 3
+animation_name = "heavy_attack"
+metadata/_custom_type_script = "uid://tl0tnpytooyj"
+
+[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/HA1" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../NoAttack")
+use_event = true
+event = "attack_concluded"
+
+[node name="CHHA1" type="Node" parent="CharacterAttackFiniteStateMachine"]
+script = ExtResource("7_hi0yn")
+attack_type = 4
+animation_name = "charged_heavy_attack"
+metadata/_custom_type_script = "uid://tl0tnpytooyj"
+
+[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/CHHA1" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_gxfqh")
+next_state = NodePath("../../NoAttack")
+use_event = true
+event = "attack_concluded"

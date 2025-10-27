@@ -16,6 +16,7 @@ enum CharacterAttackType
 @onready var _character_combat_manager: CharacterCombatManager = %CharacterCombatManager
 @onready var _character_attack_definition_manager: CharacterAttackDefinitionManager = %CharacterAttackDefinitionManager
 @onready var animation_tree: AnimationTree = %AnimationTree
+@onready var _character_attack_state_machine: FiniteStateMachine = %CharacterAttackFiniteStateMachine
 
 var _character_status: CharacterStatus
 var _character_model_animation_player: AnimationPlayer
@@ -56,6 +57,8 @@ func get_character_metadata() -> CharacterMetadata:
 	return _character_metadata
 func get_character_model() -> CharacterModel:
 	return _character_model
+func get_character_attack_state_machine() -> FiniteStateMachine:
+	return _character_attack_state_machine
 
 func get_character_model_animation_player() -> AnimationPlayer:
 	return _character_model_animation_player

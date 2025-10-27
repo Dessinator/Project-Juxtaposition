@@ -13,6 +13,11 @@ func _on_enter(actor: Node, blackboard: BTBlackboard) -> void:
 	super(actor, blackboard)
 	actor = actor as PlayableCharacter
 
+	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
+	var direction = _handle_direction_input(horizontal_camera_rotation)
+	
+	_playable_character_mover.direction = direction
+
 	_handle_attack_chain_start(actor, blackboard)
 	
 # Executes every _process call, if the state is active.
@@ -31,34 +36,47 @@ func _on_exit(actor: Node, blackboard: BTBlackboard) -> void:
 	_attack_instance_awaiting_phase_advance_input = false
 
 func _handle_attack_chain_start(playable_character: PlayableCharacter, blackboard: BTBlackboard):
-	if _animation_state.character_animation_tree_expression_base.grounded_heavy_attack_phase_count <= 0:
+	_attack_instance = _playable_character_combat_manager.start_attack(CharacterAttackState.AttackType.TYPE_HEAVY_ATTACK, _animation_state)
+
+	# if the returned AttackInstance is null, its likely that we cannot enter this state
+	# at this time.
+	if _attack_instance == null:
 		_handle_transitions(playable_character, blackboard)
 		return
-	
-	if blackboard.get_value(CURRENT_ATTACK_PHASE):
-		_handle_attack_chain_continue(playable_character, blackboard)
-		return
-	
-	_attack_instance = _playable_character_combat_manager.start_attack(_animation_state, 1)
+
 	_attack_instance.await_attack_phase_advance_input_requested.connect(_on_await_attack_phase_advance_input_requested.bind(playable_character, blackboard))
 	_attack_instance.ignore_attack_phase_advance_input_requested.connect(_on_ignore_attack_phase_advance_input_requested.bind(playable_character, blackboard))
 	_attack_instance.attack_concluded.connect(_on_attack_concluded.bind(playable_character, blackboard))
 
-func _handle_attack_chain_continue(playable_character: PlayableCharacter, blackboard: BTBlackboard):
-	var next_phase = blackboard.get_value(CURRENT_ATTACK_PHASE) + 1
-	if next_phase > 3:
-		next_phase = 1
+	# rotate the character to face the direction held by the player
+	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
+	var direction = _handle_direction_input(horizontal_camera_rotation)
 	
-	_attack_instance = _playable_character_combat_manager.start_attack(_animation_state, next_phase)
+	_playable_character_mover.direction = direction
+func _handle_attack_chain_continue(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	_attack_instance = _playable_character_combat_manager.start_attack(CharacterAttackState.AttackType.TYPE_HEAVY_ATTACK, _animation_state)
+
+	# if the returned AttackInstance is null, its likely that we cannot enter this state
+	# at this time.
+	if _attack_instance == null:
+		_handle_transitions(playable_character, blackboard)
+		return
+
 	_attack_instance.await_attack_phase_advance_input_requested.connect(_on_await_attack_phase_advance_input_requested.bind(playable_character, blackboard))
 	_attack_instance.ignore_attack_phase_advance_input_requested.connect(_on_ignore_attack_phase_advance_input_requested.bind(playable_character, blackboard))
 	_attack_instance.attack_concluded.connect(_on_attack_concluded.bind(playable_character, blackboard))
+
+	# rotate the character to face the direction held by the player
+	var horizontal_camera_rotation = _camera.get_horizontal_rotation()
+	var direction = _handle_direction_input(horizontal_camera_rotation)
+	
+	_playable_character_mover.direction = direction
 
 func _handle_attack_phase_advance_input(playable_character: PlayableCharacter, blackboard: BTBlackboard):
 	if not _attack_instance_awaiting_phase_advance_input:
 		return
 	
-	if blackboard.get_value("holding_light_attack_input"):
+	if _playable_character_combat_manager.can_do_attack(CharacterAttackState.AttackType.TYPE_CHARGED_LIGHT_ATTACK) and blackboard.get_value("holding_light_attack_input"):
 		playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
 		playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
 		_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
@@ -73,7 +91,7 @@ func _handle_attack_phase_advance_input(playable_character: PlayableCharacter, b
 		
 		get_parent().fire_event(ON_START_GROUNDED_LIGHT_CHARGE_ATTACK)
 		return
-	if blackboard.get_value("holding_heavy_attack_input"):
+	if _playable_character_combat_manager.can_do_attack(CharacterAttackState.AttackType.TYPE_CHARGED_HEAVY_ATTACK) and blackboard.get_value("holding_heavy_attack_input"):
 		playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
 		playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
 		_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
@@ -123,6 +141,9 @@ func _on_attack_concluded(playable_character: PlayableCharacter, blackboard: BTB
 	_handle_transitions(playable_character, blackboard)
 
 func _on_pressed_light_attack_input(playable_character: PlayableCharacter, _blackboard: BTBlackboard):
+	if not _playable_character_combat_manager.can_do_attack(CharacterAttackState.AttackType.TYPE_LIGHT_ATTACK):
+		return
+	
 	playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
 	playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
 	_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
@@ -136,7 +157,17 @@ func _on_pressed_light_attack_input(playable_character: PlayableCharacter, _blac
 	
 	get_parent().fire_event(ON_START_GROUNDED_LIGHT_ATTACK)
 func _on_pressed_heavy_attack_input(playable_character: PlayableCharacter, blackboard: BTBlackboard):
+	if not _playable_character_combat_manager.can_do_attack(CharacterAttackState.AttackType.TYPE_HEAVY_ATTACK):
+		return
+	
 	_handle_attack_phase_advance(playable_character, blackboard)
+
+func _handle_direction_input(horizontal_rotation: float) -> Vector3:
+	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")
+	var direction = Vector3(input_direction.x, 0, input_direction.y)
+	direction = direction.rotated(Vector3.UP, horizontal_rotation).normalized()
+	
+	return direction
 
 func _handle_transitions(actor: PlayableCharacter, blackboard: BTBlackboard):
 	if not actor.is_on_floor():
