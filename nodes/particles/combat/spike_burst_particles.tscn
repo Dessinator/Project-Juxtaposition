@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dtxo3x2lql2wc"]
 
-[ext_resource type="Shader" uid="uid://43rm1bhn3fyc" path="res://resources/shaders/psx_render_unlit.gdshader" id="1_7lbi5"]
+[ext_resource type="Shader" uid="uid://43rm1bhn3fyc" path="res://resources/shaders/render/psx_render_unlit.gdshader" id="1_7lbi5"]
 [ext_resource type="Texture2D" uid="uid://b7ts7rmv7y8g5" path="res://resources/images/particle-textures/star.png" id="2_lsf0r"]
 
 [sub_resource type="Curve" id="Curve_7lbi5"]

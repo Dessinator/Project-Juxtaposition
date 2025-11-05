@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://d2hppw7xs1lpw"]
 
-[ext_resource type="Shader" uid="uid://df4j4o0tqwo4m" path="res://resources/shaders/psx_postprocess.gdshader" id="1_kc6fv"]
+[ext_resource type="Shader" uid="uid://df4j4o0tqwo4m" path="res://resources/shaders/postprocess/psx_postprocess.gdshader" id="1_kc6fv"]
 [ext_resource type="Script" uid="uid://dj2grhpgva2hy" path="res://nodes/render/world-render-handler/world_render_handler.gd" id="2_tel0o"]
-[ext_resource type="Shader" uid="uid://bj20nu0ouq2a1" path="res://resources/shaders/crt_shader.gdshader" id="3_douec"]
+[ext_resource type="Shader" uid="uid://bj20nu0ouq2a1" path="res://resources/shaders/postprocess/crt_shader.gdshader" id="3_douec"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phy2g"]
 shader = ExtResource("1_kc6fv")

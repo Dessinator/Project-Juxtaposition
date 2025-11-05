@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://d1qul7v66a744"]
 
 [ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_rcrpp"]
-[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="2_pn6jj"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="2_pn6jj"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_7p21p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rcrpp"]

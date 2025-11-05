@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dw1qjx4yapau4"]
+
+[ext_resource type="Shader" uid="uid://donm2av4usve4" path="res://resources/shaders/render/psx_sclera_write.gdshader" id="1_5qtxy"]
+[ext_resource type="Texture2D" uid="uid://cfdc0yh4ffxw0" path="res://resources/textures/character/jux/jux_albedo.png" id="2_41joc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5qtxy")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_41joc")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)

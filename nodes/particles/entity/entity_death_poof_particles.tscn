@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cdmpf0bh6qja5"]
 
-[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="1_hsrwj"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="1_hsrwj"]
 
 [sub_resource type="Curve" id="Curve_wlknr"]
 _data = [Vector2(0, 1), 0.0, 1.13358, 0, 0, Vector2(1, 0), -4.87934, 0.0, 0, 0]

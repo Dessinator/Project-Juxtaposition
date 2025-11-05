@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jdok2v11vii"]
 
-[ext_resource type="Shader" uid="uid://43rm1bhn3fyc" path="res://resources/shaders/psx_render_unlit.gdshader" id="1_4yx87"]
+[ext_resource type="Shader" uid="uid://43rm1bhn3fyc" path="res://resources/shaders/render/psx_render_unlit.gdshader" id="1_4yx87"]
 
 [resource]
 render_priority = 0

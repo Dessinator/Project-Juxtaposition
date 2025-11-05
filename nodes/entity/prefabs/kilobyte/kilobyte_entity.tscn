@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://ciwgnsmkif2l3"]
 
 [ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_3pax0"]
-[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="2_3ww0j"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="2_3ww0j"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_pwyk8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ww0j"]

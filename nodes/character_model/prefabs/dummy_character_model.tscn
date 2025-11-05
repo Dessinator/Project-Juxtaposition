@@ -1,8 +1,8 @@
 [gd_scene load_steps=32 format=3 uid="uid://bgvvktev2x52x"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_ay3hn"]
-[ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/shaders/psx_render_lit_material.tres" id="2_tyjrr"]
-[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="3_btn13"]
+[ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/materials/psx_render_lit_material.tres" id="2_tyjrr"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="3_btn13"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_btn13"]
 material = ExtResource("2_tyjrr")

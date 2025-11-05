@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bprhwfej2sngp"]
 
 [ext_resource type="PackedScene" uid="uid://b052snw6aca7r" path="res://nodes/trackable-target/trackable_target.tscn" id="1_nmafp"]
-[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/psx_render_lit.gdshader" id="1_px3gj"]
+[ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="1_px3gj"]
 [ext_resource type="Texture2D" uid="uid://b21xo8qisuuml" path="res://addons/kenney_prototype_textures/light/texture_06.png" id="2_8kkqp"]
 [ext_resource type="PackedScene" uid="uid://3jvtf4vu20ht" path="res://nodes/entity/components/entity-targeted-indicator/targeted_indicator.tscn" id="4_8kkqp"]
 
