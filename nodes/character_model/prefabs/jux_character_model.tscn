@@ -320,7 +320,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_008_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="10"]
-transform = Transform3D(1, 7.1836915e-08, 1.6659351e-07, 3.6726476e-08, -0.979411, 0.20187688, 1.7766573e-07, -0.20187688, -0.979411, 0.07500028, 0.27663565, -0.061396632)
+transform = Transform3D(0.99999994, 7.183691e-08, 1.6659351e-07, 3.672645e-08, -0.979411, 0.20187697, 1.7766571e-07, -0.20187697, -0.979411, 0.07500028, 0.27663565, -0.061396632)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.008.L"
@@ -331,7 +331,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="11"]
-transform = Transform3D(1.0000002, -4.141242e-07, -3.1738585e-07, -3.342581e-07, -0.9755572, 0.21974498, -4.0062997e-07, -0.21974498, -0.9755572, -0.15000059, 0.27161193, -0.05183685)
+transform = Transform3D(1.0000002, -4.0765852e-07, -3.1755744e-07, -3.279127e-07, -0.9755573, 0.21974495, -3.993765e-07, -0.21974498, -0.9755572, -0.15000059, 0.27161193, -0.05183685)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.007.R"
@@ -342,7 +342,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_008_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="12"]
-transform = Transform3D(1, 2.1037468e-07, 9.101486e-08, 1.8766947e-07, -0.97941095, 0.2018768, 1.3161073e-07, -0.2018768, -0.97941095, -0.07499982, 0.27663565, -0.06139664)
+transform = Transform3D(0.99999994, 2.1037468e-07, 9.1014876e-08, 1.8766946e-07, -0.97941095, 0.20187679, 1.3161073e-07, -0.20187679, -0.97941095, -0.07499982, 0.27663565, -0.06139664)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.008.R"
@@ -353,7 +353,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_009" type="Node3D" parent="godot_rig/GeneralSkeleton" index="13"]
-transform = Transform3D(1, -5.3290705e-15, 1.4901158e-07, -2.7154629e-08, -0.98325574, 0.18223162, 1.4651648e-07, -0.18223163, -0.9832556, 7.0494873e-16, 0.27663565, -0.07136931)
+transform = Transform3D(1, -1.6875388e-14, 1.4901154e-07, -2.7154645e-08, -0.9832554, 0.18223163, 1.4651646e-07, -0.18223166, -0.98325527, 7.0494873e-16, 0.27663565, -0.07136931)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.009"
