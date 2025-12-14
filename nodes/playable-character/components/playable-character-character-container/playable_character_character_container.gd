@@ -18,7 +18,7 @@ var _characters: Array[Character]
 var _current_character: Character
 
 @onready var _playable_character: PlayableCharacter = $".."
-@onready var _juxtapometer_decay_timer: Timer = %JuxtapometerDecayTimer
+@onready var _juxtometer_decay_timer: Timer = %JuxtometerDecayTimer
 
 func _ready() -> void:
 	_setup_characters()

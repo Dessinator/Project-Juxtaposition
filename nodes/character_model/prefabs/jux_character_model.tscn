@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://yt0rwnew4mqn"]
+[gd_scene load_steps=13 format=3 uid="uid://yt0rwnew4mqn"]
 
 [ext_resource type="PackedScene" uid="uid://d1wcw2p5cdqne" path="res://resources/models/characters/jux/jux.glb" id="1_j62ap"]
 [ext_resource type="Material" uid="uid://8ranwolmjlv4" path="res://resources/materials/character/jux/jux_material.tres" id="2_hf7m6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://ceve74pcu3cj3" path="res://addons/jigglebones/jigglebone.gd" id="3_ftx2q"]
 [ext_resource type="Material" uid="uid://db4yccpjwbo01" path="res://resources/materials/character/jux/jux_iris.tres" id="3_mtrry"]
 [ext_resource type="Material" uid="uid://dw1qjx4yapau4" path="res://resources/materials/character/jux/jux_sclera.tres" id="5_1cnkn"]
+[ext_resource type="Animation" uid="uid://bs5rsjet625w3" path="res://resources/animations/characters/jux/idle_test.res" id="7_1cnkn"]
+[ext_resource type="Animation" uid="uid://dawxqotiwcx55" path="res://resources/animations/placeholder-character-animations/walking.res" id="8_2s0o0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ftx2q"]
 radius = 0.10342
@@ -13,7 +15,73 @@ radius = 0.10342
 [sub_resource type="SphereShape3D" id="SphereShape3D_6d3bn"]
 radius = 0.127215
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgs7t"]
+_data = {
+&"idle_test": ExtResource("7_1cnkn")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xieh"]
+_data = {
+&"walking": ExtResource("8_2s0o0")
+}
+
 [node name="JuxCharacterModel" instance=ExtResource("1_j62ap")]
+
+[node name="GeneralSkeleton" parent="godot_rig" index="0"]
+bones/1/rotation = Quaternion(-0.0064640245, 0.08820814, -0.04662274, 0.99498945)
+bones/2/rotation = Quaternion(0.022656448, -0.007686254, 0.035969988, 0.99906653)
+bones/3/rotation = Quaternion(0.014301611, -0.019987915, 0.0070926603, 0.9996728)
+bones/4/rotation = Quaternion(-0.025550053, -0.019876918, 0.0027058562, 0.99947226)
+bones/5/rotation = Quaternion(-0.029294604, -0.010293858, -0.008287168, 0.99948347)
+bones/6/rotation = Quaternion(-0.011859475, -0.03348297, 0.0031001775, 0.99936414)
+bones/19/rotation = Quaternion(0.42723218, 0.24550894, 0.81678075, -0.30011186)
+bones/22/rotation = Quaternion(-4.1719158e-08, -0.2984594, 0.95442235, 1.3046086e-08)
+bones/31/rotation = Quaternion(-0.331536, -0.09032251, 0.9390857, 0.006618867)
+bones/37/rotation = Quaternion(0.359005, 0.55578077, 0.60804194, -0.43875754)
+bones/38/rotation = Quaternion(-0.039531257, 0.78238016, -0.6214024, 0.013327343)
+bones/39/rotation = Quaternion(0.22029795, -0.6719143, 0.22029774, 0.6719144)
+bones/40/rotation = Quaternion(0.11488202, 0.8005689, 0.1376138, 0.5717991)
+bones/41/rotation = Quaternion(-0.03485587, 0.0038627381, -0.030425798, 0.99892163)
+bones/42/rotation = Quaternion(0.14614126, -0.00085256994, -0.02161938, 0.98902714)
+bones/43/rotation = Quaternion(0.03359853, -0.00022950771, -0.0015507641, 0.9994343)
+bones/44/rotation = Quaternion(0.14271978, -0.004319116, -0.06655332, 0.9875136)
+bones/45/rotation = Quaternion(0.23405282, -0.0018431246, -0.03045711, 0.971745)
+bones/46/rotation = Quaternion(0.13900453, 0.000107645974, -0.016287444, 0.9901578)
+bones/47/rotation = Quaternion(-0.2578885, 0.8591791, 0.10831222, 0.42845467)
+bones/48/rotation = Quaternion(0.14741209, -0.14240456, 0.043371584, 0.9778086)
+bones/48/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/49/rotation = Quaternion(-0.09837755, 0.05844955, 0.034698073, 0.9928251)
+bones/52/rotation = Quaternion(0.60653627, 0.60653746, -0.36347434, -0.36347294)
+bones/55/rotation = Quaternion(0.649553, 0.6495528, -0.27942973, -0.2794301)
+bones/57/rotation = Quaternion(0.5551961, 0.755388, -0.27951676, -0.20740487)
+bones/60/rotation = Quaternion(0.50187147, -0.50125194, -0.54264784, -0.4498943)
+bones/61/rotation = Quaternion(0.13368998, 0.78741044, -0.5854448, 0.13916263)
+bones/62/rotation = Quaternion(0.1979683, 0.67882854, -0.19796854, 0.678829)
+bones/63/rotation = Quaternion(0.08055829, -0.8441203, -0.009194394, 0.5299876)
+bones/64/rotation = Quaternion(0.09381306, 0.0074566007, -0.0077425838, 0.9955318)
+bones/65/rotation = Quaternion(0.23102765, 0.0014411359, 0.030096676, 0.97248054)
+bones/66/rotation = Quaternion(0.15155305, 0.0022288114, 0.004872322, 0.9884346)
+bones/67/rotation = Quaternion(0.1993137, 0.007008449, 0.07077319, 0.97735167)
+bones/68/rotation = Quaternion(0.3251363, 0.0026806593, 0.03940046, 0.9448422)
+bones/69/rotation = Quaternion(0.2676367, 0.00028149784, 0.027773738, 0.9631195)
+bones/70/rotation = Quaternion(-0.2534654, -0.7847368, -0.09386872, 0.5577923)
+bones/71/rotation = Quaternion(0.03984213, -0.11546045, 0.06307465, 0.9905065)
+bones/71/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/72/rotation = Quaternion(-0.07372151, 0.13383862, 0.008195043, 0.9882233)
+bones/75/rotation = Quaternion(-0.60653627, 0.60653746, -0.36347434, 0.36347294)
+bones/78/rotation = Quaternion(0.64955294, -0.6495529, 0.27942994, -0.27942982)
+bones/80/rotation = Quaternion(-0.5551961, 0.755388, -0.27951676, 0.20740487)
+bones/84/rotation = Quaternion(-5.3385072e-08, 0.7071068, 0.7071067, -5.338508e-08)
+bones/85/rotation = Quaternion(0.9832557, -1.35773135e-08, 7.3258256e-08, -0.18223149)
+bones/88/rotation = Quaternion(-0.0063624512, 0.21086973, 0.9768292, -0.036032263)
+bones/89/rotation = Quaternion(-0.05937007, 0.8520966, -0.5197188, -0.017290212)
+bones/90/rotation = Quaternion(-0.007438055, 0.7361988, -0.6766466, 0.010269413)
+bones/91/rotation = Quaternion(-7.540337e-08, 0.99990654, 0.013675664, 1.4817253e-08)
+bones/92/rotation = Quaternion(-0.10690421, 0.09010863, 0.98506093, -0.1005339)
+bones/93/rotation = Quaternion(0.016551042, 0.9841744, -0.17606103, 0.011375028)
+bones/94/rotation = Quaternion(-0.06148092, 0.6433491, -0.7631, -0.00072801864)
+bones/95/rotation = Quaternion(4.6427388e-08, 0.9997072, 0.024198174, 9.87816e-10)
+bones/101/rotation = Quaternion(-0.1828074, -0.09969312, 0.9779095, -0.018322432)
 
 [node name="jux_eyelashes" parent="godot_rig/GeneralSkeleton" index="0"]
 surface_material_override/0 = ExtResource("2_irc80")
@@ -28,6 +96,7 @@ surface_material_override/0 = ExtResource("2_hf7m6")
 surface_material_override/0 = ExtResource("5_1cnkn")
 
 [node name="TailSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="4"]
+visible = false
 setting_count = 1
 settings/0/root_bone_name = "DEF-tail.001"
 settings/0/root_bone = 101
@@ -50,6 +119,8 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="FringeSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="5"]
+visible = false
+active = false
 setting_count = 3
 settings/0/root_bone_name = "DEF-fringe.001"
 settings/0/root_bone = 13
@@ -110,6 +181,7 @@ settings/2/enable_all_child_collisions = true
 settings/2/exclude_collision_count = 0
 
 [node name="SideHairSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="6"]
+visible = false
 setting_count = 4
 settings/0/root_bone_name = "DEF-side_hair.001.L"
 settings/0/root_bone = 25
@@ -189,6 +261,7 @@ settings/3/enable_all_child_collisions = true
 settings/3/exclude_collision_count = 0
 
 [node name="PonytailSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="7"]
+visible = false
 setting_count = 1
 settings/0/root_bone_name = "DEF-ponytail.001"
 settings/0/root_bone = 22
@@ -211,6 +284,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BarbedChainSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="8"]
+visible = false
 setting_count = 5
 settings/0/root_bone_name = "DEF-barbed_necklace.005.L"
 settings/0/root_bone = 52
@@ -309,7 +383,7 @@ settings/4/enable_all_child_collisions = true
 settings/4/exclude_collision_count = 0
 
 [node name="DEF-barbed_necklace_007_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="9"]
-transform = Transform3D(1.0000002, -6.062247e-08, 2.649221e-07, -1.1735596e-07, -0.97555727, 0.21974464, 2.4512534e-07, -0.21974465, -0.9755572, 0.14999966, 0.27161193, -0.05183661)
+transform = Transform3D(0.9576733, 0.07936823, 0.27669853, -0.0048180697, -0.9566834, 0.2910907, 0.28781623, -0.28010306, -0.9158077, 0.20227088, 0.28448892, 0.0050682793)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.007.L"
@@ -320,7 +394,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_008_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="10"]
-transform = Transform3D(0.99999994, 7.183691e-08, 1.6659351e-07, 3.672645e-08, -0.979411, 0.20187697, 1.7766571e-07, -0.20187697, -0.979411, 0.07500028, 0.27663565, -0.061396632)
+transform = Transform3D(0.9577122, 0.07428569, 0.27797225, -0.004792447, -0.96184444, 0.2735562, 0.2876872, -0.2633204, -0.92081416, 0.13295041, 0.29155564, -0.024703706)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.008.L"
@@ -331,7 +405,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="11"]
-transform = Transform3D(1.0000002, -4.0765852e-07, -3.1755744e-07, -3.279127e-07, -0.9755573, 0.21974495, -3.993765e-07, -0.21974498, -0.9755572, -0.15000059, 0.27161193, -0.05183685)
+transform = Transform3D(0.98183906, 0.002460191, -0.18969913, 0.04495134, -0.97445905, 0.22001989, -0.18431285, -0.22455153, -0.956872, -0.14202736, 0.25808382, -0.015862675)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.007.R"
@@ -342,7 +416,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_008_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.99999994, 2.1037468e-07, 9.1014876e-08, 1.8766946e-07, -0.97941095, 0.20187679, 1.3161073e-07, -0.20187679, -0.97941095, -0.07499982, 0.27663565, -0.06139664)
+transform = Transform3D(0.9820758, 0.0060079545, -0.18838923, 0.04477437, -0.9783181, 0.20220973, -0.18308975, -0.2070204, -0.96105146, -0.07045937, 0.26967692, -0.037892032)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.008.R"
@@ -353,7 +427,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_necklace_009" type="Node3D" parent="godot_rig/GeneralSkeleton" index="13"]
-transform = Transform3D(1, -1.6875388e-14, 1.4901154e-07, -2.7154645e-08, -0.9832554, 0.18223163, 1.4651646e-07, -0.18223166, -0.98325527, 7.0494873e-16, 0.27663565, -0.07136931)
+transform = Transform3D(0.99692506, -0.018187828, -0.076219216, -0.0033699214, -0.9817414, 0.19019061, -0.078286715, -0.18934901, -0.97878385, 0.016803028, 0.2767768, -0.060506362)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.009"
@@ -364,7 +438,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-sleeve_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="14"]
-transform = Transform3D(-0.28274387, 0.9591954, -0.0007565394, -0.95855236, -0.28252524, 0.03684226, 0.035125185, 0.011142103, 0.9993208, 1.0766535, 0.8713573, -0.014038308)
+transform = Transform3D(-0.98488045, -0.01853802, -0.17224109, 0.047548704, -0.9850005, -0.16587111, -0.16658266, -0.17155306, 0.9709889, 0.078355834, 0.23117208, -0.1756494)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-sleeve.L"
@@ -375,7 +449,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-sleeve_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="15"]
-transform = Transform3D(-0.28328735, -0.9590349, 0.00075796247, 0.958392, -0.28306836, 0.03684268, -0.035118863, 0.0111634955, 0.9993208, -1.076653, 0.8713554, -0.014038284)
+transform = Transform3D(-0.99394, 0.020953042, 0.107908554, -0.059933767, -0.92621577, -0.37219957, 0.0921479, -0.3764116, 0.9218583, -0.01208039, 0.27428323, -0.3889352)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-sleeve.R"
@@ -386,7 +460,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_chain_001" type="Node3D" parent="godot_rig/GeneralSkeleton" index="16"]
-transform = Transform3D(0.9995189, 0.03090837, 0.002551655, 0.03101351, -0.9961827, -0.081598006, 1.9853234e-05, 0.08163798, -0.996661, 0.031706885, -0.19569832, 0.23365384)
+transform = Transform3D(0.9824786, -0.04628329, -0.18053603, -0.06271096, -0.99428695, -0.08637205, -0.17550728, 0.09618038, -0.97976744, -0.0116766505, -0.19297743, 0.24481663)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_chain.001"
@@ -396,7 +470,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_chain_002" type="Node3D" parent="godot_rig/GeneralSkeleton" index="17"]
-transform = Transform3D(0.74878633, -0.20536016, 0.6301954, -0.16175671, -0.97866094, -0.12671752, 0.6427704, -0.0070539964, -0.7660264, -0.35694468, -0.17081165, 0.10756226)
+transform = Transform3D(0.83235073, -0.29199165, 0.47109753, -0.2281202, -0.95512325, -0.18894604, 0.50512683, 0.049802527, -0.86160696, -0.41251767, -0.13228494, 0.18815932)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_chain.002"
@@ -406,7 +480,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_chain_003" type="Node3D" parent="godot_rig/GeneralSkeleton" index="18"]
-transform = Transform3D(-0.034820158, -0.266199, 0.9632885, -0.12505491, -0.9551368, -0.26846662, 0.9915374, -0.12981221, -3.1471238e-05, -0.46899033, -0.11979979, -0.12137733)
+transform = Transform3D(0.12911871, -0.37106666, 0.91958535, -0.11647879, -0.9266039, -0.3575438, 0.98476326, -0.06094666, -0.16286354, -0.5579834, -0.07203758, -0.01867453)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_chain.003"
@@ -416,7 +490,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_chain_004" type="Node3D" parent="godot_rig/GeneralSkeleton" index="19"]
-transform = Transform3D(-0.7856396, -0.22126433, 0.5777637, 0.006139858, -0.93660307, -0.3503388, 0.6186518, -0.27169302, 0.7371917, -0.37924784, -0.059909105, -0.37869555)
+transform = Transform3D(-0.660613, -0.35017535, 0.6640528, 0.08239437, -0.91302395, -0.39949745, 0.74618953, -0.20919934, 0.63200873, -0.5098634, -0.02203393, -0.28892726)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_chain.004"
@@ -426,7 +500,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="DEF-barbed_chain_005" type="Node3D" parent="godot_rig/GeneralSkeleton" index="20"]
-transform = Transform3D(-0.9990423, -0.04153311, -0.013845156, 0.043777715, -0.9509766, -0.30614862, -0.00045111642, -0.30646104, 0.95188355, -0.043610606, -0.07148981, -0.43701255)
+transform = Transform3D(-0.97525585, -0.18163152, 0.12605017, 0.13722764, -0.9443341, -0.29900146, 0.17334169, -0.2743048, 0.9458914, -0.19223934, -0.06535715, -0.40479958)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_chain.005"
@@ -436,7 +510,7 @@ forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
 [node name="HeadBoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" index="21"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2445534e-16, 1.3276808, -0.017953264)
+transform = Transform3D(0.99988294, 0.0135410335, -0.0071284883, -0.013028743, 0.9976292, 0.06757403, 0.008026607, -0.06747322, 0.9976887, 0.022028115, 1.3276559, -0.010549261)
 bone_name = "Head"
 bone_idx = 6
 
@@ -447,7 +521,7 @@ shape = SubResource("SphereShape3D_ftx2q")
 disabled = true
 
 [node name="ChestBoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2223359e-15, 1.1127907, -0.004147172)
+transform = Transform3D(0.9968335, 0.007879334, 0.07912545, -0.0066166827, 0.9998468, -0.016206998, -0.07924104, 0.015632145, 0.9967329, 0.02083106, 1.1118675, 0.003934794)
 bone_name = "UpperChest"
 bone_idx = 4
 
@@ -456,3 +530,13 @@ transform = Transform3D(1, -4.72275e-22, 0, -4.72276e-22, 1, 0, 0, 0, 1, 0, 0.02
 visible = false
 shape = SubResource("SphereShape3D_6d3bn")
 disabled = true
+
+[node name="AnimationPlayer" parent="." index="1"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_jgs7t"),
+&"placeholder": SubResource("AnimationLibrary_7xieh")
+}
+
+[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+unique_name_in_owner = true

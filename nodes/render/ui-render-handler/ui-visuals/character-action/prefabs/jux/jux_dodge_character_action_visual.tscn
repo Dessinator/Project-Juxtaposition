@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d00x3cauumb7a"]
+
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_xo3pj"]
+
+[node name="JuxDodgeCharacterActionVisual" instance=ExtResource("1_xo3pj")]
+_action_name = "Jux Dodge"
+action_visual_type = 1
+
+[node name="Button" parent="Control" index="0"]
+text = "Jux Dodge"

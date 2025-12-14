@@ -20,7 +20,6 @@ script = ExtResource("2_sc15y")
 _name = "Dizzy Demon"
 _nickname = "Dizzy"
 _pronouns = "They/Them/Theirs"
-_lore = ""
 metadata/_custom_type_script = "uid://cf8q48g7hjdjb"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa1o5"]
@@ -349,7 +348,7 @@ states/wallrun_movement/position = Vector2(200, -87)
 states/wallslide_movement/node = SubResource("AnimationNodeBlendSpace2D_m3um4")
 states/wallslide_movement/position = Vector2(202, 2)
 transitions = ["jump", "fall", SubResource("AnimationNodeStateMachineTransition_0cds6"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_wsqtw"), "land", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_mkn6w"), "land", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_tfkyl"), "skid", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_8gcht"), "skid", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_fi6on"), "light_attack_1", "light_attack_2", SubResource("AnimationNodeStateMachineTransition_aimva"), "light_attack_2", "light_attack_3", SubResource("AnimationNodeStateMachineTransition_kr5ce"), "non_targeting_movement", "light_attack_1", SubResource("AnimationNodeStateMachineTransition_8fedg"), "targeting_movement", "light_attack_1", SubResource("AnimationNodeStateMachineTransition_myjfv"), "light_attack_3", "return_from_light_attack_3", SubResource("AnimationNodeStateMachineTransition_0kjxe"), "light_attack_2", "return_from_light_attack_2", SubResource("AnimationNodeStateMachineTransition_btgy1"), "light_attack_1", "return_from_light_attack_1", SubResource("AnimationNodeStateMachineTransition_63xd7"), "return_from_light_attack_1", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_e64iv"), "return_from_light_attack_1", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_udc3t"), "return_from_light_attack_2", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_3gy5k"), "return_from_light_attack_2", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_m75j5"), "return_from_light_attack_3", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_m3um4"), "return_from_light_attack_3", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_dxop7"), "Start", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_kxa5t"), "Start", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_78lg5"), "dodge", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_4brxd"), "dodge", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_6gkel"), "dodge", "fall", SubResource("AnimationNodeStateMachineTransition_ytd5f"), "jump", "wallrun_movement", SubResource("AnimationNodeStateMachineTransition_520eo"), "jump", "wallslide_movement", SubResource("AnimationNodeStateMachineTransition_b3oog"), "fall", "wallrun_movement", SubResource("AnimationNodeStateMachineTransition_o0pjs"), "fall", "wallslide_movement", SubResource("AnimationNodeStateMachineTransition_re1vm"), "wallslide_movement", "land", SubResource("AnimationNodeStateMachineTransition_iwabh"), "wallrun_movement", "walljump", SubResource("AnimationNodeStateMachineTransition_bct6r"), "walljump", "fall", SubResource("AnimationNodeStateMachineTransition_ehe2n"), "wallslide_movement", "walljump", SubResource("AnimationNodeStateMachineTransition_tfshh"), "mantle", "fall", SubResource("AnimationNodeStateMachineTransition_8e5oc"), "light_attack_3", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_wa1o5"), "light_attack_2", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_b8sr1"), "light_attack_1", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_83kvv"), "light_attack_1", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_iketm"), "light_attack_2", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_3yhka"), "light_attack_3", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_5314v"), "charged_light_attack", "return_from_charged_light_attack", SubResource("AnimationNodeStateMachineTransition_vv382"), "return_from_charged_light_attack", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_cuhwl"), "return_from_charged_light_attack", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_u0bck"), "non_targeting_movement", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_rr8r1"), "targeting_movement", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_3f5fr"), "charged_light_attack", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_5v07n"), "charged_light_attack", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_hkopd"), "charged_light_attack", "light_attack_1", SubResource("AnimationNodeStateMachineTransition_5q8sa"), "charged_light_attack", "light_attack_2", SubResource("AnimationNodeStateMachineTransition_k7jcd"), "charged_light_attack", "light_attack_3", SubResource("AnimationNodeStateMachineTransition_6c076"), "light_attack_1", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_532h0"), "light_attack_2", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_30s35"), "light_attack_3", "charged_light_attack", SubResource("AnimationNodeStateMachineTransition_id3ie"), "non_targeting_movement", "targeting_movement", SubResource("AnimationNodeStateMachineTransition_3gpsd"), "targeting_movement", "non_targeting_movement", SubResource("AnimationNodeStateMachineTransition_07qdm")]
-graph_offset = Vector2(624, 57)
+graph_offset = Vector2(390, 25)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yey0f"]
 advance_expression = "is_airborne"
@@ -392,7 +391,6 @@ grounded_light_attack_phase_count = 3
 [node name="AnimationTree" parent="." index="4"]
 root_node = NodePath("%AnimationTree/../DizzyCharacterModel")
 root_motion_track = NodePath("%GeneralSkeleton:Root")
-root_motion_local = false
 tree_root = SubResource("AnimationNodeStateMachine_gtaau")
 anim_player = NodePath("../DizzyCharacterModel/AnimationPlayer")
 parameters/grounded_state_machine/non_targeting_movement/blend_position = Vector2(-0.287475, 1.2381)
@@ -403,157 +401,157 @@ parameters/grounded_state_machine/wallslide_movement/blend_position = Vector2(0,
 [node name="DizzyCharacterModel" parent="." index="5" instance=ExtResource("2_ykt8n")]
 
 [node name="DEF-headband_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="1"]
-transform = Transform3D(0.887211, 0.459339, -0.0431719, -0.357024, 0.624284, -0.69484, -0.292216, 0.631884, 0.717867, -3.76449e-14, 1.03592, -0.0132848)
+transform = Transform3D(0.8872112, 0.45933875, -0.04317188, -0.35702378, 0.6242841, -0.69484025, -0.29221568, 0.63188356, 0.7178667, -3.7644922e-14, 1.035922, -0.013284843)
 
 [node name="DEF-headband_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="2"]
-transform = Transform3D(0.855272, 0.517713, -0.0219979, -0.220425, 0.32507, -0.919642, -0.46896, 0.791393, 0.39214, 0.0573041, 1.1138, 0.065545)
+transform = Transform3D(0.8552715, 0.5177129, -0.021998072, -0.22042485, 0.32506946, -0.91964245, -0.46896008, 0.791393, 0.3921394, 0.057303913, 1.1138034, 0.065544516)
 
 [node name="DEF-headband_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.834549, 0.550835, -0.0104307, -0.119447, 0.162423, -0.979464, -0.537829, 0.818657, 0.201346, 0.109682, 1.14669, 0.145612)
+transform = Transform3D(0.83454895, 0.5508349, -0.01043048, -0.1194471, 0.16242267, -0.9794643, -0.5378294, 0.818657, 0.2013453, 0.109682664, 1.1466913, 0.14561146)
 
 [node name="DEF-headband_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="4"]
-transform = Transform3D(0.887211, -0.459339, 0.0431719, 0.357024, 0.624284, -0.69484, 0.292216, 0.631884, 0.717867, -3.76449e-14, 1.03592, -0.0132848)
+transform = Transform3D(0.8872112, -0.45933875, 0.04317188, 0.35702378, 0.6242841, -0.69484025, 0.29221568, 0.63188356, 0.7178667, -3.7644922e-14, 1.035922, -0.013284843)
 
 [node name="DEF-headband_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.855272, -0.517713, 0.0219979, 0.220425, 0.32507, -0.919642, 0.46896, 0.791393, 0.39214, -0.0573041, 1.1138, 0.065545)
+transform = Transform3D(0.85527146, -0.5177129, 0.021997908, 0.22042476, 0.32506958, -0.91964245, 0.4689601, 0.79139286, 0.39213952, -0.057304144, 1.1138034, 0.065544516)
 
 [node name="DEF-headband_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.834549, -0.550835, 0.0104307, 0.119447, 0.162423, -0.979464, 0.537829, 0.818657, 0.201346, -0.109682, 1.14669, 0.145612)
+transform = Transform3D(0.83454895, -0.55083483, 0.010430421, 0.11944698, 0.16242266, -0.97946435, 0.5378294, 0.81865686, 0.20134518, -0.10968266, 1.1466913, 0.14561146)
 
 [node name="DEF-raincoat_hood_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="7"]
-transform = Transform3D(1, -2.22144e-10, 6.13453e-06, -5.73893e-06, 0.353259, 0.935525, -2.16729e-06, -0.935525, 0.353259, 4.34764e-14, 0.679343, -0.520216)
+transform = Transform3D(1, -7.516972e-10, 9.682936e-06, -9.058669e-06, 0.35317722, 0.9355561, -3.4204973e-06, -0.9355561, 0.35317722, 4.3476433e-14, 0.67934287, -0.52021635)
 
 [node name="DEF-raincoat_hood_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="8"]
-transform = Transform3D(1, 5.71353e-06, -6.73756e-05, -7.66743e-06, 0.999578, -0.0290358, 6.71813e-05, 0.0290358, 0.999578, -2.38419e-07, 1.6799, -1.26303)
+transform = Transform3D(1, 9.067844e-06, -5.2711166e-05, -1.0586486e-05, 0.9995826, -0.028882328, 5.2427284e-05, 0.028882328, 0.9995826, -3.4000252e-06, 1.6797292, -1.263045)
 
 [node name="DEF-raincoat_hood_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="9"]
-transform = Transform3D(1, 3.2933e-05, -9.77963e-05, 7.15718e-06, 0.92329, 0.384104, 0.000102944, -0.384104, 0.92329, -2.38419e-07, 1.34141, -1.18432)
+transform = Transform3D(1, 2.9980503e-05, -7.0056645e-05, -7.557619e-07, 0.9232094, 0.3842965, 7.61984e-05, -0.3842965, 0.9232094, 4.4984557e-05, 1.3416591, -1.1844127)
 
 [node name="DEF-breast_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="10"]
-transform = Transform3D(-1, 9.30586e-05, -1.74361e-07, -1.27671e-07, 0.000501692, 1, 9.30587e-05, 1, -0.000501752, 0.105862, 1.51082, 0.990319)
+transform = Transform3D(-1, -7.3785436e-08, -1.5101645e-07, -1.5101651e-07, -1.1920925e-07, 0.9999996, -7.378549e-08, 0.9999996, 1.7881388e-07, 0.105861984, 1.5108172, 0.9903195)
 
 [node name="DEF-breast_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="11"]
-transform = Transform3D(-1, -4.354e-07, -1.5107e-07, -1.51069e-07, -2.50339e-06, 1, -4.35401e-07, 1, 2.563e-06, -0.105862, 1.51082, 0.990319)
+transform = Transform3D(-1, -4.5787544e-07, -1.510559e-07, -1.5105495e-07, -2.1457665e-06, 0.9999996, -4.5787598e-07, 0.9999996, 2.2053712e-06, -0.10586222, 1.5108172, 0.9903195)
 
 [node name="DEF-skirt_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="12"]
-transform = Transform3D(1, -0.000143773, 2.27163e-07, -0.00012903, -0.898149, -0.439691, 6.34198e-05, 0.439691, -0.898149, 2.7571e-14, 0.390573, 0.549442)
+transform = Transform3D(0.99999994, -0.0002657778, 2.0202417e-07, -0.00023863837, -0.89822036, -0.43954462, 0.000117002746, 0.43954468, -0.89822024, 2.7571177e-14, 0.39057314, 0.5494416)
 
 [node name="DEF-skirt_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="13"]
-transform = Transform3D(-1, -1.04164e-05, 6.0933e-06, 1.20619e-05, -0.87851, 0.477722, 3.76869e-07, 0.477722, 0.878511, 6.50634e-14, 0.239098, 0.671633)
+transform = Transform3D(-0.9999999, -0.00028523128, 1.146009e-05, 0.0002560125, -0.8783546, 0.47800827, -0.00012627701, 0.4780082, 0.8783548, -0.0003162079, 0.23928279, 0.671979)
 
 [node name="DEF-skirt_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="14"]
 transform = Transform3D(0.953316, 0.298064, -0.0484364, 0.280856, -0.934096, -0.220418, -0.110943, 0.196524, -0.974202, 0.420525, -0.0235873, 0.437105)
 
 [node name="DEF-skirt_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.824915, 0.296345, -0.481348, 0.0655409, -0.895956, -0.43928, -0.561445, 0.33082, -0.75851, 0.406966, 0.390037, 0.418552)
+transform = Transform3D(0.8249174, 0.29625, -0.48140198, 0.0655325, -0.89603627, -0.43911782, -0.56144214, 0.33068815, -0.7585703, 0.40696532, 0.39003664, 0.41855198)
 
 [node name="DEF-skirt_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="16"]
-transform = Transform3D(0.952426, 0.29331, -0.0827945, 0.251602, -0.910007, -0.329519, -0.171995, 0.293011, -0.940512, 0.459204, 0.20891, 0.442845)
+transform = Transform3D(0.95241296, 0.2933428, -0.08282529, 0.25164363, -0.9100348, -0.32941225, -0.17200452, 0.29289374, -0.94054717, 0.4590466, 0.209001, 0.44327715)
 
 [node name="DEF-skirt_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="17"]
-transform = Transform3D(-0.0231309, 0.198455, -0.979837, -0.313154, -0.932214, -0.181417, -0.949421, 0.302643, 0.0837097, 0.431947, -0.0229307, 0.51997)
+transform = Transform3D(-0.023165124, 0.19851732, -0.9798238, -0.31303152, -0.93224317, -0.18147668, -0.9494609, 0.30251145, 0.083737634, 0.43196213, -0.022937536, 0.5199361)
 
 [node name="DEF-skirt_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="18"]
-transform = Transform3D(0.824849, -0.296336, 0.481466, -0.065739, -0.896116, -0.438924, 0.561518, 0.330395, -0.758641, -0.406966, 0.390037, 0.418552)
+transform = Transform3D(0.82482594, -0.29638615, 0.48147473, -0.06580892, -0.89612406, -0.4388976, 0.5615441, 0.33032852, -0.7586514, -0.40696597, 0.39003694, 0.41855186)
 
 [node name="DEF-skirt_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="19"]
-transform = Transform3D(0.952427, -0.293305, 0.0828018, -0.251599, -0.910015, -0.3295, 0.171995, 0.292992, -0.940518, -0.459204, 0.20891, 0.442845)
+transform = Transform3D(0.9524235, -0.29331395, 0.08280604, -0.25160667, -0.9100156, -0.3294944, 0.17199999, 0.29298353, -0.94052005, -0.45920378, 0.20890987, 0.44284603)
 
 [node name="DEF-skirt_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="20"]
-transform = Transform3D(-0.0231235, -0.198461, 0.979836, 0.313204, -0.932196, -0.181421, 0.949405, 0.302693, 0.0837145, -0.431947, -0.0229303, 0.519971)
+transform = Transform3D(-0.02313603, -0.1985518, 0.9798174, 0.31315827, -0.93219507, -0.18150698, 0.9494196, 0.30263844, 0.08374543, -0.43195158, -0.022925973, 0.5199808)
 
 [node name="DEF-skirt_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="21"]
-transform = Transform3D(-0.146791, -0.195424, 0.969669, -0.273338, -0.934105, -0.229635, 0.95065, -0.298757, 0.0837016, -0.428291, -0.0144762, -0.552381)
+transform = Transform3D(-0.14669183, -0.19560222, 0.96964866, -0.27295616, -0.93419075, -0.22974278, 0.95077527, -0.2983737, 0.08364724, -0.42897952, -0.014345527, -0.55228484)
 
 [node name="DEF-skirt_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="22"]
-transform = Transform3D(-0.146728, 0.195077, -0.969749, 0.273007, -0.934296, -0.229252, -0.950755, -0.298387, 0.0838304, 0.428291, -0.0144767, -0.55238)
+transform = Transform3D(-0.14674309, 0.19503978, -0.9697541, 0.27307045, -0.93428403, -0.22922647, -0.9507345, -0.2984493, 0.083840065, 0.42829138, -0.014472425, -0.5523915)
 
 [node name="DEF-skirt_008" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="23"]
-transform = Transform3D(-0.163754, 0.000140503, -0.986501, 0.432822, -0.898602, -0.0719742, -0.886481, -0.438766, 0.147089, 8.89155e-09, 0.0274014, -0.780392)
+transform = Transform3D(-0.16375321, 7.314984e-05, -0.9865012, 0.4329051, -0.89856595, -0.07192626, -0.88644093, -0.43883997, 0.14711122, 2.294815e-05, 0.027398944, -0.78038657)
 
 [node name="DEF-raincoat_robe_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="24"]
 transform = Transform3D(0.485853, 0.400913, -0.776669, 0.101432, -0.908455, -0.405488, -0.868135, 0.118229, -0.482041, 0.522542, 0.416712, 0.266431)
 
 [node name="DEF-raincoat_robe_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="25"]
-transform = Transform3D(0.337848, 0.334737, -0.879664, 0.0266837, -0.93765, -0.346555, -0.940822, 0.0936101, -0.325716, 0.557408, 0.158582, 0.209292)
+transform = Transform3D(0.3378827, 0.33462635, -0.8796932, 0.02658704, -0.9376825, -0.34647325, -0.94081265, 0.09367882, -0.32572338, 0.55740815, 0.15858185, 0.20929155)
 
 [node name="DEF-raincoat_robe_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="26"]
-transform = Transform3D(0.664385, 0.331018, -0.670089, 0.164752, -0.939381, -0.300697, -0.729005, 0.0893802, -0.678647, 0.649591, -0.11167, 0.232252)
+transform = Transform3D(0.6644031, 0.3310257, -0.67006725, 0.16470276, -0.9393707, -0.30075657, -0.7290003, 0.089461625, -0.678642, 0.6494787, -0.1116519, 0.23284832)
 
 [node name="DEF-raincoat_robe_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="27"]
 transform = Transform3D(-0.17669, 0.32697, -0.92837, 0.114166, -0.930035, -0.349285, -0.977624, -0.167703, 0.126999, 0.479777, 0.40886, -0.0929068)
 
 [node name="DEF-raincoat_robe_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="28"]
-transform = Transform3D(-0.645546, 0.368325, 0.669035, -0.349475, -0.921386, 0.170047, 0.679072, -0.124038, 0.723517, 0.592575, 0.214938, -0.147715)
+transform = Transform3D(-0.64565367, 0.3683816, 0.6688997, -0.34920588, -0.92142516, 0.17038468, 0.6791076, -0.123574175, 0.72356254, 0.5925756, 0.2149381, -0.14771485)
 
 [node name="DEF-raincoat_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="29"]
-transform = Transform3D(-0.153567, 0.294044, -0.943374, 0.0715538, -0.948884, -0.307409, -0.985544, -0.11471, 0.124677, 0.641172, -0.0359093, -0.163393)
+transform = Transform3D(-0.15338531, 0.29417226, -0.943364, 0.07109381, -0.9489019, -0.3074586, -0.98560596, -0.11422692, 0.12463373, 0.6412407, -0.035954773, -0.16280498)
 
 [node name="DEF-raincoat_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="30"]
-transform = Transform3D(-0.153502, 0.294099, -0.943368, 0.0713416, -0.948892, -0.30743, -0.98557, -0.114493, 0.124676, 0.666595, -0.117934, -0.173289)
+transform = Transform3D(-0.1533208, 0.29416677, -0.9433761, 0.070881076, -0.9489305, -0.30741873, -0.98563117, -0.11400116, 0.12464005, 0.6666869, -0.117948055, -0.1728997)
 
 [node name="DEF-raincoat_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="31"]
-transform = Transform3D(0.618038, 0.312577, 0.721335, 0.0974857, -0.940947, 0.324215, 0.78008, -0.130057, -0.612013, 0.710489, -0.192006, -0.198815)
+transform = Transform3D(0.61796194, 0.3126359, 0.7213747, 0.09764823, -0.9409524, 0.32414877, 0.78012025, -0.12987061, -0.6120012, 0.7105824, -0.19205832, -0.1981586)
 
 [node name="DEF-raincoat_robe_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="32"]
-transform = Transform3D(-0.630212, 0.319854, -0.707478, -0.148908, -0.944079, -0.294178, -0.76201, -0.0800455, 0.642599, 0.6438, -0.0568614, -0.136822)
+transform = Transform3D(-0.6300604, 0.31997073, -0.7075609, -0.14929281, -0.9440776, -0.29398727, -0.7620598, -0.079595976, 0.6425956, 0.6438645, -0.056895256, -0.1362243)
 
 [node name="DEF-raincoat_robe_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="33"]
 transform = Transform3D(-0.765715, 0.190534, -0.614309, 0.0744061, -0.92246, -0.378853, -0.638861, -0.335803, 0.692164, 0.304279, 0.454487, -0.416872)
 
 [node name="DEF-raincoat_robe_008_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="34"]
-transform = Transform3D(0.227918, 0.219992, 0.948501, -0.291421, -0.914073, 0.282033, 0.929045, -0.340694, -0.144224, 0.368635, 0.29578, -0.544686)
+transform = Transform3D(0.22792926, 0.2199637, 0.9485048, -0.2914672, -0.9140635, 0.28201672, 0.9290276, -0.34073874, -0.14422956, 0.36863464, 0.29578036, -0.54468584)
 
 [node name="DEF-raincoat_robe_009_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="35"]
-transform = Transform3D(-0.464937, 0.207996, -0.860563, 0.208769, -0.918844, -0.334874, -0.860376, -0.335355, 0.383782, 0.397235, 0.122289, -0.602241)
+transform = Transform3D(-0.46494177, 0.20798646, -0.86056274, 0.20878644, -0.91884005, -0.33487323, -0.860369, -0.33537114, 0.38378248, 0.3972056, 0.12229878, -0.6022866)
 
 [node name="DEF-raincoat_robe_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="36"]
 transform = Transform3D(0.485537, -0.40123, 0.776703, -0.102149, -0.908409, -0.405412, 0.868228, 0.117503, -0.482052, -0.522542, 0.416712, 0.266431)
 
 [node name="DEF-raincoat_robe_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="37"]
-transform = Transform3D(0.337753, -0.334794, 0.879679, -0.0269502, -0.937658, -0.346513, 0.940849, 0.0933282, -0.32572, -0.557408, 0.158582, 0.209292)
+transform = Transform3D(0.33771706, -0.3348261, 0.8796808, -0.027050883, -0.9376564, -0.34650806, 0.9408589, 0.093225494, -0.32571992, -0.5574083, 0.15858191, 0.20929214)
 
 [node name="DEF-raincoat_robe_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="38"]
-transform = Transform3D(0.664405, -0.331064, 0.670046, -0.164692, -0.939352, -0.30082, 0.729, 0.0895148, -0.678635, -0.649591, -0.11167, 0.232252)
+transform = Transform3D(0.6644047, -0.33102128, 0.6700678, -0.16469237, -0.93937117, -0.3007604, 0.72900116, 0.08947149, -0.6786397, -0.649737, -0.11161679, 0.23226517)
 
 [node name="DEF-raincoat_robe_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="39"]
 transform = Transform3D(-0.176967, -0.326674, 0.928422, -0.114954, -0.929994, -0.349138, 0.977481, -0.168512, 0.127025, -0.479778, 0.40886, -0.0929063)
 
 [node name="DEF-raincoat_robe_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="40"]
-transform = Transform3D(-0.645547, -0.368335, -0.669028, 0.349471, -0.921384, 0.170065, -0.679072, -0.124021, 0.723519, -0.592576, 0.214938, -0.147715)
+transform = Transform3D(-0.64557105, -0.36827835, -0.66903573, 0.34941134, -0.92141, 0.17004405, -0.6790798, -0.123993136, 0.7235166, -0.5925764, 0.21493858, -0.14771631)
 
 [node name="DEF-raincoat_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="41"]
-transform = Transform3D(-0.153567, -0.294073, 0.943365, -0.0715607, -0.948874, -0.307439, 0.985544, -0.11472, 0.124672, -0.641173, -0.0359091, -0.163393)
+transform = Transform3D(-0.15342402, -0.29396376, 0.94342273, -0.07110319, -0.9489674, -0.30725458, 0.9855991, -0.114220574, 0.1246925, -0.64111245, -0.035937965, -0.16332981)
 
 [node name="DEF-raincoat_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="42"]
-transform = Transform3D(-0.153611, -0.294116, 0.943345, -0.0716979, -0.948841, -0.307505, 0.985527, -0.114872, 0.124665, -0.666596, -0.117934, -0.173288)
+transform = Transform3D(-0.15340112, -0.29397473, 0.9434229, -0.07102469, -0.94897366, -0.30725303, 0.9856082, -0.11413926, 0.124694034, -0.66643536, -0.118020475, -0.17299962)
 
 [node name="DEF-raincoat_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="43"]
-transform = Transform3D(0.618067, -0.31264, -0.721283, -0.0973764, -0.940897, 0.32439, -0.780071, -0.130259, -0.611982, -0.710489, -0.192006, -0.198814)
+transform = Transform3D(0.6180185, -0.3125115, -0.7213801, -0.09754922, -0.940988, 0.32407635, -0.7800878, -0.12991515, -0.6120331, -0.7103336, -0.19211298, -0.1984142)
 
 [node name="DEF-raincoat_robe_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="44"]
-transform = Transform3D(-0.630067, -0.319951, 0.707564, 0.149335, -0.94409, -0.293927, 0.762047, -0.0795298, 0.64262, -0.6438, -0.0568614, -0.136822)
+transform = Transform3D(-0.630079, -0.320028, 0.70751816, 0.14930095, -0.944054, -0.29405925, 0.7620428, -0.07964746, 0.6426092, -0.64373934, -0.05688882, -0.1367574)
 
 [node name="DEF-raincoat_robe_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="45"]
 transform = Transform3D(-0.765894, -0.189719, 0.614338, -0.0752754, -0.922447, -0.378714, 0.638544, -0.3363, 0.692215, -0.304279, 0.454487, -0.416872)
 
 [node name="DEF-raincoat_robe_008_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="46"]
-transform = Transform3D(0.227976, -0.220301, -0.948415, 0.29166, -0.913887, 0.282388, -0.928955, -0.340993, -0.144091, -0.368635, 0.29578, -0.544686)
+transform = Transform3D(0.2278913, -0.22050306, -0.9483888, 0.29130977, -0.9139651, 0.28249872, -0.9290864, -0.34065476, -0.14405015, -0.368634, 0.2957794, -0.5446837)
 
 [node name="DEF-raincoat_robe_009_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="47"]
-transform = Transform3D(-0.46497, -0.208311, 0.860469, -0.208903, -0.918664, -0.335284, 0.860325, -0.335652, 0.383634, -0.397235, 0.122289, -0.602241)
+transform = Transform3D(-0.46487632, -0.20851564, 0.86047024, -0.20851621, -0.91874945, -0.33529055, 0.86047, -0.33529133, 0.38362607, -0.39784408, 0.122409225, -0.60218954)
 
 [node name="DEF-raincoat_robe_010" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="48"]
 transform = Transform3D(-1, 0.000492343, 6.46629e-07, -0.000441017, -0.895165, -0.445734, -0.000218875, -0.445734, 0.895165, 5.90248e-14, 0.49299, -0.557919)
 
 [node name="DEF-raincoat_robe_011" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="49"]
-transform = Transform3D(1, 2.28922e-05, 4.49745e-10, 1.97622e-05, -0.863285, 0.504717, 1.15545e-05, -0.504717, -0.863284, -6.40098e-15, 0.371505, -0.755608)
+transform = Transform3D(1, -1.0293018e-05, -4.8521526e-10, -8.885425e-06, -0.8632717, 0.50473946, -5.1957127e-06, -0.5047397, -0.8632713, -6.400984e-15, 0.37150484, -0.7556081)
 
 [node name="DEF-raincoat_robe_012" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="50"]
-transform = Transform3D(-1, -3.5227e-05, -9.35319e-07, 3.14556e-05, -0.880345, -0.474333, 1.5886e-05, -0.474334, 0.880345, 5.79027e-14, 0.210975, -0.80903)
+transform = Transform3D(-1, 2.140753e-05, 2.1436283e-07, -1.894818e-05, -0.88036835, -0.4742906, -9.964675e-06, -0.4742908, 0.88036793, -1.1996993e-05, 0.21097714, -0.8090347)
 
 [node name="BoneAttachment3D" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="51"]
-transform = Transform3D(1, -2.88804e-07, -1.80944e-06, -1.80944e-06, -4.02331e-07, -1, 2.88803e-07, 1, -4.02332e-07, -0.729422, 1.24356, -0.0769726)
+transform = Transform3D(0.99999976, -2.888035e-07, -1.8094429e-06, -1.8094428e-06, -4.023313e-07, -0.9999999, 2.8880336e-07, 0.9999998, -4.023318e-07, -0.72942185, 1.2435588, -0.07697256)
 
 [node name="AnimationPlayer" parent="DizzyCharacterModel" index="1"]
 root_motion_track = NodePath("../dizzy_rig/GeneralSkeleton")

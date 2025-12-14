@@ -10,17 +10,17 @@ enum LogType {
 }
 
 
-class Logger:
+class BTLogger:
 	extends BehaviourToolkit
-	## Logger class for Behaviour Toolkit plugin.
+	## BTLogger class for Behaviour Toolkit plugin.
 
-	## Main color for logger messages.
+	## Main color for BTlogger messages.
 	const COLOR_MAIN: String = "Orange"
-	## Accent color for logger messages.
+	## Accent color for BTlogger messages.
 	const COLOR_ACCENT: String = "Blue"
-	## Warning color for logger messages.
+	## Warning color for BTlogger messages.
 	const COLOR_WARNING: String = "Yellow"
-	## Error color for logger messages.
+	## Error color for BTlogger messages.
 	const COLOR_ERROR: String = "Red"
 
 	## Log a message to the console with the Behaviour Toolkit prefix.
