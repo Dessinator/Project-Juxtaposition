@@ -24,10 +24,13 @@ var _character_model_animation_names: Array[StringName]
 var _character_model_hitbox_animation_player: AnimationPlayer
 var _character_model_hitbox_animation_names: Array[StringName]
 
-@export var _character_metadata: CharacterMetadata
-@export var _character_model: Node3D
+# @export var _character_metadata: CharacterMetadata
+
+@export var _character_data: CharacterData
+@export var _character_model: CharacterModel
 @export var _character_stats: CharacterStats
-@export var _character_combo: CharacterCombo
+
+# @export var _character_combo: CharacterCombo
 
 @export var _character_switcher_visual_packedscene: PackedScene
 @export var _character_status_visual_packedscene: PackedScene
@@ -53,8 +56,10 @@ func _ready() -> void:
 	_character_model_hitbox_animation_player = data["hitbox_animation_player"]
 	_character_model_hitbox_animation_names = data["hitbox_animation_names"]
 
-func get_character_metadata() -> CharacterMetadata:
-	return _character_metadata
+# func get_character_metadata() -> CharacterMetadata:
+# 	return _character_metadata
+func get_character_data() -> CharacterData:
+	return _character_data
 func get_character_model() -> CharacterModel:
 	return _character_model
 func get_character_attack_state_machine() -> FiniteStateMachine:
@@ -81,8 +86,8 @@ func get_character_attack_state_machine_packedscene() -> PackedScene:
 
 func get_character_stats() -> CharacterStats:
 	return _character_stats
-func get_character_combo() -> CharacterCombo:
-	return _character_combo
+# func get_character_combo() -> CharacterCombo:
+# 	return _character_combo
 func get_character_status() -> CharacterStatus:
 	return _character_status
 

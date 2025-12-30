@@ -14,4 +14,5 @@ _internal_name = &"damage_resistance"
 _readable_name = "Damage Resistance"
 _readable_abbreviation = "DMG RES"
 _curve = SubResource("Curve_htfxf")
+_description = "Damage Resistance substat description"
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"

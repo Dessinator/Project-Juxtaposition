@@ -1,13 +1,13 @@
 class_name GameManager
 extends Node
 
-
 @onready var _game_finite_state_machine: FiniteStateMachine = $GameFiniteStateMachine
 @onready var _world_render_handler: WorldRenderHandler = %WorldRenderHandler
 @onready var _ui_render_handler: UIRenderHandler = %UIRenderHandler
 
 static var _instance: GameManager
 
+@export var _current_world_mesh: Node3D
 @export var _playable_character: PlayableCharacter
 
 func _enter_tree() -> void:
@@ -31,6 +31,9 @@ func get_world_render_handler() -> WorldRenderHandler:
 	return _world_render_handler
 func get_ui_render_handler() -> UIRenderHandler:
 	return _ui_render_handler
+
+func get_current_world_mesh() -> Node3D:
+	return _current_world_mesh
 
 func _start_game_finite_state_machine():
 	_game_finite_state_machine.start()

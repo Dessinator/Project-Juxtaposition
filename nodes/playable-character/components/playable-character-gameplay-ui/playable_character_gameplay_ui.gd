@@ -28,6 +28,7 @@ func add_character_action_visual(character_name: String, character_action_visual
 	else:
 		_character_action_visuals[character_name] = [instance]
 	%CharacterActionVisualContainer.add_child(instance)
+	instance.visible = false
 
 func get_character_switcher_visuals() -> Array:
 	return _character_switcher_visuals.values()

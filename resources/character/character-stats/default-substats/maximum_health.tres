@@ -14,4 +14,5 @@ _internal_name = &"maximum_health"
 _readable_name = "Maximum Hit Points"
 _readable_abbreviation = "MAX HPS"
 _curve = SubResource("Curve_ue2uy")
+_description = "Maximum Hit Points substat description"
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"

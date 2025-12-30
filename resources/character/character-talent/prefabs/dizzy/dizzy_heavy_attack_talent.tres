@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterTalent" load_steps=2 format=3 uid="uid://b8e26lv8tnev0"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_vyllm"]
+
+[resource]
+script = ExtResource("1_vyllm")
+title = "Dizzy Heavy Attack"
+internal_name = &"dizzy_heavy_attack"
+simple_description = "Dizzy Heavy Attack talent simple description"
+long_description = "Dizzy Heavy Attack talent long description"
+metadata/_custom_type_script = "uid://bvyqwok4c5xmi"

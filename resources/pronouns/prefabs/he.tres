@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Pronouns" load_steps=2 format=3 uid="uid://spht2uo7ppgm"]
+
+[ext_resource type="Script" uid="uid://duefmlin20uqs" path="res://resources/pronouns/pronouns.gd" id="1_vrij0"]
+
+[resource]
+script = ExtResource("1_vrij0")
+subject = "he"
+object = "him"
+possessive_adjective = "his"
+possessive_pronoun = "his"
+reflexive = "himself"
+metadata/_custom_type_script = "uid://duefmlin20uqs"

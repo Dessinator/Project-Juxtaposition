@@ -13,4 +13,5 @@ _internal_name = &"debuff_resistance"
 _readable_name = "Debuff Resistance"
 _readable_abbreviation = "DBF RES"
 _curve = SubResource("Curve_2enbw")
+_description = "Debuff Resistance substat description"
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"

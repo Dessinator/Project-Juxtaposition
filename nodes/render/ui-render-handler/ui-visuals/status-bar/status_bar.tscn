@@ -40,7 +40,7 @@ texture_progress = SubResource("PlaceholderTexture2D_03xf5")
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-text = "PTS: 0"
+text = "PTS: 0.0"
 autowrap_mode = 1
 
 [node name="UpdateGhostProgressDelayTimer" type="Timer" parent="."]

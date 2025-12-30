@@ -14,4 +14,5 @@ _internal_name = &"stamina_regeneration_rate"
 _readable_name = "Stamina Regeneration"
 _readable_abbreviation = "SPS RGN"
 _curve = SubResource("Curve_wytex")
+_description = "Stamina Regeneration substat description"
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterTalent" load_steps=2 format=3 uid="uid://ddk37c7g13vb2"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_wl2wk"]
+
+[resource]
+script = ExtResource("1_wl2wk")
+title = "Dizzy Dodge"
+internal_name = &"dizzy_dodge"
+simple_description = "Dizzy Dodge talent simple description"
+long_description = "Dizzy Dodge talent long description"
+metadata/_custom_type_script = "uid://bvyqwok4c5xmi"

@@ -6,6 +6,8 @@ extends Resource
 @export var _readable_abbreviation: String
 @export var _curve: Curve
 
+@export_multiline var _description: String
+
 var _constant: float
 var _constant_modifiers: Dictionary = {}
 
@@ -24,7 +26,7 @@ func add_constant_modifier(modification: float) -> int:
 	return id
 func remove_constant_modifier(id: int):
 	assert(_constant_modifiers.has(id),
-		"Substat {readable_name} (internal_name) does not have a constant modifier by id {modifier_id}".format({
+		"Substat {readable_name} ({internal_name}) does not have a constant modifier by id {modifier_id}".format({
 			"readable_name" : _readable_name,
 			"internal_name" : _internal_name,
 			"modifier_id" : id
@@ -40,6 +42,12 @@ func get_readable_name() -> String:
 	return _readable_name
 func get_readable_abbreviation() -> String:
 	return _readable_abbreviation
+
+func get_curve() -> Curve:
+	return _curve
+
+func get_description() -> String:
+	return _description
 
 func get_constant() -> float:
 	return _constant

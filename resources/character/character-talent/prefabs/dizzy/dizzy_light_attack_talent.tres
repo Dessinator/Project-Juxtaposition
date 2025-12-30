@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterTalent" load_steps=2 format=3 uid="uid://b8w11o73lw1lw"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_l5cf5"]
+
+[resource]
+script = ExtResource("1_l5cf5")
+title = "Dizzy Light Attack"
+internal_name = &"dizzy_light_attack"
+simple_description = "Dizzy Light Attack talent simple description"
+long_description = "Dizzy Light Attack talent long description"
+metadata/_custom_type_script = "uid://bvyqwok4c5xmi"

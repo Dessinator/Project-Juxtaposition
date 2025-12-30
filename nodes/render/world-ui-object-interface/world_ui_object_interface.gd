@@ -35,6 +35,8 @@ func _create_world_origin():
 	grandparent.add_child(_world_origin)
 	parent.reparent(world_ui_sub_viewport, true)
 
+	_world_origin.visibility_changed.connect(_on_world_origin_visibility_changed)
+
 func _copy_world_origin_position_and_rotation():
 	if not _world_origin:
 		return
@@ -42,3 +44,6 @@ func _copy_world_origin_position_and_rotation():
 	
 	parent.global_position = _world_origin.global_position
 	parent.global_rotation = _world_origin.global_rotation
+
+func _on_world_origin_visibility_changed():
+	get_parent().visible = _world_origin.is_visible_in_tree()

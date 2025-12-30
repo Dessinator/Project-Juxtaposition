@@ -13,4 +13,5 @@ _internal_name = &"buff_retention"
 _readable_name = "Buff Retention"
 _readable_abbreviation = "BUF RET"
 _curve = SubResource("Curve_kh3ab")
+_description = "Buff Retention substat description"
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"

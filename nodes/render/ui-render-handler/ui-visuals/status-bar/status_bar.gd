@@ -8,6 +8,7 @@ const PLACEHOLDER_STATUS_LABEL: String = "PTS"
 	set(value):
 		_show_status_label = value
 		%Label.visible = _show_status_label
+
 @export var _label: String:
 	set(value):
 		_label = value
@@ -96,6 +97,10 @@ var _max_value: float:
 
 var _is_updating_ghost_value: bool = false
 
+## enabling this will allow the use of the ghost value as a "preview" of sorts.
+## mainly for use as an EXPs bar.
+@export var _use_ghost_as_preview: bool
+
 func _ready():
 	_status_label.text = "{label}: {current_value}{suffix}".format({
 					"label": _label,
@@ -110,6 +115,9 @@ func set_current_value(value: float):
 	var old = _current_value
 	_current_value = value
 	
+	if _use_ghost_as_preview:
+		return
+
 	if old <= _current_value:
 		return
 	
@@ -119,10 +127,20 @@ func set_current_value(value: float):
 	%UpdateGhostProgressDelayTimer.start()
 	_is_updating_ghost_value = false
 
+## unusable if _use_ghost_as_preview == false
+func set_ghost_value(value: float):
+	if not _use_ghost_as_preview:
+		return
+
+	_ghost_value = value
+
 func set_max_value(value: int):
 	_max_value = value
 
 func _handle_update_ghost_value(delta: float):
+	if _use_ghost_as_preview:
+		return
+	
 	if not _is_updating_ghost_value:
 		return
 	

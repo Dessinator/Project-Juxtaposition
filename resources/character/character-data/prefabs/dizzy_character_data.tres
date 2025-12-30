@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=10 format=3 uid="uid://u2stdwf5ifmo"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_4i56b"]
+[ext_resource type="Resource" uid="uid://bok38o5qtmapy" path="res://resources/pronouns/prefabs/it.tres" id="2_e8u41"]
+[ext_resource type="Resource" uid="uid://ddk37c7g13vb2" path="res://resources/character/character-talent/prefabs/dizzy/dizzy_dodge_talent.tres" id="2_k0qj8"]
+[ext_resource type="Script" uid="uid://lf6xur7ya78e" path="res://resources/character/character-data/character_data.gd" id="2_ssvfn"]
+[ext_resource type="Resource" uid="uid://b8e26lv8tnev0" path="res://resources/character/character-talent/prefabs/dizzy/dizzy_heavy_attack_talent.tres" id="3_df4dd"]
+[ext_resource type="Resource" uid="uid://dcfrqdniy4lri" path="res://resources/character/character-talent/prefabs/dizzy/dizzy_juxtaposition_talent.tres" id="4_oawhe"]
+[ext_resource type="Resource" uid="uid://b8w11o73lw1lw" path="res://resources/character/character-talent/prefabs/dizzy/dizzy_light_attack_talent.tres" id="5_3tq0e"]
+[ext_resource type="Resource" uid="uid://bjysym0mv6np7" path="res://resources/character/character-talent/prefabs/dizzy/dizzy_light_attack_talent_2.tres" id="6_df4dd"]
+[ext_resource type="Resource" uid="uid://cjxtybenfdtmt" path="res://resources/character/character-talent/prefabs/dizzy/dizzy_parry_talent.tres" id="6_uhewb"]
+
+[resource]
+script = ExtResource("2_ssvfn")
+full_name = "Desirée January Walker"
+nickname = "Dizzy"
+internal_name = &"dizzy"
+pronouns = ExtResource("2_e8u41")
+short_description = "The elusive Strawberry Pie developer itself. Incredibly eccentric, borderline insane. It is unknown how long it has inhabited this game."
+long_description = "Dizzy, the elusive Strawberry Pie developer, is widely known as the creator of this game. Whatever it has done, it's the reason why its victims are helpless to escape. Known for its enjoyment of niche game mechanics - and the rain, which it can often be seen jumping in puddles and whacking Entities with its umbrella. It could only be in here by choice. One shudders to think about what true power it could hold over the players despite how carefree and almost friendly it might seem on the surface."
+dissociation = -1.0
+light_attack_talents = Array[ExtResource("1_4i56b")]([ExtResource("5_3tq0e"), ExtResource("6_df4dd")])
+heavy_attack_talents = Array[ExtResource("1_4i56b")]([ExtResource("3_df4dd")])
+dodge_talents = Array[ExtResource("1_4i56b")]([ExtResource("2_k0qj8")])
+parry_talents = Array[ExtResource("1_4i56b")]([ExtResource("6_uhewb")])
+juxtaposition_talents = Array[ExtResource("1_4i56b")]([ExtResource("4_oawhe")])
+metadata/_custom_type_script = "uid://lf6xur7ya78e"

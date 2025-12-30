@@ -21,8 +21,6 @@ var _value: int:
 		_texture_progress_bar.value = _value
 var _hidden: bool = true
 
-var _world_origin: Marker3D
-
 func _ready() -> void:
 	pass
 

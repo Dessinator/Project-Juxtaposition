@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtkqv2sd3nrs6"]
+
+[ext_resource type="Script" uid="uid://b4mtnlglwrcrc" path="res://nodes/nonplayable-character/components/nonplayable-character-character-container/nonplayable_character_character_container.gd" id="1_74a4y"]
+
+[node name="NonplayableCharacterCharacterContainer" type="Node3D"]
+script = ExtResource("1_74a4y")

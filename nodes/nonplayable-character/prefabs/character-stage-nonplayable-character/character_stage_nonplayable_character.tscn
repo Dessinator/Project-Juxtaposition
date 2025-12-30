@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg4t6ordmj1u7"]
+
+[ext_resource type="PackedScene" uid="uid://b8kk2e6juyhhn" path="res://nodes/nonplayable-character/nonplayable_character.tscn" id="1_2bjcf"]
+[ext_resource type="PackedScene" uid="uid://dtkqv2sd3nrs6" path="res://nodes/nonplayable-character/components/nonplayable-character-character-container/nonplayable_character_character_container.tscn" id="2_eeu5n"]
+
+[node name="CharacterStageNonplayableCharacter" node_paths=PackedStringArray("nonplayable_character_character_container") instance=ExtResource("1_2bjcf")]
+nonplayable_character_character_container = NodePath("NonplayableCharacterCharacterContainer")
+
+[node name="NonplayableCharacterCharacterContainer" parent="." index="0" instance=ExtResource("2_eeu5n")]

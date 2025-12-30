@@ -36,6 +36,8 @@ var player: PlayableCharacter
 @export var _disabled: bool = false
 
 func _ready():
+	add_to_group("entities")
+
 	initialize()
 
 func initialize():

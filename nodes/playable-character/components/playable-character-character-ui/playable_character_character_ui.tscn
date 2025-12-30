@@ -1,0 +1,1160 @@
+[gd_scene load_steps=49 format=3 uid="uid://d3cttnfak4osa"]
+
+[ext_resource type="Script" uid="uid://bc10lk6qdmh5k" path="res://nodes/playable-character/components/playable-character-character-ui/playable_character_character_ui.gd" id="1_0d2e5"]
+[ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="1_aidco"]
+[ext_resource type="PackedScene" uid="uid://60f27bu55g1b" path="res://nodes/render/ui-render-handler/ui-visuals/character-stat-panel/character_stat_panel.tscn" id="1_xyw40"]
+[ext_resource type="PackedScene" uid="uid://cmkfa4eobtlw8" path="res://nodes/render/ui-render-handler/buttons/variable-amount-button/variable_amount_button.tscn" id="2_ofynp"]
+[ext_resource type="Texture2D" uid="uid://bua7lcyswrku1" path="res://resources/images/icons/sword.svg" id="2_qjoy5"]
+[ext_resource type="Texture2D" uid="uid://b7qynshaqfnvk" path="res://resources/images/icons/gender_nonbinary_icon.svg" id="2_t5jjb"]
+[ext_resource type="Texture2D" uid="uid://dno38te3akwie" path="res://resources/images/icons/shield.svg" id="3_h7qti"]
+[ext_resource type="Texture2D" uid="uid://dp36bqov67hw6" path="res://resources/images/icons/play.svg" id="3_pv0jb"]
+[ext_resource type="Texture2D" uid="uid://dadu7rti8od1k" path="res://resources/images/icons/gender_male_icon.svg" id="3_q66lw"]
+[ext_resource type="Texture2D" uid="uid://cij8psfu6by3e" path="res://resources/images/icons/gender_female_icon.svg" id="4_1cuvc"]
+[ext_resource type="Texture2D" uid="uid://cjg3lduq31xmu" path="res://resources/images/icons/run.svg" id="4_h7qti"]
+[ext_resource type="Texture2D" uid="uid://bg3ub0sa7nfac" path="res://resources/images/icons/heart.svg" id="5_muhfs"]
+[ext_resource type="PackedScene" uid="uid://kl2pqddgnljm" path="res://nodes/render/ui-render-handler/ui-visuals/character-substat-panel/character_substat_panel.tscn" id="9_kltjm"]
+[ext_resource type="Texture2D" uid="uid://b7ts7rmv7y8g5" path="res://resources/images/particle-textures/star.png" id="10_8t1pb"]
+[ext_resource type="PackedScene" uid="uid://dfqafj5twgstg" path="res://nodes/render/ui-render-handler/ui-visuals/character-fact-panel/character_fact_panel.tscn" id="13_0pdp6"]
+[ext_resource type="PackedScene" uid="uid://dbs653yqxpenw" path="res://nodes/render/ui-render-handler/ui-visuals/voice_line_panel.tscn" id="14_0prip"]
+[ext_resource type="Texture2D" uid="uid://df2b1nx7te3q4" path="res://resources/images/icons/eye-slash.svg" id="15_ehj8p"]
+[ext_resource type="Texture2D" uid="uid://bs8eolyx3xnrq" path="res://resources/images/icons/eye.svg" id="15_ym3se"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d2e5"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3oqio"]
+
+[sub_resource type="Gradient" id="Gradient_t5jjb"]
+offsets = PackedFloat32Array(0, 0.14805195)
+colors = PackedColorArray(0, 0, 0, 0.23529412, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q66lw"]
+gradient = SubResource("Gradient_t5jjb")
+width = 256
+height = 256
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_ehj8p"]
+offsets = PackedFloat32Array(0, 0.14805195)
+colors = PackedColorArray(0, 0, 0, 0.23529412, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yhulp"]
+gradient = SubResource("Gradient_ehj8p")
+width = 256
+height = 256
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w81cc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofynp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aidco"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehj8p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pv0jb"]
+
+[sub_resource type="Gradient" id="Gradient_yhulp"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t5jjb"]
+gradient = SubResource("Gradient_yhulp")
+
+[sub_resource type="Gradient" id="Gradient_q66lw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.49803922, 0.49803922, 0.49803922, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1cuvc"]
+gradient = SubResource("Gradient_q66lw")
+
+[sub_resource type="Gradient" id="Gradient_n75fw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eqffr"]
+gradient = SubResource("Gradient_n75fw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyw40"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_prfcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qjoy5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7qti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_muhfs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pdp6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n75fw"]
+load_path = "res://.godot/imported/nonbinary_gender_symbol.svg-122fe3499980ccbc08767ecfc456f7e1.ctex"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kltjm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0d2e5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0prip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8t1pb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_secm6"]
+
+[sub_resource type="Curve" id="Curve_kltjm"]
+_limits = [1.0, 9999.0, 0.0, 9999.0]
+_data = [Vector2(0, 1), 0.0, 1.4, 0, 0, Vector2(9999, 9999), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="PlayableCharacterCharacterUI" type="Control" node_paths=PackedStringArray("_hideable_ui_objects")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_0d2e5")
+_hideable_ui_objects = [NodePath("VBoxContainer/CharacterPickerPanelContainer"), NodePath("VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer"), NodePath("VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer")]
+nonbinary_gender_icon_texture = ExtResource("2_t5jjb")
+male_gender_icon_texture = ExtResource("3_q66lw")
+female_gender_icon_texture = ExtResource("4_1cuvc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="CharacterPickerPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0d2e5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterPickerPanelContainer"]
+layout_mode = 2
+
+[node name="ScrollLeftTextureButton" type="TextureButton" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_pv0jb")
+stretch_mode = 5
+flip_h = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterPickerHBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ScrollRightTextureButton" type="TextureButton" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("3_pv0jb")
+stretch_mode = 5
+
+[node name="CharacterInfoPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3oqio")
+
+[node name="GradientTextureRect" type="TextureRect" parent="VBoxContainer/CharacterInfoPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_q66lw")
+
+[node name="GradientTextureRect2" type="TextureRect" parent="VBoxContainer/CharacterInfoPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_yhulp")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CharacterInfoPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CharacterInfoTabButtonsPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_w81cc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer"]
+layout_mode = 2
+
+[node name="CharacterLevelButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Character Level"
+
+[node name="WeaponLevelButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Weapon Level"
+
+[node name="TalentsButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Talents
+"
+
+[node name="FriendshipButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Friendship"
+
+[node name="CharacterInfoTabContainer" type="TabContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ofynp")
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+tabs_visible = false
+
+[node name="CharacterLevelPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aidco")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer"]
+layout_mode = 2
+
+[node name="CharacterNameLevelPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterNameLevelPanelContainer"]
+layout_mode = 2
+
+[node name="CharacterNicknameLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterNameLevelPanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Character Nickname"
+
+[node name="CharacterHalfPronounsLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterNameLevelPanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 11
+text = "(they/them/theirs)"
+vertical_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterNameLevelPanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterNameLevelPanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ehj8p")
+
+[node name="CharacterLevelLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterNameLevelPanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. ???"
+
+[node name="CharacterStatsPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer"]
+layout_mode = 2
+
+[node name="StatsTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="ATTKCharacterStatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer/GridContainer" instance=ExtResource("1_xyw40")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("2_qjoy5")
+stat_name = "ATTK"
+stat_value = 0
+stat_modifier_value = 0
+
+[node name="DFNSCharacterStatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer/GridContainer" instance=ExtResource("1_xyw40")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_h7qti")
+stat_name = "DFNS"
+stat_value = 0
+stat_modifier_value = 0
+
+[node name="AGLTCharacterStatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer/GridContainer" instance=ExtResource("1_xyw40")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("4_h7qti")
+stat_name = "AGLT"
+stat_value = 0
+stat_modifier_value = 0
+
+[node name="VTLYCharacterStatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer/GridContainer" instance=ExtResource("1_xyw40")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("5_muhfs")
+stat_name = "VTLY"
+stat_value = 0
+stat_modifier_value = 0
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterStatDetailsButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Substats & Details"
+
+[node name="CharacterShortDescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer"]
+layout_mode = 2
+
+[node name="DescriptionTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Short Character Description"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterShortDescriptionLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. "
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pv0jb")
+
+[node name="CharacterLevelPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelPanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterAdvancedLevelLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelPanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level ???/???"
+vertical_alignment = 1
+
+[node name="CharacterLevelAddendHintLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelPanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "+0"
+
+[node name="CharacterRequiredEXPsLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelPanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 10
+text = "(EXPs: ?????/?????)"
+vertical_alignment = 2
+
+[node name="CharacterEXPsAddendHintLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelPanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "(+0)"
+vertical_alignment = 2
+
+[node name="CharacterEXPsStatusBar" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelPanelContainer/VBoxContainer" instance=ExtResource("1_aidco")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+_show_status_label = false
+_under = SubResource("GradientTexture1D_t5jjb")
+_ghost_progress = SubResource("GradientTexture1D_1cuvc")
+_true_progress = SubResource("GradientTexture1D_eqffr")
+_use_ghost_as_preview = true
+
+[node name="CharacterLevelUpPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer"]
+layout_mode = 2
+
+[node name="MaterialsLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Materials"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Lv1EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+unique_name_in_owner = true
+layout_mode = 2
+_item_name = "Lv 1 EXPs Material"
+
+[node name="Lv2EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+unique_name_in_owner = true
+layout_mode = 2
+_item_name = "Lv 2 EXPs Material"
+
+[node name="Lv3EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+unique_name_in_owner = true
+layout_mode = 2
+_item_name = "Lv 3 EXPs Material"
+
+[node name="Lv4EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+unique_name_in_owner = true
+layout_mode = 2
+_item_name = "Lv 4 EXPs Material"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CharacterAutoAddEXPsButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Auto-Add"
+
+[node name="CharacterAddEXPsButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Add"
+
+[node name="WeaponLevelPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xyw40")
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer"]
+layout_mode = 2
+
+[node name="WeaponNameLevelPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponNameLevelPanelContainer"]
+layout_mode = 2
+
+[node name="WeaponNameLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponNameLevelPanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Weapon Name"
+
+[node name="WeaponTypeLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponNameLevelPanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 11
+text = "(Weapon Type)"
+vertical_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponNameLevelPanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponLevelLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponNameLevelPanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Lv. ???"
+
+[node name="WeaponStatsPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer"]
+layout_mode = 2
+
+[node name="StatsTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="DMGCharacterStatButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer/GridContainer" instance=ExtResource("1_xyw40")]
+layout_mode = 2
+icon = ExtResource("2_qjoy5")
+stat_name = "DMG"
+stat_value = 0
+stat_modifier_value = 0
+
+[node name="SUBCharacterStatButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer/GridContainer" instance=ExtResource("1_xyw40")]
+layout_mode = 2
+icon = ExtResource("10_8t1pb")
+stat_name = "SUB"
+stat_value = 0
+stat_modifier_value = 0
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponStatDetailsButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Substats & Details"
+
+[node name="WeaponDescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponDescriptionPanelContainer"]
+layout_mode = 2
+
+[node name="DescriptionTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponDescriptionPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Weapon Description"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponDescriptionPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponDescriptionPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat."
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pv0jb")
+
+[node name="WeaponLevelPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponLevelPanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponAdvancedLevelLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponLevelPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Level ???/???"
+vertical_alignment = 1
+
+[node name="WeaponRequiredEXPsLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponLevelPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 10
+text = "(EXPs: ?????/?????)"
+vertical_alignment = 2
+
+[node name="StatusBar" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponLevelPanelContainer/VBoxContainer" instance=ExtResource("1_aidco")]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+_show_status_label = false
+
+[node name="CharacterLevelUpPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer"]
+layout_mode = 2
+
+[node name="MaterialsLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Materials"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Lv1EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+layout_mode = 2
+_item_name = "Lv 1 EXPs Material"
+
+[node name="Lv2EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+layout_mode = 2
+_item_name = "Lv 2 EXPs Material"
+
+[node name="Lv3EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+layout_mode = 2
+_item_name = "Lv 3 EXPs Material"
+
+[node name="Lv4EXPsMaterialButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_ofynp")]
+layout_mode = 2
+_item_name = "Lv 4 EXPs Material"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AutoAddButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Auto-Add"
+
+[node name="AddButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Add"
+
+[node name="TalentPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_prfcl")
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="TalentTabContainer" type="TabContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(864, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qjoy5")
+current_tab = 0
+tabs_visible = false
+
+[node name="LightAttackPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h7qti")
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/LightAttackPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LightAttackTalentsContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/LightAttackPanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="HeavyAttackPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h7qti")
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/HeavyAttackPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HeavyAttackTalentsContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/HeavyAttackPanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="DodgePanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h7qti")
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/DodgePanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DodgeTalentsContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/DodgePanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="ParryPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h7qti")
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/ParryPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ParryTalentsContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/ParryPanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="JuxtapositionPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h7qti")
+metadata/_tab_index = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/JuxtapositionPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="JuxtapositionTalentsContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/TalentTabContainer/JuxtapositionPanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="TalentsLightAttackButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Light Attack"
+
+[node name="TalentsHeavyAttackButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Heavy Attack"
+
+[node name="TalentsDodgeButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Dodge"
+
+[node name="TalentsParryButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Parry"
+
+[node name="TalentsJuxtapositionButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Juxtaposition"
+
+[node name="FriendshipPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_muhfs")
+metadata/_tab_index = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterNameGenderPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/CharacterNameGenderPanelContainer"]
+layout_mode = 2
+
+[node name="CharacterNameLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/CharacterNameGenderPanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Character Name"
+
+[node name="CharacterFullPronounsLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/CharacterNameGenderPanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 11
+text = "(they/them/their/theirs/themself)"
+vertical_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/CharacterNameGenderPanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0pdp6")
+
+[node name="CharacterGenderIconTextureRect" type="TextureRect" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/CharacterNameGenderPanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_n75fw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FriendshipTabContainer" type="TabContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(881, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kltjm")
+current_tab = 0
+tabs_visible = false
+
+[node name="CharacterInfoPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0d2e5")
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterDescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(262, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer/VBoxContainer/CharacterDescriptionPanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer/VBoxContainer/CharacterDescriptionPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescriptionTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer/VBoxContainer/CharacterDescriptionPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Character Description"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer/VBoxContainer/CharacterDescriptionPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0prip")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer/VBoxContainer/CharacterDescriptionPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterLongDescriptionLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterInfoPanelContainer/ScrollContainer/VBoxContainer/CharacterDescriptionPanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
+autowrap_mode = 3
+
+[node name="CharacterFactsPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8t1pb")
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterFactsPanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterFactsPanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="CharacterFactPanel" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterFactsPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("13_0pdp6")]
+layout_mode = 2
+
+[node name="CharacterVoiceLinesPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8t1pb")
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterVoiceLinesPanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterVoiceLinesPanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="VoiceLinePanel" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer2/FriendshipTabContainer/CharacterVoiceLinesPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("14_0prip")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="FriendshipInfoButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Info"
+
+[node name="FriendshipFactsButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Facts"
+
+[node name="FriendshipVoiceLinesButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Voice Lines"
+
+[node name="HideUITextureButton" type="TextureButton" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+toggle_mode = true
+texture_normal = ExtResource("15_ehj8p")
+texture_pressed = ExtResource("15_ym3se")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CharacterStatsDetailsPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_secm6")
+
+[node name="CharacterStatsDetailsCloseButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Close"
+
+[node name="CharacterStatsDetailsTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Character Name's Substats & Details"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ATKDMGCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "ATK DMG"
+substat_name = "Attack Damage"
+source_stat_abbreviation = "ATTK"
+value = 1.0
+description = "Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. "
+substat_curve = SubResource("Curve_kltjm")
+
+[node name="CRTCHACharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "CRT CHA"
+substat_name = "Critical Chance"
+source_stat_abbreviation = "ATTK"
+
+[node name="CRTMULCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "CRT MUL"
+substat_name = "Critical Multiplier"
+source_stat_abbreviation = "ATTK"
+
+[node name="DMGRESCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "DMG RES"
+substat_name = "Damage Resistance"
+source_stat_abbreviation = "DFNS"
+
+[node name="DBFRESCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "DBF RES"
+substat_name = "Debuff Resistance"
+source_stat_abbreviation = "DFNS"
+
+[node name="BUFRETCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "BUF RET"
+substat_name = "Buff Retention"
+source_stat_abbreviation = "DFNS"
+
+[node name="MVTSPDCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "MVT SPD"
+substat_name = "Movement Speed"
+source_stat_abbreviation = "AGLT"
+
+[node name="ATKSPDCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "ATK SPD"
+substat_name = "Attack Speed"
+source_stat_abbreviation = "AGLT"
+
+[node name="SPSRGNCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "SPS RGN"
+substat_name = "Stamina Regeneration"
+source_stat_abbreviation = "AGLT"
+
+[node name="MAXHPSCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "MAX HPS"
+substat_name = "Maximum Hit Points"
+source_stat_abbreviation = "VTLY"
+
+[node name="HPSRGNCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "HPS RGN"
+substat_name = "Health Regeneration"
+source_stat_abbreviation = "VTLY"
+
+[node name="MAXSPSCharacterSubstatPanel" parent="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+unique_name_in_owner = true
+layout_mode = 2
+substat_abbreviation = "MAX SPS"
+substat_name = "Maximum Stamina Points"
+
+[node name="WeaponStatsDetailsPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_secm6")
+
+[node name="WeaponStatsDetailsCloseButton" type="Button" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Close"
+
+[node name="WeaponStatsDetailsTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Weapon Name's Substats & Details"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DMGCharacterSubstatButton" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+layout_mode = 2
+substat_abbreviation = "DMG"
+substat_name = "Base Damage"
+source_stat_abbreviation = "ATTK"
+value = 1.0
+description = "Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. Filler Text. "
+substat_curve = SubResource("Curve_kltjm")
+
+[node name="SUBCharacterSubstatButton" parent="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("9_kltjm")]
+layout_mode = 2
+substat_abbreviation = "SUB"
+substat_name = "Sub Stat"
+source_stat_abbreviation = "ATTK"
+
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer/CharacterLevelButton" to="." method="_on_character_level_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer/WeaponLevelButton" to="." method="_on_weapon_level_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer/TalentsButton" to="." method="_on_talents_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer/FriendshipButton" to="." method="_on_friendship_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterStatsPanelContainer/VBoxContainer/CharacterStatDetailsButton" to="." method="_on_character_stat_details_button_pressed"]
+[connection signal="amount_cleared" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv1EXPsMaterialButton" to="." method="_on_lv_1_exps_material_button_amount_cleared"]
+[connection signal="amount_decreased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv1EXPsMaterialButton" to="." method="_on_lv_1_exps_material_button_amount_decreased"]
+[connection signal="amount_increased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv1EXPsMaterialButton" to="." method="_on_lv_1_exps_material_button_amount_increased"]
+[connection signal="amount_cleared" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv2EXPsMaterialButton" to="." method="_on_lv_2_exps_material_button_amount_cleared"]
+[connection signal="amount_decreased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv2EXPsMaterialButton" to="." method="_on_lv_2_exps_material_button_amount_decreased"]
+[connection signal="amount_increased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv2EXPsMaterialButton" to="." method="_on_lv_2_exps_material_button_amount_increased"]
+[connection signal="amount_cleared" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv3EXPsMaterialButton" to="." method="_on_lv_3_exps_material_button_amount_cleared"]
+[connection signal="amount_decreased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv3EXPsMaterialButton" to="." method="_on_lv_3_exps_material_button_amount_decreased"]
+[connection signal="amount_increased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv3EXPsMaterialButton" to="." method="_on_lv_3_exps_material_button_amount_increased"]
+[connection signal="amount_cleared" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv4EXPsMaterialButton" to="." method="_on_lv_4_exps_material_button_amount_cleared"]
+[connection signal="amount_decreased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv4EXPsMaterialButton" to="." method="_on_lv_4_exps_material_button_amount_decreased"]
+[connection signal="amount_increased" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer/Lv4EXPsMaterialButton" to="." method="_on_lv_4_exps_material_button_amount_increased"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer2/CharacterAutoAddEXPsButton" to="." method="_on_character_auto_add_exps_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterLevelUpPanelContainer/VBoxContainer/HBoxContainer2/CharacterAddEXPsButton" to="." method="_on_character_add_exps_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/WeaponLevelPanelContainer/VBoxContainer/WeaponStatsPanelContainer/VBoxContainer/WeaponStatDetailsButton" to="." method="_on_weapon_stat_details_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer/TalentsLightAttackButton" to="." method="_on_talents_light_attack_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer/TalentsHeavyAttackButton" to="." method="_on_talents_heavy_attack_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer/TalentsDodgeButton" to="." method="_on_talents_dodge_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer/TalentsParryButton" to="." method="_on_talents_parry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/TalentPanelContainer/HBoxContainer/VBoxContainer/TalentsJuxtapositionButton" to="." method="_on_talents_juxtaposition_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer/FriendshipInfoButton" to="." method="_on_friendship_info_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer/FriendshipFactsButton" to="." method="_on_friendship_facts_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/FriendshipPanelContainer/HBoxContainer/VBoxContainer/FriendshipVoiceLinesButton" to="." method="_on_friendship_voice_lines_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/HideUITextureButton" to="." method="_on_hide_ui_texture_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/CharacterStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CharacterStatsDetailsCloseButton" to="." method="_on_character_stats_details_close_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/WeaponStatsDetailsPanelContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/WeaponStatsDetailsCloseButton" to="." method="_on_weapon_stats_details_close_button_pressed"]

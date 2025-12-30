@@ -35,7 +35,7 @@ script = ExtResource("1_1ohfm")
 _internal_name = &"attack"
 _readable_name = "Attack"
 _readable_abbreviation = "ATTK"
-_value = 100
+_value = 5000
 metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
 
 [sub_resource type="Resource" id="Resource_s1vqs"]
@@ -44,7 +44,7 @@ script = ExtResource("1_1ohfm")
 _internal_name = &"defense"
 _readable_name = "Defense"
 _readable_abbreviation = "DFNS"
-_value = 100
+_value = 5000
 metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
 
 [sub_resource type="Resource" id="Resource_x2jdf"]
@@ -53,7 +53,7 @@ script = ExtResource("1_1ohfm")
 _internal_name = &"agility"
 _readable_name = "Agility"
 _readable_abbreviation = "AGLT"
-_value = 100
+_value = 5000
 metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
 
 [sub_resource type="Resource" id="Resource_phunj"]
@@ -62,7 +62,7 @@ script = ExtResource("1_1ohfm")
 _internal_name = &"vitality"
 _readable_name = "Vitality"
 _readable_abbreviation = "VTLY"
-_value = 100
+_value = 5000
 metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
 
 [sub_resource type="Curve" id="Curve_ikpee"]

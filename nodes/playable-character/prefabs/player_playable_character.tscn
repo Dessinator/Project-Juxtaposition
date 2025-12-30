@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxe5jhys8u15c"]
+[gd_scene load_steps=6 format=3 uid="uid://dxe5jhys8u15c"]
 
 [ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_afw0l"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_77ffc"]
-[ext_resource type="PackedScene" uid="uid://db1wminw8cf8m" path="res://nodes/character/prefabs/jux_character.tscn" id="2_w44sv"]
+[ext_resource type="PackedScene" uid="uid://ckyv6l3ncojyr" path="res://nodes/character/prefabs/dizzy_character.tscn" id="2_w44sv"]
+[ext_resource type="PackedScene" uid="uid://db1wminw8cf8m" path="res://nodes/character/prefabs/jux_character.tscn" id="3_w44sv"]
 
 [sub_resource type="Resource" id="Resource_wng8g"]
 resource_local_to_scene = true
@@ -20,25 +21,30 @@ metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 [node name="PlayerPlayableCharacter" instance=ExtResource("1_afw0l")]
 collision_mask = 3
 
-[node name="JuxCharacter" parent="PlayableCharacterCharacterContainer" index="1" instance=ExtResource("2_w44sv")]
+[node name="DizzyCharacter" parent="PlayableCharacterCharacterContainer" index="1" instance=ExtResource("2_w44sv")]
 
-[node name="PlayableCharacterStaminaMeter" parent="." index="8"]
+[node name="JuxCharacter" parent="PlayableCharacterCharacterContainer" index="2" instance=ExtResource("3_w44sv")]
+
+[node name="PlayableCharacterStaminaMeter" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 3, 0)
 
 [node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" index="0"]
-transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.944795e-07, 0.9999985, 5.507469e-05, -2.2751578e-11, -5.710125e-05, 0.9999985, 0, 1.3, -2.9802322e-08)
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9447852e-07, 0.9999985, 5.507469e-05, -2.2964741e-11, -5.710125e-05, 0.9999985, 0, 1.3, -2.9802322e-08)
 
 [node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
-transform = Transform3D(1, 7.715632e-08, 3.510761e-07, 1.2938331e-08, 1.0000246, 0.00027489662, 2.145843e-07, -1.7285347e-06, 1.001472, -3.3454626e-09, -0.00027489662, 5.0000057)
+transform = Transform3D(1, 9.1291525e-08, 3.6310286e-07, -1.571312e-09, 1.000043, 0.00027489662, 2.5400624e-07, -2.2053719e-06, 1.0014751, -3.3454626e-09, -0.00027489662, 5.0000057)
 
 [node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
-transform = Transform3D(1, 3.5559753e-16, -9.769963e-16, 0, 0.9396926, 0.34202012, 1.0396977e-15, -0.34202012, 0.9396926, -4.884983e-15, 2.9317007, 4.2538385)
+transform = Transform3D(1, 4.0755096e-16, -1.1197371e-15, 0, 0.9396926, 0.34202012, 1.1915994e-15, -0.34202012, 0.9396926, -5.598688e-15, 2.9317007, 4.2538385)
 
-[node name="LightChargeThresholdTimer" parent="." index="18"]
+[node name="LightChargeThresholdTimer" parent="." index="17"]
 wait_time = 0.2
 
-[node name="HeavyChargeThresholdTimer" parent="." index="19"]
+[node name="HeavyChargeThresholdTimer" parent="." index="18"]
 wait_time = 0.2
+
+[node name="Gameplay" parent="FunctionFiniteStateMachine" index="0"]
+_immunity_flickering_time = 0
 
 [node name="GameplayFiniteStateMachine" parent="." index="25"]
 blackboard = SubResource("Resource_wng8g")

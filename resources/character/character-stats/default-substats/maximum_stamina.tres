@@ -14,4 +14,5 @@ _internal_name = &"maximum_stamina"
 _readable_name = "Maximum Stamina Points"
 _readable_abbreviation = "MAX SPS"
 _curve = SubResource("Curve_d1a5h")
+_description = "Maximum Stamina Points substat description"
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"

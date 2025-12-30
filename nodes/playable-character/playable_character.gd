@@ -42,8 +42,10 @@ var _relative_direction: Vector3
 @onready var _playable_character_stamina_meter: PlayableCharacterStaminaMeter = %PlayableCharacterStaminaMeter
 @onready var _playable_character_hurtbox: PlayableCharacterHurtbox = $PlayableCharacterHurtbox
 
+@onready var _function_finite_state_machine: FiniteStateMachine = %FunctionFiniteStateMachine
 @onready var _gameplay_finite_state_machine: FiniteStateMachine = %GameplayFiniteStateMachine
 @onready var _animation_finite_state_machine: FiniteStateMachine = %AnimationFiniteStateMachine
+@onready var _function_blackboard: BTBlackboard = _function_finite_state_machine.blackboard
 @onready var _gameplay_blackboard: BTBlackboard = _gameplay_finite_state_machine.blackboard
 @onready var _animation_blackboard: BTBlackboard = _animation_finite_state_machine.blackboard
 
@@ -54,8 +56,6 @@ var _relative_direction: Vector3
 func initialize(game_manager: GameManager) -> void:
 	_game_manager = game_manager
 	
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 	var current_character = _playable_character_character_container.get_current_character()
 	_playable_character_stamina_meter.set_character_status(current_character.get_character_status())
 	
@@ -65,15 +65,15 @@ func initialize(game_manager: GameManager) -> void:
 	_initialize_components()
 	#_setup_character_attack_state_machine(current_character)
 	_start_state_machines()
-	%PlayableCharacterStatusModifier.initialize()
+	# %PlayableCharacterStatusModifier.initialize()
 
 func _process(delta: float) -> void:
 	_handle_stamina_regeneration(_gameplay_blackboard.get_value("regenerate_stamina"), delta)
 	
-	DebugDraw3D.draw_arrow(global_position, global_position + get_front_direction(), Color.RED, 0.1)
-	DebugDraw3D.draw_arrow(global_position, global_position + get_back_direction(), Color.BLUE, 0.1)
-	DebugDraw3D.draw_arrow(global_position, global_position + get_right_direction(), Color.YELLOW, 0.1)
-	DebugDraw3D.draw_arrow(global_position, global_position + get_left_direction(), Color.GREEN, 0.1)
+	# DebugDraw3D.draw_arrow(global_position, global_position + get_front_direction(), Color.RED, 0.1)
+	# DebugDraw3D.draw_arrow(global_position, global_position + get_back_direction(), Color.BLUE, 0.1)
+	# DebugDraw3D.draw_arrow(global_position, global_position + get_right_direction(), Color.YELLOW, 0.1)
+	# DebugDraw3D.draw_arrow(global_position, global_position + get_left_direction(), Color.GREEN, 0.1)
 	
 	var input_direction = Input.get_vector("strafe_left", "strafe_right", "forwards", "backwards")
 	_direction = Vector3(input_direction.x, 0, input_direction.y).rotated(Vector3.UP, _playable_character_camera.get_horizontal_rotation()).normalized()
@@ -81,8 +81,8 @@ func _process(delta: float) -> void:
 	var cross = _direction.cross(get_front_direction())
 	_relative_direction = Vector3(cross.y, 0, dot).normalized()
 	
-	DebugDraw3D.draw_arrow(global_position, global_position + (_direction * 1.5), Color.BLACK, 0.25)
-	DebugDraw2D.set_text("relative_direction", str(_relative_direction))
+	# DebugDraw3D.draw_arrow(global_position, global_position + (_direction * 1.5), Color.BLACK, 0.25)
+	# DebugDraw2D.set_text("relative_direction", str(_relative_direction))
 
 func _unhandled_input(_event: InputEvent) -> void:
 	_gameplay_blackboard.set_value("auto_jog", _handle_toggle_auto_jog(_gameplay_blackboard.get_value("auto_jog")))
@@ -153,7 +153,7 @@ func _update_character_attack_state_machine(new: Character):
 	_character_attack_state_machine.start()
 
 func _start_state_machines():
-	#_character_attack_state_machine.start()
+	_function_finite_state_machine.start()
 	_animation_finite_state_machine.start()
 	_gameplay_finite_state_machine.start()
 
@@ -174,7 +174,8 @@ func _handle_holding_light_attack_input(is_holding: bool) -> bool:
 		if not is_holding:
 			# Stop the timer to prevent the hold action from firing.
 			_light_charge_threshold_timer.stop()
-			_gameplay_finite_state_machine.fire_event("pressed_light_attack_input")
+			if _gameplay_finite_state_machine.active:
+				_gameplay_finite_state_machine.fire_event("pressed_light_attack_input")
 			pressed_light_attack_input.emit()
 			return is_holding
 		
@@ -192,7 +193,8 @@ func _handle_holding_heavy_attack_input(is_holding: bool) -> bool:
 		if not is_holding:
 			# Stop the timer to prevent the hold action from firing.
 			_heavy_charge_threshold_timer.stop()
-			_gameplay_finite_state_machine.fire_event("pressed_heavy_attack_input")
+			if _gameplay_finite_state_machine.active:
+				_gameplay_finite_state_machine.fire_event("pressed_heavy_attack_input")
 			pressed_heavy_attack_input.emit()
 			return is_holding
 		
@@ -245,9 +247,9 @@ func get_left_direction() -> Vector3:
 func get_right_direction() -> Vector3:
 	return get_front_direction().rotated(Vector3.UP, -PI/2).normalized()
 
-func _on_character_replace_immunity_timer_timeout() -> void:
-	_playable_character_character_container.visible = true
-	_playable_character_character_container.get_current_character().get_character_status().set_immune(false)
+# func _on_character_replace_immunity_timer_timeout() -> void:
+# 	_playable_character_character_container.visible = true
+# 	_playable_character_character_container.get_current_character().get_character_status().set_immune(false)
 
 func _on_light_charge_threshold_timer_timeout():
 	_gameplay_blackboard.set_value("holding_light_attack_input", true)

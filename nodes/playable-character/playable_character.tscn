@@ -1,11 +1,10 @@
-[gd_scene load_steps=88 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=91 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
 [ext_resource type="PackedScene" uid="uid://dhal1wbe247ok" path="res://nodes/playable-character/components/playable-character-camera/playable_character_camera.tscn" id="2_b536o"]
 [ext_resource type="PackedScene" uid="uid://d1vo24vn8cvlt" path="res://nodes/playable-character/components/playable-character-combat-manager/playable_character_combat_manager.tscn" id="2_rfhey"]
 [ext_resource type="PackedScene" uid="uid://dalxdx30uubou" path="res://nodes/playable-character/components/playable-character-stamina-meter/playable_character_stamina_meter.tscn" id="2_s6wqa"]
-[ext_resource type="Script" uid="uid://ukjio47rhx87" path="res://nodes/playable-character/components/playable-character-status-modifier/playable_character_status_modifier.gd" id="2_y5kg5"]
 [ext_resource type="Script" uid="uid://cupduph5pqjer" path="res://nodes/playable-character/components/playable-character-mover/playable_character_mover.gd" id="3_3uqe5"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="3_kwpjs"]
 [ext_resource type="Script" uid="uid://dses4kjrpugsp" path="res://nodes/playable-character/components/playable-character-juxtometer-manager/playable_character_juxtometer_manager.gd" id="3_l2qdo"]
@@ -30,9 +29,12 @@
 [ext_resource type="Script" uid="uid://do8qvn25kxfru" path="res://nodes/playable-character/states/movement/transitions/start_grounded_light_attack.gd" id="13_mb8j0"]
 [ext_resource type="Script" uid="uid://byqadyig0lmi3" path="res://nodes/playable-character/states/movement/skidding_state.gd" id="13_owwb0"]
 [ext_resource type="Script" uid="uid://lkn5j7bwbwbb" path="res://nodes/playable-character/states/movement/falling_state.gd" id="14_fc7wd"]
+[ext_resource type="Script" uid="uid://b317dk4nxde31" path="res://nodes/playable-character/states/function/gameplay.gd" id="15_ga6v7"]
+[ext_resource type="Script" uid="uid://k5p6yghm7nrm" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="15_vb6qd"]
 [ext_resource type="Script" uid="uid://b1vq26ajolojt" path="res://nodes/playable-character/states/movement/landing_state.gd" id="16_fc7wd"]
 [ext_resource type="Script" uid="uid://d1lb4ri15h3sf" path="res://nodes/playable-character/states/movement/transitions/start_grounded_heavy_attack.gd" id="16_nv747"]
 [ext_resource type="Script" uid="uid://h81tgnuo3cfv" path="res://nodes/playable-character/states/movement/transitions/start_normalizing.gd" id="16_vodfd"]
+[ext_resource type="Script" uid="uid://bcphoplwc4ai7" path="res://nodes/playable-character/states/function/character_menu.gd" id="17_gdylm"]
 [ext_resource type="Script" uid="uid://cdimba8aa8x4b" path="res://nodes/playable-character/states/movement/transitions/start_death.gd" id="18_4oive"]
 [ext_resource type="Script" uid="uid://bbjoswc4rgkdo" path="res://nodes/playable-character/states/animation/idle_animation_state.gd" id="19_jrru3"]
 [ext_resource type="Script" uid="uid://ctaf7n02aqvia" path="res://nodes/playable-character/states/movement/transitions/start_juxtaposing.gd" id="20_1byfn"]
@@ -86,6 +88,10 @@
 [ext_resource type="Script" uid="uid://dedk1kv1yf6ll" path="res://nodes/playable-character/states/animation/charged_heavy_attack_animation_state.gd" id="80_vb6qd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0vta"]
+
+[sub_resource type="Resource" id="Resource_3tara"]
+script = ExtResource("3_kwpjs")
+metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
 [sub_resource type="Resource" id="Resource_t22va"]
 resource_local_to_scene = true
@@ -142,13 +148,6 @@ script = ExtResource("3_l2qdo")
 
 [node name="PlayableCharacterVisualController" parent="." instance=ExtResource("5_avwae")]
 unique_name_in_owner = true
-_immunity_flickering_time = 15
-
-[node name="PlayableCharacterStatusModifier" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_y5kg5")
-_damage_amount = 20
-_heal_amount = 20
 
 [node name="PlayableCharacterCharacterContainer" parent="." instance=ExtResource("6_1byfn")]
 unique_name_in_owner = true
@@ -170,7 +169,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9396929, 0.34202012, 0, -0.34202012, 0.939
 transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9447792e-07, 0.9999985, 5.4627657e-05, -2.2680524e-11, -5.710125e-05, 0.99999857, 0, 1.3, -2.9802322e-08)
 
 [node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
-transform = Transform3D(1, 7.740141e-08, 3.5030314e-07, 1.2554816e-08, 1.000047, 0.00028333068, 2.1464187e-07, -1.937151e-06, 1.0015075, -3.34461e-09, -0.00027227402, 5.0000052)
+transform = Transform3D(1, 1.2010625e-07, 2.8920192e-07, 1.2671713e-08, 1.0000858, 0.00030177832, 2.1474571e-07, -1.1622906e-05, 1.0015804, -3.34461e-09, -0.00027227402, 5.0000052)
 
 [node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
 transform = Transform3D(1, 1.1419341e-14, -3.6104464e-14, 1.6177836e-15, 0.9396926, 0.34202012, 3.7832747e-14, -0.34202012, 0.9396926, -1.8052221e-13, 2.9317007, 4.2538357)
@@ -248,6 +247,75 @@ wait_time = 0.3
 one_shot = true
 ignore_time_scale = true
 
+[node name="FunctionFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+unique_name_in_owner = true
+script = ExtResource("2_2aic4")
+process_type = 0
+active = false
+initial_state = NodePath("Gameplay")
+actor = NodePath("..")
+blackboard = SubResource("Resource_3tara")
+metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
+
+[node name="Gameplay" type="Node" parent="FunctionFiniteStateMachine"]
+script = ExtResource("15_ga6v7")
+_immunity_flickering_time = null
+metadata/_custom_type_script = "uid://k5p6yghm7nrm"
+
+[node name="onOpenCharacterMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../CharacterMenu")
+use_event = true
+event = "open_character_menu"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onOpenPartyMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../PartyMenu")
+use_event = true
+event = "open_party_menu"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="onOpenCharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../CharacterArchiveMenu")
+use_event = true
+event = "open_character_archive_menu"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="CharacterMenu" type="Node" parent="FunctionFiniteStateMachine"]
+script = ExtResource("17_gdylm")
+metadata/_custom_type_script = "uid://k5p6yghm7nrm"
+
+[node name="onCloseCharacterMenu" type="Node" parent="FunctionFiniteStateMachine/CharacterMenu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../Gameplay")
+use_event = true
+event = "close_character_menu"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="PartyMenu" type="Node" parent="FunctionFiniteStateMachine"]
+script = ExtResource("15_vb6qd")
+metadata/_custom_type_script = "uid://k5p6yghm7nrm"
+
+[node name="onClosePartyMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMenu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../Gameplay")
+use_event = true
+event = "close_party_menu"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
+[node name="CharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine"]
+script = ExtResource("15_vb6qd")
+metadata/_custom_type_script = "uid://k5p6yghm7nrm"
+
+[node name="onCloseCharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine/CharacterArchiveMenu" node_paths=PackedStringArray("next_state")]
+script = ExtResource("11_1jk2l")
+next_state = NodePath("../../Gameplay")
+use_event = true
+event = "close_character_archive_menu"
+metadata/_custom_type_script = "uid://1h0braq41vwb"
+
 [node name="GameplayFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_2aic4")
@@ -261,6 +329,7 @@ metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 [node name="IdleState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("4_kwpjs")
+_can_regenerate_stamina = true
 _animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
 metadata/_custom_type_script = "uid://bv80dvrqw5nqc"
 
@@ -336,6 +405,7 @@ metadata/_custom_type_script = "uid://1h0braq41vwb"
 [node name="WalkState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("9_g13tn")
+_can_regenerate_stamina = true
 _animation_state = NodePath("../../AnimationFiniteStateMachine/WalkAnimationState")
 
 [node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
@@ -1861,6 +1931,5 @@ metadata/_custom_type_script = "uid://ckcspu8iefpxp"
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterHurtbox" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="target_entered" from="PlayableCharacterTargetRange" to="PlayableCharacterCombatManager" method="_on_playable_character_target_range_target_entered"]
 [connection signal="target_exited" from="PlayableCharacterTargetRange" to="PlayableCharacterCombatManager" method="_on_playable_character_target_range_target_exited"]
-[connection signal="timeout" from="CharacterReplaceImmunityTimer" to="." method="_on_character_replace_immunity_timer_timeout"]
 
 [editable path="PlayableCharacterCamera"]

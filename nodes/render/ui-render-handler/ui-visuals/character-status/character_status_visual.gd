@@ -49,3 +49,6 @@ func update_health_bar(current_health: int, max_health: int):
 func update_juxtometer_bar(current_juxtometer_reading: float):
 	%CharacterJuxtometerBar.set_max_value(CharacterStatus.JUXTOMETER_MAX_READING)
 	%CharacterJuxtometerBar.set_current_value(current_juxtometer_reading)
+
+func update_experience_level(level: int):
+	%CharacterLevelLabel.text = "Lv. {level}".format({ "level" : level })

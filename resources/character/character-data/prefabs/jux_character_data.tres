@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://ctbpi1be43qto"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_vmq82"]
+[ext_resource type="Resource" uid="uid://be4qqhhq2y4uf" path="res://resources/pronouns/prefabs/they.tres" id="2_2gwg2"]
+[ext_resource type="Script" uid="uid://lf6xur7ya78e" path="res://resources/character/character-data/character_data.gd" id="2_7s0mb"]
+
+[resource]
+script = ExtResource("2_7s0mb")
+full_name = "Jux Ta Position"
+nickname = "Jux"
+internal_name = &"jux"
+pronouns = ExtResource("2_2gwg2")
+short_description = "A very alternative twenty-something year old with very fond memories of the Strawberry Pie."
+long_description = "A rather contrasting enby twenty-something with a fondness for retro consoles. One fateful day after a draining day of pretending to be mentally present at work, they came home for a cozy night of gaming, only to wake up in the game’s tutorial, right where they had happened to fall asleep in the real world."
+metadata/_custom_type_script = "uid://lf6xur7ya78e"

@@ -14,4 +14,5 @@ _internal_name = &"movement_speed"
 _readable_name = "Movement Speed"
 _readable_abbreviation = "MVT SPD"
 _curve = SubResource("Curve_lqgyr")
+_description = "Movement Speed substat description"
 metadata/_custom_type_script = "uid://cnekm5ikmah4x"
