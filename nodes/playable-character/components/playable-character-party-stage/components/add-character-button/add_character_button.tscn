@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://3hxlu2t0hpv3"]
+
+[ext_resource type="Texture2D" uid="uid://cwmjaei5wjin2" path="res://addons/behaviour_toolkit/icons/Add.svg" id="1_dfyp3"]
+[ext_resource type="Script" uid="uid://dinriv0usuxj1" path="res://nodes/playable-character/components/playable-character-party-stage/components/add-character-button/add_character_button.gd" id="1_myo55"]
+[ext_resource type="Script" uid="uid://cr8pb3p5xkx75" path="res://nodes/render/world-ui-object-interface/world_ui_object_interface.gd" id="2_qobsm"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_myo55"]
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_myo55"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6ojf"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_myo55")
+billboard_mode = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_433gi"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[node name="AddCharacterButton" type="Node3D"]
+script = ExtResource("1_myo55")
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+layers = 2
+mesh = SubResource("QuadMesh_myo55")
+surface_material_override/0 = SubResource("StandardMaterial3D_g6ojf")
+
+[node name="Area3D" type="Area3D" parent="Quad"]
+unique_name_in_owner = true
+collision_layer = 513
+collision_mask = 513
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+shape = SubResource("BoxShape3D_433gi")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(40, 40)
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="SubViewport/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_dfyp3")
+stretch_mode = 0
+
+[node name="WorldUIObjectInterface" type="Node" parent="."]
+script = ExtResource("2_qobsm")
+_world_origin_initial_position_copy_type = 2
+metadata/_custom_type_script = "uid://cr8pb3p5xkx75"

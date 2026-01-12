@@ -13,12 +13,14 @@ enum CharacterSwitchType
 	SWITCH_TYPE_JUXTAPOSITION
 }
 
+@onready var _playable_character: PlayableCharacter = $".."
+@onready var _juxtometer_decay_timer: Timer = %JuxtometerDecayTimer
+
 var _is_switching_character: bool = false
 var _characters: Array[Character]
 var _current_character: Character
 
-@onready var _playable_character: PlayableCharacter = $".."
-@onready var _juxtometer_decay_timer: Timer = %JuxtometerDecayTimer
+@export var _max_character_count: int = 3
 
 func _ready() -> void:
 	_setup_characters()
@@ -26,6 +28,17 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_handle_switching_input(_playable_character.can_switch_characters())
+
+func clear_characters():
+	for character in _characters:
+		character.queue_free()
+	
+	_characters = []
+func add_character(character: Character):
+	if _characters.size() + 1 > _max_character_count:
+		return
+	
+	_characters.append(character)
 
 func get_current_character() -> Character:
 	return _current_character
@@ -60,7 +73,7 @@ func _setup_characters():
 	for child in get_children():
 		if not child is Character:
 			continue
-		_characters.append(child)
+		add_character(child)
 	
 	for character in _characters:
 		remove_child(character)

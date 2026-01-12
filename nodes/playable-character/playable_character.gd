@@ -33,10 +33,11 @@ var _stamina_regeneration_timer: float = STAMINA_REGENERATION_INTERVAL
 var _direction: Vector3
 var _relative_direction: Vector3
 
-@onready var _playable_character_combat_manager: PlayableCharacterCombatManager = %PlayableCharacterCombatManager
-@onready var playable_character_mover: PlayableCharacterMover = %PlayableCharacterMover
-@onready var _playable_character_juxtometer_manager: PlayableCharacterJuxtometerManager = %PlayableCharacterJuxtometerManager
+@onready var _playable_character_mover: PlayableCharacterMover = %PlayableCharacterMover
 @onready var _playable_character_visual_controller: PlayableCharacterVisualController = %PlayableCharacterVisualController
+@onready var _playable_character_juxtometer_manager: PlayableCharacterJuxtometerManager = %PlayableCharacterJuxtometerManager
+@onready var _playable_character_party_manager: PlayableCharacterPartyManager = %PlayableCharacterPartyManager
+@onready var _playable_character_combat_manager: PlayableCharacterCombatManager = %PlayableCharacterCombatManager
 @onready var _playable_character_character_container: PlayableCharacterCharacterContainer = %PlayableCharacterCharacterContainer
 @onready var _playable_character_camera: PlayableCharacterCamera = %PlayableCharacterCamera
 @onready var _playable_character_stamina_meter: PlayableCharacterStaminaMeter = %PlayableCharacterStaminaMeter
@@ -131,10 +132,12 @@ func _on_current_character_changed(_old: Character, _new: Character):
 	_update_stamina_meter_character_status()
 
 func _initialize_components():
-	_playable_character_combat_manager.initialize(self)
-	playable_character_mover.initialize(self)
-	_playable_character_juxtometer_manager.initialize(self)
+	_playable_character_mover.initialize(self)
 	_playable_character_visual_controller.initialize(self)
+	_playable_character_combat_manager.initialize(self)
+	_playable_character_party_manager.initialize(self)
+	_playable_character_juxtometer_manager.initialize(self)
+
 	_playable_character_hurtbox.initialize(self)
 
 func _setup_character_attack_state_machine(current_character: Character):

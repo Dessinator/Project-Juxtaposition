@@ -226,6 +226,7 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 3d_physics/layer_7="EntityRangeLayer"
 3d_physics/layer_8="PlayerRangeLayer"
 3d_physics/layer_9="TrackableTargetLayer"
+3d_physics/layer_10="WorldUILayer"
 
 [maaacks_game_template]
 

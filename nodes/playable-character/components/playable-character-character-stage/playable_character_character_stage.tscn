@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://clc3je21ffph2"]
+[gd_scene load_steps=8 format=3 uid="uid://clc3je21ffph2"]
 
 [ext_resource type="Script" uid="uid://cmfvu1vqu07nc" path="res://nodes/playable-character/components/playable-character-character-stage/playable_character_character_stage.gd" id="1_pk2s5"]
 [ext_resource type="PackedScene" uid="uid://bg4t6ordmj1u7" path="res://nodes/nonplayable-character/prefabs/character-stage-nonplayable-character/character_stage_nonplayable_character.tscn" id="2_wyaac"]
-[ext_resource type="Material" uid="uid://jdok2v11vii" path="res://resources/materials/psx_render_unlit_material.tres" id="3_bk4tb"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="4_j6pd1"]
 [ext_resource type="Script" uid="uid://cybcgdhpxremn" path="res://addons/goutte.camera.trackball/trackball_camera.gd" id="5_rsmkl"]
 
@@ -58,5 +57,4 @@ material = SubResource("ShaderMaterial_lty4v")
 [node name="Skybox" type="CSGSphere3D" parent="."]
 flip_faces = true
 radius = 20.0
-material = ExtResource("3_bk4tb")
 metadata/_edit_lock_ = true

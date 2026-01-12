@@ -53,8 +53,8 @@ func _ready() -> void:
 	var data = _grab_model_data(_character_model)
 	_character_model_animation_player = data["animation_player"]
 	_character_model_animation_names = data["animation_names"]
-	_character_model_hitbox_animation_player = data["hitbox_animation_player"]
-	_character_model_hitbox_animation_names = data["hitbox_animation_names"]
+	# _character_model_hitbox_animation_player = data["hitbox_animation_player"]
+	# _character_model_hitbox_animation_names = data["hitbox_animation_names"]
 
 # func get_character_metadata() -> CharacterMetadata:
 # 	return _character_metadata
@@ -112,20 +112,20 @@ func _initialize_hurtbox():
 func _grab_model_data(model: Node3D):
 	var data = {}
 	var names_array
-	var hitbox_names_array
+	# var hitbox_names_array
 	if not model:
 		names_array = []
-		hitbox_names_array = []
+		# hitbox_names_array = []
 	
 	var animation_player = model.get_node("%AnimationPlayer")
-	var hitbox_animation_player = model.get_node("%HitboxAnimationPlayer")
+	# var hitbox_animation_player = model.get_node("%HitboxAnimationPlayer")
 	names_array = _grab_animation_names(animation_player)
-	hitbox_names_array = _grab_animation_names(hitbox_animation_player)
+	# hitbox_names_array = _grab_animation_names(hitbox_animation_player)
 	
 	data["animation_player"] = animation_player
 	data["animation_names"] = names_array
-	data["hitbox_animation_player"] = hitbox_animation_player
-	data["hitbox_animation_names"] = hitbox_names_array
+	# data["hitbox_animation_player"] = hitbox_animation_player
+	# data["hitbox_animation_names"] = hitbox_names_array
 	
 	return data
 func _grab_animation_names(animation_player: AnimationPlayer):

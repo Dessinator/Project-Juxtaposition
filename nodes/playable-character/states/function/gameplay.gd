@@ -41,7 +41,9 @@ func _on_enter(actor: Node, _blackboard: BTBlackboard) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	# set playable character camera as current
-	_playable_character_camera.current = true
+	var game_manager = GameManager.get_instance()
+	
+	game_manager.get_world_render_handler().set_current_camera(_playable_character_camera.get_camera())
 
 	if not _gameplay_finite_state_machine.active:
 		_gameplay_finite_state_machine.active = true
@@ -49,8 +51,6 @@ func _on_enter(actor: Node, _blackboard: BTBlackboard) -> void:
 		_animation_finite_state_machine.active = true
 	
 	_setup_signals(actor)
-
-	var game_manager = GameManager.get_instance()
 
 	# instantiate the gameplay ui
 	_playable_character_gameplay_ui_instance = PLAYABLE_CHARACTER_GAMEPLAY_UI_SCENE.instantiate()

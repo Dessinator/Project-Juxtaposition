@@ -7,11 +7,25 @@
 [node name="IdaCharacterModel" instance=ExtResource("1_r8vwf")]
 script = ExtResource("2_kb7vc")
 
-[node name="godot_rig" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12572783, 0)
-
 [node name="GeneralSkeleton" parent="godot_rig" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022962749, 0)
+bones/9/rotation = Quaternion(0.92678314, -6.40652e-17, -6.471204e-17, -0.37559688)
+bones/11/rotation = Quaternion(0.67069656, 0.32349297, 0.51904655, -0.4196536)
+bones/13/rotation = Quaternion(0.67069656, -0.32349297, -0.51904655, -0.4196536)
+bones/37/rotation = Quaternion(-0.21418674, 0.6738872, 0.21418662, 0.6738873)
+bones/38/scale = Vector3(1.0000116, 0.9999966, 0.9999906)
+bones/39/scale = Vector3(1.0000123, 0.9999969, 0.99999094)
+bones/54/scale = Vector3(1.0000118, 0.99999684, 0.99999106)
+bones/55/scale = Vector3(1.000012, 0.99999684, 0.9999909)
+bones/61/rotation = Quaternion(0.9956432, -6.5541323e-09, 6.9983095e-08, -0.09324549)
+bones/65/rotation = Quaternion(0.8926654, 0.011942641, 0.43858975, -0.10317425)
+bones/69/rotation = Quaternion(0.8926654, -0.011942641, -0.43858975, -0.10317425)
+bones/73/rotation = Quaternion(0.72159195, -0.0022440362, 0.67620176, -0.1484967)
+bones/77/rotation = Quaternion(0.72159195, 0.0022440362, -0.67620176, -0.1484967)
+bones/81/rotation = Quaternion(0.97786236, 0.12020446, -0.16456102, -0.04749493)
+bones/85/rotation = Quaternion(0.97786236, -0.12020446, 0.16456102, -0.04749493)
+bones/89/rotation = Quaternion(0.8251454, 0.08913052, 0.5194267, -0.2034372)
+bones/94/rotation = Quaternion(0.8251454, -0.08913052, -0.5194267, -0.2034372)
+bones/102/rotation = Quaternion(1.4608884e-07, 1, -8.046627e-07, -4.886606e-08)
 
 [node name="ida_model" parent="godot_rig/GeneralSkeleton" index="0"]
 surface_material_override/0 = ExtResource("3_kb7vc")
@@ -377,3 +391,6 @@ settings/1/gravity/damping_curve = null
 settings/1/gravity/direction = Vector3(0, -1, 0)
 settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
+
+[node name="AnimationPlayer" parent="." index="1"]
+unique_name_in_owner = true

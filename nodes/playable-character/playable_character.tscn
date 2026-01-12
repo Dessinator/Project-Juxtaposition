@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://c873droosme0v"]
+[gd_scene load_steps=98 format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
@@ -14,11 +14,16 @@
 [ext_resource type="Script" uid="uid://48jvbjogtre" path="res://nodes/playable-character/states/movement/transitions/start_walking.gd" id="5_kwpjs"]
 [ext_resource type="PackedScene" uid="uid://cnga388alrwrh" path="res://nodes/playable-character/components/playable-character-character-container/playable_character_character_container.tscn" id="6_1byfn"]
 [ext_resource type="Script" uid="uid://bvkuv47v02wto" path="res://nodes/playable-character/states/movement/transitions/start_sprinting.gd" id="6_541kw"]
+[ext_resource type="Script" uid="uid://dkl0rh51agdgv" path="res://resources/party/party.gd" id="7_3xoba"]
 [ext_resource type="Script" uid="uid://vyjbkqhnabi0" path="res://nodes/playable-character/states/movement/transitions/start_jogging.gd" id="7_beju2"]
+[ext_resource type="PackedScene" uid="uid://ckyv6l3ncojyr" path="res://nodes/character/prefabs/dizzy_character.tscn" id="7_bocou"]
 [ext_resource type="Script" uid="uid://1lowkxpph4vp" path="res://nodes/playable-character/states/movement/transitions/start_jumping.gd" id="7_hv23c"]
+[ext_resource type="PackedScene" uid="uid://b4uai47l8gsq2" path="res://nodes/playable-character/components/playable-character-party-manager/playable_character_party_manager.tscn" id="7_kxva5"]
 [ext_resource type="PackedScene" uid="uid://lgs3klxru3sc" path="res://nodes/playable-character/components/playable-character-range/playable_character_range.tscn" id="8_2p2ad"]
+[ext_resource type="PackedScene" uid="uid://db1wminw8cf8m" path="res://nodes/character/prefabs/jux_character.tscn" id="8_3f7k8"]
 [ext_resource type="Script" uid="uid://dlq0i3jf6krly" path="res://nodes/playable-character/states/movement/transitions/start_falling.gd" id="8_b0vta"]
 [ext_resource type="Script" uid="uid://62fl0f3v5lvd" path="res://nodes/playable-character/states/movement/walking_state.gd" id="9_g13tn"]
+[ext_resource type="PackedScene" uid="uid://dg4nb48w1rfip" path="res://nodes/character/prefabs/ida_character.tscn" id="9_tjxje"]
 [ext_resource type="Script" uid="uid://di214gom16ila" path="res://nodes/playable-character/states/movement/transitions/start_ilding.gd" id="10_qyjwt"]
 [ext_resource type="PackedScene" uid="uid://db7xt2j2blft5" path="res://nodes/areas/hurtbox/prefabs/playable-character-hurtbox/playable_character_hurtbox.tscn" id="11_1byfn"]
 [ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="11_1jk2l"]
@@ -36,6 +41,7 @@
 [ext_resource type="Script" uid="uid://h81tgnuo3cfv" path="res://nodes/playable-character/states/movement/transitions/start_normalizing.gd" id="16_vodfd"]
 [ext_resource type="Script" uid="uid://bcphoplwc4ai7" path="res://nodes/playable-character/states/function/character_menu.gd" id="17_gdylm"]
 [ext_resource type="Script" uid="uid://cdimba8aa8x4b" path="res://nodes/playable-character/states/movement/transitions/start_death.gd" id="18_4oive"]
+[ext_resource type="Script" uid="uid://fagsbnhx7vml" path="res://nodes/playable-character/states/function/party_menu.gd" id="18_gdylm"]
 [ext_resource type="Script" uid="uid://bbjoswc4rgkdo" path="res://nodes/playable-character/states/animation/idle_animation_state.gd" id="19_jrru3"]
 [ext_resource type="Script" uid="uid://ctaf7n02aqvia" path="res://nodes/playable-character/states/movement/transitions/start_juxtaposing.gd" id="20_1byfn"]
 [ext_resource type="Script" uid="uid://b6gxvfktn0fip" path="res://nodes/playable-character/states/animation/walk_animation_state.gd" id="20_8ke1j"]
@@ -89,6 +95,11 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0vta"]
 
+[sub_resource type="Resource" id="Resource_y1bfg"]
+script = ExtResource("7_3xoba")
+member_packedscenes = Array[PackedScene]([ExtResource("7_bocou"), ExtResource("8_3f7k8"), ExtResource("9_tjxje")])
+metadata/_custom_type_script = "uid://dkl0rh51agdgv"
+
 [sub_resource type="Resource" id="Resource_3tara"]
 script = ExtResource("3_kwpjs")
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
@@ -125,13 +136,6 @@ metadata/_custom_type_script = "uid://bjx0nfkhbn162"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_b0vta")
 
-[node name="PlayableCharacterCombatManager" parent="." node_paths=PackedStringArray("camera", "target_range", "_gameplay_finite_state_machine", "_animation_finite_state_machine") instance=ExtResource("2_rfhey")]
-unique_name_in_owner = true
-camera = NodePath("../PlayableCharacterCamera")
-target_range = NodePath("../PlayableCharacterTargetRange")
-_gameplay_finite_state_machine = NodePath("../GameplayFiniteStateMachine")
-_animation_finite_state_machine = NodePath("../AnimationFiniteStateMachine")
-
 [node name="PlayableCharacterMover" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_3uqe5")
@@ -142,12 +146,23 @@ script = ExtResource("3_vodfd")
 _max_health = 0
 metadata/_custom_type_script = "uid://qhvhuttmj4gj"
 
+[node name="PlayableCharacterVisualController" parent="." instance=ExtResource("5_avwae")]
+unique_name_in_owner = true
+
+[node name="PlayableCharacterCombatManager" parent="." node_paths=PackedStringArray("camera", "target_range", "_gameplay_finite_state_machine", "_animation_finite_state_machine") instance=ExtResource("2_rfhey")]
+unique_name_in_owner = true
+camera = NodePath("../PlayableCharacterCamera")
+target_range = NodePath("../PlayableCharacterTargetRange")
+_gameplay_finite_state_machine = NodePath("../GameplayFiniteStateMachine")
+_animation_finite_state_machine = NodePath("../AnimationFiniteStateMachine")
+
+[node name="PlayableCharacterPartyManager" parent="." instance=ExtResource("7_kxva5")]
+unique_name_in_owner = true
+current_party = SubResource("Resource_y1bfg")
+
 [node name="PlayableCharacterJuxtometerManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_l2qdo")
-
-[node name="PlayableCharacterVisualController" parent="." instance=ExtResource("5_avwae")]
-unique_name_in_owner = true
 
 [node name="PlayableCharacterCharacterContainer" parent="." instance=ExtResource("6_1byfn")]
 unique_name_in_owner = true
@@ -162,14 +177,11 @@ top_level = true
 max_zoom = 0.5
 min_zoom = 3.0
 
-[node name="RotationPivot" parent="PlayableCharacterCamera" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.9396929, 0.34202012, 0, -0.34202012, 0.9396929, 0, 0, 0)
-
 [node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" index="0"]
-transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9447792e-07, 0.9999985, 5.4627657e-05, -2.2680524e-11, -5.710125e-05, 0.99999857, 0, 1.3, -2.9802322e-08)
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.944769e-07, 0.9999985, 5.4627657e-05, -2.2751578e-11, -5.710125e-05, 0.99999857, 0, 1.3, -2.9802322e-08)
 
 [node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
-transform = Transform3D(1, 1.2010625e-07, 2.8920192e-07, 1.2671713e-08, 1.0000858, 0.00030177832, 2.1474571e-07, -1.1622906e-05, 1.0015804, -3.34461e-09, -0.00027227402, 5.0000052)
+transform = Transform3D(1, 1.3265017e-07, 2.879194e-07, 1.2896484e-08, 1.0000858, 0.00030866265, 2.1474077e-07, -1.1622906e-05, 1.0016004, -3.34461e-09, -0.00027227402, 5.0000052)
 
 [node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
 transform = Transform3D(1, 1.1419341e-14, -3.6104464e-14, 1.6177836e-15, 0.9396926, 0.34202012, 3.7832747e-14, -0.34202012, 0.9396926, -1.8052221e-13, 2.9317007, 4.2538357)
@@ -259,7 +271,6 @@ metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
 [node name="Gameplay" type="Node" parent="FunctionFiniteStateMachine"]
 script = ExtResource("15_ga6v7")
-_immunity_flickering_time = null
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
 [node name="onOpenCharacterMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" node_paths=PackedStringArray("next_state")]
@@ -295,7 +306,7 @@ event = "close_character_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
 [node name="PartyMenu" type="Node" parent="FunctionFiniteStateMachine"]
-script = ExtResource("15_vb6qd")
+script = ExtResource("18_gdylm")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
 [node name="onClosePartyMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMenu" node_paths=PackedStringArray("next_state")]
@@ -1669,8 +1680,7 @@ next_state = NodePath("../../LandingState")
 [node name="MantleState" type="Node" parent="GameplayFiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("28_spatg")
-_force = 2.5
-_vertical_force = 6.0
+_vertical_force = 10.0
 
 [node name="land" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
@@ -1924,9 +1934,9 @@ script = ExtResource("56_8pdar")
 metadata/_custom_type_script = "uid://ckcspu8iefpxp"
 
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="." method="_on_current_character_changed"]
-[connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterCombatManager" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterMover" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="StatusInterface" method="_on_playable_character_character_container_current_character_changed"]
+[connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterCombatManager" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterJuxtometerManager" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="current_character_changed" from="PlayableCharacterCharacterContainer" to="PlayableCharacterHurtbox" method="_on_playable_character_character_container_current_character_changed"]
 [connection signal="target_entered" from="PlayableCharacterTargetRange" to="PlayableCharacterCombatManager" method="_on_playable_character_target_range_target_entered"]

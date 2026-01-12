@@ -13,12 +13,20 @@ const GAME_STRETCH_SHRINK = 1
 
 const DEFAULT_COLOR_LIMIT = 12
 
-var _game_manager: GameManager
-
 @onready var _world_sub_viewport_container: SubViewportContainer = %WorldSubViewportContainer
 @onready var _world_sub_viewport: SubViewport = %WorldSubViewport
 @onready var _world_ui_sub_viewport_container: SubViewportContainer = %WorldUISubViewportContainer
 @onready var _world_ui_sub_viewport: SubViewport = %WorldUISubViewport
+
+@onready var _world_ui_camera_3d: Camera3D = %WorldUICamera3D
+
+var current_camera: Camera3D
+
+var _game_manager: GameManager
+
+
+func _process(delta: float) -> void:
+	_handle_update_world_ui_camera_transform()
 
 func initialize(game_manager: GameManager):
 	_game_manager = game_manager
@@ -37,6 +45,18 @@ func initialize(game_manager: GameManager):
 	SignalBus.limit_colors_changed.connect(_set_limit_colors)
 	
 	get_window()
+
+# will set the given camera as current and update the WorldUICamera accordingly.
+func set_current_camera(camera: Camera3D):
+	camera.current = true
+	current_camera = camera
+
+func _handle_update_world_ui_camera_transform():
+	if current_camera == null:
+		return
+
+	_world_ui_camera_3d.global_position = current_camera.global_position
+	_world_ui_camera_3d.global_rotation = current_camera.global_rotation
 
 func _preselect_resolution():
 	var resolution = AppSettings.get_render_resolution()

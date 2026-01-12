@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd513nulas40a"]
+
+[ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_8tjim"]
+
+[node name="IdaHeavyAttackCharacterActionVisual" instance=ExtResource("1_8tjim")]
+_action_name = "Ida Heavy Attack"
+action_visual_type = 5
+
+[node name="Button" parent="Control" index="0"]
+theme_override_font_sizes/font_size = 12
+text = "Ida Heavy Attack"

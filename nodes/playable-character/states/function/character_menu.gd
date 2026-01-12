@@ -1,8 +1,10 @@
 @tool
 extends FSMState
 
-const PLAYABLE_CHARACTER_CHARACTER_STAGE_SCENE = preload("res://nodes/playable-character/components/playable-character-character-stage/playable_character_character_stage.tscn")
-const PLAYABLE_CHARACTER_CHARACTER_UI_SCENE = preload("res://nodes/playable-character/components/playable-character-character-ui/playable_character_character_ui.tscn")
+const PLAYABLE_CHARACTER_CHARACTER_STAGE_SCENE: PackedScene = preload("res://nodes/playable-character/components/playable-character-character-stage/playable_character_character_stage.tscn")
+const PLAYABLE_CHARACTER_CHARACTER_UI_SCENE: PackedScene = preload("res://nodes/playable-character/components/playable-character-character-ui/playable_character_character_ui.tscn")
+
+const CLOSE_CHARACTER_MENU_EVENT: String = "close_character_menu"
 
 @onready var _playable_character_character_container: PlayableCharacterCharacterContainer = %PlayableCharacterCharacterContainer
 
@@ -53,7 +55,7 @@ func _on_enter(actor: Node, _blackboard: BTBlackboard) -> void:
 
 	# set stage camera as current
 	var camera = _playable_character_character_stage_instance.get_node("%TrackballCamera")
-	camera.current = true
+	game_manager.get_world_render_handler().set_current_camera(camera)
 
 	# set current inspected character to current active character
 	var character = _playable_character_character_container.get_current_character()
@@ -134,7 +136,7 @@ func _on_playable_character_character_ui_instance_character_changed(old: Charact
 
 func _handle_transitions() -> bool:
 	if Input.is_action_just_pressed("close_menu"):
-		get_parent().fire_event("close_character_menu")
+		get_parent().fire_event(CLOSE_CHARACTER_MENU_EVENT)
 		return true
 	
 	return false

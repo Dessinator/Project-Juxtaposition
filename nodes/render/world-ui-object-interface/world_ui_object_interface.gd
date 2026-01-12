@@ -16,6 +16,7 @@ func _ready() -> void:
 	_create_world_origin()
 
 func _process(delta: float) -> void:
+	_handle_self_destruct()
 	_copy_world_origin_position_and_rotation()
 
 func _create_world_origin():
@@ -32,14 +33,25 @@ func _create_world_origin():
 		WorldOriginInitialPositionCopyType.LOCAL_POSITION:
 			_world_origin.position = parent.position
 	
+	await grandparent.ready
+
 	grandparent.add_child(_world_origin)
 	parent.reparent(world_ui_sub_viewport, true)
 
 	_world_origin.visibility_changed.connect(_on_world_origin_visibility_changed)
 
-func _copy_world_origin_position_and_rotation():
-	if not _world_origin:
+func _handle_self_destruct():
+	if not _world_origin == null:
 		return
+	
+	get_parent().queue_free()
+
+func _copy_world_origin_position_and_rotation():
+	if _world_origin == null:
+		return
+	if not _world_origin.is_inside_tree():
+		return
+	
 	var parent = get_parent()
 	
 	parent.global_position = _world_origin.global_position

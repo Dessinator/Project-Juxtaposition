@@ -1,0 +1,42 @@
+[gd_scene load_steps=13 format=3 uid="uid://dg4nb48w1rfip"]
+
+[ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_4km4v"]
+[ext_resource type="PackedScene" uid="uid://b21mw5n1jljvk" path="res://nodes/character_model/prefabs/ida_character_model.tscn" id="2_cxckr"]
+[ext_resource type="Resource" uid="uid://bht50wtjyixgn" path="res://resources/character/character-data/prefabs/ida_character_data.tres" id="2_wgncw"]
+[ext_resource type="Resource" uid="uid://bsgc8xi7q7tjv" path="res://resources/character/character-stats/prefabs/ida_character_stats.tres" id="3_85o65"]
+[ext_resource type="PackedScene" uid="uid://t2orhlm2ndh5" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/ida_character_switcher_visual.tscn" id="4_h6183"]
+[ext_resource type="PackedScene" uid="uid://bv0k3fj34kch" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/ida_character_status_visual.tscn" id="5_85o65"]
+[ext_resource type="PackedScene" uid="uid://bl8xmod0jg1g4" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_dodge_character_action_visual.tscn" id="6_jofbf"]
+[ext_resource type="PackedScene" uid="uid://b2468tlqalh6d" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_parry_character_action_visual.tscn" id="7_hp258"]
+[ext_resource type="PackedScene" uid="uid://jp2m306lhqtb" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_jump_character_action_visual.tscn" id="8_a6v3g"]
+[ext_resource type="PackedScene" uid="uid://br8hlkt0y4ggg" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_light_attack_character_action_visual.tscn" id="9_50tmt"]
+[ext_resource type="PackedScene" uid="uid://bd513nulas40a" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_heavy_attack_character_action_visual.tscn" id="10_uf4ns"]
+[ext_resource type="PackedScene" uid="uid://c23qi8no8j0gb" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_juxtapose_character_action_visual.tscn" id="11_wkyju"]
+
+[node name="IdaCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_4km4v")]
+_character_data = ExtResource("2_wgncw")
+_character_model = NodePath("IdaCharacterModel")
+_character_stats = ExtResource("3_85o65")
+_character_switcher_visual_packedscene = ExtResource("4_h6183")
+_character_status_visual_packedscene = ExtResource("5_85o65")
+dodge_character_action_visual_packedscene = ExtResource("6_jofbf")
+parry_character_action_visual_packedscene = ExtResource("7_hp258")
+jump_character_action_visual_packedscene = ExtResource("8_a6v3g")
+light_attack_character_action_visual_packedscene = ExtResource("9_50tmt")
+heavy_attack_character_action_visual_packedscene = ExtResource("10_uf4ns")
+juxtapose_character_action_visual_packedscene = ExtResource("11_wkyju")
+_mantle_ray_cast = NodePath("MantleRayCast")
+
+[node name="AnimationTree" parent="." index="4"]
+root_node = NodePath("%AnimationTree/../IdaCharacterModel")
+anim_player = NodePath("../IdaCharacterModel/AnimationPlayer")
+
+[node name="IdaCharacterModel" parent="." index="5" instance=ExtResource("2_cxckr")]
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[editable path="IdaCharacterModel"]
