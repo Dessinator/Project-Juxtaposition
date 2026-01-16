@@ -63,8 +63,6 @@ fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehj8p"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pv0jb"]
-
 [sub_resource type="Gradient" id="Gradient_yhulp"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 0, 0, 1)
@@ -88,6 +86,8 @@ gradient = SubResource("Gradient_n75fw")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyw40"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pv0jb"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_prfcl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qjoy5"]
@@ -99,7 +99,6 @@ gradient = SubResource("Gradient_n75fw")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pdp6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n75fw"]
-load_path = "res://.godot/imported/nonbinary_gender_symbol.svg-122fe3499980ccbc08767ecfc456f7e1.ctex"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kltjm"]
 
@@ -337,29 +336,29 @@ layout_mode = 2
 layout_mode = 2
 text = "Substats & Details"
 
-[node name="CharacterShortDescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CharacterShortDescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/ScrollContainer/CharacterShortDescriptionPanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer"]
-layout_mode = 2
-
-[node name="DescriptionTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
+[node name="DescriptionTitleLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/ScrollContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Short Character Description"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/ScrollContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CharacterShortDescriptionLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
+[node name="CharacterShortDescriptionLabel" type="Label" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer/ScrollContainer/CharacterShortDescriptionPanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. "
 autowrap_mode = 3
-
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/separator = SubResource("StyleBoxEmpty_pv0jb")
 
 [node name="CharacterLevelPanelContainer" type="PanelContainer" parent="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer/CharacterLevelPanelContainer/VBoxContainer"]
 layout_mode = 2

@@ -16,4 +16,4 @@ func initialize(playable_character: PlayableCharacter):
 func deploy_party(party: Party):
 	current_party = party
 
-	current_party.deploy(_playable_character_character_container) 
+	current_party.deploy(_playable_character_character_container)

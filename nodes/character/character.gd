@@ -18,6 +18,8 @@ enum CharacterAttackType
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var _character_attack_state_machine: FiniteStateMachine = %CharacterAttackFiniteStateMachine
 
+var _initialized: bool = false
+
 var _character_status: CharacterStatus
 var _character_model_animation_player: AnimationPlayer
 var _character_model_animation_names: Array[StringName]
@@ -44,8 +46,11 @@ var _character_model_hitbox_animation_names: Array[StringName]
 #@export var _character_attack_state_machine_packedscene: PackedScene
 @export var _mantle_ray_cast: RayCast3D
 
-
 func _ready() -> void:
+	if not _initialized:
+		initialize()
+
+func initialize() -> void:
 	_initialize_character_stats()
 	_initialize_character_status()
 	_initialize_hurtbox()
@@ -55,6 +60,8 @@ func _ready() -> void:
 	_character_model_animation_names = data["animation_names"]
 	# _character_model_hitbox_animation_player = data["hitbox_animation_player"]
 	# _character_model_hitbox_animation_names = data["hitbox_animation_names"]
+	
+	_initialized  = true
 
 # func get_character_metadata() -> CharacterMetadata:
 # 	return _character_metadata
@@ -107,7 +114,7 @@ func _initialize_character_status():
 	_character_status.died.connect(_on_died)
 	_character_status.initialize(self, _character_stats)
 func _initialize_hurtbox():
-	_character_hurtbox.initialize(self)
+	%CharacterHurtbox.initialize(self)
 
 func _grab_model_data(model: Node3D):
 	var data = {}

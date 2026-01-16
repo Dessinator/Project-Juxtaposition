@@ -39,6 +39,8 @@ func add_character(character: Character):
 		return
 	
 	_characters.append(character)
+func remove_character(character: Character):
+	_characters.erase(character)
 
 func get_current_character() -> Character:
 	return _current_character
