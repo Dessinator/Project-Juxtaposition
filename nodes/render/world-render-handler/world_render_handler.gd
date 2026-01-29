@@ -28,10 +28,17 @@ var _game_manager: GameManager
 func _process(delta: float) -> void:
 	_handle_update_world_ui_camera_transform()
 
+func _input(event: InputEvent) -> void:
+	if _world_sub_viewport and _world_sub_viewport.is_inside_tree():
+		_world_sub_viewport.push_input(event)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if _world_sub_viewport and _world_sub_viewport.is_inside_tree():
+		_world_sub_viewport.push_input(event)
+
 func initialize(game_manager: GameManager):
 	_game_manager = game_manager
 	
-	#_preselect_resolution()
 	_set_resolution(PS3_RESOLUTION)
 	_preselect_affine_mapping()
 	_preselect_jitter_strength()

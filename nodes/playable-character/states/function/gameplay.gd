@@ -44,6 +44,7 @@ func _on_enter(actor: Node, _blackboard: BTBlackboard) -> void:
 	var game_manager = GameManager.get_instance()
 	
 	game_manager.get_world_render_handler().set_current_camera(_playable_character_camera.get_camera())
+	_playable_character_camera.set_process(true)
 
 	if not _gameplay_finite_state_machine.active:
 		_gameplay_finite_state_machine.active = true
@@ -71,6 +72,8 @@ func _on_update(_delta: float, actor: Node, _blackboard: BTBlackboard) -> void:
 # Executes before the state is exited.
 func _on_exit(actor: Node, _blackboard: BTBlackboard) -> void:
 	actor = actor as PlayableCharacter
+
+	_playable_character_camera.set_process(false)
 
 	if _gameplay_finite_state_machine.active:
 		_gameplay_finite_state_machine.active = false
@@ -473,7 +476,7 @@ func _handle_transitions() -> bool:
 		get_parent().fire_event("open_party_menu")
 		return true
 
-	# if Input.is_action_just_pressed("open_character_archive_menu"):
-	# 	get_parent().fire_event("open_character_archive_menu")
+	if Input.is_action_just_pressed("open_character_archive_menu"):
+		get_parent().fire_event("open_character_archive_menu")
 
 	return false

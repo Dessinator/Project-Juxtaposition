@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://75cyxuv6ln3k" path="res://nodes/character_model/character_model.gd" id="2_kb7vc"]
 [ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/materials/psx_render_lit_material.tres" id="3_kb7vc"]
 
-[node name="IdaCharacterModel" instance=ExtResource("1_r8vwf")]
+[node name="IdaCharacterModel" node_paths=PackedStringArray("mesh_instance_3d") instance=ExtResource("1_r8vwf")]
 script = ExtResource("2_kb7vc")
+mesh_instance_3d = NodePath("godot_rig/GeneralSkeleton/ida_model")
 
 [node name="GeneralSkeleton" parent="godot_rig" index="0"]
 bones/9/rotation = Quaternion(0.92678314, -6.40652e-17, -6.471204e-17, -0.37559688)

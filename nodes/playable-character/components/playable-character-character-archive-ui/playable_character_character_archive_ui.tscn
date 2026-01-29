@@ -1,0 +1,192 @@
+[gd_scene load_steps=11 format=3 uid="uid://vukalsknpflm"]
+
+[ext_resource type="Script" uid="uid://mvpha0hu8lpr" path="res://nodes/playable-character/components/playable-character-character-archive-ui/playable_character_character_archive_ui.gd" id="1_itf4v"]
+[ext_resource type="Texture2D" uid="uid://df2b1nx7te3q4" path="res://resources/images/icons/eye-slash.svg" id="1_q3qpo"]
+[ext_resource type="Texture2D" uid="uid://bs8eolyx3xnrq" path="res://resources/images/icons/eye.svg" id="2_itf4v"]
+
+[sub_resource type="Gradient" id="Gradient_t5jjb"]
+offsets = PackedFloat32Array(0, 0.14805195)
+colors = PackedColorArray(0, 0, 0, 0.23529412, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qm2uh"]
+gradient = SubResource("Gradient_t5jjb")
+width = 256
+height = 256
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_ehj8p"]
+offsets = PackedFloat32Array(0, 0.14805195)
+colors = PackedColorArray(0, 0, 0, 0.23529412, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qmjdm"]
+gradient = SubResource("Gradient_ehj8p")
+width = 256
+height = 256
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ym7e6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4hnyl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkhpj"]
+
+[node name="PlayableCharacterCharacterArchiveUI" type="Control" node_paths=PackedStringArray("_hideable_ui_objects")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_itf4v")
+_hideable_ui_objects = [NodePath("MarginContainer/CharacterSelectPanelContainer"), NodePath("MarginContainer/CharacterInfoPanelContainer"), NodePath("MarginContainer/CloseButton")]
+
+[node name="GradientTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_qm2uh")
+
+[node name="GradientTextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_qmjdm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HideUITextureButton" type="TextureButton" parent="MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+toggle_mode = true
+texture_normal = ExtResource("1_q3qpo")
+texture_pressed = ExtResource("2_itf4v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CharacterSelectPanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CharacterSelectPanelContainer"]
+layout_mode = 2
+
+[node name="CharacterPickerTitleLabel" type="Label" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Character Picker"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FilterCharactersButton" type="Button" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Filters"
+
+[node name="SortCharacterByOptionButton" type="OptionButton" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SortCharactersButton" type="Button" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Sort
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+
+[node name="CharacterPartyMemberSelectButtonsGridContainer" type="GridContainer" parent="MarginContainer/CharacterSelectPanelContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 26
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="CharacterInfoPanelContainer" type="PanelContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ym7e6")
+
+[node name="CharacterPortraitTextureRect" type="TextureRect" parent="MarginContainer/CharacterInfoPanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = SubResource("PlaceholderTexture2D_4hnyl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CharacterInfoPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CharacterInfoPanelContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterNicknameLabel" type="Label" parent="MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Character Nickname"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hkhpj")
+
+[node name="CharacterLevelLabel" type="Label" parent="MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. ???"
+
+[node name="CloseButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Close"
+
+[connection signal="toggled" from="MarginContainer/HideUITextureButton" to="." method="_on_hide_ui_texture_button_toggled"]
+[connection signal="pressed" from="MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]

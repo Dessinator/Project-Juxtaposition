@@ -32,6 +32,8 @@ enum CharacterGender
 @export var pronouns: Pronouns
 @export var gender: CharacterGender = CharacterGender.GENDER_NONBINARY
 
+@export var portrait: Texture2D
+
 @export_multiline var short_description: String
 @export_multiline var long_description: String
 

@@ -3,13 +3,12 @@ extends Resource
 
 ## the party reasource is reponsible for defining a list of three characters (by PackedScene).
 
-
 var deployed_party: Dictionary[StringName, Character]
 var deployed_party_container: PlayableCharacterCharacterContainer
 
 @export var _max_members: int = 3
 
-@export var member_packedscenes: Array[PackedScene]
+@export var member_internal_names: Array[StringName]
 @export var preset_title: String
 
 ## should not be called directly. PlayableCharacterPartyManager should be the only
@@ -19,22 +18,24 @@ func deploy(character_container: PlayableCharacterCharacterContainer):
 	deployed_party_container.clear_characters()
 	deployed_party = {}
 
-	for packedscene in member_packedscenes:
-		add_member_packedscene(packedscene)
+	for internal_name in member_internal_names:
+		if internal_name.is_empty():
+			continue
+		var character_packet = Characters.get_character_packet(internal_name)
+		add_member_packedscene(character_packet.character_scene)
 	
 	deployed_party_container.handle_switch_to_character(0)
 
 func withdraw():
 	for member_internal_name in deployed_party.keys():
-		var character = deployed_party[member_internal_name]
-		remove_member(character)
+		remove_member(member_internal_name)
 	
 	deployed_party_container.clear_characters()
 	deployed_party_container = null
 	deployed_party = {}
 
 func add_member_packedscene(packedscene: PackedScene):
-	assert(deployed_party.size() + 1 < _max_members, "Maximum allowed members exceeded in Party {party}.".format({
+	assert(deployed_party.size() + 1 <= _max_members, "Maximum allowed members exceeded in Party {party}.".format({
 		"party" : self.to_string()
 	}))
 	
@@ -59,3 +60,9 @@ func remove_member(character_internal_name: StringName):
 	var character = deployed_party[character_internal_name]
 	deployed_party.erase(character_internal_name)
 	deployed_party_container.remove_character(character)
+
+func is_full() -> bool:
+	return not member_internal_names.has("")
+
+func is_empty() -> bool:
+	return member_internal_names.all(func(name): return name == "")

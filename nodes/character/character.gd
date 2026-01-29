@@ -56,17 +56,21 @@ func initialize() -> void:
 	_initialize_hurtbox()
 	
 	var data = _grab_model_data(_character_model)
-	_character_model_animation_player = data["animation_player"]
-	_character_model_animation_names = data["animation_names"]
-	# _character_model_hitbox_animation_player = data["hitbox_animation_player"]
-	# _character_model_hitbox_animation_names = data["hitbox_animation_names"]
+	if data:
+		_character_model_animation_player = data["animation_player"]
+		_character_model_animation_names = data["animation_names"]
 	
 	_initialized  = true
 
-# func get_character_metadata() -> CharacterMetadata:
-# 	return _character_metadata
+func is_initialized() -> bool:
+	return _initialized
+
 func get_character_data() -> CharacterData:
 	return _character_data
+func get_character_stats_copy() -> CharacterStats:
+	var copy = _character_stats.duplicate()
+	copy.initialize()
+	return copy
 func get_character_model() -> CharacterModel:
 	return _character_model
 func get_character_attack_state_machine() -> FiniteStateMachine:
@@ -122,6 +126,7 @@ func _grab_model_data(model: Node3D):
 	# var hitbox_names_array
 	if not model:
 		names_array = []
+		return
 		# hitbox_names_array = []
 	
 	var animation_player = model.get_node("%AnimationPlayer")

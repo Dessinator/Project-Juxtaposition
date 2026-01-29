@@ -1,0 +1,156 @@
+[gd_scene load_steps=10 format=3 uid="uid://cn5hrvw1lyawl"]
+
+[ext_resource type="Script" uid="uid://c0ixhi4hrnean" path="res://nodes/render/ui-render-handler/buttons/character-party-member-select-button/character_party_member_select_button.gd" id="1_adeao"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kyy3p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu11n"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 5
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adeao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkcm7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1.353, 1.353, 1.353, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yudc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1.353, 1.353, 1.353, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kd1c"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1.353, 1.353, 1.353, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adeao"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kd1c"]
+
+[node name="CharacterPartyMemberSelectButton" type="PanelContainer"]
+script = ExtResource("1_adeao")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="CharacterPortraitTextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_kyy3p")
+expand_mode = 1
+
+[node name="CharacterNicknameLabel" type="Label" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 11
+text = "Ch. Nickname"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CharacterLevelLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. ???"
+horizontal_alignment = 1
+
+[node name="MemberIndexPanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_fu11n")
+
+[node name="MarginContainer" type="MarginContainer" parent="MemberIndexPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+
+[node name="MemberIndexLabel" type="Label" parent="MemberIndexPanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_adeao")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lkcm7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5yudc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5kd1c")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_adeao")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5kd1c")
+toggle_mode = true

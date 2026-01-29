@@ -24,7 +24,7 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.78431374)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -77,12 +77,12 @@ colors = PackedColorArray(0.49803922, 0.49803922, 0.49803922, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1cuvc"]
 gradient = SubResource("Gradient_q66lw")
 
-[sub_resource type="Gradient" id="Gradient_n75fw"]
+[sub_resource type="Gradient" id="Gradient_1cuvc"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_eqffr"]
-gradient = SubResource("Gradient_n75fw")
+gradient = SubResource("Gradient_1cuvc")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyw40"]
 
@@ -124,7 +124,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0d2e5")
-_hideable_ui_objects = [NodePath("VBoxContainer/CharacterPickerPanelContainer"), NodePath("VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer"), NodePath("VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer")]
+_hideable_ui_objects = [NodePath("VBoxContainer/TopBarPanelContainer"), NodePath("VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer"), NodePath("VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabContainer")]
 nonbinary_gender_icon_texture = ExtResource("2_t5jjb")
 male_gender_icon_texture = ExtResource("3_q66lw")
 female_gender_icon_texture = ExtResource("4_1cuvc")
@@ -139,14 +139,28 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="CharacterPickerPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="TopBarPanelContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0d2e5")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterPickerPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopBarPanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
 
-[node name="ScrollLeftTextureButton" type="TextureButton" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="VBoxContainer/TopBarPanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Close"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBarPanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ScrollLeftTextureButton" type="TextureButton" parent="VBoxContainer/TopBarPanelContainer/MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -155,19 +169,20 @@ texture_normal = ExtResource("3_pv0jb")
 stretch_mode = 5
 flip_h = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TopBarPanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterPickerHBoxContainer" type="HBoxContainer" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer/ScrollContainer"]
+[node name="CharacterPickerHBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBarPanelContainer/MarginContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ScrollRightTextureButton" type="TextureButton" parent="VBoxContainer/CharacterPickerPanelContainer/HBoxContainer"]
+[node name="ScrollRightTextureButton" type="TextureButton" parent="VBoxContainer/TopBarPanelContainer/MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -1126,6 +1141,7 @@ substat_abbreviation = "SUB"
 substat_name = "Sub Stat"
 source_stat_abbreviation = "ATTK"
 
+[connection signal="pressed" from="VBoxContainer/TopBarPanelContainer/MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer/CharacterLevelButton" to="." method="_on_character_level_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer/WeaponLevelButton" to="." method="_on_weapon_level_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CharacterInfoPanelContainer/MarginContainer/CharacterInfoTabButtonsPanelContainer/VBoxContainer/TalentsButton" to="." method="_on_talents_button_pressed"]

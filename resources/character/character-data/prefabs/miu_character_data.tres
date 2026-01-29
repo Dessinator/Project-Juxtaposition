@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://crqlkrn1s1o16"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_twhxr"]
+[ext_resource type="Texture2D" uid="uid://bnsmvolvuwl4d" path="res://resources/images/character-images/miu/miu_portrait_normal.png" id="2_2bpp4"]
+[ext_resource type="Resource" uid="uid://dpf67nv5crtmt" path="res://resources/pronouns/prefabs/she.tres" id="2_vlip6"]
+[ext_resource type="Script" uid="uid://lf6xur7ya78e" path="res://resources/character/character-data/character_data.gd" id="3_2bpp4"]
+
+[resource]
+script = ExtResource("3_2bpp4")
+full_name = "Miu Amano"
+nickname = "Miu"
+internal_name = &"miu"
+pronouns = ExtResource("2_vlip6")
+gender = 2
+portrait = ExtResource("2_2bpp4")
+metadata/_custom_type_script = "uid://lf6xur7ya78e"

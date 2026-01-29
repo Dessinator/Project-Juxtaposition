@@ -32,7 +32,8 @@ const LEVEL_4_EXPS_MATERIAL_VALUE: int = 22222
 const CHARACTER_PICKER_ICON_BUTTON_SCENE: PackedScene = preload("res://nodes/render/ui-render-handler/buttons/character-picker-icon-button/character_picker_icon_button.tscn")
 const CHARACTER_TALENT_SUBSECTION_PANEL_SCENE: PackedScene = preload("res://nodes/render/ui-render-handler/ui-visuals/talent-subsection-panel/talent_subsection_panel.tscn")
 
-signal character_changed(old: Character, new: Character)
+signal character_change_requested(internal_name: StringName)
+signal close_requested
 
 @onready var _character_picker_hbox_container: HBoxContainer = %CharacterPickerHBoxContainer
 
@@ -102,14 +103,16 @@ signal character_changed(old: Character, new: Character)
 
 @onready var _weapon_stats_details_panel_container: PanelContainer = %WeaponStatsDetailsPanelContainer
 
-var current_character: Character:
+var current_character_internal_name: StringName:
 	set(value):
-		var old_character = current_character
-		current_character = value
+		current_character_internal_name = value
 
 		# shouldn't ever happen but just in case
-		if current_character == null:
+		if current_character_internal_name.is_empty():
 			return
+		
+		var character_packet = Characters.get_character_packet(current_character_internal_name)
+		_current_character = character_packet.character_scene.instantiate()
 		
 		_lv_1_exps_material_button.amount = 0
 		_lv_2_exps_material_button.amount = 0
@@ -122,7 +125,7 @@ var current_character: Character:
 		_update_all_character_data_fields()
 		_update_all_character_stat_fields()
 
-		character_changed.emit(old_character, current_character)
+var _current_character: Character
 
 var _character_picker_icon_buttons: Dictionary[StringName, Control]
 var _character_talent_subsection_panels: Dictionary[StringName, Dictionary]
@@ -153,11 +156,25 @@ var _tentative_exps_addend: int:
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+	_fill_character_picker_icon_buttons()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+func _fill_character_picker_icon_buttons():
+	for character_packet: CharacterPacket in Characters.get_all_character_packets():
+		var character_data = character_packet.character_data
+		var character_picker_icon_button_instance = CHARACTER_PICKER_ICON_BUTTON_SCENE.instantiate()
+
+		_character_picker_icon_buttons[character_data.internal_name] = character_picker_icon_button_instance
+		_character_picker_hbox_container.add_child(character_picker_icon_button_instance)
+
+		var button = character_picker_icon_button_instance.get_node("%Button")
+		button.text = character_data.internal_name
+		button.pressed.connect(_on_character_picker_icon_button_pressed.bind(character_data.internal_name))
+		
 
 func add_character_picker_icon_button(character: Character):
 	var internal_name = character.get_character_data().internal_name
@@ -172,7 +189,7 @@ func add_character_picker_icon_button(character: Character):
 
 ## updates all Controls that read CharacterData
 func _update_all_character_data_fields():
-	var data = current_character.get_character_data()
+	var data = _current_character.get_character_data()
 
 	_set_character_nickname_label(data.nickname)
 	_set_character_name_label(data.full_name)
@@ -198,7 +215,7 @@ func _update_all_character_data_fields():
 
 ## updates all Controls that read CharacterStats
 func _update_all_character_stat_fields():
-	var stats = current_character.get_character_stats()
+	var stats = _current_character.get_character_stats_copy()
 
 	_update_character_stat_panel(_attk_character_stat_panel, stats.get_stat(ATTK_STAT_INTERNAL_NAME))
 	_update_character_stat_panel(_dfns_character_stat_panel, stats.get_stat(DFNS_STAT_INTERNAL_NAME))
@@ -219,7 +236,7 @@ func _update_all_character_stat_fields():
 	_update_character_substat_panel(_maxsps_character_substat_panel, stats.get_substat(MAX_SPS_SUBSTAT_INTERNAL_NAME), stats.get_stat(VTLY_STAT_INTERNAL_NAME))
 
 func _update_tentative_level_addend():
-	var data = current_character.get_character_data()
+	var data = _current_character.get_character_data()
 	var current_exps = data.experience_points
 	var tentative_level_addend = 0
 	var current_level_sum = current_exps + _tentative_exps_addend
@@ -319,7 +336,7 @@ func _update_character_exps_status_bar(character_experience_points: int, charact
 	_character_exps_status_bar.set_max_value(character_max_experience_points)
 
 func _update_character_exps_status_bar_ghost_value():
-	var data = current_character.get_character_data()
+	var data = _current_character.get_character_data()
 
 	_character_exps_status_bar.set_ghost_value(data.experience_points + _tentative_exps_addend)
 
@@ -361,8 +378,11 @@ func _set_character_talent_container(container: Control, type: StringName, talen
 
 # buttons
 
-func _on_character_picker_icon_button_pressed(character: Character):
-	current_character = character
+func _on_close_button_pressed() -> void:
+	close_requested.emit()
+
+func _on_character_picker_icon_button_pressed(internal_name: StringName):
+	character_change_requested.emit(internal_name)
 
 func _on_character_level_button_pressed() -> void:
 	_character_info_tab_container.current_tab = 0
@@ -403,7 +423,7 @@ func _on_lv_4_exps_material_button_amount_increased(old: int, new: int) -> void:
 func _on_character_auto_add_exps_button_pressed() -> void:
 	pass # Replace with function body.
 func _on_character_add_exps_button_pressed() -> void:
-	var data = current_character.get_character_data()
+	var data = _current_character.get_character_data()
 
 	data.add_experience_points(_tentative_exps_addend)
 

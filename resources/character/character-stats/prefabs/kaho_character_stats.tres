@@ -20,7 +20,6 @@
 
 [sub_resource type="Resource" id="Resource_56lqe"]
 script = ExtResource("1_c8dex")
-_alignment = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://b6lp74gqsj10d"
 
 [sub_resource type="Curve" id="Curve_c8dex"]
@@ -73,7 +72,6 @@ metadata/_custom_type_script = "uid://dkwx2cueh4lp1"
 script = ExtResource("16_noq6t")
 _stats = Array[ExtResource("1_g5h7s")]([SubResource("Resource_cqnmv"), SubResource("Resource_hd2jt"), SubResource("Resource_tc4ov"), SubResource("Resource_phunj")])
 _substats = Array[ExtResource("2_0d2qk")]([ExtResource("3_x1r0f"), ExtResource("4_bsa38"), ExtResource("5_sbivv"), ExtResource("6_eamab"), ExtResource("7_q2mat"), ExtResource("8_bck3e"), ExtResource("9_1rmse"), ExtResource("10_141jn"), ExtResource("11_lod65"), ExtResource("12_f2qou"), ExtResource("13_nr3bn"), ExtResource("14_v60us")])
-_wards = Array[ExtResource("15_1wxaj")]([])
 _alignment = SubResource("Resource_56lqe")
 _juxtometer_damage_dealt_curve = SubResource("Curve_c8dex")
 _juxtometer_damage_taken_curve = SubResource("Curve_56lqe")

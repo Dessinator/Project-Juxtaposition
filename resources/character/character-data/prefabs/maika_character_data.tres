@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://swhc8yibcnoy"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_lao1p"]
+[ext_resource type="Texture2D" uid="uid://b5lh1h1kl2au1" path="res://resources/images/character-images/maika/maika_portrait_normal.png" id="2_5vtmj"]
+[ext_resource type="Resource" uid="uid://dpf67nv5crtmt" path="res://resources/pronouns/prefabs/she.tres" id="2_akgwe"]
+[ext_resource type="Script" uid="uid://lf6xur7ya78e" path="res://resources/character/character-data/character_data.gd" id="3_5vtmj"]
+
+[resource]
+script = ExtResource("3_5vtmj")
+full_name = "Maika Sakuranomiya"
+nickname = "Maika"
+internal_name = &"maika"
+pronouns = ExtResource("2_akgwe")
+gender = 2
+portrait = ExtResource("2_5vtmj")
+metadata/_custom_type_script = "uid://lf6xur7ya78e"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://lhkq0nl6icax"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_6wo20"]
+[ext_resource type="Texture2D" uid="uid://dalhfti0s88dr" path="res://resources/images/character-images/kaho/kaho_portrait_normal.png" id="2_0lq2j"]
+[ext_resource type="Resource" uid="uid://dpf67nv5crtmt" path="res://resources/pronouns/prefabs/she.tres" id="2_lycsm"]
+[ext_resource type="Script" uid="uid://lf6xur7ya78e" path="res://resources/character/character-data/character_data.gd" id="3_0lq2j"]
+
+[resource]
+script = ExtResource("3_0lq2j")
+full_name = "Kaho Hinata"
+nickname = "Kaho"
+internal_name = &"kaho"
+pronouns = ExtResource("2_lycsm")
+gender = 2
+portrait = ExtResource("2_0lq2j")
+metadata/_custom_type_script = "uid://lf6xur7ya78e"

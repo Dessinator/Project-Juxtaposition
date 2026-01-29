@@ -14,6 +14,8 @@ func initialize(playable_character: PlayableCharacter):
 	deploy_party(current_party)
 
 func deploy_party(party: Party):
+	if not current_party.deployed_party.is_empty():
+		current_party.withdraw()
+	
 	current_party = party
-
 	current_party.deploy(_playable_character_character_container)

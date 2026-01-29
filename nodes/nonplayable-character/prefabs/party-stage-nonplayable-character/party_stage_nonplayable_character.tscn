@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://wl0x3swoyfj8"]
+[gd_scene load_steps=6 format=3 uid="uid://wl0x3swoyfj8"]
 
 [ext_resource type="PackedScene" uid="uid://b8kk2e6juyhhn" path="res://nodes/nonplayable-character/nonplayable_character.tscn" id="1_85ai5"]
 [ext_resource type="PackedScene" uid="uid://dtkqv2sd3nrs6" path="res://nodes/nonplayable-character/components/nonplayable-character-character-container/nonplayable_character_character_container.tscn" id="2_shsu8"]
+[ext_resource type="PackedScene" uid="uid://3hxlu2t0hpv3" path="res://nodes/playable-character/components/playable-character-party-stage/components/add-character-button/add_character_button.tscn" id="3_1yxmq"]
+[ext_resource type="PackedScene" uid="uid://c0upkpqi2oblx" path="res://nodes/playable-character/components/playable-character-party-stage/components/character-button/character_button.tscn" id="3_hnlpf"]
+[ext_resource type="PackedScene" uid="uid://bwcn7qfvst0va" path="res://nodes/render/world-ui-object-manager/world_ui_object_manager.tscn" id="4_oxfc3"]
 
 [node name="PartyStageNonplayableCharacter" node_paths=PackedStringArray("nonplayable_character_character_container") instance=ExtResource("1_85ai5")]
 nonplayable_character_character_container = NodePath("NonplayableCharacterCharacterContainer")
 
 [node name="NonplayableCharacterCharacterContainer" parent="." index="0" instance=ExtResource("2_shsu8")]
+
+[node name="CharacterButton" parent="." index="1" node_paths=PackedStringArray("character_container") instance=ExtResource("3_hnlpf")]
+unique_name_in_owner = true
+character_container = NodePath("../NonplayableCharacterCharacterContainer")
+
+[node name="AddCharacterButton" parent="." index="2" node_paths=PackedStringArray("character_container") instance=ExtResource("3_1yxmq")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+character_container = NodePath("../NonplayableCharacterCharacterContainer")
+
+[node name="WorldUIObjectManager" parent="." index="3" instance=ExtResource("4_oxfc3")]
+unique_name_in_owner = true

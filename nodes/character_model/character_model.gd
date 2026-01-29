@@ -20,6 +20,7 @@ signal request_ignore_attack_phase_advance_input
 ## emitted when an attack animation has concluded.
 signal attack_concluded
 
+@export var mesh_instance_3d: MeshInstance3D
 
 ## to be called by the CharacterModel's AnimationPlayer's tracks.
 ## calling this function will emit the request_spawn_hitbox_on_target

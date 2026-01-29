@@ -103,9 +103,11 @@ func _handle_attack_phase_advance_input(playable_character: PlayableCharacter, b
 func _handle_attack_phase_advance(playable_character: PlayableCharacter, blackboard: BTBlackboard):
 	playable_character.pressed_light_attack_input.disconnect(_on_pressed_light_attack_input)
 	playable_character.pressed_heavy_attack_input.disconnect(_on_pressed_heavy_attack_input)
-	_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
-	_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
-	_attack_instance.attack_concluded.disconnect(_on_attack_concluded)
+
+	if _attack_instance:
+		_attack_instance.await_attack_phase_advance_input_requested.disconnect(_on_await_attack_phase_advance_input_requested)
+		_attack_instance.ignore_attack_phase_advance_input_requested.disconnect(_on_ignore_attack_phase_advance_input_requested)
+		_attack_instance.attack_concluded.disconnect(_on_attack_concluded)
 	_attack_instance_awaiting_phase_advance_input = false
 	
 	# wait for the attack animation to end before transitioning to the next

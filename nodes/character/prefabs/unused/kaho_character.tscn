@@ -1,20 +1,20 @@
-[gd_scene load_steps=57 format=3 uid="uid://ddvtngxh6ujp2"]
+[gd_scene load_steps=62 format=3 uid="uid://dd2y8gmrc02cs"]
 
-[ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_vvwqa"]
-[ext_resource type="Script" uid="uid://cf8q48g7hjdjb" path="res://resources/character/character-metadata/character_metadata.gd" id="2_ujkna"]
-[ext_resource type="Resource" uid="uid://tdg3cjj1tp1c" path="res://resources/character/character-stats/prefabs/hideri_character_stats.tres" id="3_rkq2o"]
-[ext_resource type="PackedScene" uid="uid://bh6u358no2qw1" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/hideri_character_switcher_visual.tscn" id="4_mn44o"]
-[ext_resource type="Resource" uid="uid://qekg1bumlmvh" path="res://resources/character/character-combo/hideri_character_combo.tres" id="4_rkq2o"]
-[ext_resource type="PackedScene" uid="uid://cpus77gjgbfxf" path="res://nodes/character_model/prefabs/hideri_character_model.tscn" id="4_vvwqa"]
-[ext_resource type="PackedScene" uid="uid://ddt7xotm6yb3g" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/hideri_character_status_visual.tscn" id="5_rkq2o"]
+[ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_sa5hq"]
+[ext_resource type="Resource" uid="uid://lhkq0nl6icax" path="res://resources/character/character-data/prefabs/kaho_character_data.tres" id="2_slgcp"]
+[ext_resource type="Resource" uid="uid://c3q206vhsucig" path="res://resources/character/character-stats/prefabs/kaho_character_stats.tres" id="3_f6ugt"]
+[ext_resource type="PackedScene" uid="uid://dvh1txklr27o8" path="res://nodes/character_model/prefabs/kaho_character_model.tscn" id="4_sa5hq"]
+[ext_resource type="PackedScene" uid="uid://cj5vry40e3nwj" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/prefabs/kaho_character_switcher_visual.tscn" id="4_x4bvh"]
+[ext_resource type="PackedScene" uid="uid://6weyk7jdqxip" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/prefabs/kaho_character_status_visual.tscn" id="5_f6ugt"]
+[ext_resource type="PackedScene" uid="uid://bchwh4lfk1r1r" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_dodge_character_action_visual.tscn" id="7_f8x8i"]
+[ext_resource type="PackedScene" uid="uid://6ijh7yxrksvc" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_parry_character_action_visual.tscn" id="8_l3ae1"]
+[ext_resource type="PackedScene" uid="uid://cpxiyuaykuqvb" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_jump_character_action_visual.tscn" id="9_7x442"]
+[ext_resource type="PackedScene" uid="uid://3g387x12m27p" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_light_attack_character_action_visual.tscn" id="10_xgotm"]
+[ext_resource type="PackedScene" uid="uid://dasosd7yq7mbh" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_heavy_attack_character_action_visual.tscn" id="11_4cesd"]
+[ext_resource type="PackedScene" uid="uid://bokivp8eni4dt" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/kaho/kaho_juxtapose_character_action_visual.tscn" id="12_l1v2o"]
 
-[sub_resource type="Resource" id="Resource_mn44o"]
-script = ExtResource("2_ujkna")
-_name = "Hideri Kanzaki"
-_nickname = "Hideri"
-_pronouns = "He/Him/His"
-_lore = ""
-metadata/_custom_type_script = "uid://cf8q48g7hjdjb"
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8x8i"]
+size = Vector3(1, 2.3, 1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fw5je"]
 animation = &"RESET"
@@ -148,7 +148,7 @@ blend_point_1/pos = 1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_te2m4")
 blend_point_2/pos = -1.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rkq2o"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f6ugt"]
 animation = &"die"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2kw50"]
@@ -211,7 +211,7 @@ states/Wallrunning/node = SubResource("AnimationNodeBlendSpace2D_3he8t")
 states/Wallrunning/position = Vector2(645, -285)
 states/Wallsliding/node = SubResource("AnimationNodeBlendSpace1D_3jcs7")
 states/Wallsliding/position = Vector2(645, -215)
-states/die/node = SubResource("AnimationNodeAnimation_rkq2o")
+states/die/node = SubResource("AnimationNodeAnimation_f6ugt")
 states/die/position = Vector2(645, -141.518)
 states/dodge/node = SubResource("AnimationNodeAnimation_2kw50")
 states/dodge/position = Vector2(86, -141.518)
@@ -226,7 +226,7 @@ states/mantle/position = Vector2(202, -215)
 states/skid/node = SubResource("AnimationNodeAnimation_wsfnm")
 states/skid/position = Vector2(202, -141.518)
 transitions = ["landing", "TargetingMovement", SubResource("AnimationNodeStateMachineTransition_t2dxk"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_0pg88"), "landing", "NonTargetingMovement", SubResource("AnimationNodeStateMachineTransition_38sl6"), "TargetingMovement", "NonTargetingMovement", SubResource("AnimationNodeStateMachineTransition_sy323"), "NonTargetingMovement", "TargetingMovement", SubResource("AnimationNodeStateMachineTransition_bfudv"), "Start", "NonTargetingMovement", SubResource("AnimationNodeStateMachineTransition_c50kb"), "Wallrunning", "Wallsliding", SubResource("AnimationNodeStateMachineTransition_o63qx"), "mantle", "fall", SubResource("AnimationNodeStateMachineTransition_iqkbo"), "mantle", "landing", SubResource("AnimationNodeStateMachineTransition_d66ta"), "mantle", "dodge", SubResource("AnimationNodeStateMachineTransition_cm2we")]
-graph_offset = Vector2(-74, -195.815)
+graph_offset = Vector2(-79, -324.815)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3jcs7"]
 advance_mode = 2
@@ -236,30 +236,39 @@ states/Passive/node = SubResource("AnimationNodeStateMachine_d66ta")
 states/Passive/position = Vector2(426, 100)
 transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransition_3jcs7")]
 
-[node name="HideriCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_vvwqa")]
-_character_metadata = SubResource("Resource_mn44o")
-_character_model = NodePath("HideriCharacterModel")
-_character_stats = ExtResource("3_rkq2o")
-_character_combo = ExtResource("4_rkq2o")
-_character_switcher_visual_packedscene = ExtResource("4_mn44o")
-_character_status_visual_packedscene = ExtResource("5_rkq2o")
+[node name="KahoCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_sa5hq")]
+_character_data = ExtResource("2_slgcp")
+_character_model = NodePath("KahoCharacterModel")
+_character_stats = ExtResource("3_f6ugt")
+_character_switcher_visual_packedscene = ExtResource("4_x4bvh")
+_character_status_visual_packedscene = ExtResource("5_f6ugt")
+dodge_character_action_visual_packedscene = ExtResource("7_f8x8i")
+parry_character_action_visual_packedscene = ExtResource("8_l3ae1")
+jump_character_action_visual_packedscene = ExtResource("9_7x442")
+light_attack_character_action_visual_packedscene = ExtResource("10_xgotm")
+heavy_attack_character_action_visual_packedscene = ExtResource("11_4cesd")
+juxtapose_character_action_visual_packedscene = ExtResource("12_l1v2o")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="HideriCharacterModel" parent="." index="1" instance=ExtResource("4_vvwqa")]
+[node name="CharacterHurtbox" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991639, 0)
+shape = SubResource("BoxShape3D_f8x8i")
 
-[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
-target_position = Vector3(0, -2, 0)
-debug_shape_custom_color = Color(0, 1, 0, 1)
-debug_shape_thickness = 5
-
-[node name="AnimationTree" parent="." index="5"]
-root_node = NodePath("%AnimationTree/../HideriCharacterModel")
+[node name="AnimationTree" parent="." index="4"]
+root_node = NodePath("%AnimationTree/../KahoCharacterModel")
 tree_root = SubResource("AnimationNodeStateMachine_cm2we")
-anim_player = NodePath("../HideriCharacterModel/AnimationPlayer")
+anim_player = NodePath("../KahoCharacterModel/AnimationPlayer")
 parameters/Passive/NonTargetingMovement/blend_position = -0.00623327
 parameters/Passive/TargetingMovement/blend_position = Vector2(-0.00289297, -0.0329671)
 parameters/Passive/Wallrunning/blend_position = Vector2(-0.00268096, -0.0626704)
 parameters/Passive/Wallsliding/blend_position = 0.00248969
 
-[editable path="HideriCharacterModel"]
+[node name="KahoCharacterModel" parent="." index="5" instance=ExtResource("4_sa5hq")]
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
+target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[editable path="KahoCharacterModel"]

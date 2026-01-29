@@ -207,5 +207,4 @@ metadata/_custom_type_script = "uid://cnekm5ikmah4x"
 script = ExtResource("4_7fald")
 _stats = Array[ExtResource("1_4r8ku")]([SubResource("Resource_iikov"), SubResource("Resource_s1vqs"), SubResource("Resource_x2jdf"), SubResource("Resource_phunj")])
 _substats = Array[ExtResource("2_wrnwq")]([SubResource("Resource_2enbw"), SubResource("Resource_kh3ab"), SubResource("Resource_mbksj"), SubResource("Resource_lo8ns"), SubResource("Resource_7ud3h"), SubResource("Resource_ltpus"), SubResource("Resource_8uyb7"), SubResource("Resource_u4b4o"), SubResource("Resource_ay4v2"), SubResource("Resource_cdcnw"), SubResource("Resource_f5bow"), SubResource("Resource_afoi2")])
-_wards = Array[ExtResource("3_pugkt")]([])
 metadata/_custom_type_script = "uid://3qgt3g5o34v3"

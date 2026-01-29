@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ct1fe2iciikck"]
 
 [ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_j8br1"]
-[ext_resource type="PackedScene" uid="uid://g2m4fx6hxdhi" path="res://nodes/character/prefabs/dummy_character.tscn" id="2_5tsi8"]
+[ext_resource type="PackedScene" uid="uid://g2m4fx6hxdhi" path="res://nodes/character/prefabs/unused/dummy_character.tscn" id="2_5tsi8"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_dmk0r"]
-[ext_resource type="PackedScene" uid="uid://di0dtfexknrs7" path="res://nodes/playable-character/components/playable-character-gameplay-ui/prefabs/dummy/dummy_playable_character_gameplay_ui.tscn" id="2_qlr8o"]
+[ext_resource type="PackedScene" path="res://nodes/playable-character/components/playable-character-gameplay-ui/prefabs/dummy/dummy_playable_character_gameplay_ui.tscn" id="2_qlr8o"]
 
 [sub_resource type="Resource" id="Resource_5tsi8"]
 resource_local_to_scene = true

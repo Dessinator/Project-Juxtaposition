@@ -22,25 +22,25 @@ collision_mask = 3
 
 [node name="DizzyCharacter" parent="PlayableCharacterCharacterContainer" index="1" instance=ExtResource("2_w44sv")]
 
-[node name="PlayableCharacterStaminaMeter" parent="." index="7"]
+[node name="PlayableCharacterStaminaMeter" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 3, 0)
 
 [node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" index="0"]
-transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9447852e-07, 0.9999985, 5.507469e-05, -2.2964741e-11, -5.710125e-05, 0.9999985, 0, 1.3, -2.9802322e-08)
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9447852e-07, 0.9999985, 5.507469e-05, -2.2964741e-11, -5.7131052e-05, 0.9999985, 0, 1.3, -2.9802322e-08)
 
 [node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
-transform = Transform3D(1, 9.1309204e-08, 3.6310274e-07, -1.5763142e-09, 1.000043, 0.00027489662, 2.540197e-07, -2.2053719e-06, 1.0014751, -3.3454626e-09, -0.00027489662, 5.0000057)
+transform = Transform3D(1, 9.130002e-08, 3.6310215e-07, -1.5321575e-09, 1.000043, 0.00027495623, 2.5402062e-07, -3.2186508e-06, 1.0014751, -3.3454626e-09, -0.000274539, 5.0000057)
 
 [node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
-transform = Transform3D(1, 3.5559753e-16, -9.769963e-16, 0, 0.9396926, 0.34202012, 1.0396977e-15, -0.34202012, 0.9396926, -4.884983e-15, 2.9317007, 4.2538385)
+transform = Transform3D(1, 1.0572816e-14, -2.9048575e-14, 0, 0.9396926, 0.34202012, 3.0912847e-14, -0.34202012, 0.9396926, -1.4524295e-13, 2.9317007, 4.2538385)
 
-[node name="LightChargeThresholdTimer" parent="." index="17"]
+[node name="LightChargeThresholdTimer" parent="." index="18"]
 wait_time = 0.2
 
-[node name="HeavyChargeThresholdTimer" parent="." index="18"]
+[node name="HeavyChargeThresholdTimer" parent="." index="19"]
 wait_time = 0.2
 
-[node name="GameplayFiniteStateMachine" parent="." index="25"]
+[node name="GameplayFiniteStateMachine" parent="." index="26"]
 blackboard = SubResource("Resource_wng8g")
 
 [node name="JumpState" parent="GameplayFiniteStateMachine" index="5"]
@@ -64,7 +64,7 @@ _auto_switch_animation_state = false
 [node name="GroundedHeavyChargeAttackState" parent="GameplayFiniteStateMachine" index="13"]
 _auto_switch_animation_state = false
 
-[node name="AnimationFiniteStateMachine" parent="." index="26"]
+[node name="AnimationFiniteStateMachine" parent="." index="27"]
 verbose = false
 
 [editable path="PlayableCharacterCamera"]

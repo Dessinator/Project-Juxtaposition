@@ -20,7 +20,7 @@ billboard_mode = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_433gi"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="AddCharacterButton" type="Node3D"]
+[node name="AddCharacterButton" type="Node3D" groups=["world_ui_objects"]]
 script = ExtResource("1_myo55")
 
 [node name="Quad" type="MeshInstance3D" parent="."]
@@ -51,6 +51,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="TextureButton" type="TextureButton" parent="SubViewport/Control"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -58,6 +59,10 @@ texture_normal = ExtResource("1_dfyp3")
 stretch_mode = 0
 
 [node name="WorldUIObjectInterface" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_qobsm")
 _world_origin_initial_position_copy_type = 2
+_self_initialize = false
 metadata/_custom_type_script = "uid://cr8pb3p5xkx75"
+
+[connection signal="pressed" from="SubViewport/Control/TextureButton" to="." method="_on_texture_button_pressed"]

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://vspm3782ooxb"]
+
+[ext_resource type="Shader" uid="uid://6wpiyais7uax" path="res://resources/shaders/render/psx_outline.gdshader" id="1_6gwau"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6gwau")
+shader_parameter/_DepthNormalThreshold = -0.5
+shader_parameter/_DepthNormalThresholdScale = 3.0
+shader_parameter/_DepthThreshold = 1.5
+shader_parameter/_NormalThreshold = 2.0

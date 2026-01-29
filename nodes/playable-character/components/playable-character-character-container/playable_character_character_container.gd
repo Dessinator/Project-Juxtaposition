@@ -1,6 +1,10 @@
 class_name PlayableCharacterCharacterContainer
 extends Node3D
 
+signal character_added(character: Character)
+signal character_removed(character: Character)
+signal characters_cleared()
+
 signal current_character_changed(old: Character, new: Character)
 signal character_switch_failed
 
@@ -34,13 +38,19 @@ func clear_characters():
 		character.queue_free()
 	
 	_characters = []
+	characters_cleared.emit()
+
 func add_character(character: Character):
 	if _characters.size() + 1 > _max_character_count:
 		return
 	
 	_characters.append(character)
+	character_added.emit(character)
+
+## this method does NOT free the character node.
 func remove_character(character: Character):
 	_characters.erase(character)
+	character_removed.emit(character)
 
 func get_current_character() -> Character:
 	return _current_character

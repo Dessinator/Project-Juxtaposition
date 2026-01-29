@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://qydhkd5aft5c"]
+
+[ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_6352i"]
+[ext_resource type="Resource" uid="uid://spht2uo7ppgm" path="res://resources/pronouns/prefabs/he.tres" id="2_d51vu"]
+[ext_resource type="Texture2D" uid="uid://ds32f4lc8q4hh" path="res://resources/images/character-images/hideri/hideri_portrait_normal.png" id="2_pc4v4"]
+[ext_resource type="Script" uid="uid://lf6xur7ya78e" path="res://resources/character/character-data/character_data.gd" id="3_pc4v4"]
+
+[resource]
+script = ExtResource("3_pc4v4")
+full_name = "Hideri Kanzaki"
+nickname = "Hideri"
+internal_name = &"hideri"
+pronouns = ExtResource("2_d51vu")
+gender = 1
+portrait = ExtResource("2_pc4v4")
+metadata/_custom_type_script = "uid://lf6xur7ya78e"

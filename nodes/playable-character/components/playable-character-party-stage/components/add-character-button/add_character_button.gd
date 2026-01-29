@@ -1,6 +1,14 @@
 class_name AddCharacterButton
 extends Node3D
 
+signal button_pressed
+
+@onready var node_viewport = %SubViewport
+@onready var node_quad = %Quad
+@onready var node_area = %Area3D
+
+# @onready var button: TextureButton = %TextureButton
+
 # Used for checking if the mouse is inside the Area3D.
 var is_mouse_inside = false
 # The last processed input touch/mouse event. To calculate relative movement.
@@ -8,11 +16,15 @@ var last_event_pos2D = null
 # The time of the last event in seconds since engine start.
 var last_event_time: float = -1.0
 
-@onready var node_viewport = %SubViewport
-@onready var node_quad = %Quad
-@onready var node_area = %Area3D
+@export var character_container: NonplayableCharacterCharacterContainer
 
 func _ready():
+	character_container.character_added.connect(_on_character_container_character_added)
+	character_container.character_removed.connect(_on_character_container_character_removed)
+	character_container.characters_cleared.connect(_on_character_container_characters_cleared)
+
+	self.visible = character_container.get_characters().is_empty()
+
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	node_area.mouse_exited.connect(_mouse_exited_area)
 	node_area.input_event.connect(_mouse_input_event)
@@ -21,8 +33,8 @@ func _ready():
 	if node_quad.get_surface_override_material(0).billboard_mode == BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED:
 		set_process(false)
 
-func _process(_delta):
-	rotate_area_to_billboard()
+# func _process(_delta):
+# 	rotate_area_to_billboard()
 
 func _mouse_entered_area():
 	is_mouse_inside = true
@@ -102,7 +114,6 @@ func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Ve
 	# Finally, send the processed input event to the viewport.
 	node_viewport.push_input(event)
 
-
 func rotate_area_to_billboard():
 	var billboard_mode = node_quad.get_surface_override_material(0).billboard_mode
 
@@ -122,3 +133,13 @@ func rotate_area_to_billboard():
 
 		# Rotate in the Z axis to compensate camera tilt.
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
+
+func _on_character_container_character_added(character: Character):
+	self.visible = false
+func _on_character_container_character_removed(character: Character):
+	self.visible = true
+func _on_character_container_characters_cleared():
+	self.visible = true
+
+func _on_texture_button_pressed() -> void:
+	button_pressed.emit()
