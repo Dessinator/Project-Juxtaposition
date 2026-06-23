@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Substat" load_steps=3 format=3 uid="uid://dydl2m6dpx8h0"]
+[gd_resource type="Resource" script_class="Substat" format=3 uid="uid://dydl2m6dpx8h0"]
 
 [ext_resource type="Script" uid="uid://cnekm5ikmah4x" path="res://resources/character/character-stats/substat.gd" id="1_bhmbc"]
 
