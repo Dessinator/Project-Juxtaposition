@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh46kq1kn1ofs"]
+[gd_scene format=3 uid="uid://bh46kq1kn1ofs"]
 
 [ext_resource type="Script" uid="uid://b4l034fs7l28a" path="res://nodes/areas/hurtbox/prefabs/playable-character-hurtbox/playable_character_hurtbox.gd" id="1_num6x"]
 
-[node name="PlayableCharacterHurtbox" type="Area3D"]
+[node name="PlayableCharacterHurtbox" type="Area3D" unique_id=1435632023]
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_num6x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=181968049]
 unique_name_in_owner = true

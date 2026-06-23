@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://db4yccpjwbo01"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://db4yccpjwbo01"]
 
 [ext_resource type="Shader" uid="uid://dso16duornaim" path="res://resources/shaders/render/psx_iris_read.gdshader" id="1_gdd7f"]
 [ext_resource type="Texture2D" uid="uid://cfdc0yh4ffxw0" path="res://resources/textures/character/jux/jux_albedo.png" id="2_a8gdn"]

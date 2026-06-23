@@ -1,29 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cin57i1ljt1bk"]
+[gd_scene format=3 uid="uid://cin57i1ljt1bk"]
 
 [ext_resource type="Script" uid="uid://baavjt8n8jr3r" path="res://nodes/render/ui-render-handler/ui-visuals/substat-curve-visual-marker/substat_curve_visual_marker.gd" id="1_04qf3"]
 
-[node name="SubstatCurveVisualMarker" type="Node2D"]
+[node name="SubstatCurveVisualMarker" type="Node2D" unique_id=1064981759]
 script = ExtResource("1_04qf3")
 
-[node name="PositiveModifierLine2D" type="Line2D" parent="."]
+[node name="PositiveModifierLine2D" type="Line2D" parent="." unique_id=493946579]
 unique_name_in_owner = true
 points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
 default_color = Color(0, 1, 0.2744801, 1)
 
-[node name="NegativeModifierLine2D" type="Line2D" parent="."]
+[node name="NegativeModifierLine2D" type="Line2D" parent="." unique_id=1899091550]
 unique_name_in_owner = true
 points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
 default_color = Color(1, 0, 0.3833766, 1)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1131122109]
 unique_name_in_owner = true
 color = Color(0, 0.6224129, 1, 1)
 polygon = PackedVector2Array(-23, -37, -23, -10, -4, -10, 0, 0, 4, -10, 23, -10, 23, -37)
 uv = PackedVector2Array(-40, -88, -40, -15.999992, 0, -15.999992, 24, 7.9999924, 48.000015, -15.999992, 88.000015, -15.999992, 88.000015, -88)
 
-[node name="StatAbbreviationLabel" type="Label" parent="."]
+[node name="StatAbbreviationLabel" type="Label" parent="." unique_id=878034698]
 unique_name_in_owner = true
 offset_left = -23.0
 offset_top = -37.0
@@ -34,7 +34,7 @@ theme_override_font_sizes/font_size = 12
 text = "STAT"
 horizontal_alignment = 1
 
-[node name="StatValueLabel" type="Label" parent="."]
+[node name="StatValueLabel" type="Label" parent="." unique_id=447516064]
 unique_name_in_owner = true
 offset_left = -23.0
 offset_top = -26.0
@@ -46,7 +46,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SubstatModifierValueLabel" type="Label" parent="."]
+[node name="SubstatModifierValueLabel" type="Label" parent="." unique_id=425377070]
 unique_name_in_owner = true
 offset_left = -23.0
 offset_top = -13.0

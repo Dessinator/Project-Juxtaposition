@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://3hxlu2t0hpv3"]
+[gd_scene format=3 uid="uid://3hxlu2t0hpv3"]
 
 [ext_resource type="Texture2D" uid="uid://cwmjaei5wjin2" path="res://addons/behaviour_toolkit/icons/Add.svg" id="1_dfyp3"]
 [ext_resource type="Script" uid="uid://dinriv0usuxj1" path="res://nodes/playable-character/components/playable-character-party-stage/components/add-character-button/add_character_button.gd" id="1_myo55"]
@@ -20,29 +20,29 @@ billboard_mode = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_433gi"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="AddCharacterButton" type="Node3D" groups=["world_ui_objects"]]
+[node name="AddCharacterButton" type="Node3D" unique_id=223997880 groups=["world_ui_objects"]]
 script = ExtResource("1_myo55")
 
-[node name="Quad" type="MeshInstance3D" parent="."]
+[node name="Quad" type="MeshInstance3D" parent="." unique_id=120335731]
 unique_name_in_owner = true
 layers = 2
 mesh = SubResource("QuadMesh_myo55")
 surface_material_override/0 = SubResource("StandardMaterial3D_g6ojf")
 
-[node name="Area3D" type="Area3D" parent="Quad"]
+[node name="Area3D" type="Area3D" parent="Quad" unique_id=1484552366]
 unique_name_in_owner = true
 collision_layer = 513
 collision_mask = 513
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D" unique_id=1628786757]
 shape = SubResource("BoxShape3D_433gi")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=848947984]
 unique_name_in_owner = true
 transparent_bg = true
 size = Vector2i(40, 40)
 
-[node name="Control" type="Control" parent="SubViewport"]
+[node name="Control" type="Control" parent="SubViewport" unique_id=965088857]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -50,7 +50,7 @@ offset_bottom = 40.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="TextureButton" type="TextureButton" parent="SubViewport/Control"]
+[node name="TextureButton" type="TextureButton" parent="SubViewport/Control" unique_id=905859152]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
@@ -58,7 +58,7 @@ offset_bottom = 40.0
 texture_normal = ExtResource("1_dfyp3")
 stretch_mode = 0
 
-[node name="WorldUIObjectInterface" type="Node" parent="."]
+[node name="WorldUIObjectInterface" type="Node" parent="." unique_id=400206214]
 unique_name_in_owner = true
 script = ExtResource("2_qobsm")
 _world_origin_initial_position_copy_type = 2

@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnga388alrwrh"]
+[gd_scene format=3 uid="uid://cnga388alrwrh"]
 
 [ext_resource type="Script" uid="uid://b30qr6jj8jrtd" path="res://nodes/playable-character/components/playable-character-character-container/playable_character_character_container.gd" id="1_h0vci"]
 
-[node name="PlayableCharacterCharacterContainer" type="Node3D"]
+[node name="PlayableCharacterCharacterContainer" type="Node3D" unique_id=169372014]
 script = ExtResource("1_h0vci")
 
-[node name="JuxtometerDecayTimer" type="Timer" parent="."]
+[node name="JuxtometerDecayTimer" type="Timer" parent="." unique_id=124017659]
 unique_name_in_owner = true
 wait_time = 0.5
 autostart = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bgvvktev2x52x"]
+[gd_scene format=3 uid="uid://bgvvktev2x52x"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_ay3hn"]
 [ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/materials/psx_render_lit_material.tres" id="2_tyjrr"]
@@ -1612,22 +1612,20 @@ _data = {
 &"wallslide_right": SubResource("Animation_f7q3t")
 }
 
-[node name="DummyCharacterModel" instance=ExtResource("1_ay3hn")]
+[node name="DummyCharacterModel" unique_id=242925936 instance=ExtResource("1_ay3hn")]
 
-[node name="dummy_root" type="Node3D" parent="." index="0"]
+[node name="dummy_root" type="Node3D" parent="." index="0" unique_id=1773953837]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="body" type="MeshInstance3D" parent="dummy_root" index="0"]
+[node name="body" type="MeshInstance3D" parent="dummy_root" index="0" unique_id=278768141]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_btn13")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="dummy_root/body" index="0"]
+[node name="eyes" type="MeshInstance3D" parent="dummy_root/body" index="0" unique_id=976976698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0.382005)
 mesh = SubResource("BoxMesh_c3blq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=661180646]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_nsq03")
-}
+libraries/ = SubResource("AnimationLibrary_nsq03")

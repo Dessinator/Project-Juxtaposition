@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0x3d2x1idfw8"]
+[gd_scene format=3 uid="uid://d0x3d2x1idfw8"]
 
 [ext_resource type="Script" uid="uid://bj0p4rvh4tnfg" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.gd" id="1_w73we"]
 
@@ -12,13 +12,13 @@ width = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_03xf5"]
 
-[node name="StatusBar" type="PanelContainer"]
+[node name="StatusBar" type="PanelContainer" unique_id=799998226]
 offset_right = 1.0
 offset_bottom = 153.0
 script = ExtResource("1_w73we")
 _label = "PTS"
 
-[node name="GhostValueTextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="GhostValueTextureProgressBar" type="TextureProgressBar" parent="." unique_id=1546648325]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
@@ -28,7 +28,7 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_bws26")
 texture_progress = SubResource("PlaceholderTexture2D_03xf5")
 
-[node name="TrueValueTextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="TrueValueTextureProgressBar" type="TextureProgressBar" parent="." unique_id=1181251464]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
@@ -37,13 +37,13 @@ value = 1.0
 nine_patch_stretch = true
 texture_progress = SubResource("PlaceholderTexture2D_03xf5")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=743157810]
 unique_name_in_owner = true
 layout_mode = 2
 text = "PTS: 0.0"
 autowrap_mode = 1
 
-[node name="UpdateGhostProgressDelayTimer" type="Timer" parent="."]
+[node name="UpdateGhostProgressDelayTimer" type="Timer" parent="." unique_id=948115918]
 unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true

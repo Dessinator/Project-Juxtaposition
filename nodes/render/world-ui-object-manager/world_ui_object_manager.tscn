@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwcn7qfvst0va"]
+[gd_scene format=3 uid="uid://bwcn7qfvst0va"]
 
 [ext_resource type="Script" uid="uid://bedfaworxhlgl" path="res://nodes/render/world-ui-object-manager/world_ui_object_manager.gd" id="1_fikx3"]
 
-[node name="WorldUIObjectManager" type="Node"]
+[node name="WorldUIObjectManager" type="Node" unique_id=1590016819]
 script = ExtResource("1_fikx3")

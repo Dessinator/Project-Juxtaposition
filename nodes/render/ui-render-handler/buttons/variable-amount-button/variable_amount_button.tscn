@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmkfa4eobtlw8"]
+[gd_scene format=3 uid="uid://cmkfa4eobtlw8"]
 
 [ext_resource type="Script" uid="uid://c7gbxh5qc732j" path="res://nodes/render/ui-render-handler/buttons/variable-amount-button/variable_amount_button.gd" id="1_cgcm3"]
 [ext_resource type="Texture2D" uid="uid://bteq3ica74h30" path="res://addons/maaacks_game_template/base/assets/remapping_input_icons/subtraction_symbol.png" id="1_i3hte"]
@@ -28,7 +28,7 @@ corner_radius_bottom_right = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8mo1"]
 
-[node name="VariableAmountButton" type="Control"]
+[node name="VariableAmountButton" type="Control" unique_id=1578622326]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 3
 anchors_preset = 8
@@ -46,7 +46,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_cgcm3")
 
-[node name="ItemButton" type="Button" parent="."]
+[node name="ItemButton" type="Button" parent="." unique_id=1542140785]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -60,7 +60,7 @@ action_mode = 0
 text = "Item Name"
 autowrap_mode = 2
 
-[node name="RemoveAllButton" type="Button" parent="."]
+[node name="RemoveAllButton" type="Button" parent="." unique_id=1868594879]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -85,7 +85,7 @@ icon = ExtResource("1_i3hte")
 clip_text = true
 icon_alignment = 1
 
-[node name="AmountPanelContainer" type="PanelContainer" parent="."]
+[node name="AmountPanelContainer" type="PanelContainer" parent="." unique_id=399604123]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -98,12 +98,12 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AmountPanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AmountPanelContainer" unique_id=1350244892]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="SubtractButton" type="Button" parent="AmountPanelContainer/HBoxContainer"]
+[node name="SubtractButton" type="Button" parent="AmountPanelContainer/HBoxContainer" unique_id=1367721831]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -112,7 +112,7 @@ action_mode = 0
 icon = ExtResource("1_i3hte")
 flat = true
 
-[node name="AmountLabel" type="Label" parent="AmountPanelContainer/HBoxContainer"]
+[node name="AmountLabel" type="Label" parent="AmountPanelContainer/HBoxContainer" unique_id=648524499]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -121,7 +121,7 @@ theme_override_font_sizes/font_size = 12
 text = "???"
 horizontal_alignment = 1
 
-[node name="AddButton" type="Button" parent="AmountPanelContainer/HBoxContainer"]
+[node name="AddButton" type="Button" parent="AmountPanelContainer/HBoxContainer" unique_id=1265024332]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/icon_max_width = 8
@@ -129,12 +129,12 @@ action_mode = 0
 icon = ExtResource("3_sbepx")
 flat = true
 
-[node name="HoldTimer" type="Timer" parent="."]
+[node name="HoldTimer" type="Timer" parent="." unique_id=1501607338]
 unique_name_in_owner = true
 wait_time = 0.3
 one_shot = true
 
-[node name="IncreaseIncrementTimer" type="Timer" parent="."]
+[node name="IncreaseIncrementTimer" type="Timer" parent="." unique_id=1785229650]
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true

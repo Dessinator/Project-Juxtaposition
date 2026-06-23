@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://lorkutbrvn1l"]
+[gd_scene format=3 uid="uid://lorkutbrvn1l"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_ttmlf"]
 
-[node name="JuxJuxtaposeCharacterActionVisual" instance=ExtResource("1_ttmlf")]
+[node name="JuxJuxtaposeCharacterActionVisual" unique_id=1088303625 instance=ExtResource("1_ttmlf")]
 _action_name = "Jux Juxtapose"
 action_visual_type = 6
 
-[node name="Button" parent="Control" index="0"]
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 theme_override_font_sizes/font_size = 10
 text = "Jux Juxtapose"

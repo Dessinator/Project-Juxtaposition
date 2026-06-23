@@ -1,14 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwnu2lnses7sn"]
+[gd_scene format=3 uid="uid://bwnu2lnses7sn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ioiv1"]
 
-[node name="CharacterPickerIconButton" type="PanelContainer"]
+[node name="CharacterPickerIconButton" type="PanelContainer" unique_id=525489186]
 custom_minimum_size = Vector2(50, 50)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ioiv1")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1085407319]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8

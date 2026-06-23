@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnsp3ne0h5s48"]
+[gd_scene format=3 uid="uid://dnsp3ne0h5s48"]
 
-[ext_resource type="Script" path="res://nodes/game/scenes/game_scene/levels/level.gd" id="1_qybvh"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="2_n1c6x"]
-[ext_resource type="Script" path="res://nodes/game/scenes/game_scene/input_display_label.gd" id="3_fnc2d"]
+[ext_resource type="Script" uid="uid://b4y1v7d0lsydp" path="res://nodes/game/scenes/game_scene/levels/level.gd" id="1_qybvh"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="2_n1c6x"]
+[ext_resource type="Script" uid="uid://b8voft722htop" path="res://nodes/game/scenes/game_scene/input_display_label.gd" id="3_fnc2d"]
 
-[node name="Level1" type="Control"]
+[node name="Level1" type="Control" unique_id=202231616]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qybvh")
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="BackgroundColor" type="ColorRect" parent="." unique_id=527013505]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1101636253]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,44 +35,44 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=609189339]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1826579386]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 script = ExtResource("2_n1c6x")
 
-[node name="LoseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LoseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1028287126]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Lose"
 
-[node name="WinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="WinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1223429851]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Win"
 
-[node name="LoseButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LoseButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2112933385]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Lose"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=122541834]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2078355270]
 layout_mode = 2
 text = "Change Level State: "
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=405763166]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Change Color"
 
-[node name="InputDisplayLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="InputDisplayLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=737579044]
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_alignment = 1

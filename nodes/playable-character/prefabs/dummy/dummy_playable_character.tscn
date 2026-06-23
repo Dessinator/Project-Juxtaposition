@@ -1,11 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct1fe2iciikck"]
+[gd_scene format=3 uid="uid://ct1fe2iciikck"]
 
 [ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_j8br1"]
 [ext_resource type="PackedScene" uid="uid://g2m4fx6hxdhi" path="res://nodes/character/prefabs/unused/dummy_character.tscn" id="2_5tsi8"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_dmk0r"]
-[ext_resource type="PackedScene" path="res://nodes/playable-character/components/playable-character-gameplay-ui/prefabs/dummy/dummy_playable_character_gameplay_ui.tscn" id="2_qlr8o"]
 
-[sub_resource type="Resource" id="Resource_5tsi8"]
+[sub_resource type="Resource" id="Resource_dmk0r"]
 resource_local_to_scene = true
 script = ExtResource("2_dmk0r")
 content = {
@@ -15,54 +14,63 @@ content = {
 }
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
-[node name="DummyPlayableCharacter" node_paths=PackedStringArray("_character") instance=ExtResource("1_j8br1")]
-_character = NodePath("DummyCharacter")
-_playable_character_gameplay_ui_packedscene = ExtResource("2_qlr8o")
+[node name="DummyPlayableCharacter" unique_id=1019193110 instance=ExtResource("1_j8br1")]
 
-[node name="PlayableCharacterStaminaMeter" parent="." index="1"]
+[node name="DummyCharacter" parent="." index="3" unique_id=1603459400 instance=ExtResource("2_5tsi8")]
+
+[node name="PlayableCharacterStaminaMeter" parent="." index="9" unique_id=292829048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51563, 0)
 
-[node name="DummyCharacter" parent="." index="3" instance=ExtResource("2_5tsi8")]
+[node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" parent_id_path=PackedInt32Array(1621249683, 1527144580) index="0" unique_id=435586076]
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.944769e-07, 0.9999985, 5.4627657e-05, -2.2751578e-11, -5.710125e-05, 0.99999857, 0, 1.3, -2.9802322e-08)
 
-[node name="GameplayFiniteStateMachine" parent="." index="7"]
-blackboard = SubResource("Resource_5tsi8")
+[node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" parent_id_path=PackedInt32Array(1621249683, 2077475684) index="0" unique_id=1396523447]
+transform = Transform3D(1, 1.5200712e-07, 2.5595693e-07, 1.5587512e-08, 1.0000858, 0.00032827258, 2.1462398e-07, -1.1622906e-05, 1.0016794, -3.34461e-09, -0.00027227402, 5.0000052)
 
-[node name="startFalling" parent="GameplayFiniteStateMachine/MantleState" index="1"]
+[node name="WorldCamera" parent="PlayableCharacterCamera" parent_id_path=PackedInt32Array(1621249683) index="2" unique_id=142551782]
+transform = Transform3D(1, 1.1419331e-14, -3.6104437e-14, 1.6177836e-15, 0.9396926, 0.34202012, 3.7832716e-14, -0.34202012, 0.9396926, -1.8052217e-13, 2.9317007, 4.2538357)
+
+[node name="GameplayFiniteStateMachine" parent="." index="27" unique_id=2076576182]
+blackboard = SubResource("Resource_dmk0r")
+
+[node name="startFalling" parent="GameplayFiniteStateMachine/MantleState" parent_id_path=PackedInt32Array(897987400) index="3" unique_id=1990404874]
 use_event = true
 event = "on_start_falling"
 
-[node name="IdleAnimationState" parent="AnimationFiniteStateMachine" index="0" node_paths=PackedStringArray("_character")]
+[node name="IdleAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="0" unique_id=36548915 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="WalkAnimationState" parent="AnimationFiniteStateMachine" index="1" node_paths=PackedStringArray("_character")]
+[node name="WalkAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="1" unique_id=1189425412 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="JogAnimationState" parent="AnimationFiniteStateMachine" index="2" node_paths=PackedStringArray("_character")]
+[node name="JogAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="2" unique_id=415415556 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="SprintAnimationState" parent="AnimationFiniteStateMachine" index="3" node_paths=PackedStringArray("_character")]
+[node name="SprintAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="3" unique_id=1228081227 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="SkidAnimationState" parent="AnimationFiniteStateMachine" index="4" node_paths=PackedStringArray("_character")]
+[node name="SkidAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="4" unique_id=1999313915 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="JumpAnimationState" parent="AnimationFiniteStateMachine" index="5" node_paths=PackedStringArray("_character")]
+[node name="JumpAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="5" unique_id=177582687 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="FallAnimationState" parent="AnimationFiniteStateMachine" index="6" node_paths=PackedStringArray("_character")]
+[node name="FallAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="6" unique_id=1485754078 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="LandingAnimationState" parent="AnimationFiniteStateMachine" index="7" node_paths=PackedStringArray("_character")]
+[node name="LandingAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="7" unique_id=1175673679 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="DodgeAnimationState" parent="AnimationFiniteStateMachine" index="8" node_paths=PackedStringArray("_character")]
+[node name="DodgeAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="8" unique_id=751039639 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="WallrunAnimationState" parent="AnimationFiniteStateMachine" index="9" node_paths=PackedStringArray("_character")]
+[node name="WallrunAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="13" unique_id=434879467 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="WallslideAnimationState" parent="AnimationFiniteStateMachine" index="10" node_paths=PackedStringArray("_character")]
+[node name="WallslideAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="14" unique_id=41071584 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
 
-[node name="MantleAnimationState" parent="AnimationFiniteStateMachine" index="11" node_paths=PackedStringArray("_character")]
+[node name="MantleAnimationState" parent="AnimationFiniteStateMachine" parent_id_path=PackedInt32Array(1639053700) index="15" unique_id=2070830860 node_paths=PackedStringArray("_character")]
 _character = NodePath("../../DummyCharacter")
+
+[editable path="PlayableCharacterCamera"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" uid="uid://cj617ykhf0je8" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -51,7 +51,7 @@ keycode = 70
 [sub_resource type="Shortcut" id="Shortcut_xqhq3"]
 events = [SubResource("InputEventKey_dernr")]
 
-[node name="ToolkitUi" type="Control" node_paths=PackedStringArray("update_manager")]
+[node name="ToolkitUi" type="Control" unique_id=495315877 node_paths=PackedStringArray("update_manager")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 3
 anchors_preset = 9
@@ -63,19 +63,19 @@ script = ExtResource("1_51rvx")
 update_manager = NodePath("UpdateManager")
 metadata/_edit_vertical_guides_ = []
 
-[node name="UpdateManager" type="HTTPRequest" parent="."]
+[node name="UpdateManager" type="HTTPRequest" parent="." unique_id=970158500]
 unique_name_in_owner = true
 script = ExtResource("2_ohrre")
 addon_config_path = "res://addons/behaviour_toolkit/plugin.cfg"
 repo_config_url = "https://raw.githubusercontent.com/ThePat02/BehaviourToolkit/main/addons/behaviour_toolkit/plugin.cfg"
 
-[node name="FileDialogNewBlackboard" type="FileDialog" parent="."]
+[node name="FileDialogNewBlackboard" type="FileDialog" parent="." unique_id=1808340004]
 title = "Create a new Blackboard"
 size = Vector2i(800, 500)
 ok_button_text = "Create Blackboard"
 filters = PackedStringArray("*.tres ; Resources")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1235347875]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +83,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1840304652]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -92,23 +92,23 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=1470434775]
 layout_mode = 2
 
-[node name="SearchBar" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="SearchBar" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1442043272]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 placeholder_text = "Search..."
 right_icon = ExtResource("3_plkhg")
 
-[node name="Panel" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1386697402]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel" unique_id=1384149127]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,15 +116,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Toolbox" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer"]
+[node name="Toolbox" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer" unique_id=1319545572]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Misc" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox"]
+[node name="Misc" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox" unique_id=2138797620]
 layout_mode = 2
 
-[node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc"]
+[node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc" unique_id=526104624]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -133,16 +133,16 @@ text = "[center][img]res://addons/behaviour_toolkit/icons/Gear.svg[/img] Behavio
 fit_content = true
 scroll_active = false
 
-[node name="ButtonBlackboard" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc"]
+[node name="ButtonBlackboard" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc" unique_id=788810157]
 layout_mode = 2
 text = "New Blackboard"
 icon = ExtResource("2_u7fep")
 
-[node name="FiniteStateMachine" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox"]
+[node name="FiniteStateMachine" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox" unique_id=67096026]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+[node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine" unique_id=2000484661]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 bbcode_enabled = true
@@ -150,7 +150,7 @@ text = "[center][img]res://addons/behaviour_toolkit/icons/FiniteStateMachine.svg
 fit_content = true
 scroll_active = false
 
-[node name="ButtonAddFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine/Heading"]
+[node name="ButtonAddFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine/Heading" unique_id=1841905182]
 unique_name_in_owner = true
 layout_mode = 1
 offset_right = 28.0
@@ -158,37 +158,37 @@ offset_bottom = 26.0
 icon = ExtResource("5_lnklv")
 flat = true
 
-[node name="ButtonState" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+[node name="ButtonState" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine" unique_id=2115074151]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New State"
 icon = ExtResource("1_hqqj5")
 
-[node name="ButtonTransition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+[node name="ButtonTransition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine" unique_id=1304903964]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Transition"
 icon = ExtResource("2_24di4")
 
-[node name="ButtonStateIntegratedBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+[node name="ButtonStateIntegratedBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine" unique_id=1806319325]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "IntegratedBT"
 icon = ExtResource("5_e6hj7")
 
-[node name="ButtonStateIntegrationReturn" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+[node name="ButtonStateIntegrationReturn" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine" unique_id=1431050314]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Return"
 icon = ExtResource("5_78p67")
 
-[node name="BehaviourTree" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox"]
+[node name="BehaviourTree" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox" unique_id=1999719494]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="Heading" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=1429290636]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -197,7 +197,7 @@ text = "[center][img]res://addons/behaviour_toolkit/icons/BTRoot.svg[/img] Behav
 fit_content = true
 scroll_active = false
 
-[node name="ButtonAddBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Heading"]
+[node name="ButtonAddBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Heading" unique_id=1678456453]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 12.0
@@ -205,157 +205,157 @@ offset_bottom = 10.0
 icon = ExtResource("5_lnklv")
 flat = true
 
-[node name="ButtonLeaf" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="ButtonLeaf" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=660759464]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Leaf"
 icon = ExtResource("5_3hqj7")
 
-[node name="Leaves" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="Leaves" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=716632642]
 layout_mode = 2
 
-[node name="ButtonPrint" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+[node name="ButtonPrint" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves" unique_id=2117880616]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Print"
 icon = ExtResource("10_ji4ht")
 
-[node name="ButtonWait" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+[node name="ButtonWait" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves" unique_id=544896363]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Wait"
 icon = ExtResource("10_n2nk3")
 
-[node name="ButtonCondition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+[node name="ButtonCondition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves" unique_id=1400011176]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Condition"
 icon = ExtResource("13_6h0vl")
 
-[node name="ButtonCall" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+[node name="ButtonCall" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves" unique_id=1559785723]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Call"
 icon = ExtResource("12_axgn0")
 
-[node name="ButtonSignal" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+[node name="ButtonSignal" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves" unique_id=1350317556]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Signal"
 icon = ExtResource("14_qw4e4")
 
-[node name="ButtonTween" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+[node name="ButtonTween" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves" unique_id=1669181492]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Tween"
 icon = ExtResource("10_6w1yk")
 
-[node name="ButtonFSMEvent" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves"]
+[node name="ButtonFSMEvent" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Leaves" unique_id=281001861]
 unique_name_in_owner = true
 layout_mode = 2
 text = "FSMEvent"
 icon = ExtResource("6_manrl")
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=1740485928]
 layout_mode = 2
 
-[node name="ButtonComposite" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="ButtonComposite" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=2016022642]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Composite"
 icon = ExtResource("4_ruq84")
 
-[node name="Composites" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="Composites" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=2786332]
 layout_mode = 2
 
-[node name="ButtonSequence" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
+[node name="ButtonSequence" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites" unique_id=849437911]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Sequence"
 icon = ExtResource("5_turo1")
 
-[node name="ButtonSelector" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
+[node name="ButtonSelector" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites" unique_id=55059868]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Selector"
 icon = ExtResource("6_mdg6v")
 
-[node name="ButtonSimpleParallel" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
+[node name="ButtonSimpleParallel" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites" unique_id=2076297440]
 unique_name_in_owner = true
 layout_mode = 2
 text = "SimpleParallel"
 icon = ExtResource("13_ijr7d")
 
-[node name="ButtonRandom" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
+[node name="ButtonRandom" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites" unique_id=192569761]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Random"
 icon = ExtResource("8_lf7t0")
 
-[node name="ButtonRandomSequence" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
+[node name="ButtonRandomSequence" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites" unique_id=1789557820]
 unique_name_in_owner = true
 layout_mode = 2
 text = "RandomSequence"
 icon = ExtResource("9_ny08s")
 
-[node name="ButtonRandomSelector" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
+[node name="ButtonRandomSelector" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites" unique_id=781920890]
 unique_name_in_owner = true
 layout_mode = 2
 text = "RandomSelector"
 icon = ExtResource("10_5qnkh")
 
-[node name="ButtonIntegratedFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites"]
+[node name="ButtonIntegratedFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Composites" unique_id=1453129449]
 unique_name_in_owner = true
 layout_mode = 2
 text = "IntegratedFSM"
 icon = ExtResource("13_gmc6x")
 
-[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=548855176]
 layout_mode = 2
 
-[node name="ButtonDecorator" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="ButtonDecorator" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=1695701819]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Decorator"
 icon = ExtResource("6_pyx3s")
 
-[node name="Decorators" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="Decorators" type="HFlowContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=651058794]
 layout_mode = 2
 
-[node name="ButtonAlwaysFail" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators"]
+[node name="ButtonAlwaysFail" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators" unique_id=1821067942]
 unique_name_in_owner = true
 layout_mode = 2
 text = "AlwaysFail"
 icon = ExtResource("7_1hgfw")
 
-[node name="ButtonAlwaysSucceed" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators"]
+[node name="ButtonAlwaysSucceed" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators" unique_id=233802325]
 unique_name_in_owner = true
 layout_mode = 2
 text = "AlwaysSucceed"
 icon = ExtResource("8_augsf")
 
-[node name="ButtonLimiter" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators"]
+[node name="ButtonLimiter" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators" unique_id=602977324]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Limiter"
 icon = ExtResource("10_ehr66")
 
-[node name="ButtonInverter" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators"]
+[node name="ButtonInverter" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators" unique_id=478242864]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Inverter"
 icon = ExtResource("9_0k0nv")
 
-[node name="ButtonRepeat" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators"]
+[node name="ButtonRepeat" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree/Decorators" unique_id=1043990802]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Repeat"
 icon = ExtResource("10_nvbp1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/BehaviourTree" unique_id=2136121774]
 layout_mode = 2
 
-[node name="LinkGithub" type="LinkButton" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="LinkGithub" type="LinkButton" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1862312267]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -363,7 +363,7 @@ theme_override_colors/font_color = Color(0.0823529, 0.756863, 0.32549, 1)
 text = "New Version available on GitHub!"
 uri = "https://github.com/ThePat02/BehaviourToolkit"
 
-[node name="LabelShortcuts" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="LabelShortcuts" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1088891644]
 unique_name_in_owner = true
 layout_mode = 2
 text = "SHIFT: Add as sibling
@@ -371,15 +371,15 @@ CTRL: Add as parent
 CTRL + ALT: Replace"
 fit_content = true
 
-[node name="Footer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Footer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1131288268]
 layout_mode = 2
 
-[node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="Version" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer" unique_id=1750378165]
 unique_name_in_owner = true
 layout_mode = 2
 text = "BehaviourToolkit vX.X.X"
 
-[node name="ToggleShortcuts" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="ToggleShortcuts" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer" unique_id=658846948]
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Toggle Shortcut Help"
@@ -390,7 +390,7 @@ icon = ExtResource("30_1ffks")
 flat = true
 icon_alignment = 1
 
-[node name="ToggleFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="ToggleFSM" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer" unique_id=733688606]
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "Toggle FiniteStateMachine elements"
@@ -400,7 +400,7 @@ icon = ExtResource("25_xk13i")
 flat = true
 icon_alignment = 1
 
-[node name="ToggleBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="ToggleBT" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer" unique_id=2010036502]
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "Toggle BehaviourTree elements"
@@ -410,7 +410,7 @@ icon = ExtResource("26_v63gq")
 flat = true
 icon_alignment = 1
 
-[node name="ToggleSearchBar" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer"]
+[node name="ToggleSearchBar" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Footer" unique_id=1490107979]
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "Toggle search bar"
@@ -420,8 +420,6 @@ icon = ExtResource("3_plkhg")
 flat = true
 icon_alignment = 1
 
-[connection signal="update_available" from="UpdateManager" to="." method="_on_update_manager_update_available"]
-[connection signal="update_request_completed" from="UpdateManager" to="." method="_on_update_manager_update_request_completed"]
 [connection signal="file_selected" from="FileDialogNewBlackboard" to="." method="_on_file_dialog_new_blackboard_file_selected"]
 [connection signal="text_changed" from="ScrollContainer/MarginContainer/VBoxContainer/SearchBar" to="." method="_on_search_bar_text_changed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/Misc/ButtonBlackboard" to="." method="_on_button_blackboard_pressed"]

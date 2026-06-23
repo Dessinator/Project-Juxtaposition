@@ -1,39 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://h1tk4d1y1wrt"]
+[gd_scene format=3 uid="uid://h1tk4d1y1wrt"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_86xb7"]
-[ext_resource type="Script" path="res://nodes/game/scenes/menus/options_menu/master_options_menu.gd" id="2_ick0f"]
-[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/input/input_options_menu.tscn" id="3_ru8h5"]
-[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/input/input_extras_menu.tscn" id="4_70rpl"]
-[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="5_kcktl"]
-[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="6_rfo7y"]
-[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/game/game_options_menu.tscn" id="7_7qdjk"]
+[ext_resource type="PackedScene" uid="uid://bvwl11s2p0hd" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_86xb7"]
+[ext_resource type="Script" uid="uid://dxf361u06f4qw" path="res://nodes/game/scenes/menus/options_menu/master_options_menu.gd" id="2_ick0f"]
+[ext_resource type="PackedScene" uid="uid://dxxoweobrq4vb" path="res://nodes/game/scenes/menus/options_menu/input/input_options_menu.tscn" id="3_ru8h5"]
+[ext_resource type="PackedScene" uid="uid://cfsg7vt7x2rh1" path="res://nodes/game/scenes/menus/options_menu/input/input_extras_menu.tscn" id="4_70rpl"]
+[ext_resource type="PackedScene" uid="uid://bhnlu4geig0af" path="res://nodes/game/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="5_kcktl"]
+[ext_resource type="PackedScene" uid="uid://d102wpaype4lr" path="res://nodes/game/scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="6_rfo7y"]
+[ext_resource type="PackedScene" uid="uid://dmyxucbmawtgr" path="res://nodes/game/scenes/menus/options_menu/game/game_options_menu.tscn" id="7_7qdjk"]
 
-[node name="MasterOptionsMenu" instance=ExtResource("1_86xb7")]
+[node name="MasterOptionsMenu" unique_id=764879672 instance=ExtResource("1_86xb7")]
 script = ExtResource("2_ick0f")
 
-[node name="TabContainer" parent="." index="0"]
+[node name="TabContainer" parent="." index="0" unique_id=607325566]
 current_tab = 0
 
-[node name="Controls" parent="TabContainer" index="1" instance=ExtResource("3_ru8h5")]
+[node name="Controls" parent="TabContainer" index="1" unique_id=1161865426 instance=ExtResource("3_ru8h5")]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Inputs" parent="TabContainer" index="2" instance=ExtResource("4_70rpl")]
+[node name="Inputs" parent="TabContainer" index="2" unique_id=864722434 instance=ExtResource("4_70rpl")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Audio" parent="TabContainer" index="3" instance=ExtResource("5_kcktl")]
+[node name="Audio" parent="TabContainer" index="3" unique_id=406552011 instance=ExtResource("5_kcktl")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Video" parent="TabContainer" index="4" instance=ExtResource("6_rfo7y")]
+[node name="Video" parent="TabContainer" index="4" unique_id=281847706 instance=ExtResource("6_rfo7y")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="Game" parent="TabContainer" index="5" instance=ExtResource("7_7qdjk")]
+[node name="Game" parent="TabContainer" index="5" unique_id=87124442 instance=ExtResource("7_7qdjk")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4

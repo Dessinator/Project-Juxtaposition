@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu6rtooxqvph6"]
+[gd_scene format=3 uid="uid://cu6rtooxqvph6"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_t3gbd"]
 
-[node name="MafuyuLightAttackCharacterActionVisual" instance=ExtResource("1_t3gbd")]
+[node name="MafuyuLightAttackCharacterActionVisual" unique_id=1991912163 instance=ExtResource("1_t3gbd")]
 _action_name = "Mafuyu Light Attack"
 action_visual_type = 4
 
-[node name="Button" parent="Control" index="0"]
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 theme_override_font_sizes/font_size = 12
 text = "Mafuyu Light Attack"

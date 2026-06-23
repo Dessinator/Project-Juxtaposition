@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://kl2pqddgnljm"]
+[gd_scene format=3 uid="uid://kl2pqddgnljm"]
 
 [ext_resource type="Script" uid="uid://cdlm352b0bv4d" path="res://nodes/render/ui-render-handler/ui-visuals/character-substat-panel/character_substat_panel.gd" id="1_6siav"]
 [ext_resource type="Texture2D" uid="uid://c1eqf1cse1hch" path="res://addons/maaacks_game_template/base/assets/remapping_input_icons/addition_symbol.png" id="1_mmtc3"]
@@ -25,63 +25,63 @@ viewport_path = NodePath("VBoxContainer/AdvancedDetailsPanelContainer/VBoxContai
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riodn"]
 
-[node name="CharacterSubstatPanel" type="PanelContainer"]
+[node name="CharacterSubstatPanel" type="PanelContainer" unique_id=1959300726]
 size_flags_horizontal = 3
 script = ExtResource("1_6siav")
 substat_curve = SubResource("Curve_riodn")
 curve_resolution = 200
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=811513556]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1389431990]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 
-[node name="IconTextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="IconTextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=471727442]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 expand_mode = 2
 
-[node name="IconVSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="IconVSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=2123401161]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbbreviationLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="AbbreviationLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1744456996]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 text = "SUB STT"
 vertical_alignment = 1
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=2049644703]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 11
 text = "(Substat)"
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1925047678]
 custom_minimum_size = Vector2(285, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3oqio")
 
-[node name="ValueLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="ValueLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=767513904]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0.0"
 
-[node name="ModifierValueLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="ModifierValueLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=833986023]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=211383960]
 layout_mode = 2
 
-[node name="ExpandButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="ExpandButton" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=652299465]
 custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
 toggle_mode = true
@@ -89,33 +89,33 @@ texture_normal = ExtResource("1_mmtc3")
 texture_pressed = ExtResource("3_riodn")
 stretch_mode = 3
 
-[node name="AdvancedDetailsPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="AdvancedDetailsPanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=297172860]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6siav")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer" unique_id=1062034578]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer" unique_id=1413914678]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer" unique_id=1280410231]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer" unique_id=1838703460]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0pdp6")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer" unique_id=1215775113]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DescriptionLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=310535862]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -123,42 +123,42 @@ theme_override_font_sizes/font_size = 16
 text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
 autowrap_mode = 3
 
-[node name="SubstatCurveVisualPanelContainer" type="PanelContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer"]
+[node name="SubstatCurveVisualPanelContainer" type="PanelContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer" unique_id=775612707]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer" unique_id=66165948]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_mmtc3")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer" unique_id=586108747]
 layout_mode = 2
 texture = SubResource("ViewportTexture_6siav")
 expand_mode = 2
 
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer"]
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer" unique_id=43268758]
 transparent_bg = true
 size = Vector2i(200, 200)
 
-[node name="CurveVisualizerLine2D" type="Line2D" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer/SubViewport"]
+[node name="CurveVisualizerLine2D" type="Line2D" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer/SubViewport" unique_id=541054453]
 unique_name_in_owner = true
 points = PackedVector2Array(0, 200, 1.0050251, 200, 2.0100503, 200, 3.0150754, 200, 4.0201006, 200, 5.0251255, 200, 6.030151, 200, 7.035176, 200, 8.040201, 200, 9.045226, 200, 10.050251, 200, 11.055276, 200, 12.060302, 200, 13.065327, 200, 14.070352, 200, 15.0753765, 200, 16.080402, 200, 17.085426, 200, 18.090452, 200, 19.095478, 200, 20.100502, 200, 21.105528, 200, 22.110552, 200, 23.115578, 200, 24.120604, 200, 25.125628, 200, 26.130653, 200, 27.13568, 200, 28.140703, 200, 29.14573, 200, 30.150753, 200, 31.155779, 200, 32.160805, 200, 33.16583, 200, 34.170853, 200, 35.17588, 200, 36.180904, 200, 37.18593, 200, 38.190956, 200, 39.19598, 200, 40.201004, 200, 41.20603, 200, 42.211056, 200, 43.21608, 200, 44.221104, 200, 45.22613, 200, 46.231155, 200, 47.23618, 200, 48.241207, 200, 49.24623, 200, 50.251255, 200, 51.256283, 200, 52.261307, 200, 53.26633, 200, 54.27136, 200, 55.276382, 200, 56.281406, 200, 57.28643, 200, 58.29146, 200, 59.296482, 200, 60.301506, 200, 61.306534, 200, 62.311558, 200, 63.31658, 200, 64.32161, 200, 65.32663, 200, 66.33166, 200, 67.336685, 200, 68.341705, 200, 69.34673, 200, 70.35176, 200, 71.35678, 200, 72.36181, 200, 73.36684, 200, 74.37186, 200, 75.376884, 200, 76.38191, 200, 77.38693, 200, 78.39196, 200, 79.39699, 200, 80.40201, 200, 81.407036, 200, 82.41206, 200, 83.41708, 200, 84.42211, 200, 85.42714, 200, 86.43216, 200, 87.43719, 200, 88.44221, 200, 89.447235, 200, 90.45226, 200, 91.45728, 200, 92.46231, 200, 93.46734, 200, 94.47236, 200, 95.47739, 200, 96.482414, 200, 97.487434, 200, 98.49246, 200, 99.49749, 200, 100.50251, 200, 101.50754, 200, 102.512566, 200, 103.517586, 200, 104.52261, 200, 105.52764, 200, 106.53266, 200, 107.53769, 200, 108.54272, 200, 109.54774, 200, 110.552765, 200, 111.55779, 200, 112.56281, 200, 113.56784, 200, 114.57286, 200, 115.57789, 200, 116.58292, 200, 117.58794, 200, 118.592964, 200, 119.59799, 200, 120.60301, 200, 121.60804, 200, 122.61307, 200, 123.61809, 200, 124.623116, 200, 125.62814, 200, 126.63316, 200, 127.63819, 200, 128.64322, 200, 129.64824, 200, 130.65326, 200, 131.6583, 200, 132.66331, 200, 133.66833, 200, 134.67337, 200, 135.67839, 200, 136.68341, 200, 137.68845, 200, 138.69347, 200, 139.69849, 200, 140.70352, 200, 141.70854, 200, 142.71356, 200, 143.7186, 200, 144.72362, 200, 145.72864, 200, 146.73367, 200, 147.7387, 200, 148.74371, 200, 149.74875, 200, 150.75377, 200, 151.75879, 200, 152.76382, 200, 153.76884, 200, 154.77386, 200, 155.7789, 200, 156.78392, 200, 157.78894, 200, 158.79398, 200, 159.799, 200, 160.80402, 200, 161.80905, 200, 162.81407, 200, 163.81909, 200, 164.82413, 200, 165.82915, 200, 166.83417, 200, 167.8392, 200, 168.84422, 200, 169.84924, 200, 170.85428, 200, 171.8593, 200, 172.86432, 200, 173.86935, 200, 174.87437, 200, 175.8794, 200, 176.88441, 200, 177.88945, 200, 178.89447, 200, 179.89949, 200, 180.90453, 200, 181.90955, 200, 182.91457, 200, 183.9196, 200, 184.92462, 200, 185.92964, 200, 186.93468, 200, 187.9397, 200, 188.94472, 200, 189.94975, 200, 190.95477, 200, 191.9598, 200, 192.96483, 200, 193.96985, 200, 194.97487, 200, 195.9799, 200, 196.98492, 200, 197.98994, 200, 198.99498, 200, 200, 200)
 width = 1.0
 antialiased = true
 
-[node name="SubstatCurveVisualMarker" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer/SubViewport" instance=ExtResource("3_i3pni")]
+[node name="SubstatCurveVisualMarker" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/PanelContainer/SubViewport" unique_id=988477831 instance=ExtResource("3_i3pni")]
 unique_name_in_owner = true
 position = Vector2(35, 200)
 left_padding = 35.0
 right_padding = 35.0
 top_padding = 47.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer" unique_id=1926656256]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 0
 
-[node name="MaxYAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer"]
+[node name="MaxYAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer" unique_id=2116646198]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -167,12 +167,12 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 8
 text = "9999.0"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer" unique_id=2075496975]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_i3pni")
 
-[node name="MinYAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer"]
+[node name="MinYAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer" unique_id=337198191]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -182,22 +182,22 @@ theme_override_font_sizes/font_size = 8
 text = "0.0"
 vertical_alignment = 2
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/VBoxContainer" unique_id=329456085]
 layout_mode = 2
 theme_override_constants/separation = 12
 theme_override_styles/separator = SubResource("StyleBoxEmpty_i3pni")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer" unique_id=160182627]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer" unique_id=1813528338]
 layout_mode = 2
 theme_override_constants/separation = 12
 theme_override_styles/separator = SubResource("StyleBoxEmpty_riodn")
 
-[node name="MinXAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer"]
+[node name="MinXAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer" unique_id=845082204]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -205,12 +205,12 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 8
 text = "0.0"
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer" unique_id=355701115]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_riodn")
 
-[node name="MaxXAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer"]
+[node name="MaxXAxisLabel" type="Label" parent="VBoxContainer/AdvancedDetailsPanelContainer/VBoxContainer/HBoxContainer/SubstatCurveVisualPanelContainer/HBoxContainer" unique_id=1316189929]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

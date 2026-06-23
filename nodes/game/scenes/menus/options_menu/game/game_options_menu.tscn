@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmyxucbmawtgr"]
+[gd_scene format=3 uid="uid://dmyxucbmawtgr"]
 
-[ext_resource type="Script" path="res://nodes/game/scenes/menus/options_menu/game/game_options_menu.gd" id="1_jojrb"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="2_oe810"]
-[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/game/reset_game_control/reset_game_control.tscn" id="3_pr0kg"]
+[ext_resource type="Script" uid="uid://bil6wtnu4r031" path="res://nodes/game/scenes/menus/options_menu/game/game_options_menu.gd" id="1_jojrb"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="2_oe810"]
+[ext_resource type="PackedScene" uid="uid://bgvirx2ksr7o1" path="res://nodes/game/scenes/menus/options_menu/game/reset_game_control/reset_game_control.tscn" id="3_pr0kg"]
 
-[node name="Game" type="MarginContainer"]
+[node name="Game" type="MarginContainer" unique_id=1451859943]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,7 +12,7 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_bottom = 24
 script = ExtResource("1_jojrb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=457021364]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -20,7 +20,7 @@ alignment = 1
 script = ExtResource("2_oe810")
 search_depth = 2
 
-[node name="ResetGameControl" parent="VBoxContainer" instance=ExtResource("3_pr0kg")]
+[node name="ResetGameControl" parent="VBoxContainer" unique_id=1286865091 instance=ExtResource("3_pr0kg")]
 layout_mode = 2
 
 [connection signal="reset_confirmed" from="VBoxContainer/ResetGameControl" to="." method="_on_ResetGameControl_reset_confirmed"]

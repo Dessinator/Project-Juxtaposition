@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://qndrwx7n0so3"]
+[gd_scene format=3 uid="uid://qndrwx7n0so3"]
 
 [ext_resource type="Script" uid="uid://bab7vp63ormir" path="res://addons/character-combo-tree/editor/graph-nodes/components/graph_node_horizontal_option_container.gd" id="1_x4cgj"]
 
@@ -7,71 +7,71 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37clr"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="GraphNodeHorizontalOptionContainer" type="HBoxContainer"]
+[node name="GraphNodeHorizontalOptionContainer" type="HBoxContainer" unique_id=311015638]
 offset_right = 199.0
 offset_bottom = 24.0
 script = ExtResource("1_x4cgj")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=386874665]
 unique_name_in_owner = true
 layout_mode = 2
 text = "<Option Name>:"
 
-[node name="VSeparator" type="VSeparator" parent="."]
+[node name="VSeparator" type="VSeparator" parent="." unique_id=258370717]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_86nkw")
 
-[node name="IntInput" type="SpinBox" parent="."]
+[node name="IntInput" type="SpinBox" parent="." unique_id=1881523082]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 allow_greater = true
 custom_arrow_step = 1.0
 
-[node name="FloatInput" type="SpinBox" parent="."]
+[node name="FloatInput" type="SpinBox" parent="." unique_id=570692380]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 step = 0.001
 
-[node name="StringInput" type="LineEdit" parent="."]
+[node name="StringInput" type="LineEdit" parent="." unique_id=650582770]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Empty..."
 
-[node name="StringNameInputContainer" type="HBoxContainer" parent="."]
+[node name="StringNameInputContainer" type="HBoxContainer" parent="." unique_id=865445875]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="StringNameInputContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="StringNameInputContainer" unique_id=1811428799]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_37clr")
 
-[node name="Label" type="Label" parent="StringNameInputContainer/PanelContainer"]
+[node name="Label" type="Label" parent="StringNameInputContainer/PanelContainer" unique_id=1115422023]
 layout_mode = 2
 text = "&"
 
-[node name="StringNameInput" type="LineEdit" parent="StringNameInputContainer"]
+[node name="StringNameInput" type="LineEdit" parent="StringNameInputContainer" unique_id=1922442559]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Empty..."
 
-[node name="BooleanInput" type="CheckBox" parent="."]
+[node name="BooleanInput" type="CheckBox" parent="." unique_id=506509952]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="OptionInput" type="OptionButton" parent="."]
+[node name="OptionInput" type="OptionButton" parent="." unique_id=638122063]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

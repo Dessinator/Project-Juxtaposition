@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yt0rwnew4mqn"]
+[gd_scene format=3 uid="uid://yt0rwnew4mqn"]
 
 [ext_resource type="PackedScene" uid="uid://d1wcw2p5cdqne" path="res://resources/models/characters/jux/jux.glb" id="1_j62ap"]
 [ext_resource type="Material" uid="uid://8ranwolmjlv4" path="res://resources/materials/character/jux/jux_material.tres" id="2_hf7m6"]
@@ -19,10 +19,10 @@ _data = {
 &"idle_test": ExtResource("7_1cnkn")
 }
 
-[node name="JuxCharacterModel" node_paths=PackedStringArray("mesh_instance_3d") instance=ExtResource("1_j62ap")]
+[node name="JuxCharacterModel" unique_id=672856009 node_paths=PackedStringArray("mesh_instance_3d") instance=ExtResource("1_j62ap")]
 mesh_instance_3d = NodePath("godot_rig/GeneralSkeleton/jux_model")
 
-[node name="GeneralSkeleton" parent="godot_rig" index="0"]
+[node name="GeneralSkeleton" parent="godot_rig" parent_id_path=PackedInt32Array(1973768553) index="0" unique_id=1542554786]
 show_rest_only = true
 bones/19/rotation = Quaternion(0.42723218, 0.24550894, 0.81678075, -0.30011186)
 bones/22/rotation = Quaternion(-4.1719158e-08, -0.2984594, 0.95442235, 1.3046086e-08)
@@ -42,19 +42,19 @@ bones/91/rotation = Quaternion(8.127108e-08, 1, 1.4603138e-06, 1.5781918e-08)
 bones/95/rotation = Quaternion(-2.1935186e-08, 1, 1.4007092e-06, -2.1481156e-07)
 bones/101/rotation = Quaternion(-0.1828074, -0.09969312, 0.9779095, -0.018322432)
 
-[node name="jux_eyelashes" parent="godot_rig/GeneralSkeleton" index="0"]
+[node name="jux_eyelashes" parent="godot_rig/GeneralSkeleton" index="0" unique_id=1510291668]
 surface_material_override/0 = ExtResource("2_irc80")
 
-[node name="jux_iris" parent="godot_rig/GeneralSkeleton" index="1"]
+[node name="jux_iris" parent="godot_rig/GeneralSkeleton" index="1" unique_id=1180854042]
 surface_material_override/0 = ExtResource("3_mtrry")
 
-[node name="jux_model" parent="godot_rig/GeneralSkeleton" index="2"]
+[node name="jux_model" parent="godot_rig/GeneralSkeleton" index="2" unique_id=1135854890]
 surface_material_override/0 = ExtResource("2_hf7m6")
 
-[node name="jux_sclera" parent="godot_rig/GeneralSkeleton" index="3"]
+[node name="jux_sclera" parent="godot_rig/GeneralSkeleton" index="3" unique_id=1267074008]
 surface_material_override/0 = ExtResource("5_1cnkn")
 
-[node name="TailSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="4"]
+[node name="TailSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="4" unique_id=1249859523]
 setting_count = 1
 settings/0/root_bone_name = "DEF-tail.001"
 settings/0/root_bone = 101
@@ -73,10 +73,24 @@ settings/0/drag/damping_curve = null
 settings/0/gravity/value = 0.2
 settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "DEF-tail.001"
+settings/0/joints/0/bone = 101
+settings/0/joints/1/bone_name = "DEF-tail.002"
+settings/0/joints/1/bone = 102
+settings/0/joints/2/bone_name = "DEF-tail.003"
+settings/0/joints/2/bone = 103
+settings/0/joints/3/bone_name = "DEF-tail.004"
+settings/0/joints/3/bone = 104
+settings/0/joints/4/bone_name = "DEF-tail.005"
+settings/0/joints/4/bone = 105
+settings/0/joints/5/bone_name = "DEF-tail.006"
+settings/0/joints/5/bone = 106
+settings/0/joints/6/bone_name = "DEF-tail.007"
+settings/0/joints/6/bone = 107
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="FringeSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="5"]
+[node name="FringeSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="5" unique_id=1053265397]
 active = false
 setting_count = 3
 settings/0/root_bone_name = "DEF-fringe.001"
@@ -96,6 +110,12 @@ settings/0/drag/damping_curve = null
 settings/0/gravity/value = 0.2
 settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "DEF-fringe.001"
+settings/0/joints/0/bone = 13
+settings/0/joints/1/bone_name = "DEF-fringe.002"
+settings/0/joints/1/bone = 14
+settings/0/joints/2/bone_name = "DEF-fringe.003"
+settings/0/joints/2/bone = 15
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 settings/1/root_bone_name = "DEF-fringe.004"
@@ -115,6 +135,12 @@ settings/1/drag/damping_curve = null
 settings/1/gravity/value = 0.0
 settings/1/gravity/damping_curve = null
 settings/1/gravity/direction = Vector3(0, -1, 0)
+settings/1/joints/0/bone_name = "DEF-fringe.004"
+settings/1/joints/0/bone = 16
+settings/1/joints/1/bone_name = "DEF-fringe.005"
+settings/1/joints/1/bone = 17
+settings/1/joints/2/bone_name = "DEF-fringe.006"
+settings/1/joints/2/bone = 18
 settings/1/enable_all_child_collisions = false
 settings/1/collision_count = 0
 settings/2/root_bone_name = "DEF-fringe.007"
@@ -134,10 +160,16 @@ settings/2/drag/damping_curve = null
 settings/2/gravity/value = 0.0
 settings/2/gravity/damping_curve = null
 settings/2/gravity/direction = Vector3(0, -1, 0)
+settings/2/joints/0/bone_name = "DEF-fringe.007"
+settings/2/joints/0/bone = 19
+settings/2/joints/1/bone_name = "DEF-fringe.008"
+settings/2/joints/1/bone = 20
+settings/2/joints/2/bone_name = "DEF-fringe.009"
+settings/2/joints/2/bone = 21
 settings/2/enable_all_child_collisions = true
 settings/2/exclude_collision_count = 0
 
-[node name="SideHairSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="6"]
+[node name="SideHairSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="6" unique_id=799502898]
 setting_count = 4
 settings/0/root_bone_name = "DEF-side_hair.001.L"
 settings/0/root_bone = 25
@@ -156,6 +188,12 @@ settings/0/drag/damping_curve = null
 settings/0/gravity/value = 0.2
 settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "DEF-side_hair.001.L"
+settings/0/joints/0/bone = 25
+settings/0/joints/1/bone_name = "DEF-side_hair.002.L"
+settings/0/joints/1/bone = 26
+settings/0/joints/2/bone_name = "DEF-side_hair.003.L"
+settings/0/joints/2/bone = 27
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 settings/1/root_bone_name = "DEF-side_hair.001.R"
@@ -175,6 +213,12 @@ settings/1/drag/damping_curve = null
 settings/1/gravity/value = 0.0
 settings/1/gravity/damping_curve = null
 settings/1/gravity/direction = Vector3(0, -1, 0)
+settings/1/joints/0/bone_name = "DEF-side_hair.001.R"
+settings/1/joints/0/bone = 28
+settings/1/joints/1/bone_name = "DEF-side_hair.002.R"
+settings/1/joints/1/bone = 29
+settings/1/joints/2/bone_name = "DEF-side_hair.003.R"
+settings/1/joints/2/bone = 30
 settings/1/enable_all_child_collisions = false
 settings/1/collision_count = 0
 settings/2/root_bone_name = "DEF-side_hair.004.L"
@@ -194,6 +238,12 @@ settings/2/drag/damping_curve = null
 settings/2/gravity/value = 0.0
 settings/2/gravity/damping_curve = null
 settings/2/gravity/direction = Vector3(0, -1, 0)
+settings/2/joints/0/bone_name = "DEF-side_hair.004.L"
+settings/2/joints/0/bone = 31
+settings/2/joints/1/bone_name = "DEF-side_hair.005.L"
+settings/2/joints/1/bone = 32
+settings/2/joints/2/bone_name = "DEF-side_hair.006.L"
+settings/2/joints/2/bone = 33
 settings/2/enable_all_child_collisions = true
 settings/2/exclude_collision_count = 0
 settings/3/root_bone_name = "DEF-side_hair.004.R"
@@ -213,10 +263,16 @@ settings/3/drag/damping_curve = null
 settings/3/gravity/value = 0.0
 settings/3/gravity/damping_curve = null
 settings/3/gravity/direction = Vector3(0, -1, 0)
+settings/3/joints/0/bone_name = "DEF-side_hair.004.R"
+settings/3/joints/0/bone = 34
+settings/3/joints/1/bone_name = "DEF-side_hair.005.R"
+settings/3/joints/1/bone = 35
+settings/3/joints/2/bone_name = "DEF-side_hair.006.R"
+settings/3/joints/2/bone = 36
 settings/3/enable_all_child_collisions = true
 settings/3/exclude_collision_count = 0
 
-[node name="PonytailSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="7"]
+[node name="PonytailSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="7" unique_id=1132462675]
 setting_count = 1
 settings/0/root_bone_name = "DEF-ponytail.001"
 settings/0/root_bone = 22
@@ -235,10 +291,16 @@ settings/0/drag/damping_curve = null
 settings/0/gravity/value = 0.2
 settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "DEF-ponytail.001"
+settings/0/joints/0/bone = 22
+settings/0/joints/1/bone_name = "DEF-ponytail.002"
+settings/0/joints/1/bone = 23
+settings/0/joints/2/bone_name = "DEF-ponytail.003"
+settings/0/joints/2/bone = 24
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="BarbedChainSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="8"]
+[node name="BarbedChainSpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="godot_rig/GeneralSkeleton" index="8" unique_id=933266363]
 setting_count = 5
 settings/0/root_bone_name = "DEF-barbed_necklace.005.L"
 settings/0/root_bone = 52
@@ -257,6 +319,10 @@ settings/0/drag/damping_curve = null
 settings/0/gravity/value = 0.2
 settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "DEF-barbed_necklace.005.L"
+settings/0/joints/0/bone = 52
+settings/0/joints/1/bone_name = "DEF-barbed_necklace.006.L"
+settings/0/joints/1/bone = 53
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 settings/1/root_bone_name = "DEF-barbed_necklace.003.L"
@@ -276,6 +342,10 @@ settings/1/drag/damping_curve = null
 settings/1/gravity/value = 0.0
 settings/1/gravity/damping_curve = null
 settings/1/gravity/direction = Vector3(0, -1, 0)
+settings/1/joints/0/bone_name = "DEF-barbed_necklace.003.L"
+settings/1/joints/0/bone = 55
+settings/1/joints/1/bone_name = "DEF-barbed_necklace.004.L"
+settings/1/joints/1/bone = 56
 settings/1/enable_all_child_collisions = true
 settings/1/exclude_collision_count = 0
 settings/2/root_bone_name = "DEF-barbed_necklace.001"
@@ -295,6 +365,10 @@ settings/2/drag/damping_curve = null
 settings/2/gravity/value = 0.0
 settings/2/gravity/damping_curve = null
 settings/2/gravity/direction = Vector3(0, -1, 0)
+settings/2/joints/0/bone_name = "DEF-barbed_necklace.001"
+settings/2/joints/0/bone = 86
+settings/2/joints/1/bone_name = "DEF-barbed_necklace.002"
+settings/2/joints/1/bone = 87
 settings/2/enable_all_child_collisions = true
 settings/2/exclude_collision_count = 0
 settings/3/root_bone_name = "DEF-barbed_necklace.003.R"
@@ -314,6 +388,10 @@ settings/3/drag/damping_curve = null
 settings/3/gravity/value = 0.0
 settings/3/gravity/damping_curve = null
 settings/3/gravity/direction = Vector3(0, -1, 0)
+settings/3/joints/0/bone_name = "DEF-barbed_necklace.003.R"
+settings/3/joints/0/bone = 78
+settings/3/joints/1/bone_name = "DEF-barbed_necklace.004.R"
+settings/3/joints/1/bone = 79
 settings/3/enable_all_child_collisions = true
 settings/3/exclude_collision_count = 0
 settings/4/root_bone_name = "DEF-barbed_necklace.005.R"
@@ -333,11 +411,15 @@ settings/4/drag/damping_curve = null
 settings/4/gravity/value = 0.0
 settings/4/gravity/damping_curve = null
 settings/4/gravity/direction = Vector3(0, -1, 0)
+settings/4/joints/0/bone_name = "DEF-barbed_necklace.005.R"
+settings/4/joints/0/bone = 75
+settings/4/joints/1/bone_name = "DEF-barbed_necklace.006.R"
+settings/4/joints/1/bone = 76
 settings/4/enable_all_child_collisions = true
 settings/4/exclude_collision_count = 0
 
-[node name="DEF-barbed_necklace_007_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.99999994, -4.1661743e-08, 1.0697666e-07, -6.415101e-08, -0.9755573, 0.21974501, 9.520692e-08, -0.21974507, -0.9755571, 0.14999962, 0.2716118, -0.051836815)
+[node name="DEF-barbed_necklace_007_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="9" unique_id=1743551598]
+transform = Transform3D(0.99999994, -4.158222e-08, 1.0689926e-07, -6.405642e-08, -0.9755573, 0.21974501, 9.514889e-08, -0.21974507, -0.9755571, 0.14999962, 0.2716118, -0.051836815)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.007.L"
@@ -347,8 +429,8 @@ use_gravity = true
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_necklace_008_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="10"]
-transform = Transform3D(0.9999998, -1.6871626e-07, 2.2874616e-07, -2.114211e-07, -0.97941065, 0.20187698, 1.8997652e-07, -0.20187697, -0.9794107, 0.07499982, 0.27663565, -0.061396863)
+[node name="DEF-barbed_necklace_008_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="10" unique_id=1664523776]
+transform = Transform3D(0.9999998, -1.6854722e-07, 2.2892337e-07, -2.1129131e-07, -0.97941065, 0.20187698, 1.9018422e-07, -0.20187697, -0.9794107, 0.07499982, 0.27663565, -0.061396863)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.008.L"
@@ -358,8 +440,8 @@ use_gravity = true
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_necklace_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.99999994, -4.3321253e-07, -1.5951363e-07, -3.8757142e-07, -0.97555727, 0.21974473, -2.5081093e-07, -0.21974477, -0.9755571, -0.15000054, 0.2716118, -0.05183659)
+[node name="DEF-barbed_necklace_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="11" unique_id=1851964923]
+transform = Transform3D(0.99999994, -4.3330687e-07, -1.5945264e-07, -3.8767683e-07, -0.97555727, 0.21974471, -2.5077213e-07, -0.21974476, -0.9755571, -0.15000054, 0.2716118, -0.05183659)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.007.R"
@@ -369,8 +451,8 @@ use_gravity = true
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_necklace_008_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.99999994, -4.7451387e-08, 6.171828e-08, -5.893389e-08, -0.979411, 0.20187674, 5.0868223e-08, -0.20187674, -0.979411, -0.07500028, 0.27663565, -0.06139664)
+[node name="DEF-barbed_necklace_008_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="12" unique_id=1715067228]
+transform = Transform3D(0.99999994, -4.7359507e-08, 6.1730155e-08, -5.8846307e-08, -0.979411, 0.20187694, 5.089839e-08, -0.20187694, -0.979411, -0.07500028, 0.27663565, -0.06139664)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.008.R"
@@ -380,8 +462,8 @@ use_gravity = true
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_necklace_009" type="Node3D" parent="godot_rig/GeneralSkeleton" index="13"]
-transform = Transform3D(1, -4.440892e-15, 1.4901163e-07, -2.7154591e-08, -0.98325574, 0.1822313, 1.4651656e-07, -0.18223132, -0.9832556, 7.04952e-16, 0.27663565, -0.07136885)
+[node name="DEF-barbed_necklace_009" type="Node3D" parent="godot_rig/GeneralSkeleton" index="13" unique_id=1687704769]
+transform = Transform3D(1, -5.3290705e-15, 1.4901163e-07, -2.7154593e-08, -0.98325574, 0.1822313, 1.4651656e-07, -0.18223132, -0.9832556, 7.04952e-16, 0.27663565, -0.07136885)
 top_level = true
 script = ExtResource("3_ftx2q")
 bone_name = "DEF-barbed_necklace.009"
@@ -391,7 +473,7 @@ use_gravity = true
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-sleeve_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="14"]
+[node name="DEF-sleeve_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="14" unique_id=787144080]
 transform = Transform3D(-0.28233546, 0.9593154, -0.00075543846, -0.9586725, -0.28211713, 0.03684194, 0.035129927, 0.011126005, 0.9993207, 1.076653, 0.8713554, -0.014038308)
 top_level = true
 script = ExtResource("3_ftx2q")
@@ -402,7 +484,7 @@ gravity = Vector3(0, -2, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-sleeve_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="15"]
+[node name="DEF-sleeve_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="15" unique_id=793955594]
 transform = Transform3D(-0.28235632, -0.95930934, 0.0007554925, 0.95866644, -0.282138, 0.03684196, -0.035129692, 0.011126824, 0.9993207, -1.0766534, 0.8713566, -0.014038284)
 top_level = true
 script = ExtResource("3_ftx2q")
@@ -413,7 +495,7 @@ gravity = Vector3(0, -2, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_chain_001" type="Node3D" parent="godot_rig/GeneralSkeleton" index="16"]
+[node name="DEF-barbed_chain_001" type="Node3D" parent="godot_rig/GeneralSkeleton" index="16" unique_id=1985679766]
 transform = Transform3D(0.9995159, 0.031005966, 0.0025516495, 0.031110782, -0.99617946, -0.08159783, 1.1881347e-05, 0.0816378, -0.99666095, 0.031706773, -0.19569832, 0.23365396)
 top_level = true
 script = ExtResource("3_ftx2q")
@@ -423,7 +505,7 @@ damping = 1.5
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_chain_002" type="Node3D" parent="godot_rig/GeneralSkeleton" index="17"]
+[node name="DEF-barbed_chain_002" type="Node3D" parent="godot_rig/GeneralSkeleton" index="17" unique_id=893186872]
 transform = Transform3D(0.74886334, -0.20488033, 0.63026017, -0.16138959, -0.97876155, -0.12640859, 0.64277303, -0.007054678, -0.76602435, -0.35694295, -0.17081201, 0.107562296)
 top_level = true
 script = ExtResource("3_ftx2q")
@@ -433,7 +515,7 @@ damping = 1.5
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_chain_003" type="Node3D" parent="godot_rig/GeneralSkeleton" index="18"]
+[node name="DEF-barbed_chain_003" type="Node3D" parent="godot_rig/GeneralSkeleton" index="18" unique_id=369329879]
 transform = Transform3D(-0.03482493, -0.26571316, 0.96342254, -0.12507227, -0.95526993, -0.2679855, 0.9915352, -0.12983021, 3.3855427e-05, -0.46898746, -0.11980051, -0.12137792)
 top_level = true
 script = ExtResource("3_ftx2q")
@@ -443,7 +525,7 @@ damping = 1.5
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_chain_004" type="Node3D" parent="godot_rig/GeneralSkeleton" index="19"]
+[node name="DEF-barbed_chain_004" type="Node3D" parent="godot_rig/GeneralSkeleton" index="19" unique_id=1106337737]
 transform = Transform3D(-0.78572345, -0.22080351, 0.57782567, 0.005783512, -0.93670315, -0.3500763, 0.6185485, -0.27172172, 0.7372677, -0.37924778, -0.059909105, -0.37869555)
 top_level = true
 script = ExtResource("3_ftx2q")
@@ -453,7 +535,7 @@ damping = 1.5
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-barbed_chain_005" type="Node3D" parent="godot_rig/GeneralSkeleton" index="20"]
+[node name="DEF-barbed_chain_005" type="Node3D" parent="godot_rig/GeneralSkeleton" index="20" unique_id=618166415]
 transform = Transform3D(-0.999063, -0.041028824, -0.01384542, 0.043297768, -0.95099664, -0.3061547, -0.00060578075, -0.30646688, 0.9518816, -0.043610606, -0.07149017, -0.43701142)
 top_level = true
 script = ExtResource("3_ftx2q")
@@ -463,33 +545,31 @@ damping = 1.5
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="HeadBoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" index="21"]
+[node name="HeadBoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" index="21" unique_id=1504673520]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2445534e-16, 1.3276808, -0.017953264)
 bone_name = "Head"
 bone_idx = 6
 
-[node name="BangsCollisionShape" type="CollisionShape3D" parent="godot_rig/GeneralSkeleton/HeadBoneAttachment3D" index="0"]
+[node name="BangsCollisionShape" type="CollisionShape3D" parent="godot_rig/GeneralSkeleton/HeadBoneAttachment3D" index="0" unique_id=499821525]
 transform = Transform3D(1, -7.28133e-22, 0, -7.28133e-22, 1, 0, 0, 0, 1, 0, 0.0717899, 0.00234778)
 visible = false
 shape = SubResource("SphereShape3D_ftx2q")
 disabled = true
 
-[node name="ChestBoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" index="22"]
+[node name="ChestBoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" index="22" unique_id=890474234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2223359e-15, 1.1127907, -0.004147172)
 bone_name = "UpperChest"
 bone_idx = 4
 
-[node name="TentaclesCollisionShape" type="CollisionShape3D" parent="godot_rig/GeneralSkeleton/ChestBoneAttachment3D" index="0"]
+[node name="TentaclesCollisionShape" type="CollisionShape3D" parent="godot_rig/GeneralSkeleton/ChestBoneAttachment3D" index="0" unique_id=1579071960]
 transform = Transform3D(1, -4.72275e-22, 0, -4.72276e-22, 1, 0, 0, 0, 1, 0, 0.0278335, -0.0130976)
 visible = false
 shape = SubResource("SphereShape3D_6d3bn")
 disabled = true
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="1" unique_id=423805151]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_jgs7t")
-}
+libraries/ = SubResource("AnimationLibrary_jgs7t")
 
-[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=867706737]
 unique_name_in_owner = true

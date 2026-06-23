@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4uai47l8gsq2"]
+[gd_scene format=3 uid="uid://b4uai47l8gsq2"]
 
 [ext_resource type="Script" uid="uid://g2uq5uhc1sfi" path="res://nodes/playable-character/components/playable-character-party-manager/playable_character_party_manager.gd" id="1_8yhpk"]
 
-[node name="PlayableCharacterPartyManager" type="Node"]
+[node name="PlayableCharacterPartyManager" type="Node" unique_id=56975234]
 script = ExtResource("1_8yhpk")

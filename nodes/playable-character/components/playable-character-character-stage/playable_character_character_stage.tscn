@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clc3je21ffph2"]
+[gd_scene format=3 uid="uid://clc3je21ffph2"]
 
 [ext_resource type="Script" uid="uid://cmfvu1vqu07nc" path="res://nodes/playable-character/components/playable-character-character-stage/playable_character_character_stage.gd" id="1_pk2s5"]
 [ext_resource type="PackedScene" uid="uid://bg4t6ordmj1u7" path="res://nodes/nonplayable-character/prefabs/character-stage-nonplayable-character/character_stage_nonplayable_character.tscn" id="2_wyaac"]
@@ -21,17 +21,17 @@ shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.5
 shader_parameter/resolution = Vector2i(320, 240)
 
-[node name="PlayableCharacterCharacterStage" type="Node3D"]
+[node name="PlayableCharacterCharacterStage" type="Node3D" unique_id=1808211651]
 script = ExtResource("1_pk2s5")
 
-[node name="CharacterStageNonplayableCharacter" parent="." instance=ExtResource("2_wyaac")]
+[node name="CharacterStageNonplayableCharacter" parent="." unique_id=1141676121 instance=ExtResource("2_wyaac")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="TrackballCameraCenter" type="Node3D" parent="CharacterStageNonplayableCharacter"]
+[node name="TrackballCameraCenter" type="Node3D" parent="CharacterStageNonplayableCharacter" unique_id=1006754521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="TrackballCamera" type="Camera3D" parent="CharacterStageNonplayableCharacter/TrackballCameraCenter"]
+[node name="TrackballCamera" type="Camera3D" parent="CharacterStageNonplayableCharacter/TrackballCameraCenter" unique_id=1282431178]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4)
 script = ExtResource("5_rsmkl")
@@ -47,14 +47,14 @@ pitch_top_limit = 0.8999999999999999
 pitch_bottom_limit = -0.9
 metadata/_custom_type_script = "uid://cybcgdhpxremn"
 
-[node name="Pedestal" type="CSGCylinder3D" parent="."]
+[node name="Pedestal" type="CSGCylinder3D" parent="." unique_id=1271717328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 radius = 1.3486328
 height = 0.5
 sides = 16
 material = SubResource("ShaderMaterial_lty4v")
 
-[node name="Skybox" type="CSGSphere3D" parent="."]
+[node name="Skybox" type="CSGSphere3D" parent="." unique_id=1124753465]
 flip_faces = true
 radius = 20.0
 metadata/_edit_lock_ = true

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://bht50wtjyixgn"]
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://bht50wtjyixgn"]
 
 [ext_resource type="Script" uid="uid://bvyqwok4c5xmi" path="res://resources/character/character-talent/character_talent.gd" id="1_mhsmg"]
 [ext_resource type="Resource" uid="uid://dpf67nv5crtmt" path="res://resources/pronouns/prefabs/she.tres" id="2_53oey"]

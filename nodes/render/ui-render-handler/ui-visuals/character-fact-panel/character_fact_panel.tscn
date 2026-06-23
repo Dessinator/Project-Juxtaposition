@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfqafj5twgstg"]
+[gd_scene format=3 uid="uid://dfqafj5twgstg"]
 
 [ext_resource type="Texture2D" uid="uid://dp36bqov67hw6" path="res://resources/images/icons/play.svg" id="1_gg7cw"]
 [ext_resource type="Script" uid="uid://k5pn0dmy1xfo" path="res://nodes/render/ui-render-handler/ui-visuals/character-fact-panel/character_fact_panel.gd" id="1_toth8"]
@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxf10"]
 
-[node name="CharacterFactPanel" type="PanelContainer"]
+[node name="CharacterFactPanel" type="PanelContainer" unique_id=1114573563]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -19,40 +19,40 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 script = ExtResource("1_toth8")
 
-[node name="VoiceLineAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="VoiceLineAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1448162797]
 unique_name_in_owner = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1340707061]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=620440674]
 layout_mode = 2
 
-[node name="PlayVoiceLineButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="PlayVoiceLineButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=112350991]
 layout_mode = 2
 icon = ExtResource("1_gg7cw")
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1907512480]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=337131431]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Fact Title"
 
-[node name="LockedTitleLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LockedTitleLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1365340225]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "(LOCKED)"
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1294943262]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gg7cw")
 
-[node name="ExpandButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="ExpandButton" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=1766118165]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 toggle_mode = true
@@ -60,27 +60,27 @@ texture_normal = ExtResource("2_nxf10")
 texture_pressed = ExtResource("3_toth8")
 stretch_mode = 3
 
-[node name="DescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="DescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1291146214]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nxf10")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DescriptionPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DescriptionPanelContainer" unique_id=967256848]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/DescriptionPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/DescriptionPanelContainer/VBoxContainer" unique_id=1176893853]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LockedDescriptionLabel" type="Label" parent="VBoxContainer/DescriptionPanelContainer/VBoxContainer"]
+[node name="LockedDescriptionLabel" type="Label" parent="VBoxContainer/DescriptionPanelContainer/VBoxContainer" unique_id=1919765051]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Placeholder fact unlock criteria hint"
 autowrap_mode = 3
 
-[node name="DescriptionLabel" type="Label" parent="VBoxContainer/DescriptionPanelContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/DescriptionPanelContainer/VBoxContainer" unique_id=33513928]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet consectetur adipiscing elit."

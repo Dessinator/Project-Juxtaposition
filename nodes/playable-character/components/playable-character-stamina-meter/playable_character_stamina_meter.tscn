@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dalxdx30uubou"]
+[gd_scene format=3 uid="uid://dalxdx30uubou"]
 
 [ext_resource type="Texture2D" uid="uid://cyfutvwdypvuc" path="res://resources/images/progress-bars/PBRTEX_stamina_indicator_under.png" id="1_cpgej"]
 [ext_resource type="Script" uid="uid://di774t7moc4ew" path="res://nodes/playable-character/components/playable-character-stamina-meter/playable_character_stamina_meter.gd" id="1_tylmx"]
@@ -177,10 +177,10 @@ _data = {
 &"hide": SubResource("Animation_12r3i")
 }
 
-[node name="PlayableCharacterStaminaMeter" type="Node3D"]
+[node name="PlayableCharacterStaminaMeter" type="Node3D" unique_id=62500891]
 script = ExtResource("1_tylmx")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1057315969]
 layers = 2
 pixel_size = 0.02
 billboard = 1
@@ -188,17 +188,17 @@ no_depth_test = true
 texture_filter = 0
 texture = SubResource("ViewportTexture_vruwe")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1526017570]
 transparent_bg = true
 size = Vector2i(32, 32)
 
-[node name="Control" type="Control" parent="SubViewport"]
+[node name="Control" type="Control" parent="SubViewport" unique_id=1047733199]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport/Control"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport/Control" unique_id=704317831]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -219,19 +219,17 @@ fill_mode = 4
 texture_under = ExtResource("1_cpgej")
 texture_progress = ExtResource("2_ti3xx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735879217]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_ve862")
-}
-autoplay = "hide"
+libraries/ = SubResource("AnimationLibrary_ve862")
+autoplay = &"hide"
 
-[node name="FadeOutTimer" type="Timer" parent="."]
+[node name="FadeOutTimer" type="Timer" parent="." unique_id=1319881121]
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
-[node name="WorldUIObjectInterface" type="Node" parent="."]
+[node name="WorldUIObjectInterface" type="Node" parent="." unique_id=2093796405]
 script = ExtResource("4_8xl0r")
 _world_origin_initial_position_copy_type = 2
 metadata/_custom_type_script = "uid://cr8pb3p5xkx75"

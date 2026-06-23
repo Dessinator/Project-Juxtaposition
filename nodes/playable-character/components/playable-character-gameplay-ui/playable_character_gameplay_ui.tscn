@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://wffrsv16y7pf"]
+[gd_scene format=3 uid="uid://wffrsv16y7pf"]
 
 [ext_resource type="Script" uid="uid://bf8y3d3kmmfps" path="res://nodes/playable-character/components/playable-character-gameplay-ui/playable_character_gameplay_ui.gd" id="1_jtpcf"]
 
@@ -8,7 +8,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8s2jg"]
 
-[node name="PlayableCharacterGameplayUI" type="Control"]
+[node name="PlayableCharacterGameplayUI" type="Control" unique_id=1186525784]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_jtpcf")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=850245667]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +31,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CharacterStatusPanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="CharacterStatusPanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=304680850]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(380, 249)
 layout_mode = 2
@@ -39,7 +39,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bws26")
 
-[node name="CharacterSwitcherPanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="CharacterSwitcherPanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=2023136493]
 custom_minimum_size = Vector2(163, 200)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -47,12 +47,12 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q8jt8")
 
-[node name="CharacterSwitcherVisualContainer" type="VBoxContainer" parent="MarginContainer/CharacterSwitcherPanelContainer"]
+[node name="CharacterSwitcherVisualContainer" type="VBoxContainer" parent="MarginContainer/CharacterSwitcherPanelContainer" unique_id=453135905]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="CharacterActionPanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="CharacterActionPanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=794739310]
 custom_minimum_size = Vector2(380, 60)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -60,7 +60,7 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8s2jg")
 
-[node name="CharacterActionVisualContainer" type="HBoxContainer" parent="MarginContainer/CharacterActionPanelContainer"]
+[node name="CharacterActionVisualContainer" type="HBoxContainer" parent="MarginContainer/CharacterActionPanelContainer" unique_id=1099998462]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2

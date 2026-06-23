@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq1r6fmfn1312"]
+[gd_scene format=3 uid="uid://cq1r6fmfn1312"]
 
 [ext_resource type="Script" uid="uid://jg1awlc5kx0x" path="res://addons/character-combo-tree/editor/graph-nodes/root/character_combo_chain_root_graph_node.gd" id="1_uv7w7"]
 [ext_resource type="PackedScene" uid="uid://qndrwx7n0so3" path="res://addons/character-combo-tree/editor/graph-nodes/components/graph_node_horizontal_option_container.tscn" id="2_pldas"]
 
-[node name="CharacterComboChainRootGraphNode" type="GraphNode"]
+[node name="CharacterComboChainRootGraphNode" type="GraphNode" unique_id=1322034371]
 offset_right = 310.0
 offset_bottom = 143.0
 mouse_filter = 1
@@ -37,18 +37,18 @@ slot/2/right_icon = null
 slot/2/draw_stylebox = true
 script = ExtResource("1_uv7w7")
 
-[node name="PrerequisiteStateOption" parent="." instance=ExtResource("2_pldas")]
+[node name="PrerequisiteStateOption" parent="." unique_id=1694739329 instance=ExtResource("2_pldas")]
 unique_name_in_owner = true
 layout_mode = 2
 _label_text = "Prerequisite State"
 _input_type = 5
 _options = Array[String](["Grounded", "Arial", "Juxtaposed"])
 
-[node name="HSeparator" type="HSeparator" parent="."]
+[node name="HSeparator" type="HSeparator" parent="." unique_id=608735300]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="StartingAttackInput" type="Label" parent="."]
+[node name="StartingAttackInput" type="Label" parent="." unique_id=2047234564]
 layout_mode = 2
 text = "Starting Attack:"
 

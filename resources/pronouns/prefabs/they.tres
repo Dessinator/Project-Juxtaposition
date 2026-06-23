@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Pronouns" load_steps=2 format=3 uid="uid://be4qqhhq2y4uf"]
+[gd_resource type="Resource" script_class="Pronouns" format=3 uid="uid://be4qqhhq2y4uf"]
 
 [ext_resource type="Script" uid="uid://duefmlin20uqs" path="res://resources/pronouns/pronouns.gd" id="1_3ybv4"]
 

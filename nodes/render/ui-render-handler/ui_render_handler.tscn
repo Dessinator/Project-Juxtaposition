@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuh7qfq65d3ce"]
+[gd_scene format=3 uid="uid://cuh7qfq65d3ce"]
 
 [ext_resource type="Script" uid="uid://5lk8qe3odubk" path="res://nodes/render/ui-render-handler/ui_render_handler.gd" id="1_qr26c"]
 [ext_resource type="PackedScene" uid="uid://bdegwynvk20hk" path="res://nodes/render/ui-render-handler/ui-visuals/cinematic-bars/cinematic_bars.tscn" id="2_q8jt8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8jt8"]
 
-[node name="UIRenderHandler" type="Control"]
+[node name="UIRenderHandler" type="Control" unique_id=1545925069]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,11 +15,11 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_qr26c")
 
-[node name="CinematicBars" parent="." instance=ExtResource("2_q8jt8")]
+[node name="CinematicBars" parent="." unique_id=912796053 instance=ExtResource("2_q8jt8")]
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="PlayableCharacterGameplayUIMarginContainer" type="MarginContainer" parent="."]
+[node name="PlayableCharacterGameplayUIMarginContainer" type="MarginContainer" parent="." unique_id=1650613632]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -33,7 +33,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="UIScenePanelContainer" type="PanelContainer" parent="."]
+[node name="UIScenePanelContainer" type="PanelContainer" parent="." unique_id=1121318940]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

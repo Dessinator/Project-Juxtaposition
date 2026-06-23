@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmin6dhtla3dd"]
+[gd_scene format=3 uid="uid://cmin6dhtla3dd"]
 
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="1_x8tsj"]
 [ext_resource type="Shader" uid="uid://43rm1bhn3fyc" path="res://resources/shaders/render/psx_render_unlit.gdshader" id="2_lmdsh"]
@@ -83,9 +83,9 @@ shader_parameter/resolution = Vector2i(320, 240)
 material = SubResource("ShaderMaterial_5ogxi")
 size = Vector2(0.5, 0.5)
 
-[node name="SpikeTrailParticles" type="Node3D"]
+[node name="SpikeTrailParticles" type="Node3D" unique_id=1407757837]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=834978415]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0796702, 0.0123931, -0.505038)
 emitting = false
@@ -97,7 +97,7 @@ interpolate = false
 process_material = SubResource("ParticleProcessMaterial_kw3b2")
 draw_pass_1 = SubResource("SphereMesh_dkpyw")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=1551155439]
 unique_name_in_owner = true
 emitting = false
 amount = 100

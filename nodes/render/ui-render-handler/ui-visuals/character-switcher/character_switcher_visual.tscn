@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cad4mvjfw42dv"]
+[gd_scene format=3 uid="uid://cad4mvjfw42dv"]
 
 [ext_resource type="Script" uid="uid://646bbatk5cun" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.gd" id="1_p0fui"]
 [ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="2_ygow3"]
@@ -158,7 +158,7 @@ _data = {
 &"switch_on": SubResource("Animation_8n8rt")
 }
 
-[node name="CharacterSwitcherVisual" type="Control"]
+[node name="CharacterSwitcherVisual" type="Control" unique_id=406986625]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 163.0
@@ -166,38 +166,38 @@ offset_bottom = 56.0
 size_flags_vertical = 3
 script = ExtResource("1_p0fui")
 
-[node name="CharacterSwitcherVisualContainer" type="PanelContainer" parent="."]
+[node name="CharacterSwitcherVisualContainer" type="PanelContainer" parent="." unique_id=653926161]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -35.0
+offset_top = -28.0
 offset_right = 163.0
-offset_bottom = 33.0
+offset_bottom = 40.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q8jt8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSwitcherVisualContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSwitcherVisualContainer" unique_id=1430789233]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="CharacterMetadataContainer" type="HBoxContainer" parent="CharacterSwitcherVisualContainer/VBoxContainer"]
+[node name="CharacterMetadataContainer" type="HBoxContainer" parent="CharacterSwitcherVisualContainer/VBoxContainer" unique_id=882373406]
 layout_mode = 2
 
-[node name="CharacterIconTextureRect" type="TextureRect" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer"]
+[node name="CharacterIconTextureRect" type="TextureRect" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer" unique_id=1090730245]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_q8jt8")
 expand_mode = 1
 
-[node name="CharacterNameLabel" type="Label" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer"]
+[node name="CharacterNameLabel" type="Label" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer" unique_id=1702682492]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Character Name"
 vertical_alignment = 1
 
-[node name="CharacterHealthBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
+[node name="CharacterHealthBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" unique_id=1959598783 instance=ExtResource("2_ygow3")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -206,7 +206,7 @@ _under = SubResource("GradientTexture1D_4c5i4")
 _ghost_progress = SubResource("GradientTexture1D_4qldq")
 _true_progress = SubResource("GradientTexture1D_81yij")
 
-[node name="CharacterStaminaBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
+[node name="CharacterStaminaBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" unique_id=1934143448 instance=ExtResource("2_ygow3")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
@@ -215,7 +215,7 @@ _under = SubResource("GradientTexture1D_4c5i4")
 _ghost_progress = SubResource("GradientTexture1D_jdj2u")
 _true_progress = SubResource("GradientTexture1D_xfnta")
 
-[node name="CharacterJuxtometerBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" instance=ExtResource("2_ygow3")]
+[node name="CharacterJuxtometerBar" parent="CharacterSwitcherVisualContainer/VBoxContainer" unique_id=692162891 instance=ExtResource("2_ygow3")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -226,12 +226,12 @@ _under = SubResource("GradientTexture1D_87ab6")
 _ghost_progress = SubResource("GradientTexture1D_23a33")
 _true_progress = SubResource("GradientTexture1D_oc1h8")
 
-[node name="KeyHint" type="Control" parent="CharacterSwitcherVisualContainer"]
+[node name="KeyHint" type="Control" parent="CharacterSwitcherVisualContainer" unique_id=1036684911]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="CharacterSwitcherVisualContainer/KeyHint"]
+[node name="PanelContainer" type="PanelContainer" parent="CharacterSwitcherVisualContainer/KeyHint" unique_id=1810532840]
 clip_children = 2
 layout_mode = 1
 anchors_preset = 4
@@ -243,13 +243,13 @@ offset_right = 45.0
 offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="KeyHintLabel" type="Label" parent="CharacterSwitcherVisualContainer/KeyHint/PanelContainer"]
+[node name="KeyHintLabel" type="Label" parent="CharacterSwitcherVisualContainer/KeyHint/PanelContainer" unique_id=471624082]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="CharacterSwitchCooldownTextureProgressBar" type="TextureProgressBar" parent="CharacterSwitcherVisualContainer/KeyHint/PanelContainer"]
+[node name="CharacterSwitchCooldownTextureProgressBar" type="TextureProgressBar" parent="CharacterSwitcherVisualContainer/KeyHint/PanelContainer" unique_id=764206788]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
@@ -259,12 +259,10 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_ygow3")
 
-[node name="Button" type="Button" parent="CharacterSwitcherVisualContainer"]
+[node name="Button" type="Button" parent="CharacterSwitcherVisualContainer" unique_id=1378492138]
 layout_mode = 2
 flat = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1509182598]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_5wub3")
-}
+libraries/ = SubResource("AnimationLibrary_5wub3")

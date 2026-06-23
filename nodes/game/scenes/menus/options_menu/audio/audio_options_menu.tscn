@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhnlu4geig0af"]
+[gd_scene format=3 uid="uid://bhnlu4geig0af"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="1_vn0vi"]
-[ext_resource type="Script" path="res://nodes/game/scenes/menus/options_menu/audio/audio_options_menu.gd" id="2_rfvhl"]
-[ext_resource type="PackedScene" path="res://nodes/game/scenes/menus/options_menu/audio/audio_input_option_control.tscn" id="3_23w2o"]
+[ext_resource type="PackedScene" uid="uid://c8vnncjwqcpab" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="1_vn0vi"]
+[ext_resource type="Script" uid="uid://dk213wviq7stx" path="res://nodes/game/scenes/menus/options_menu/audio/audio_options_menu.gd" id="2_rfvhl"]
+[ext_resource type="PackedScene" uid="uid://d2vvydnlqfr4x" path="res://nodes/game/scenes/menus/options_menu/audio/audio_input_option_control.tscn" id="3_23w2o"]
 
-[node name="Audio" instance=ExtResource("1_vn0vi")]
+[node name="Audio" unique_id=1663225554 instance=ExtResource("1_vn0vi")]
 script = ExtResource("2_rfvhl")
 
-[node name="AudioInputOptionControl" parent="VBoxContainer" index="2" instance=ExtResource("3_23w2o")]
+[node name="AudioInputOptionControl" parent="VBoxContainer" parent_id_path=PackedInt32Array(23030461) index="2" unique_id=1117755 instance=ExtResource("3_23w2o")]
 layout_mode = 2

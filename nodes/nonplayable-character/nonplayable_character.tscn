@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8kk2e6juyhhn"]
+[gd_scene format=3 uid="uid://b8kk2e6juyhhn"]
 
 [ext_resource type="Script" uid="uid://bk74irb7v6in4" path="res://nodes/nonplayable-character/nonplayable_character.gd" id="1_ygo50"]
 
-[node name="NonplayableCharacter" type="Node3D"]
+[node name="NonplayableCharacter" type="Node3D" unique_id=572551700]
 script = ExtResource("1_ygo50")

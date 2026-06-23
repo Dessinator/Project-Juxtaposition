@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://gil4gigdqfjq"]
+[gd_scene format=3 uid="uid://gil4gigdqfjq"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_018ip"]
-[ext_resource type="Script" path="res://nodes/game/scenes/menus/options_menu/master_options_menu.gd" id="2_1gtet"]
+[ext_resource type="PackedScene" uid="uid://bvwl11s2p0hd" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_018ip"]
+[ext_resource type="Script" uid="uid://dxf361u06f4qw" path="res://nodes/game/scenes/menus/options_menu/master_options_menu.gd" id="2_1gtet"]
 
-[node name="MasterOptionsMenu" instance=ExtResource("1_018ip")]
+[node name="MasterOptionsMenu" unique_id=1172656325 instance=ExtResource("1_018ip")]
 script = ExtResource("2_1gtet")

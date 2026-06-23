@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://ckyv6l3ncojyr"]
+[gd_scene format=3 uid="uid://ckyv6l3ncojyr"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_n352f"]
 [ext_resource type="Resource" uid="uid://u2stdwf5ifmo" path="res://resources/character/character-data/prefabs/dizzy_character_data.tres" id="2_83kvv"]
@@ -78,29 +78,39 @@ animation = &"walk"
 animation = &"walk"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_iketm"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_iketm")
-blend_point_0/pos = Vector2(0, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_6c076")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_0cds6")
-blend_point_2/pos = Vector2(0, 2)
-blend_point_3/node = SubResource("AnimationNodeAnimation_wsqtw")
-blend_point_3/pos = Vector2(0, 3)
-blend_point_4/node = SubResource("AnimationNodeAnimation_mkn6w")
-blend_point_4/pos = Vector2(1, 2)
-blend_point_5/node = SubResource("AnimationNodeAnimation_tfkyl")
-blend_point_5/pos = Vector2(-1, 2)
-blend_point_6/node = SubResource("AnimationNodeAnimation_8gcht")
-blend_point_6/pos = Vector2(1, 3)
-blend_point_7/node = SubResource("AnimationNodeAnimation_fi6on")
-blend_point_7/pos = Vector2(-1, 3)
-blend_point_8/node = SubResource("AnimationNodeAnimation_m3um4")
-blend_point_8/pos = Vector2(1, 1)
-blend_point_9/node = SubResource("AnimationNodeAnimation_dxop7")
-blend_point_9/pos = Vector2(-1, 1)
 min_space = Vector2(-5, -5)
 max_space = Vector2(5, 5)
-sync = true
+sync_mode = 1
+blend_point_0/node = SubResource("AnimationNodeAnimation_iketm")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_6c076")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_0cds6")
+blend_point_2/pos = Vector2(0, 2)
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_wsqtw")
+blend_point_3/pos = Vector2(0, 3)
+blend_point_3/name = &"3"
+blend_point_4/node = SubResource("AnimationNodeAnimation_mkn6w")
+blend_point_4/pos = Vector2(1, 2)
+blend_point_4/name = &"4"
+blend_point_5/node = SubResource("AnimationNodeAnimation_tfkyl")
+blend_point_5/pos = Vector2(-1, 2)
+blend_point_5/name = &"5"
+blend_point_6/node = SubResource("AnimationNodeAnimation_8gcht")
+blend_point_6/pos = Vector2(1, 3)
+blend_point_6/name = &"6"
+blend_point_7/node = SubResource("AnimationNodeAnimation_fi6on")
+blend_point_7/pos = Vector2(-1, 3)
+blend_point_7/name = &"7"
+blend_point_8/node = SubResource("AnimationNodeAnimation_m3um4")
+blend_point_8/pos = Vector2(1, 1)
+blend_point_8/name = &"8"
+blend_point_9/node = SubResource("AnimationNodeAnimation_dxop7")
+blend_point_9/pos = Vector2(-1, 1)
+blend_point_9/name = &"9"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_78lg5"]
 animation = &"RESET"
@@ -145,28 +155,37 @@ animation = &"jog_strafe_right"
 animation = &"sprint"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_6c076"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_aimva")
-blend_point_0/pos = Vector2(0, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_kr5ce")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_8fedg")
-blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_myjfv")
-blend_point_3/pos = Vector2(1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_0kjxe")
-blend_point_4/pos = Vector2(0, -1)
-blend_point_5/node = SubResource("AnimationNodeAnimation_btgy1")
-blend_point_5/pos = Vector2(0, 2)
-blend_point_6/node = SubResource("AnimationNodeAnimation_63xd7")
-blend_point_6/pos = Vector2(-2, 0)
-blend_point_7/node = SubResource("AnimationNodeAnimation_e64iv")
-blend_point_7/pos = Vector2(2, 0)
-blend_point_8/node = SubResource("AnimationNodeAnimation_udc3t")
-blend_point_8/pos = Vector2(0, 3)
 min_space = Vector2(-5, -5)
 max_space = Vector2(5, 5)
 snap = Vector2(1, 1)
-sync = true
+sync_mode = 1
+blend_point_0/node = SubResource("AnimationNodeAnimation_aimva")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_kr5ce")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_8fedg")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_myjfv")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_3/name = &"3"
+blend_point_4/node = SubResource("AnimationNodeAnimation_0kjxe")
+blend_point_4/pos = Vector2(0, -1)
+blend_point_4/name = &"4"
+blend_point_5/node = SubResource("AnimationNodeAnimation_btgy1")
+blend_point_5/pos = Vector2(0, 2)
+blend_point_5/name = &"5"
+blend_point_6/node = SubResource("AnimationNodeAnimation_63xd7")
+blend_point_6/pos = Vector2(-2, 0)
+blend_point_6/name = &"6"
+blend_point_7/node = SubResource("AnimationNodeAnimation_e64iv")
+blend_point_7/pos = Vector2(2, 0)
+blend_point_7/name = &"7"
+blend_point_8/node = SubResource("AnimationNodeAnimation_udc3t")
+blend_point_8/pos = Vector2(0, 3)
+blend_point_8/name = &"8"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3gy5k"]
 animation = &"jump"
@@ -360,7 +379,7 @@ states/grounded_state_machine/position = Vector2(393, 100)
 transitions = ["grounded_state_machine", "airborne_state_machine", SubResource("AnimationNodeStateMachineTransition_yey0f"), "airborne_state_machine", "grounded_state_machine", SubResource("AnimationNodeStateMachineTransition_tbiqx"), "Start", "grounded_state_machine", SubResource("AnimationNodeStateMachineTransition_3oq4w")]
 graph_offset = Vector2(-15, -29)
 
-[node name="DizzyCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_n352f")]
+[node name="DizzyCharacter" unique_id=944285571 node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_n352f")]
 _character_data = ExtResource("2_83kvv")
 _character_model = NodePath("DizzyCharacterModel")
 _character_stats = ExtResource("2_n352f")
@@ -374,220 +393,217 @@ heavy_attack_character_action_visual_packedscene = ExtResource("10_6gkel")
 juxtapose_character_action_visual_packedscene = ExtResource("11_ytd5f")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="CharacterHurtbox" parent="." index="0"]
+[node name="CharacterHurtbox" parent="." index="0" unique_id=896194080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_wa1o5")
 
-[node name="CharacterAnimationTreeExpressionBase" parent="." index="3"]
+[node name="CharacterAnimationTreeExpressionBase" parent="." index="3" unique_id=13061876]
 grounded_light_attack_phase_count = 3
 
-[node name="AnimationTree" parent="." index="4"]
+[node name="AnimationTree" parent="." index="4" unique_id=1642879660]
 root_node = NodePath("%AnimationTree/../DizzyCharacterModel")
 root_motion_track = NodePath("%GeneralSkeleton:Root")
 tree_root = SubResource("AnimationNodeStateMachine_gtaau")
 anim_player = NodePath("../DizzyCharacterModel/AnimationPlayer")
 parameters/grounded_state_machine/non_targeting_movement/blend_position = Vector2(-0.287475, 1.2381)
 
-[node name="DizzyCharacterModel" parent="." index="5" instance=ExtResource("2_ykt8n")]
+[node name="DizzyCharacterModel" parent="." index="5" unique_id=857867733 instance=ExtResource("2_ykt8n")]
 
-[node name="DEF-headband_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="1"]
-transform = Transform3D(0.88721144, 0.45933867, -0.043171976, -0.35702378, 0.624284, -0.6948404, -0.2922156, 0.6318837, 0.7178667, -3.7644706e-14, 1.035922, -0.013284784)
+[node name="DEF-headband_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="1"]
+transform = Transform3D(0.8872114, 0.45933867, -0.04317199, -0.35702378, 0.624284, -0.6948404, -0.2922156, 0.6318837, 0.7178667, -3.703277e-14, 1.035922, -0.013284815)
 
-[node name="DEF-headband_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="2"]
-transform = Transform3D(0.85527176, 0.5177127, -0.02199818, -0.22042486, 0.32506922, -0.91964275, -0.46896005, 0.79139316, 0.39213926, 0.057303913, 1.1138036, 0.065544516)
+[node name="DEF-headband_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="2"]
+transform = Transform3D(0.85527176, 0.5177126, -0.021998135, -0.22042482, 0.32506937, -0.9196426, -0.46896002, 0.7913929, 0.39213938, 0.057303913, 1.1138036, 0.065544516)
 
-[node name="DEF-headband_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.83454937, 0.55083454, -0.01043087, -0.1194475, 0.16242272, -0.9794645, -0.5378291, 0.81865704, 0.20134558, 0.10968216, 1.1466918, 0.14561245)
+[node name="DEF-headband_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="3"]
+transform = Transform3D(0.8345493, 0.5508344, -0.010430779, -0.11944741, 0.16242263, -0.9794645, -0.53782916, 0.818657, 0.20134537, 0.10968216, 1.1466918, 0.14561222)
 
-[node name="DEF-headband_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="4"]
-transform = Transform3D(0.88721144, -0.45933867, 0.043171976, 0.35702378, 0.624284, -0.6948404, 0.2922156, 0.6318837, 0.7178667, -3.7644706e-14, 1.035922, -0.013284784)
+[node name="DEF-headband_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="4"]
+transform = Transform3D(0.8872114, -0.45933867, 0.04317199, 0.35702378, 0.624284, -0.6948404, 0.2922156, 0.6318837, 0.7178667, -3.703277e-14, 1.035922, -0.013284815)
 
-[node name="DEF-headband_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.85527176, -0.5177127, 0.021998076, 0.22042479, 0.3250694, -0.9196426, 0.46896005, 0.79139304, 0.39213938, -0.057304136, 1.1138036, 0.065544516)
+[node name="DEF-headband_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="5"]
+transform = Transform3D(0.85527176, -0.51771265, 0.021998012, 0.22042482, 0.3250695, -0.91964245, 0.46896008, 0.79139286, 0.3921394, -0.057304136, 1.1138036, 0.065544516)
 
-[node name="DEF-headband_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.83454925, -0.5508347, 0.010430778, 0.11944711, 0.1624223, -0.9794644, 0.5378293, 0.81865704, 0.20134494, -0.10968216, 1.1466918, 0.14561148)
+[node name="DEF-headband_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="6"]
+transform = Transform3D(0.83454925, -0.55083454, 0.010430749, 0.119447336, 0.16242263, -0.9794643, 0.5378292, 0.818657, 0.20134535, -0.10968216, 1.1466918, 0.14561148)
 
-[node name="DEF-raincoat_hood_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="7"]
-transform = Transform3D(1, -7.516972e-10, 9.682936e-06, -9.058669e-06, 0.35317722, 0.9355561, -3.4204973e-06, -0.9355561, 0.35317722, 4.3476324e-14, 0.6793429, -0.5202168)
+[node name="DEF-raincoat_hood_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="7"]
+transform = Transform3D(1, -7.516972e-10, 9.682936e-06, -9.058669e-06, 0.35317722, 0.9355561, -3.4204973e-06, -0.9355561, 0.35317722, 3.8474947e-14, 0.6793429, -0.5202168)
 
-[node name="DEF-raincoat_hood_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="8"]
+[node name="DEF-raincoat_hood_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="8"]
 transform = Transform3D(1, 9.067844e-06, -5.2711166e-05, -1.0586486e-05, 0.9995826, -0.028882328, 5.2427284e-05, 0.028882328, 0.9995826, -2.384188e-07, 1.6799017, -1.2630348)
 
-[node name="DEF-raincoat_hood_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="9"]
-transform = Transform3D(1, 2.9980503e-05, -7.0056645e-05, -7.557619e-07, 0.9232094, 0.3842965, 7.61984e-05, -0.3842965, 0.9232094, -2.384188e-07, 1.3414071, -1.1843174)
+[node name="DEF-raincoat_hood_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="9"]
+transform = Transform3D(1, 2.9980503e-05, -7.0056645e-05, -7.557619e-07, 0.9232094, 0.3842965, 7.61984e-05, -0.3842965, 0.9232094, -2.3841875e-07, 1.3414068, -1.1843172)
 
-[node name="DEF-breast_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="10"]
+[node name="DEF-breast_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="10"]
 transform = Transform3D(-1, -7.3785436e-08, -1.5101645e-07, -1.5101651e-07, -1.1920925e-07, 0.9999996, -7.378549e-08, 0.9999996, 1.7881388e-07, 0.105861984, 1.5108172, 0.9903195)
 
-[node name="DEF-breast_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="11"]
+[node name="DEF-breast_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="11"]
 transform = Transform3D(-1, -4.5787544e-07, -1.510559e-07, -1.5105495e-07, -2.1457665e-06, 0.9999996, -4.5787598e-07, 0.9999996, 2.2053712e-06, -0.10586222, 1.5108172, 0.9903195)
 
-[node name="DEF-skirt_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.99999994, -0.0002657778, 2.0202417e-07, -0.00023863837, -0.89822036, -0.43954462, 0.000117002746, 0.43954468, -0.89822024, 2.7571275e-14, 0.39057314, 0.5494416)
+[node name="DEF-skirt_001" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="12"]
+transform = Transform3D(0.99999994, -0.0002657778, 2.0202417e-07, -0.00023863837, -0.89822036, -0.43954462, 0.000117002746, 0.43954468, -0.89822024, 3.040686e-14, 0.39057314, 0.5494416)
 
-[node name="DEF-skirt_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="13"]
-transform = Transform3D(-0.9999999, -0.00028523128, 1.146009e-05, 0.0002560125, -0.8783546, 0.47800827, -0.00012627701, 0.4780082, 0.8783548, 6.506343e-14, 0.23909646, 0.671631)
+[node name="DEF-skirt_002" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="13"]
+transform = Transform3D(-0.9999999, -0.00028523128, 1.146009e-05, 0.0002560125, -0.8783546, 0.47800827, -0.00012627701, 0.4780082, 0.8783548, 7.3106926e-14, 0.23909646, 0.671631)
 
-[node name="DEF-skirt_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="14"]
+[node name="DEF-skirt_003" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="14"]
 transform = Transform3D(0.953316, 0.298064, -0.0484364, 0.280856, -0.934096, -0.220418, -0.110943, 0.196524, -0.974202, 0.420525, -0.0235873, 0.437105)
 
-[node name="DEF-skirt_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.8249174, 0.29625, -0.48140198, 0.0655325, -0.89603627, -0.43911782, -0.56144214, 0.33068815, -0.7585703, 0.40696532, 0.3900367, 0.41855213)
+[node name="DEF-skirt_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="15"]
+transform = Transform3D(0.8249174, 0.29625, -0.48140198, 0.0655325, -0.89603627, -0.43911782, -0.56144214, 0.33068815, -0.7585703, 0.4069656, 0.39003682, 0.41855216)
 
-[node name="DEF-skirt_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="16"]
+[node name="DEF-skirt_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="16"]
 transform = Transform3D(0.95241296, 0.2933428, -0.08282529, 0.25164363, -0.9100348, -0.32941225, -0.17200452, 0.29289374, -0.94054717, 0.45920438, 0.20890993, 0.44284534)
 
-[node name="DEF-skirt_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="17"]
-transform = Transform3D(-0.023165124, 0.19851732, -0.9798238, -0.31303152, -0.93224317, -0.18147668, -0.9494609, 0.30251145, 0.083737634, 0.43194714, -0.022930205, 0.51997125)
+[node name="DEF-skirt_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="17"]
+transform = Transform3D(-0.023165124, 0.19851732, -0.9798238, -0.31303152, -0.93224317, -0.18147668, -0.9494609, 0.30251145, 0.083737634, 0.43194678, -0.022930264, 0.51997125)
 
-[node name="DEF-skirt_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="18"]
-transform = Transform3D(0.82482594, -0.29638615, 0.48147473, -0.06580892, -0.89612406, -0.4388976, 0.5615441, 0.33032852, -0.7586514, -0.40696537, 0.39003664, 0.41855198)
+[node name="DEF-skirt_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="18"]
+transform = Transform3D(0.82482594, -0.29638615, 0.48147473, -0.06580892, -0.89612406, -0.4388976, 0.5615441, 0.33032852, -0.7586514, -0.4069656, 0.39003676, 0.41855192)
 
-[node name="DEF-skirt_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="19"]
-transform = Transform3D(0.9524235, -0.29331395, 0.08280604, -0.25160667, -0.9100156, -0.3294944, 0.17199999, 0.29298353, -0.94052005, -0.4592045, 0.20890993, 0.44284546)
+[node name="DEF-skirt_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="19"]
+transform = Transform3D(0.9524235, -0.29331395, 0.08280604, -0.25160667, -0.9100156, -0.3294944, 0.17199999, 0.29298353, -0.94052005, -0.45920455, 0.20890993, 0.44284558)
 
-[node name="DEF-skirt_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="20"]
-transform = Transform3D(-0.02313603, -0.1985518, 0.9798174, 0.31315827, -0.93219507, -0.18150698, 0.9494196, 0.30263844, 0.08374543, -0.43194604, -0.022930562, 0.5199708)
+[node name="DEF-skirt_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="20"]
+transform = Transform3D(-0.02313603, -0.1985518, 0.9798174, 0.31315827, -0.93219507, -0.18150698, 0.9494196, 0.30263844, 0.08374543, -0.43194628, -0.022930562, 0.5199708)
 
-[node name="DEF-skirt_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="21"]
+[node name="DEF-skirt_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="21"]
 transform = Transform3D(-0.14669183, -0.19560222, 0.96964866, -0.27295616, -0.93419075, -0.22974278, 0.95077527, -0.2983737, 0.08364724, -0.4282905, -0.014476597, -0.5523802)
 
-[node name="DEF-skirt_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="22"]
+[node name="DEF-skirt_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="22"]
 transform = Transform3D(-0.14674309, 0.19503978, -0.9697541, 0.27307045, -0.93428403, -0.22922647, -0.9507345, -0.2984493, 0.083840065, 0.4282912, -0.014476836, -0.552379)
 
-[node name="DEF-skirt_008" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="23"]
-transform = Transform3D(-0.16375321, 7.314984e-05, -0.9865012, 0.4329051, -0.89856595, -0.07192626, -0.88644093, -0.43883997, 0.14711122, 8.891547e-09, 0.02740264, -0.78039443)
+[node name="DEF-skirt_008" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="23"]
+transform = Transform3D(-0.16375321, 7.314984e-05, -0.9865012, 0.4329051, -0.89856595, -0.07192626, -0.88644093, -0.43883997, 0.14711122, 8.891545e-09, 0.02740264, -0.78039443)
 
-[node name="DEF-raincoat_robe_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="24"]
+[node name="DEF-raincoat_robe_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="24"]
 transform = Transform3D(0.485853, 0.400913, -0.776669, 0.101432, -0.908455, -0.405488, -0.868135, 0.118229, -0.482041, 0.522542, 0.416712, 0.266431)
 
-[node name="DEF-raincoat_robe_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="25"]
+[node name="DEF-raincoat_robe_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="25"]
 transform = Transform3D(0.3378827, 0.33462635, -0.8796932, 0.02658704, -0.9376825, -0.34647325, -0.94081265, 0.09367882, -0.32572338, 0.55740815, 0.15858185, 0.20929155)
 
-[node name="DEF-raincoat_robe_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="26"]
+[node name="DEF-raincoat_robe_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="26"]
 transform = Transform3D(0.6644031, 0.3310257, -0.67006725, 0.16470276, -0.9393707, -0.30075657, -0.7290003, 0.089461625, -0.678642, 0.6495898, -0.111670196, 0.23225212)
 
-[node name="DEF-raincoat_robe_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="27"]
+[node name="DEF-raincoat_robe_004_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="27"]
 transform = Transform3D(-0.17669, 0.32697, -0.92837, 0.114166, -0.930035, -0.349285, -0.977624, -0.167703, 0.126999, 0.479777, 0.40886, -0.0929068)
 
-[node name="DEF-raincoat_robe_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="28"]
+[node name="DEF-raincoat_robe_005_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="28"]
 transform = Transform3D(-0.64565367, 0.3683816, 0.6688997, -0.34920588, -0.92142516, 0.17038468, 0.6791076, -0.123574175, 0.72356254, 0.5925756, 0.2149381, -0.14771485)
 
-[node name="DEF-raincoat_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="29"]
+[node name="DEF-raincoat_ribbon_001_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="29"]
 transform = Transform3D(-0.15338531, 0.29417226, -0.943364, 0.07109381, -0.9489019, -0.3074586, -0.98560596, -0.11422692, 0.12463373, 0.6411723, -0.035909235, -0.16339344)
 
-[node name="DEF-raincoat_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="30"]
-transform = Transform3D(-0.1533208, 0.29416677, -0.9433761, 0.070881076, -0.9489305, -0.30741873, -0.98563117, -0.11400116, 0.12464005, 0.6665952, -0.11793351, -0.17328897)
+[node name="DEF-raincoat_ribbon_002_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="30"]
+transform = Transform3D(-0.1533208, 0.29416677, -0.9433761, 0.070881076, -0.9489305, -0.30741873, -0.98563117, -0.11400116, 0.12464005, 0.6665952, -0.11793357, -0.17328891)
 
-[node name="DEF-raincoat_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="31"]
+[node name="DEF-raincoat_ribbon_003_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="31"]
 transform = Transform3D(0.61796194, 0.3126359, 0.7213747, 0.09764823, -0.9409524, 0.32414877, 0.78012025, -0.12987061, -0.6120012, 0.7104871, -0.19200623, -0.19881445)
 
-[node name="DEF-raincoat_robe_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="32"]
+[node name="DEF-raincoat_robe_006_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="32"]
 transform = Transform3D(-0.6300604, 0.31997073, -0.7075609, -0.14929281, -0.9440776, -0.29398727, -0.7620598, -0.079595976, 0.6425956, 0.6437999, -0.05686146, -0.13682231)
 
-[node name="DEF-raincoat_robe_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="33"]
+[node name="DEF-raincoat_robe_007_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="33"]
 transform = Transform3D(-0.765715, 0.190534, -0.614309, 0.0744061, -0.92246, -0.378853, -0.638861, -0.335803, 0.692164, 0.304279, 0.454487, -0.416872)
 
-[node name="DEF-raincoat_robe_008_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="34"]
+[node name="DEF-raincoat_robe_008_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="34"]
 transform = Transform3D(0.22792926, 0.2199637, 0.9485048, -0.2914672, -0.9140635, 0.28201672, 0.9290276, -0.34073874, -0.14422956, 0.36863464, 0.29578036, -0.54468584)
 
-[node name="DEF-raincoat_robe_009_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="35"]
+[node name="DEF-raincoat_robe_009_L" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="35"]
 transform = Transform3D(-0.46494177, 0.20798646, -0.86056274, 0.20878644, -0.91884005, -0.33487323, -0.860369, -0.33537114, 0.38378248, 0.39723516, 0.12228894, -0.6022415)
 
-[node name="DEF-raincoat_robe_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="36"]
+[node name="DEF-raincoat_robe_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="36"]
 transform = Transform3D(0.485537, -0.40123, 0.776703, -0.102149, -0.908409, -0.405412, 0.868228, 0.117503, -0.482052, -0.522542, 0.416712, 0.266431)
 
-[node name="DEF-raincoat_robe_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="37"]
+[node name="DEF-raincoat_robe_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="37"]
 transform = Transform3D(0.33771706, -0.3348261, 0.8796808, -0.027050883, -0.9376564, -0.34650806, 0.9408589, 0.093225494, -0.32571992, -0.5574083, 0.15858191, 0.20929214)
 
-[node name="DEF-raincoat_robe_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="38"]
+[node name="DEF-raincoat_robe_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="38"]
 transform = Transform3D(0.6644047, -0.33102128, 0.6700678, -0.16469237, -0.93937117, -0.3007604, 0.72900116, 0.08947149, -0.6786397, -0.6495916, -0.1116696, 0.23225155)
 
-[node name="DEF-raincoat_robe_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="39"]
+[node name="DEF-raincoat_robe_004_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="39"]
 transform = Transform3D(-0.176967, -0.326674, 0.928422, -0.114954, -0.929994, -0.349138, 0.977481, -0.168512, 0.127025, -0.479778, 0.40886, -0.0929063)
 
-[node name="DEF-raincoat_robe_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="40"]
+[node name="DEF-raincoat_robe_005_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="40"]
 transform = Transform3D(-0.64557105, -0.36827835, -0.66903573, 0.34941134, -0.92141, 0.17004405, -0.6790798, -0.123993136, 0.7235166, -0.592576, 0.21493834, -0.14771533)
 
-[node name="DEF-raincoat_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="41"]
+[node name="DEF-raincoat_ribbon_001_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="41"]
 transform = Transform3D(-0.15342402, -0.29396376, 0.94342273, -0.07110319, -0.9489674, -0.30725458, 0.9855991, -0.114220574, 0.1246925, -0.64117277, -0.035909116, -0.16339338)
 
-[node name="DEF-raincoat_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="42"]
+[node name="DEF-raincoat_ribbon_002_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="42"]
 transform = Transform3D(-0.15340112, -0.29397473, 0.9434229, -0.07102469, -0.94897366, -0.30725303, 0.9856082, -0.11413926, 0.124694034, -0.6665944, -0.11793381, -0.17328888)
 
-[node name="DEF-raincoat_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="43"]
-transform = Transform3D(0.6180185, -0.3125115, -0.7213801, -0.09754922, -0.940988, 0.32407635, -0.7800878, -0.12991515, -0.6120331, -0.710488, -0.19200587, -0.1988145)
+[node name="DEF-raincoat_ribbon_003_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="43"]
+transform = Transform3D(0.6180185, -0.3125115, -0.7213801, -0.09754922, -0.940988, 0.32407635, -0.7800878, -0.12991515, -0.6120331, -0.710488, -0.19200587, -0.19881433)
 
-[node name="DEF-raincoat_robe_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="44"]
+[node name="DEF-raincoat_robe_006_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="44"]
 transform = Transform3D(-0.630079, -0.320028, 0.70751816, 0.14930095, -0.944054, -0.29405925, 0.7620428, -0.07964746, 0.6426092, -0.643801, -0.056861103, -0.13682196)
 
-[node name="DEF-raincoat_robe_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="45"]
+[node name="DEF-raincoat_robe_007_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="45"]
 transform = Transform3D(-0.765894, -0.189719, 0.614338, -0.0752754, -0.922447, -0.378714, 0.638544, -0.3363, 0.692215, -0.304279, 0.454487, -0.416872)
 
-[node name="DEF-raincoat_robe_008_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="46"]
+[node name="DEF-raincoat_robe_008_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="46"]
 transform = Transform3D(0.2278913, -0.22050306, -0.9483888, 0.29130977, -0.9139651, 0.28249872, -0.9290864, -0.34065476, -0.14405015, -0.368634, 0.2957794, -0.5446837)
 
-[node name="DEF-raincoat_robe_009_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="47"]
+[node name="DEF-raincoat_robe_009_R" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="47"]
 transform = Transform3D(-0.46487632, -0.20851564, 0.86047024, -0.20851621, -0.91874945, -0.33529055, 0.86047, -0.33529133, 0.38362607, -0.39723527, 0.122288644, -0.6022407)
 
-[node name="DEF-raincoat_robe_010" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="48"]
+[node name="DEF-raincoat_robe_010" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="48"]
 transform = Transform3D(-1, 0.000492343, 6.46629e-07, -0.000441017, -0.895165, -0.445734, -0.000218875, -0.445734, 0.895165, 5.90248e-14, 0.49299, -0.557919)
 
-[node name="DEF-raincoat_robe_011" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="49"]
-transform = Transform3D(1, -1.0293018e-05, -4.8521526e-10, -8.885425e-06, -0.8632717, 0.50473946, -5.1957127e-06, -0.5047397, -0.8632713, -6.400984e-15, 0.37150484, -0.7556081)
+[node name="DEF-raincoat_robe_011" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="49"]
+transform = Transform3D(1, -1.0293018e-05, -4.8521526e-10, -8.885425e-06, -0.8632717, 0.50473946, -5.1957127e-06, -0.5047397, -0.8632713, -8.790457e-15, 0.37150484, -0.7556081)
 
-[node name="DEF-raincoat_robe_012" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="50"]
-transform = Transform3D(-1, 2.140753e-05, 2.1436283e-07, -1.894818e-05, -0.88036835, -0.4742906, -9.964675e-06, -0.4742908, 0.88036793, 5.790298e-14, 0.21097398, -0.80902874)
+[node name="DEF-raincoat_robe_012" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(857867733, 849238715) index="50"]
+transform = Transform3D(-1, 2.140753e-05, 2.1436283e-07, -1.894818e-05, -0.88036835, -0.4742906, -9.964675e-06, -0.4742908, 0.88036793, 5.5198623e-14, 0.21097398, -0.80902874)
 
-[node name="BoneAttachment3D" parent="DizzyCharacterModel/godot_rig/GeneralSkeleton" index="51"]
-transform = Transform3D(0.99999976, -2.888035e-07, -1.8094429e-06, -1.8094428e-06, -4.023313e-07, -0.9999999, 2.8880336e-07, 0.9999998, -4.023318e-07, -0.72942185, 1.2435588, -0.07697256)
-
-[node name="AnimationPlayer" parent="DizzyCharacterModel" index="1"]
+[node name="AnimationPlayer" parent="DizzyCharacterModel" index="1" unique_id=376157399]
 root_motion_track = NodePath("../dizzy_rig/GeneralSkeleton")
 
-[node name="MantleRayCast" type="RayCast3D" parent="." index="6"]
+[node name="MantleRayCast" type="RayCast3D" parent="." index="6" unique_id=426873364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 1, 0, 1)
 debug_shape_thickness = 5
 
-[node name="LA1" parent="CharacterAttackFiniteStateMachine" index="1"]
+[node name="LA1" parent="CharacterAttackFiniteStateMachine" parent_id_path=PackedInt32Array(1471284133) index="1" unique_id=1583509734]
 animation_name = "light_attack_1"
 
-[node name="toLA" type="Node" parent="CharacterAttackFiniteStateMachine/LA1" index="1" node_paths=PackedStringArray("next_state")]
+[node name="toLA" type="Node" parent="CharacterAttackFiniteStateMachine/LA1" index="1" unique_id=2129518003 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_83kvv")
 next_state = NodePath("../../LA2")
 
-[node name="LA2" type="Node" parent="CharacterAttackFiniteStateMachine" index="2"]
+[node name="LA2" type="Node" parent="CharacterAttackFiniteStateMachine" parent_id_path=PackedInt32Array(1471284133) index="2" unique_id=1729447439]
 script = ExtResource("13_b8sr1")
 attack_type = 1
 animation_name = "light_attack_2"
 metadata/_custom_type_script = "uid://tl0tnpytooyj"
 
-[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/LA2" index="0" node_paths=PackedStringArray("next_state")]
+[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/LA2" index="0" unique_id=516607166 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_83kvv")
 next_state = NodePath("../../NoAttack")
 use_event = true
 event = "attack_concluded"
 
-[node name="toLA" type="Node" parent="CharacterAttackFiniteStateMachine/LA2" index="1" node_paths=PackedStringArray("next_state")]
+[node name="toLA" type="Node" parent="CharacterAttackFiniteStateMachine/LA2" index="1" unique_id=1476320243 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_83kvv")
 next_state = NodePath("../../LA3")
 
-[node name="LA3" type="Node" parent="CharacterAttackFiniteStateMachine" index="3"]
+[node name="LA3" type="Node" parent="CharacterAttackFiniteStateMachine" parent_id_path=PackedInt32Array(1471284133) index="3" unique_id=1843112829]
 script = ExtResource("13_b8sr1")
 attack_type = 1
 animation_name = "light_attack_3"
 metadata/_custom_type_script = "uid://tl0tnpytooyj"
 
-[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/LA3" index="0" node_paths=PackedStringArray("next_state")]
+[node name="return" type="Node" parent="CharacterAttackFiniteStateMachine/LA3" index="0" unique_id=1375974788 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_83kvv")
 next_state = NodePath("../../NoAttack")
 use_event = true
 event = "attack_concluded"
 
-[node name="toLA" type="Node" parent="CharacterAttackFiniteStateMachine/LA3" index="1" node_paths=PackedStringArray("next_state")]
+[node name="toLA" type="Node" parent="CharacterAttackFiniteStateMachine/LA3" index="1" unique_id=874931148 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_83kvv")
 next_state = NodePath("../../LA1")
 

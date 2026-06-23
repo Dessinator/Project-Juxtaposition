@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5mwib223gobd"]
+[gd_scene format=3 uid="uid://c5mwib223gobd"]
 
 [ext_resource type="Script" uid="uid://c6jh3dqx67alh" path="res://addons/character-combo-tree/editor/chain_naming_popup.gd" id="1_daae7"]
 
@@ -8,8 +8,9 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mmnpn"]
 
-[node name="ChainNamingPopup" type="Window"]
+[node name="ChainNamingPopup" type="Window" unique_id=78458953]
 auto_translate_mode = 1
+oversampling_override = 1.0
 title = "Name Chain"
 initial_position = 4
 size = Vector2i(500, 100)
@@ -17,55 +18,55 @@ unresizable = true
 popup_window = true
 script = ExtResource("1_daae7")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1679719080]
 offset_right = 500.0
 offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=457818025]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=560856022]
 layout_mode = 2
 text = "Chain Name:"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=2050881489]
 layout_mode = 2
 
-[node name="VSeparator2" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1066182705]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ymm7e")
 
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=2071988432]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=667107136]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ev2on")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1572094745]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="CancelButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="CancelButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1231403739]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Cancel"
 
-[node name="VSeparator2" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=16280802]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_mmnpn")
 
-[node name="OKButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="OKButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=421248864]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2

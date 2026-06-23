@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bddpt7r3qgmlq"]
+[gd_scene format=3 uid="uid://bddpt7r3qgmlq"]
 
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="1_fm272"]
 
@@ -43,6 +43,21 @@ height = 0.4
 radial_segments = 6
 rings = 3
 
+[sub_resource type="Animation" id="Animation_bajvj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_fm272"]
 resource_name = "default"
 length = 5.0
@@ -74,30 +89,15 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_bajvj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles3D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wge6a"]
 _data = {
 &"RESET": SubResource("Animation_bajvj"),
 &"default": SubResource("Animation_fm272")
 }
 
-[node name="PlayableCharacterDeathPoofParticles" type="Node3D"]
+[node name="PlayableCharacterDeathPoofParticles" type="Node3D" unique_id=919689749]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1477528529]
 unique_name_in_owner = true
 emitting = false
 amount = 60
@@ -110,8 +110,6 @@ interpolate = false
 process_material = SubResource("ParticleProcessMaterial_wge6a")
 draw_pass_1 = SubResource("SphereMesh_dkpyw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wge6a")
-}
-autoplay = "default"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1944019618]
+libraries/ = SubResource("AnimationLibrary_wge6a")
+autoplay = &"default"

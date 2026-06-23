@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bym8nrimubgd1"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bym8nrimubgd1"]
 
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="1_k85mc"]
 [ext_resource type="Material" uid="uid://vspm3782ooxb" path="res://resources/materials/psx_outline_material.tres" id="1_rmpwa"]

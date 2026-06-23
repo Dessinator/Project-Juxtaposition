@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1vo24vn8cvlt"]
+[gd_scene format=3 uid="uid://d1vo24vn8cvlt"]
 
 [ext_resource type="Script" uid="uid://dp1yakagm5381" path="res://nodes/playable-character/components/playable-character-combat-manager/playable_character_combat_manager.gd" id="1_f0sem"]
 [ext_resource type="Script" uid="uid://jjoacie7bvcr" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_owx4n"]
@@ -16,14 +16,14 @@
 [ext_resource type="Script" uid="uid://6xcxl15a5nba" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/position_between_tracked_target.gd" id="13_34nt3"]
 [ext_resource type="Script" uid="uid://bo11okhd0d05j" path="res://nodes/playable-character/components/playable-character-combat-manager/behaviour/leaves/track_target.gd" id="14_34nt3"]
 
-[node name="PlayableCharacterCombatManager" type="Node"]
+[node name="PlayableCharacterCombatManager" type="Node" unique_id=1867562956]
 script = ExtResource("1_f0sem")
 metadata/_custom_type_script = "uid://dp1yakagm5381"
 
-[node name="DamageInterruptTimer" type="Timer" parent="."]
+[node name="DamageInterruptTimer" type="Timer" parent="." unique_id=2070514279]
 unique_name_in_owner = true
 
-[node name="CameraBehaviourTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+[node name="CameraBehaviourTree" type="Node" parent="." unique_id=1486406856 node_paths=PackedStringArray("blackboard", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_owx4n")
 enabled = false
@@ -32,111 +32,111 @@ blackboard = NodePath("../CameraBehaviourTreeBlackboard")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://jjoacie7bvcr"
 
-[node name="SelectorComposite" type="Node" parent="CameraBehaviourTree"]
+[node name="SelectorComposite" type="Node" parent="CameraBehaviourTree" unique_id=346086380]
 script = ExtResource("3_a8avk")
 metadata/_custom_type_script = "uid://cagh5dfpu2nof"
 
-[node name="FollowPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+[node name="FollowPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite" unique_id=148531174]
 script = ExtResource("4_4dwek")
 metadata/_custom_type_script = "uid://c5se8vwt80abr"
 
-[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer"]
+[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer" unique_id=773617942]
 script = ExtResource("5_owii3")
 metadata/_custom_type_script = "uid://dt08goxwqu6hc"
 
-[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer/IsNotStaying"]
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer/IsNotStaying" unique_id=1796938903]
 script = ExtResource("6_owii3")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="AreTargetsNotInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer"]
+[node name="AreTargetsNotInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer" unique_id=74567390]
 script = ExtResource("5_owii3")
 metadata/_custom_type_script = "uid://dt08goxwqu6hc"
 
-[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer/AreTargetsNotInRange"]
+[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer/AreTargetsNotInRange" unique_id=551211434]
 script = ExtResource("7_o73ps")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="FollowPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer"]
+[node name="FollowPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite/FollowPlayer" unique_id=228361821]
 script = ExtResource("8_o73ps")
 _time = 0.5
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
-[node name="StayTrackPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+[node name="StayTrackPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite" unique_id=847915867]
 script = ExtResource("4_4dwek")
 metadata/_custom_type_script = "uid://c5se8vwt80abr"
 
-[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/StayTrackPlayer"]
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/StayTrackPlayer" unique_id=344698020]
 script = ExtResource("6_owii3")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="TrackPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite/StayTrackPlayer"]
+[node name="TrackPlayer" type="Node" parent="CameraBehaviourTree/SelectorComposite/StayTrackPlayer" unique_id=1464226194]
 script = ExtResource("9_toiou")
 _track_speed = 5.0
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
-[node name="PositionBetweenTargets" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+[node name="PositionBetweenTargets" type="Node" parent="CameraBehaviourTree/SelectorComposite" unique_id=80471885]
 script = ExtResource("4_4dwek")
 metadata/_custom_type_script = "uid://c5se8vwt80abr"
 
-[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets" unique_id=125057460]
 script = ExtResource("5_owii3")
 metadata/_custom_type_script = "uid://dt08goxwqu6hc"
 
-[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets/IsNotStaying"]
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets/IsNotStaying" unique_id=1543487840]
 script = ExtResource("6_owii3")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets" unique_id=1038199256]
 script = ExtResource("7_o73ps")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="IsNoTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+[node name="IsNoTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets" unique_id=277861304]
 script = ExtResource("5_owii3")
 metadata/_custom_type_script = "uid://dt08goxwqu6hc"
 
-[node name="IsTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets/IsNoTargetTracked"]
+[node name="IsTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets/IsNoTargetTracked" unique_id=1657814368]
 script = ExtResource("9_hkuqr")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="ZoomOut" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+[node name="ZoomOut" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets" unique_id=226866692]
 script = ExtResource("10_fhfsd")
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
-[node name="PositionBetweenAllTargets" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets"]
+[node name="PositionBetweenAllTargets" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargets" unique_id=953715826]
 script = ExtResource("10_2pst8")
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
-[node name="PositionBetweenTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite"]
+[node name="PositionBetweenTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite" unique_id=614550590]
 script = ExtResource("4_4dwek")
 metadata/_custom_type_script = "uid://c5se8vwt80abr"
 
-[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+[node name="IsNotStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked" unique_id=1607081882]
 script = ExtResource("5_owii3")
 metadata/_custom_type_script = "uid://dt08goxwqu6hc"
 
-[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked/IsNotStaying"]
+[node name="IsStaying" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked/IsNotStaying" unique_id=1506938213]
 script = ExtResource("6_owii3")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+[node name="AreTargetsInRange" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked" unique_id=1939983750]
 script = ExtResource("7_o73ps")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="IsTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+[node name="IsTargetTracked" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked" unique_id=1334015620]
 script = ExtResource("9_hkuqr")
 metadata/_custom_type_script = "uid://dfn18vcsxmi0c"
 
-[node name="PositionBetweenTrackedTarget" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+[node name="PositionBetweenTrackedTarget" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked" unique_id=533493667]
 script = ExtResource("13_34nt3")
 _time = 1.5
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
-[node name="TrackTarget" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked"]
+[node name="TrackTarget" type="Node" parent="CameraBehaviourTree/SelectorComposite/PositionBetweenTargetTracked" unique_id=741661735]
 script = ExtResource("14_34nt3")
 _track_speed = 5.0
 metadata/_custom_type_script = "uid://8pfgt0txo3gg"
 
-[node name="CameraBehaviourTreeBlackboard" type="Node" parent="."]
+[node name="CameraBehaviourTreeBlackboard" type="Node" parent="." unique_id=906858611]
 unique_name_in_owner = true
 script = ExtResource("9_si2tm")
 metadata/_custom_type_script = "uid://dci6gyicpalev"

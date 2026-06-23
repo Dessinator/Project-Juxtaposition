@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdegwynvk20hk"]
+[gd_scene format=3 uid="uid://bdegwynvk20hk"]
 
 [ext_resource type="Script" uid="uid://drl07lrx3oagc" path="res://nodes/render/ui-render-handler/ui-visuals/cinematic-bars/cinematic_bars.gd" id="1_vf6ix"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr26c"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="CinematicBars" type="Control"]
+[node name="CinematicBars" type="Control" unique_id=2133939902]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,14 +16,14 @@ mouse_filter = 2
 script = ExtResource("1_vf6ix")
 max_drama = 80
 
-[node name="TopBar" type="Control" parent="."]
+[node name="TopBar" type="Control" parent="." unique_id=1106869214]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="TopBar" type="Panel" parent="TopBar"]
+[node name="TopBar" type="Panel" parent="TopBar" unique_id=1415489088]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -32,14 +32,14 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qr26c")
 
-[node name="BottomBar" type="Control" parent="."]
+[node name="BottomBar" type="Control" parent="." unique_id=1918242517]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="BottomBar" type="Panel" parent="BottomBar"]
+[node name="BottomBar" type="Panel" parent="BottomBar" unique_id=668824262]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

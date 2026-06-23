@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://vspm3782ooxb"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://vspm3782ooxb"]
 
 [ext_resource type="Shader" uid="uid://6wpiyais7uax" path="res://resources/shaders/render/psx_outline.gdshader" id="1_6gwau"]
 

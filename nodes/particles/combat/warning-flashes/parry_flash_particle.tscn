@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bajiynaoql0jj"]
+[gd_scene format=3 uid="uid://bajiynaoql0jj"]
 
 [ext_resource type="Texture2D" uid="uid://ccc6iwbcuiil" path="res://resources/images/warning-flashes/dodge_flash.png" id="1_bchgw"]
 
@@ -81,9 +81,9 @@ _data = {
 &"default": SubResource("Animation_vnl6b")
 }
 
-[node name="ParryFlashParticle" type="Node3D"]
+[node name="ParryFlashParticle" type="Node3D" unique_id=1832518053]
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1658829678]
 emitting = false
 amount = 1
 one_shot = true
@@ -106,8 +106,6 @@ scale_amount_max = 1.2
 scale_amount_curve = SubResource("Curve_mxehy")
 color_ramp = SubResource("Gradient_0vpd7")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_or4ag")
-}
-autoplay = "default"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=737907630]
+libraries/ = SubResource("AnimationLibrary_or4ag")
+autoplay = &"default"

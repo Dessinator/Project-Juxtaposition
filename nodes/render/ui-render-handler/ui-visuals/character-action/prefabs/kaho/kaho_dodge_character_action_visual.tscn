@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bchwh4lfk1r1r"]
+[gd_scene format=3 uid="uid://bchwh4lfk1r1r"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_0y4tt"]
 
-[node name="KahoDodgeCharacterActionVisual" instance=ExtResource("1_0y4tt")]
+[node name="KahoDodgeCharacterActionVisual" unique_id=1128170098 instance=ExtResource("1_0y4tt")]
 _action_name = "Kaho Dodge"
 action_visual_type = 1
 
-[node name="Button" parent="Control" index="0"]
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 text = "Kaho Dodge"

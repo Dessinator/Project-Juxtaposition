@@ -1,18 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://nskfke4m644m"]
+[gd_scene format=3 uid="uid://nskfke4m644m"]
 
 [ext_resource type="PackedScene" uid="uid://dnjslkv28p74u" path="res://resources/models/characters/dizzy/dizzy.glb" id="1_1j3ou"]
 [ext_resource type="Material" uid="uid://bym8nrimubgd1" path="res://resources/materials/character/dizzy/dizzy_material.tres" id="2_181cp"]
 [ext_resource type="Script" uid="uid://ceve74pcu3cj3" path="res://addons/jigglebones/jigglebone.gd" id="3_181cp"]
 [ext_resource type="PackedScene" uid="uid://dlnkrdsyp6y2b" path="res://resources/models/weapons/dizzy_parasol/dizzy_parasol.glb" id="4_trhkn"]
 
-[node name="DizzyCharacterModel" node_paths=PackedStringArray("mesh_instance_3d") instance=ExtResource("1_1j3ou")]
+[node name="DizzyCharacterModel" unique_id=2064830977 node_paths=PackedStringArray("mesh_instance_3d") instance=ExtResource("1_1j3ou")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0622398)
 mesh_instance_3d = NodePath("godot_rig/GeneralSkeleton/dizzy_model")
 
-[node name="dizzy_model" parent="godot_rig/GeneralSkeleton" index="0"]
+[node name="dizzy_model" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="0" unique_id=354064866]
 surface_material_override/0 = ExtResource("2_181cp")
 
-[node name="DEF-headband_ribbon_001_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="1"]
+[node name="DEF-headband_ribbon_001_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="1" unique_id=308183102]
 transform = Transform3D(0.88721144, 0.45933864, -0.043172006, -0.3570238, 0.6242841, -0.69484025, -0.29221553, 0.6318837, 0.7178667, -3.4964056e-14, 1.035922, -0.013284873)
 top_level = true
 script = ExtResource("3_181cp")
@@ -23,8 +23,8 @@ use_gravity = true
 forward_axis = 2
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-headband_ribbon_002_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="2"]
-transform = Transform3D(0.8552719, 0.5177126, -0.021998161, -0.22042492, 0.32506952, -0.91964245, -0.4689599, 0.7913931, 0.39213946, 0.057303905, 1.1138036, 0.0655449)
+[node name="DEF-headband_ribbon_002_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="2" unique_id=925585437]
+transform = Transform3D(0.8552719, 0.5177126, -0.021998147, -0.22042495, 0.3250697, -0.9196423, -0.46895987, 0.791393, 0.39213964, 0.057303905, 1.1138036, 0.0655449)
 top_level = true
 script = ExtResource("3_181cp")
 bone_name = "DEF-headband_ribbon.002.L"
@@ -34,8 +34,8 @@ use_gravity = true
 forward_axis = 2
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-headband_ribbon_003_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.83454937, 0.5508344, -0.010430838, -0.119447604, 0.16242294, -0.97946423, -0.53782904, 0.8186571, 0.20134577, 0.10968214, 1.1466918, 0.14561236)
+[node name="DEF-headband_ribbon_003_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="3" unique_id=872066643]
+transform = Transform3D(0.83454937, 0.5508345, -0.010430689, -0.11944756, 0.1624232, -0.9794642, -0.537829, 0.8186571, 0.20134595, 0.10968218, 1.1466918, 0.14561228)
 top_level = true
 script = ExtResource("3_181cp")
 bone_name = "DEF-headband_ribbon.003.L"
@@ -45,7 +45,7 @@ use_gravity = true
 forward_axis = 2
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-headband_ribbon_001_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="4"]
+[node name="DEF-headband_ribbon_001_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="4" unique_id=1836304561]
 transform = Transform3D(0.88721144, -0.45933864, 0.043172006, 0.3570238, 0.6242841, -0.69484025, 0.29221553, 0.6318837, 0.7178667, -3.4964056e-14, 1.035922, -0.013284873)
 top_level = true
 script = ExtResource("3_181cp")
@@ -56,8 +56,8 @@ use_gravity = true
 forward_axis = 2
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-headband_ribbon_002_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.85527176, -0.5177127, 0.021998161, 0.22042495, 0.3250695, -0.91964245, 0.46896, 0.79139316, 0.39213946, -0.057303898, 1.1138036, 0.0655449)
+[node name="DEF-headband_ribbon_002_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="5" unique_id=1717987261]
+transform = Transform3D(0.8552718, -0.51771265, 0.021998147, 0.2204249, 0.32506952, -0.91964245, 0.46895993, 0.7913931, 0.39213946, -0.057303917, 1.1138036, 0.0655449)
 top_level = true
 script = ExtResource("3_181cp")
 bone_name = "DEF-headband_ribbon.002.R"
@@ -67,8 +67,8 @@ use_gravity = true
 forward_axis = 2
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-headband_ribbon_003_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.8345493, -0.5508346, 0.010430808, 0.119447574, 0.1624229, -0.97946423, 0.5378291, 0.81865704, 0.20134571, -0.10968216, 1.1466918, 0.14561236)
+[node name="DEF-headband_ribbon_003_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="6" unique_id=759260458]
+transform = Transform3D(0.83454937, -0.5508345, 0.010430778, 0.119447425, 0.16242278, -0.9794642, 0.53782904, 0.8186571, 0.20134553, -0.109682195, 1.1466918, 0.14561228)
 top_level = true
 script = ExtResource("3_181cp")
 bone_name = "DEF-headband_ribbon.003.R"
@@ -78,7 +78,7 @@ use_gravity = true
 forward_axis = 2
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_hood_001" type="Node3D" parent="godot_rig/GeneralSkeleton" index="7"]
+[node name="DEF-raincoat_hood_001" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="7" unique_id=473002448]
 transform = Transform3D(1, 4.6784403e-09, 7.523486e-05, -7.038066e-05, 0.35343972, 0.9354571, -2.6586615e-05, -0.93545717, 0.3534397, 3.4400962e-14, 0.6793429, -0.5202167)
 top_level = true
 script = ExtResource("3_181cp")
@@ -88,7 +88,7 @@ damping = 5.0
 gravity = Vector3(0, -0.1, 0)
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_hood_002" type="Node3D" parent="godot_rig/GeneralSkeleton" index="8"]
+[node name="DEF-raincoat_hood_002" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="8" unique_id=6492402]
 transform = Transform3D(1, 7.044989e-05, -0.00018059366, -7.564656e-05, 0.9995811, -0.028938824, 0.0001784793, 0.028938837, 0.99958116, -2.3841883e-07, 1.6799017, -1.2630348)
 top_level = true
 script = ExtResource("3_181cp")
@@ -98,7 +98,7 @@ damping = 5.0
 gravity = Vector3(0, -0.2, 0)
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_hood_003" type="Node3D" parent="godot_rig/GeneralSkeleton" index="9"]
+[node name="DEF-raincoat_hood_003" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="9" unique_id=591410027]
 transform = Transform3D(1, 0.00013864783, 0.00018122522, -0.00019764918, 0.9231963, 0.38432807, -0.00011402024, -0.38432804, 0.92319643, -2.384188e-07, 1.341407, -1.1843174)
 top_level = true
 script = ExtResource("3_181cp")
@@ -108,7 +108,7 @@ damping = 5.0
 gravity = Vector3(0, -0.5, 0)
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-breast_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="10"]
+[node name="DEF-breast_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="10" unique_id=1418980470]
 transform = Transform3D(-1, -0.0002038048, -1.0478104e-07, -1.973458e-07, 0.0004541276, 0.9999997, -0.00020380481, 0.9999996, -0.00045418728, 0.105861984, 1.5108172, 0.99031943)
 top_level = true
 script = ExtResource("3_181cp")
@@ -119,7 +119,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-breast_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="11"]
+[node name="DEF-breast_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="11" unique_id=941033125]
 transform = Transform3D(-1, -5.974086e-06, -1.508924e-07, -1.5097385e-07, 1.35898545e-05, 0.99999976, -5.974086e-06, 0.99999964, -1.3709065e-05, -0.105861984, 1.5108172, 0.99031943)
 top_level = true
 script = ExtResource("3_181cp")
@@ -130,7 +130,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_001" type="Node3D" parent="godot_rig/GeneralSkeleton" index="12"]
+[node name="DEF-skirt_001" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="12" unique_id=589343319]
 transform = Transform3D(1, -7.275863e-05, 2.6298392e-07, -6.5263586e-05, -0.8985734, -0.43882295, 3.216449e-05, 0.43882304, -0.8985732, 4.345891e-14, 0.3905738, 0.54944295)
 top_level = true
 script = ExtResource("3_181cp")
@@ -141,7 +141,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_002" type="Node3D" parent="godot_rig/GeneralSkeleton" index="13"]
+[node name="DEF-skirt_002" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="13" unique_id=1717191807]
 transform = Transform3D(-0.9999999, -3.7183463e-06, 3.0577605e-06, 4.7273347e-06, -0.878529, 0.47768807, 9.1012237e-07, 0.47768807, 0.87852913, 1.1013092e-13, 0.23909867, 0.67163503)
 top_level = true
 script = ExtResource("3_181cp")
@@ -152,7 +152,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_003" type="Node3D" parent="godot_rig/GeneralSkeleton" index="14"]
+[node name="DEF-skirt_003" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="14" unique_id=360693531]
 transform = Transform3D(0.953316, 0.298064, -0.0484364, 0.280856, -0.934096, -0.220418, -0.110943, 0.196524, -0.974202, 1.43492, 18.1143, 0.437105)
 top_level = true
 script = ExtResource("3_181cp")
@@ -164,7 +164,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_004_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="15"]
+[node name="DEF-skirt_004_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="15" unique_id=430079898]
 transform = Transform3D(0.8247915, 0.2962669, -0.48160714, 0.065913185, -0.8963121, -0.43849707, -0.5615825, 0.3299241, -0.75879884, 0.40696737, 0.3900376, 0.4185525)
 top_level = true
 script = ExtResource("3_181cp")
@@ -175,7 +175,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_005_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="16"]
+[node name="DEF-skirt_005_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="16" unique_id=902661268]
 transform = Transform3D(0.952423, 0.293321, -0.08278706, 0.2516106, -0.90999717, -0.3295411, -0.17199728, 0.29303217, -0.94050515, 0.45920464, 0.2089104, 0.44284642)
 top_level = true
 script = ExtResource("3_181cp")
@@ -186,7 +186,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_006_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="17"]
+[node name="DEF-skirt_006_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="17" unique_id=1754552741]
 transform = Transform3D(-0.0232252, 0.19835483, -0.9798551, -0.31269768, -0.932383, -0.18133327, -0.9495693, 0.3021867, 0.083679795, 0.43194604, -0.022930741, 0.51996994)
 top_level = true
 script = ExtResource("3_181cp")
@@ -197,7 +197,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_004_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="18"]
+[node name="DEF-skirt_004_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="18" unique_id=1000628105]
 transform = Transform3D(0.82475626, -0.2964041, 0.48158306, -0.066019714, -0.8962687, -0.43856996, 0.5616217, 0.3299191, -0.758772, -0.40696728, 0.39003754, 0.41855234)
 top_level = true
 script = ExtResource("3_181cp")
@@ -208,7 +208,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_005_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="19"]
+[node name="DEF-skirt_005_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="19" unique_id=484743887]
 transform = Transform3D(0.9524029, -0.29332918, 0.082989365, -0.25166962, -0.91020113, -0.32893196, 0.17202236, 0.29238963, -0.9407004, -0.45920432, 0.20891052, 0.4428469)
 top_level = true
 script = ExtResource("3_181cp")
@@ -219,7 +219,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_006_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="20"]
+[node name="DEF-skirt_006_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="20" unique_id=726068888]
 transform = Transform3D(-0.023293382, -0.19850075, 0.9798242, 0.31270903, -0.93235624, -0.18145055, 0.9495636, 0.30217302, 0.08379068, -0.43194723, -0.022930443, 0.5199702)
 top_level = true
 script = ExtResource("3_181cp")
@@ -230,7 +230,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="21"]
+[node name="DEF-skirt_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="21" unique_id=595812916]
 transform = Transform3D(-0.14681126, -0.1947811, 0.9697955, -0.27338204, -0.93424195, -0.22902541, 0.9506343, -0.29874897, 0.083907574, -0.42829037, -0.014476359, -0.5523808)
 top_level = true
 script = ExtResource("3_181cp")
@@ -241,8 +241,8 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_007_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="22"]
-transform = Transform3D(-0.14673996, 0.19513126, -0.96973604, 0.2730654, -0.93426436, -0.22931316, -0.9507362, -0.29845163, 0.08381025, 0.42829, -0.0144767165, -0.5523803)
+[node name="DEF-skirt_007_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="22" unique_id=698518616]
+transform = Transform3D(-0.14673996, 0.19513126, -0.96973604, 0.2730654, -0.93426436, -0.22931316, -0.9507362, -0.29845163, 0.08381025, 0.42829, -0.014476657, -0.5523803)
 top_level = true
 script = ExtResource("3_181cp")
 bone_name = "DEF-skirt.007.L"
@@ -252,7 +252,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-skirt_008" type="Node3D" parent="godot_rig/GeneralSkeleton" index="23"]
+[node name="DEF-skirt_008" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="23" unique_id=1637446544]
 transform = Transform3D(-0.16376989, -0.00040872415, -0.98649824, 0.43278238, -0.89866084, -0.07147449, -0.8864975, -0.43864498, 0.14735052, 8.891514e-09, 0.027400732, -0.7803906)
 top_level = true
 script = ExtResource("3_181cp")
@@ -263,7 +263,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_001_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="24"]
+[node name="DEF-raincoat_robe_001_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="24" unique_id=935498141]
 transform = Transform3D(0.0645213, -0.380893, 0.922365, -0.0271678, -0.924619, -0.379923, 0.997547, -0.000545576, -0.0700057, -0.676807, 0.331913, -0.237776)
 top_level = true
 script = ExtResource("3_181cp")
@@ -275,7 +275,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_002_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="25"]
+[node name="DEF-raincoat_robe_002_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="25" unique_id=1501278300]
 transform = Transform3D(0.33771068, 0.33470932, -0.87972754, 0.027069181, -0.9377044, -0.34637645, -0.94086057, 0.09316151, -0.32573298, 0.5574055, 0.15858096, 0.20929259)
 top_level = true
 script = ExtResource("3_181cp")
@@ -286,7 +286,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_003_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="26"]
+[node name="DEF-raincoat_robe_003_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="26" unique_id=1949862507]
 transform = Transform3D(0.66449493, 0.33102894, -0.66997427, 0.16443701, -0.93933123, -0.30102435, -0.7289763, 0.08986059, -0.6786147, 0.64959097, -0.11166984, 0.23225236)
 top_level = true
 script = ExtResource("3_181cp")
@@ -297,7 +297,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_004_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="27"]
+[node name="DEF-raincoat_robe_004_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="27" unique_id=2097926547]
 transform = Transform3D(0.673889, -0.163349, 0.720549, 0.0357672, -0.966897, -0.252647, 0.737967, 0.196028, -0.645738, -0.447396, 0.290676, 0.0393882)
 top_level = true
 script = ExtResource("3_181cp")
@@ -309,7 +309,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_005_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="28"]
+[node name="DEF-raincoat_robe_005_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="28" unique_id=1873463206]
 transform = Transform3D(-0.6456898, 0.36819315, 0.66896844, -0.34911487, -0.9214914, 0.1702129, 0.67911994, -0.123642035, 0.7235394, 0.592576, 0.21493834, -0.14771533)
 top_level = true
 script = ExtResource("3_181cp")
@@ -320,7 +320,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_ribbon_001_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="29"]
+[node name="DEF-raincoat_ribbon_001_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="29" unique_id=782093758]
 transform = Transform3D(-0.15329304, 0.29386833, -0.94347364, 0.07077093, -0.94904184, -0.30710128, -0.98564357, -0.113846965, 0.12468402, 0.6411725, -0.035909176, -0.16339341)
 top_level = true
 script = ExtResource("3_181cp")
@@ -331,7 +331,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_ribbon_002_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="30"]
+[node name="DEF-raincoat_ribbon_002_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="30" unique_id=298784120]
 transform = Transform3D(-0.1533449, 0.29394186, -0.9434424, 0.07093356, -0.9489971, -0.3072019, -0.98562384, -0.114029504, 0.12467336, 0.6665956, -0.11793351, -0.17328885)
 top_level = true
 script = ExtResource("3_181cp")
@@ -342,7 +342,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_ribbon_003_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="31"]
+[node name="DEF-raincoat_ribbon_003_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="31" unique_id=1084382743]
 transform = Transform3D(0.6179633, 0.31246486, 0.72144777, 0.09765253, -0.94103044, 0.3239225, 0.7801188, -0.12972106, -0.61203516, 0.7104908, -0.19200492, -0.1988146)
 top_level = true
 script = ExtResource("3_181cp")
@@ -353,7 +353,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_006_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="32"]
+[node name="DEF-raincoat_robe_006_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="32" unique_id=1710804354]
 transform = Transform3D(-0.6299709, 0.3197416, -0.7077441, -0.1495871, -0.9442073, -0.2934209, -0.76207626, -0.07897725, 0.64265263, 0.6438004, -0.05686128, -0.13682207)
 top_level = true
 script = ExtResource("3_181cp")
@@ -364,7 +364,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_007_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="33"]
+[node name="DEF-raincoat_robe_007_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="33" unique_id=38710224]
 transform = Transform3D(0.986813, 0.0422156, 0.156256, 0.0815892, -0.963504, -0.254955, 0.139791, 0.264342, -0.954243, -0.126031, 0.317394, 0.222501)
 top_level = true
 script = ExtResource("3_181cp")
@@ -376,7 +376,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_008_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="34"]
+[node name="DEF-raincoat_robe_008_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="34" unique_id=293301915]
 transform = Transform3D(0.22792041, 0.22000091, 0.94849825, -0.2914299, -0.91406745, 0.2820437, 0.9290414, -0.3407052, -0.14421988, 0.368634, 0.29577905, -0.5446829)
 top_level = true
 script = ExtResource("3_181cp")
@@ -387,7 +387,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_009_L" type="Node3D" parent="godot_rig/GeneralSkeleton" index="35"]
+[node name="DEF-raincoat_robe_009_L" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="35" unique_id=309598814]
 transform = Transform3D(-0.46494168, 0.20803255, -0.86055166, 0.2087873, -0.91882217, -0.33492273, -0.8603688, -0.33539262, 0.38376397, 0.39723504, 0.12228882, -0.60224116)
 top_level = true
 script = ExtResource("3_181cp")
@@ -398,7 +398,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_001_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="36"]
+[node name="DEF-raincoat_robe_001_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="36" unique_id=232485147]
 transform = Transform3D(-0.878058, 0.29316, -0.378248, -0.0631436, -0.854459, -0.515667, -0.474371, -0.428902, 0.768776, 0.202914, 0.407462, -0.796449)
 top_level = true
 script = ExtResource("3_181cp")
@@ -410,7 +410,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_002_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="37"]
+[node name="DEF-raincoat_robe_002_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="37" unique_id=1347220338]
 transform = Transform3D(0.3377866, -0.33476296, 0.8796781, -0.026856199, -0.93765944, -0.3465154, 0.94083947, 0.093423456, -0.32571927, -0.55740863, 0.15858209, 0.20929247)
 top_level = true
 script = ExtResource("3_181cp")
@@ -421,7 +421,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_003_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="38"]
+[node name="DEF-raincoat_robe_003_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="38" unique_id=1641445113]
 transform = Transform3D(0.6644307, -0.33105686, 0.6700245, -0.16462122, -0.93934524, -0.3008809, 0.72899354, 0.08961422, -0.6786291, -0.64959097, -0.1116699, 0.2322518)
 top_level = true
 script = ExtResource("3_181cp")
@@ -432,7 +432,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_004_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="39"]
+[node name="DEF-raincoat_robe_004_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="39" unique_id=1649797387]
 transform = Transform3D(-0.376304, 0.385982, -0.842266, -0.00377299, -0.909719, -0.415208, -0.926489, -0.153066, 0.343787, 0.359999, 0.364039, -0.473447)
 top_level = true
 script = ExtResource("3_181cp")
@@ -444,7 +444,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_005_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="40"]
+[node name="DEF-raincoat_robe_005_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="40" unique_id=1815288506]
 transform = Transform3D(-0.64548475, -0.3681373, -0.6691967, 0.3496276, -0.92140234, 0.16964115, -0.6790506, -0.12446889, 0.7234622, -0.5925766, 0.2149387, -0.14771616)
 top_level = true
 script = ExtResource("3_181cp")
@@ -455,8 +455,8 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_ribbon_001_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="41"]
-transform = Transform3D(-0.15372692, -0.29381287, 0.94342035, -0.07195055, -0.9489063, -0.3072455, 0.98549014, -0.11511154, 0.124732494, -0.6411729, -0.035908997, -0.16339365)
+[node name="DEF-raincoat_ribbon_001_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="41" unique_id=344631558]
+transform = Transform3D(-0.15372692, -0.29381287, 0.94342035, -0.07195055, -0.9489063, -0.3072455, 0.98549014, -0.11511154, 0.124732494, -0.64117265, -0.035909057, -0.16339353)
 top_level = true
 script = ExtResource("3_181cp")
 bone_name = "DEF-raincoat_ribbon.001.R"
@@ -466,7 +466,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_ribbon_002_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="42"]
+[node name="DEF-raincoat_ribbon_002_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="42" unique_id=273859821]
 transform = Transform3D(-0.15366858, -0.29390088, 0.94340235, -0.0717576, -0.94890225, -0.30730277, 0.9855132, -0.11491907, 0.12472675, -0.6665944, -0.11793381, -0.17328909)
 top_level = true
 script = ExtResource("3_181cp")
@@ -477,7 +477,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_ribbon_003_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="43"]
+[node name="DEF-raincoat_ribbon_003_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="43" unique_id=1669818191]
 transform = Transform3D(0.61828816, -0.31227016, -0.7212532, -0.096792914, -0.9409495, 0.32441384, -0.779968, -0.13076907, -0.6120036, -0.7104913, -0.1920048, -0.19881463)
 top_level = true
 script = ExtResource("3_181cp")
@@ -488,7 +488,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_006_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="44"]
+[node name="DEF-raincoat_robe_006_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="44" unique_id=251655565]
 transform = Transform3D(-0.63028675, -0.3197332, 0.7074666, 0.14876248, -0.9441111, -0.294149, 0.7619763, -0.08015376, 0.6426252, -0.64380014, -0.0568614, -0.1368222)
 top_level = true
 script = ExtResource("3_181cp")
@@ -499,7 +499,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="45"]
+[node name="DEF-raincoat_robe_007_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="45" unique_id=345465674]
 transform = Transform3D(0.30531, 0.361806, -0.88084, 0.0561625, -0.930239, -0.36263, -0.950594, 0.0612444, -0.304331, 0.385888, 0.365575, -0.102697)
 top_level = true
 script = ExtResource("3_181cp")
@@ -511,7 +511,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_008_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="46"]
+[node name="DEF-raincoat_robe_008_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="46" unique_id=942526962]
 transform = Transform3D(0.22800204, -0.2197167, -0.9485445, 0.29176888, -0.9140184, 0.2818513, -0.928915, -0.3410193, -0.14429155, -0.368635, 0.29578, -0.5446847)
 top_level = true
 script = ExtResource("3_181cp")
@@ -522,7 +522,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_009_R" type="Node3D" parent="godot_rig/GeneralSkeleton" index="47"]
+[node name="DEF-raincoat_robe_009_R" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="47" unique_id=1494635977]
 transform = Transform3D(-0.46493363, -0.20802149, 0.86055857, -0.20872827, -0.91885024, -0.33488134, 0.8603875, -0.33532125, 0.38378453, -0.39723504, 0.12228775, -0.6022384)
 top_level = true
 script = ExtResource("3_181cp")
@@ -533,7 +533,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_010" type="Node3D" parent="godot_rig/GeneralSkeleton" index="48"]
+[node name="DEF-raincoat_robe_010" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="48" unique_id=1737685658]
 transform = Transform3D(0.844986, 0.260754, -0.466911, 0.0907082, -0.930308, -0.355386, -0.52704, 0.257944, -0.809749, 0.205571, 0.366162, 0.182568)
 top_level = true
 script = ExtResource("3_181cp")
@@ -545,7 +545,7 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_011" type="Node3D" parent="godot_rig/GeneralSkeleton" index="49"]
+[node name="DEF-raincoat_robe_011" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="49" unique_id=2108143755]
 transform = Transform3D(1, -2.1572901e-05, -3.860803e-10, -1.8623285e-05, -0.86328137, 0.50472295, -1.0888676e-05, -0.50472325, -0.86328083, -1.9788966e-14, 0.371507, -0.7556118)
 top_level = true
 script = ExtResource("3_181cp")
@@ -556,8 +556,8 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="DEF-raincoat_robe_012" type="Node3D" parent="godot_rig/GeneralSkeleton" index="50"]
-transform = Transform3D(-0.9999999, -0.000397766, 6.51016e-07, 0.00034992068, -0.8804909, -0.4740629, 0.00018913936, -0.47406307, 0.8804904, 4.2750596e-14, 0.2109747, -0.8090302)
+[node name="DEF-raincoat_robe_012" type="Node3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="50" unique_id=1593219268]
+transform = Transform3D(-0.9999999, -0.000397766, 6.51016e-07, 0.00034992068, -0.8804909, -0.4740629, 0.00018913936, -0.47406307, 0.8804904, 4.275057e-14, 0.21097463, -0.8090302)
 top_level = true
 script = ExtResource("3_181cp")
 bone_name = "DEF-raincoat_robe.012"
@@ -567,17 +567,17 @@ gravity = Vector3(0, -0.5, 0)
 forward_axis = 1
 metadata/_custom_type_script = "uid://ceve74pcu3cj3"
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" index="51"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="godot_rig/GeneralSkeleton" parent_id_path=PackedInt32Array(849238715) index="51" unique_id=960703233]
 transform = Transform3D(0.99999976, -2.888035e-07, -1.8094429e-06, -1.8094428e-06, -4.023313e-07, -0.9999999, 2.8880336e-07, 0.9999998, -4.023318e-07, -0.72942185, 1.2435588, -0.07697256)
 bone_name = "DEF-weapon.R"
 bone_idx = 40
 
-[node name="dizzy_parasol" parent="godot_rig/GeneralSkeleton/BoneAttachment3D" index="0" instance=ExtResource("4_trhkn")]
+[node name="dizzy_parasol" parent="godot_rig/GeneralSkeleton/BoneAttachment3D" index="0" unique_id=718545070 instance=ExtResource("4_trhkn")]
 visible = false
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="1" unique_id=376157399]
 unique_name_in_owner = true
 root_motion_track = NodePath("%GeneralSkeleton:Root")
 
-[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=345406570]
 unique_name_in_owner = true

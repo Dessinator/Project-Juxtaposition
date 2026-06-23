@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://6ijh7yxrksvc"]
+[gd_scene format=3 uid="uid://6ijh7yxrksvc"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_h47qc"]
 
-[node name="KahoParryCharacterActionVisual" instance=ExtResource("1_h47qc")]
+[node name="KahoParryCharacterActionVisual" unique_id=402065885 instance=ExtResource("1_h47qc")]
 _action_name = "Kaho Parry"
 action_visual_type = 2
 
-[node name="Button" parent="Control" index="0"]
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 text = "Kaho Parry"

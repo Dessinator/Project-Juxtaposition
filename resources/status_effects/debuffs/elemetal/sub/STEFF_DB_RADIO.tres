@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://dwu8y8m7pe181"]
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://dwu8y8m7pe181"]
 
-[ext_resource type="Texture2D" uid="uid://bhxwfjxy5nv6j" path="res://resources/images/icons/STEFF_ICN_RADIO.png" id="1_k1iot"]
-[ext_resource type="Script" path="res://resources/status_effects/status_effect.gd" id="1_x3mcw"]
+[ext_resource type="Script" uid="uid://bfpvw74u8syww" path="res://resources/status_effects/status_effect_components/status_effect_component.gd" id="1_r84ms"]
+[ext_resource type="Script" uid="uid://24nukwcutln8" path="res://resources/status_effects/status_effect.gd" id="1_x3mcw"]
+
+[sub_resource type="Resource" id="Resource_ljvp2"]
+metadata/__load_path__ = "res://resources/images/icons/STEFF_ICN_RADIO.png"
 
 [resource]
 script = ExtResource("1_x3mcw")
 _name = "Radio"
-_icon = ExtResource("1_k1iot")
-_brief_description = ""
-_long_description = ""
+_icon = SubResource("Resource_ljvp2")
 _duration_turns = 5
-_duration_mode = 0
-_status_effect_components = Array[Resource("res://resources/status_effects/status_effect_components/status_effect_component.gd")]([])

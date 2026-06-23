@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://chpp4at7db0cy"]
+[gd_scene format=3 uid="uid://chpp4at7db0cy"]
 
 [ext_resource type="Script" uid="uid://djmw4lmwj6mp5" path="res://addons/character-combo-tree/editor/add_node_menu.gd" id="1_timy3"]
 
-[node name="AddNodeMenu" type="Window"]
+[node name="AddNodeMenu" type="Window" unique_id=1438635588]
 auto_translate_mode = 1
+oversampling_override = 1.0
 title = "Add New Node"
 initial_position = 4
 size = Vector2i(250, 250)
@@ -11,7 +12,7 @@ transient = true
 popup_window = true
 script = ExtResource("1_timy3")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1271616887]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,92 +20,92 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1778822951]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AttackSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="AttackSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=728943527]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/AttackSeparator"]
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/AttackSeparator" unique_id=1881312165]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AttackSeparator"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AttackSeparator" unique_id=1294664457]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.533943, 0.533943, 0.533943, 1)
 text = "Attacks"
 
-[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/AttackSeparator"]
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/AttackSeparator" unique_id=805665643]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LightAttackButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="LightAttackButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=1852548865]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Light Attack"
 
-[node name="HeavyAttackButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="HeavyAttackButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=1977473783]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Heavy Attack"
 
-[node name="SpecialsSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="SpecialsSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=724874331]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/SpecialsSeparator"]
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/SpecialsSeparator" unique_id=490785162]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/SpecialsSeparator"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/SpecialsSeparator" unique_id=2051510139]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.533943, 0.533943, 0.533943, 1)
 text = "Specials"
 
-[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/SpecialsSeparator"]
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/SpecialsSeparator" unique_id=843651762]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DodgeButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="DodgeButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=154976341]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Dodge
 "
 
-[node name="ParryButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="ParryButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=324568318]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Parry
 "
 
-[node name="JuxtaposedSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="JuxtaposedSeparator" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=213158748]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator"]
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator" unique_id=1203232780]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator" unique_id=2066351767]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.533943, 0.533943, 0.533943, 1)
 text = "Juxtaposed"
 
-[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator"]
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/JuxtaposedSeparator" unique_id=339947973]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="JuxDodgeButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="JuxDodgeButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=190651962]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Jux-Dodge
 "
 
-[node name="JuxParryButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="JuxParryButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=443015791]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Jux-Parry"
 
-[node name="JuxtaposeButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="JuxtaposeButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=1977524653]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Juxtapose"

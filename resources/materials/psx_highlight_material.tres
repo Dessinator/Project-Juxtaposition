@@ -1,13 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ddbhff3v1wsyx"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ddbhff3v1wsyx"]
 
 [ext_resource type="Shader" uid="uid://6wpiyais7uax" path="res://resources/shaders/render/psx_outline.gdshader" id="1_03gfe"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_03gfe")
-shader_parameter/scale = 1.0
-shader_parameter/outline_spread = 1.0
-shader_parameter/_Color = Color(1, 1, 1, 1)
 shader_parameter/_DepthNormalThreshold = 0.1
 shader_parameter/_DepthNormalThresholdScale = 3.0
 shader_parameter/_DepthThreshold = 1.5

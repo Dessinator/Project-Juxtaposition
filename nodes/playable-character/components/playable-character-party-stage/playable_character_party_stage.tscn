@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://chtg8v0jbhkt"]
+[gd_scene format=3 uid="uid://chtg8v0jbhkt"]
 
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="1_o083c"]
 [ext_resource type="Script" uid="uid://c8n60lbv475tu" path="res://nodes/playable-character/components/playable-character-party-stage/playable_character_party_stage.gd" id="1_sdxyd"]
@@ -20,11 +20,11 @@ shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.5
 shader_parameter/resolution = Vector2i(320, 240)
 
-[node name="PlayableCharacterPartyStage" type="Node3D"]
+[node name="PlayableCharacterPartyStage" type="Node3D" unique_id=1104738450]
 script = ExtResource("1_sdxyd")
 camera_transition_duration = 1.0
 
-[node name="Pedestal1" type="CSGCylinder3D" parent="."]
+[node name="Pedestal1" type="CSGCylinder3D" parent="." unique_id=1268150630]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0.049999997, 0)
 radius = 0.75
@@ -32,24 +32,24 @@ height = 0.15
 sides = 16
 material = SubResource("ShaderMaterial_sdxyd")
 
-[node name="Slot1Label3D" type="Label3D" parent="Pedestal1" groups=["world_ui_objects"]]
+[node name="Slot1Label3D" type="Label3D" parent="Pedestal1" unique_id=1374615629 groups=["world_ui_objects"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 layers = 2
 billboard = 1
 no_depth_test = true
 text = "Slot 1"
 
-[node name="PartyStageNonplayableCharacter1" parent="Pedestal1" instance=ExtResource("1_xwhl1")]
+[node name="PartyStageNonplayableCharacter1" parent="Pedestal1" unique_id=526929235 instance=ExtResource("1_xwhl1")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
-[node name="CameraTarget" type="Marker3D" parent="Pedestal1"]
+[node name="CameraTarget" type="Marker3D" parent="Pedestal1" unique_id=544948680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="CameraMarker" type="Marker3D" parent="Pedestal1"]
+[node name="CameraMarker" type="Marker3D" parent="Pedestal1" unique_id=40640294]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999988, 1.3000001, 1.6999999)
 
-[node name="Pedestal2" type="CSGCylinder3D" parent="."]
+[node name="Pedestal2" type="CSGCylinder3D" parent="." unique_id=225017816]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
 radius = 0.75
@@ -57,24 +57,24 @@ height = 0.15
 sides = 16
 material = SubResource("ShaderMaterial_sdxyd")
 
-[node name="Slot2Label3D" type="Label3D" parent="Pedestal2" groups=["world_ui_objects"]]
+[node name="Slot2Label3D" type="Label3D" parent="Pedestal2" unique_id=241338379 groups=["world_ui_objects"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 layers = 2
 billboard = 1
 no_depth_test = true
 text = "Slot 2"
 
-[node name="PartyStageNonplayableCharacter2" parent="Pedestal2" instance=ExtResource("1_xwhl1")]
+[node name="PartyStageNonplayableCharacter2" parent="Pedestal2" unique_id=194712162 instance=ExtResource("1_xwhl1")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
-[node name="CameraTarget" type="Marker3D" parent="Pedestal2"]
+[node name="CameraTarget" type="Marker3D" parent="Pedestal2" unique_id=360948936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="CameraMarker" type="Marker3D" parent="Pedestal2"]
+[node name="CameraMarker" type="Marker3D" parent="Pedestal2" unique_id=1346453197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2351742e-08, 1.3000001, 1.6999999)
 
-[node name="Pedestal3" type="CSGCylinder3D" parent="."]
+[node name="Pedestal3" type="CSGCylinder3D" parent="." unique_id=821048230]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.049999997, 0)
 radius = 0.75
@@ -82,45 +82,45 @@ height = 0.15
 sides = 16
 material = SubResource("ShaderMaterial_sdxyd")
 
-[node name="Slot3Label3D" type="Label3D" parent="Pedestal3" groups=["world_ui_objects"]]
+[node name="Slot3Label3D" type="Label3D" parent="Pedestal3" unique_id=674573837 groups=["world_ui_objects"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 layers = 2
 billboard = 1
 no_depth_test = true
 text = "Slot 3"
 
-[node name="PartyStageNonplayableCharacter3" parent="Pedestal3" instance=ExtResource("1_xwhl1")]
+[node name="PartyStageNonplayableCharacter3" parent="Pedestal3" unique_id=386075941 instance=ExtResource("1_xwhl1")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
-[node name="CameraTarget" type="Marker3D" parent="Pedestal3"]
+[node name="CameraTarget" type="Marker3D" parent="Pedestal3" unique_id=982862115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
-[node name="CameraMarker" type="Marker3D" parent="Pedestal3"]
+[node name="CameraMarker" type="Marker3D" parent="Pedestal3" unique_id=426378550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999988, 1.3000001, 1.7)
 
-[node name="Skybox" type="CSGSphere3D" parent="."]
+[node name="Skybox" type="CSGSphere3D" parent="." unique_id=1434832052]
 flip_faces = true
 radius = 20.0
 metadata/_edit_lock_ = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=4205433]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 2.3)
 cull_mask = 3
 
-[node name="DefaultCameraMarker" type="Marker3D" parent="."]
+[node name="DefaultCameraMarker" type="Marker3D" parent="." unique_id=247280132]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 2.3)
 
-[node name="DefaultCameraTarget" type="Marker3D" parent="."]
+[node name="DefaultCameraTarget" type="Marker3D" parent="." unique_id=380178453]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
-[node name="QuickSelectCameraMarker" type="Marker3D" parent="."]
+[node name="QuickSelectCameraMarker" type="Marker3D" parent="." unique_id=673151110]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 3.3)
 
-[node name="QuickSelectCameraTarget" type="Marker3D" parent="."]
+[node name="QuickSelectCameraTarget" type="Marker3D" parent="." unique_id=2003562268]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)

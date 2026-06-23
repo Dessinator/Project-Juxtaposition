@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://corunqa6tax0m"]
 
-[node name="ChainsPopupMenu" type="PopupMenu"]
+[node name="ChainsPopupMenu" type="PopupMenu" unique_id=1644666255]
 auto_translate_mode = 1
-size = Vector2i(156, 178)
+oversampling_override = 1.0
+size = Vector2i(176, 178)
 visible = true
 unfocusable = true
 item_count = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cpus77gjgbfxf"]
+[gd_scene format=3 uid="uid://cpus77gjgbfxf"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_q0l8a"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="3_1t23n"]
@@ -1768,22 +1768,20 @@ _data = {
 &"wallslide_right": SubResource("Animation_f7q3t")
 }
 
-[node name="HideriCharacterModel" instance=ExtResource("1_q0l8a")]
+[node name="HideriCharacterModel" unique_id=1883999278 instance=ExtResource("1_q0l8a")]
 
-[node name="dummy_root" type="Node3D" parent="." index="0"]
+[node name="dummy_root" type="Node3D" parent="." index="0" unique_id=907033566]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0.15, 0)
 
-[node name="body" type="MeshInstance3D" parent="dummy_root" index="0"]
+[node name="body" type="MeshInstance3D" parent="dummy_root" index="0" unique_id=1396282735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_btn13")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="dummy_root/body" index="0"]
+[node name="eyes" type="MeshInstance3D" parent="dummy_root/body" index="0" unique_id=833373415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0.382005)
 mesh = SubResource("BoxMesh_c3blq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1879735440]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_nsq03")
-}
+libraries/ = SubResource("AnimationLibrary_nsq03")

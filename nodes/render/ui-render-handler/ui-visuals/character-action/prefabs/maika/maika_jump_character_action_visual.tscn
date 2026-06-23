@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnglsepnqitt5"]
+[gd_scene format=3 uid="uid://bnglsepnqitt5"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_gwf0s"]
 
-[node name="MaikaJumpCharacterActionVisual" instance=ExtResource("1_gwf0s")]
+[node name="MaikaJumpCharacterActionVisual" unique_id=860999731 instance=ExtResource("1_gwf0s")]
 _action_name = "Maika Jump"
 action_visual_type = 3
 
-[node name="Button" parent="Control" index="0"]
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 text = "Maika Jump"

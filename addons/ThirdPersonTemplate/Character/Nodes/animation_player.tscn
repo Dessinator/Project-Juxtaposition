@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bljvqqqodqaj5"]
+[gd_scene format=3 uid="uid://bljvqqqodqaj5"]
 
 [sub_resource type="Animation" id="Animation_pmyie"]
 resource_name = "air_jump"
@@ -8673,20 +8673,18 @@ tracks/111/keys = PackedFloat32Array(0, 1, 0.21338, 0.00657109, 0.00143528, 0.97
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pttd7"]
 _data = {
-"air_jump": SubResource("Animation_pmyie"),
-"air_jump_anticipation": SubResource("Animation_jrtif"),
-"air_land": SubResource("Animation_oagd8"),
-"dash": SubResource("Animation_ueuyw"),
-"fight_idle": SubResource("Animation_pf4w5"),
-"fight_kick": SubResource("Animation_tf4da"),
-"fight_punch": SubResource("Animation_iuoft"),
-"idle": SubResource("Animation_pij0i"),
-"idle_to_fight": SubResource("Animation_rtdlr"),
-"run": SubResource("Animation_pmxjx"),
-"walk": SubResource("Animation_3tw1j")
+&"air_jump": SubResource("Animation_pmyie"),
+&"air_jump_anticipation": SubResource("Animation_jrtif"),
+&"air_land": SubResource("Animation_oagd8"),
+&"dash": SubResource("Animation_ueuyw"),
+&"fight_idle": SubResource("Animation_pf4w5"),
+&"fight_kick": SubResource("Animation_tf4da"),
+&"fight_punch": SubResource("Animation_iuoft"),
+&"idle": SubResource("Animation_pij0i"),
+&"idle_to_fight": SubResource("Animation_rtdlr"),
+&"run": SubResource("Animation_pmxjx"),
+&"walk": SubResource("Animation_3tw1j")
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer"]
-libraries = {
-"": SubResource("AnimationLibrary_pttd7")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" unique_id=1364156913]
+libraries/ = SubResource("AnimationLibrary_pttd7")

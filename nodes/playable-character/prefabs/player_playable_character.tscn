@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxe5jhys8u15c"]
+[gd_scene format=3 uid="uid://dxe5jhys8u15c"]
 
 [ext_resource type="PackedScene" uid="uid://c873droosme0v" path="res://nodes/playable-character/playable_character.tscn" id="1_afw0l"]
 [ext_resource type="Script" uid="uid://csq05x4oq8uf3" path="res://addons/behaviour_toolkit/blackboard.gd" id="2_77ffc"]
 [ext_resource type="PackedScene" uid="uid://ckyv6l3ncojyr" path="res://nodes/character/prefabs/dizzy_character.tscn" id="2_w44sv"]
 
-[sub_resource type="Resource" id="Resource_wng8g"]
+[sub_resource type="Resource" id="Resource_77ffc"]
 resource_local_to_scene = true
 script = ExtResource("2_77ffc")
 content = {
@@ -17,54 +17,54 @@ content = {
 }
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
-[node name="PlayerPlayableCharacter" instance=ExtResource("1_afw0l")]
+[node name="PlayerPlayableCharacter" unique_id=1507748209 instance=ExtResource("1_afw0l")]
 collision_mask = 3
 
-[node name="DizzyCharacter" parent="PlayableCharacterCharacterContainer" index="1" instance=ExtResource("2_w44sv")]
+[node name="DizzyCharacter" parent="PlayableCharacterCharacterContainer" parent_id_path=PackedInt32Array(507084989) index="1" unique_id=1762272184 instance=ExtResource("2_w44sv")]
 
-[node name="PlayableCharacterStaminaMeter" parent="." index="8"]
+[node name="PlayableCharacterStaminaMeter" parent="." index="8" unique_id=292829048]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 3, 0)
 
-[node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" index="0"]
-transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9447852e-07, 0.9999985, 5.507469e-05, -2.2964741e-11, -5.7131052e-05, 0.9999985, 0, 1.3, -2.9802322e-08)
+[node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" parent_id_path=PackedInt32Array(1621249683, 1527144580) index="0" unique_id=435586076]
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.9447852e-07, 0.99999857, 5.504489e-05, -2.2964741e-11, -5.7071447e-05, 0.99999857, 0, 1.3, 0)
 
-[node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
-transform = Transform3D(1, 9.130002e-08, 3.6310215e-07, -1.5321575e-09, 1.000043, 0.00027495623, 2.5402062e-07, -3.2186508e-06, 1.0014751, -3.3454626e-09, -0.000274539, 5.0000057)
+[node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" parent_id_path=PackedInt32Array(1621249683, 2077475684) index="0" unique_id=1396523447]
+transform = Transform3D(1, 9.130022e-08, 3.6310206e-07, -1.531923e-09, 1.0000429, 0.00027495623, 2.5402062e-07, -3.2186508e-06, 1.0014751, -3.3458036e-09, -0.00027537346, 5.0000057)
 
-[node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
-transform = Transform3D(1, 1.0572816e-14, -2.9048575e-14, 0, 0.9396926, 0.34202012, 3.0912847e-14, -0.34202012, 0.9396926, -1.4524295e-13, 2.9317007, 4.2538385)
+[node name="WorldCamera" parent="PlayableCharacterCamera" parent_id_path=PackedInt32Array(1621249683) index="2" unique_id=142551782]
+transform = Transform3D(1, 1.1103738e-14, -3.050727e-14, 0, 0.9396926, 0.34202012, 3.246516e-14, -0.34202012, 0.9396926, -1.5253643e-13, 2.9317007, 4.2538385)
 
-[node name="LightChargeThresholdTimer" parent="." index="18"]
+[node name="LightChargeThresholdTimer" parent="." index="18" unique_id=381357285]
 wait_time = 0.2
 
-[node name="HeavyChargeThresholdTimer" parent="." index="19"]
+[node name="HeavyChargeThresholdTimer" parent="." index="19" unique_id=138513909]
 wait_time = 0.2
 
-[node name="GameplayFiniteStateMachine" parent="." index="26"]
-blackboard = SubResource("Resource_wng8g")
+[node name="GameplayFiniteStateMachine" parent="." index="26" unique_id=2076576182]
+blackboard = SubResource("Resource_77ffc")
 
-[node name="JumpState" parent="GameplayFiniteStateMachine" index="5"]
+[node name="JumpState" parent="GameplayFiniteStateMachine" index="5" unique_id=289103804]
 _can_switch_characters = false
 
-[node name="FallState" parent="GameplayFiniteStateMachine" index="6"]
+[node name="FallState" parent="GameplayFiniteStateMachine" index="6" unique_id=320783487]
 _can_switch_characters = false
 
-[node name="LandingState" parent="GameplayFiniteStateMachine" index="7"]
+[node name="LandingState" parent="GameplayFiniteStateMachine" index="7" unique_id=1139313545]
 _can_switch_characters = false
 
-[node name="GroundedLightAttackState" parent="GameplayFiniteStateMachine" index="10"]
+[node name="GroundedLightAttackState" parent="GameplayFiniteStateMachine" index="10" unique_id=1702365878]
 _auto_switch_animation_state = false
 
-[node name="GroundedLightChargeAttackState" parent="GameplayFiniteStateMachine" index="11"]
+[node name="GroundedLightChargeAttackState" parent="GameplayFiniteStateMachine" index="11" unique_id=1472176309]
 _auto_switch_animation_state = false
 
-[node name="GroundedHeavyAttackState" parent="GameplayFiniteStateMachine" index="12"]
+[node name="GroundedHeavyAttackState" parent="GameplayFiniteStateMachine" index="12" unique_id=1053402410]
 _auto_switch_animation_state = false
 
-[node name="GroundedHeavyChargeAttackState" parent="GameplayFiniteStateMachine" index="13"]
+[node name="GroundedHeavyChargeAttackState" parent="GameplayFiniteStateMachine" index="13" unique_id=346564718]
 _auto_switch_animation_state = false
 
-[node name="AnimationFiniteStateMachine" parent="." index="27"]
+[node name="AnimationFiniteStateMachine" parent="." index="27" unique_id=1639053700]
 verbose = false
 
 [editable path="PlayableCharacterCamera"]

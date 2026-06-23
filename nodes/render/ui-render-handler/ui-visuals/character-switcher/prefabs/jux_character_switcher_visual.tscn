@@ -1,13 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3370ibolflby"]
+[gd_scene format=3 uid="uid://c3370ibolflby"]
 
 [ext_resource type="PackedScene" uid="uid://cad4mvjfw42dv" path="res://nodes/render/ui-render-handler/ui-visuals/character-switcher/character_switcher_visual.tscn" id="1_7ma37"]
 
-[node name="JuxCharacterSwitcherVisual" instance=ExtResource("1_7ma37")]
+[node name="JuxCharacterSwitcherVisual" unique_id=574844507 instance=ExtResource("1_7ma37")]
 _character_name = "Jux"
 
-[node name="CharacterSwitcherVisualContainer" parent="." index="0"]
-offset_top = -28.0
-offset_bottom = 40.0
-
-[node name="CharacterNameLabel" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer" index="1"]
+[node name="CharacterNameLabel" parent="CharacterSwitcherVisualContainer/VBoxContainer/CharacterMetadataContainer" parent_id_path=PackedInt32Array(882373406) index="1" unique_id=1702682492]
 text = "Jux"

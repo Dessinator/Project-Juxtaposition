@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6k5nnpbypshi"]
+[gd_scene format=3 uid="uid://c6k5nnpbypshi"]
 
 [ext_resource type="Script" uid="uid://bhgs1upaahk3y" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/main_menu.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://hmx6o472ropw" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_qvrrd"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_version_label.gd" id="6_pdiij"]
 [ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_name_label.gd" id="7_j7612"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1493402323]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,13 +20,13 @@ script = ExtResource("1")
 options_packed_scene = ExtResource("2_qvrrd")
 credits_packed_scene = ExtResource("3_5dhvp")
 
-[node name="UISoundController" type="Node" parent="."]
+[node name="UISoundController" type="Node" parent="." unique_id=255713366]
 script = ExtResource("6_bs342")
 
-[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_w8sbm")]
+[node name="BackgroundMusicPlayer" parent="." unique_id=355131969 instance=ExtResource("4_w8sbm")]
 bus = &"Master"
 
-[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+[node name="BackgroundTextureRect" type="TextureRect" parent="." unique_id=252027364]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +36,7 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VersionMargin" type="MarginContainer" parent="."]
+[node name="VersionMargin" type="MarginContainer" parent="." unique_id=545992439]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,11 +48,11 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VersionContainer" type="Control" parent="VersionMargin"]
+[node name="VersionContainer" type="Control" parent="VersionMargin" unique_id=2022868850]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VersionLabel" type="Label" parent="VersionMargin/VersionContainer"]
+[node name="VersionLabel" type="Label" parent="VersionMargin/VersionContainer" unique_id=107897783]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -67,7 +67,7 @@ text = "v0.0.0"
 horizontal_alignment = 2
 script = ExtResource("6_pdiij")
 
-[node name="MenuContainer" type="MarginContainer" parent="."]
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=534882925]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -76,15 +76,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleMargin" type="MarginContainer" parent="MenuContainer"]
+[node name="TitleMargin" type="MarginContainer" parent="MenuContainer" unique_id=566772396]
 layout_mode = 2
 theme_override_constants/margin_top = 24
 
-[node name="TitleContainer" type="Control" parent="MenuContainer/TitleMargin"]
+[node name="TitleContainer" type="Control" parent="MenuContainer/TitleMargin" unique_id=1349309471]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TitleLabel" type="Label" parent="MenuContainer/TitleMargin/TitleContainer"]
+[node name="TitleLabel" type="Label" parent="MenuContainer/TitleMargin/TitleContainer" unique_id=1424300251]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -96,15 +96,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_j7612")
 
-[node name="SubTitleMargin" type="MarginContainer" parent="MenuContainer"]
+[node name="SubTitleMargin" type="MarginContainer" parent="MenuContainer" unique_id=1201351170]
 layout_mode = 2
 theme_override_constants/margin_top = 92
 
-[node name="SubTitleContainer" type="Control" parent="MenuContainer/SubTitleMargin"]
+[node name="SubTitleContainer" type="Control" parent="MenuContainer/SubTitleMargin" unique_id=1353886179]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="SubTitleLabel" type="Label" parent="MenuContainer/SubTitleMargin/SubTitleContainer"]
+[node name="SubTitleLabel" type="Label" parent="MenuContainer/SubTitleMargin/SubTitleContainer" unique_id=833699500]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -115,17 +115,17 @@ text = "Subtitle"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MenuButtonsMargin" type="MarginContainer" parent="MenuContainer"]
+[node name="MenuButtonsMargin" type="MarginContainer" parent="MenuContainer" unique_id=1812183390]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 136
 theme_override_constants/margin_bottom = 8
 
-[node name="MenuButtonsContainer" type="Control" parent="MenuContainer/MenuButtonsMargin"]
+[node name="MenuButtonsContainer" type="Control" parent="MenuContainer/MenuButtonsMargin" unique_id=188229539]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="MenuButtonsBoxContainer" type="BoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer"]
+[node name="MenuButtonsBoxContainer" type="BoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" unique_id=889179272]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -145,27 +145,27 @@ alignment = 1
 vertical = true
 script = ExtResource("4_l1ebe")
 
-[node name="NewGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+[node name="NewGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=800872450]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Game"
 
-[node name="OptionsButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=221524545]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1090158913]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Credits"
 
-[node name="ExitButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+[node name="ExitButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=2125751284]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Exit"
 
-[node name="OptionsContainer" type="MarginContainer" parent="."]
+[node name="OptionsContainer" type="MarginContainer" parent="." unique_id=1229028838]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -175,7 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CreditsContainer" type="MarginContainer" parent="."]
+[node name="CreditsContainer" type="MarginContainer" parent="." unique_id=839282372]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
@@ -186,7 +186,7 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 32
 
-[node name="FlowControlContainer" type="MarginContainer" parent="."]
+[node name="FlowControlContainer" type="MarginContainer" parent="." unique_id=1434902198]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -196,11 +196,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="FlowControl" type="Control" parent="FlowControlContainer"]
+[node name="FlowControl" type="Control" parent="FlowControlContainer" unique_id=1293178889]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="BackButton" type="Button" parent="FlowControlContainer/FlowControl"]
+[node name="BackButton" type="Button" parent="FlowControlContainer/FlowControl" unique_id=1621523483]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

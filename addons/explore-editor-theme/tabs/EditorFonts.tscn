@@ -1,128 +1,128 @@
-[gd_scene load_steps=7 format=3 uid="uid://6un3gpulvo7e"]
+[gd_scene format=3 uid="uid://6un3gpulvo7e"]
 
-[ext_resource type="Script" path="res://addons/explore-editor-theme/tabs/EditorFonts.gd" id="1"]
+[ext_resource type="Script" uid="uid://bb14kd81byjex" path="res://addons/explore-editor-theme/tabs/EditorFonts.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ds8c70l2dnpy8" path="res://addons/explore-editor-theme/ui/CodePreview.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c6mun6p3lk1k6" path="res://addons/explore-editor-theme/ui/FilterTool.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bg7phy5jdt0wl" path="res://addons/explore-editor-theme/ui/TypeTool.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://cykapqu53xah8" path="res://addons/explore-editor-theme/ui/SampleTool.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://bdtluesl718xb" path="res://addons/explore-editor-theme/ui/ResourceInspector.tscn" id="6"]
 
-[node name="Fonts" type="MarginContainer"]
+[node name="Fonts" type="MarginContainer" unique_id=1112245054]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
 
-[node name="Layout" type="VBoxContainer" parent="."]
+[node name="Layout" type="VBoxContainer" parent="." unique_id=802252118]
 layout_mode = 2
 
-[node name="StyleToolbar" type="HBoxContainer" parent="Layout"]
+[node name="StyleToolbar" type="HBoxContainer" parent="Layout" unique_id=102527116]
 layout_mode = 2
 
-[node name="Filter" parent="Layout/StyleToolbar" instance=ExtResource("3")]
+[node name="Filter" parent="Layout/StyleToolbar" unique_id=1528901460 instance=ExtResource("3")]
 layout_mode = 2
 label_text = "Filter styles"
 
-[node name="Type" parent="Layout/StyleToolbar" instance=ExtResource("4")]
+[node name="Type" parent="Layout/StyleToolbar" unique_id=1940356933 instance=ExtResource("4")]
 layout_mode = 2
 
-[node name="FontStyleView" type="HBoxContainer" parent="Layout"]
+[node name="FontStyleView" type="HBoxContainer" parent="Layout" unique_id=2013939121]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Layout/FontStyleView"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Layout/FontStyleView" unique_id=493570015]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FontList" type="VBoxContainer" parent="Layout/FontStyleView/ScrollContainer"]
+[node name="FontList" type="VBoxContainer" parent="Layout/FontStyleView/ScrollContainer" unique_id=490833995]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="FontPanel" type="VBoxContainer" parent="Layout/FontStyleView"]
+[node name="FontPanel" type="VBoxContainer" parent="Layout/FontStyleView" unique_id=1539622003]
 visible = false
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 
-[node name="Padding0" type="Control" parent="Layout/FontStyleView/FontPanel"]
+[node name="Padding0" type="Control" parent="Layout/FontStyleView/FontPanel" unique_id=774324740]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="FontName" type="Label" parent="Layout/FontStyleView/FontPanel"]
+[node name="FontName" type="Label" parent="Layout/FontStyleView/FontPanel" unique_id=1980020847]
 layout_mode = 2
 autowrap_mode = 1
 
-[node name="Padding1" type="Control" parent="Layout/FontStyleView/FontPanel"]
+[node name="Padding1" type="Control" parent="Layout/FontStyleView/FontPanel" unique_id=327930612]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="FontCode" parent="Layout/FontStyleView/FontPanel" instance=ExtResource("2")]
+[node name="FontCode" parent="Layout/FontStyleView/FontPanel" unique_id=591622292 instance=ExtResource("2")]
 layout_mode = 2
 
-[node name="FontInspector" parent="Layout/FontStyleView/FontPanel" instance=ExtResource("6")]
+[node name="FontInspector" parent="Layout/FontStyleView/FontPanel" unique_id=1833059283 instance=ExtResource("6")]
 layout_mode = 2
 
-[node name="EmptyPanel" type="Control" parent="Layout/FontStyleView"]
+[node name="EmptyPanel" type="Control" parent="Layout/FontStyleView" unique_id=329022552]
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 
-[node name="SizeToolbar" type="HBoxContainer" parent="Layout"]
+[node name="SizeToolbar" type="HBoxContainer" parent="Layout" unique_id=1997731717]
 layout_mode = 2
 
-[node name="Filter" parent="Layout/SizeToolbar" instance=ExtResource("3")]
+[node name="Filter" parent="Layout/SizeToolbar" unique_id=1814387773 instance=ExtResource("3")]
 layout_mode = 2
 label_text = "Filter sizes"
 
-[node name="Type" parent="Layout/SizeToolbar" instance=ExtResource("4")]
+[node name="Type" parent="Layout/SizeToolbar" unique_id=1744196053 instance=ExtResource("4")]
 layout_mode = 2
 
-[node name="FontSizeView" type="HBoxContainer" parent="Layout"]
+[node name="FontSizeView" type="HBoxContainer" parent="Layout" unique_id=1505292819]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FontSizeList" type="ItemList" parent="Layout/FontSizeView"]
+[node name="FontSizeList" type="ItemList" parent="Layout/FontSizeView" unique_id=945080494]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FontSizePanel" type="VBoxContainer" parent="Layout/FontSizeView"]
+[node name="FontSizePanel" type="VBoxContainer" parent="Layout/FontSizeView" unique_id=1683466792]
 visible = false
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 
-[node name="Padding0" type="Control" parent="Layout/FontSizeView/FontSizePanel"]
+[node name="Padding0" type="Control" parent="Layout/FontSizeView/FontSizePanel" unique_id=506365993]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="FontSizeName" type="Label" parent="Layout/FontSizeView/FontSizePanel"]
+[node name="FontSizeName" type="Label" parent="Layout/FontSizeView/FontSizePanel" unique_id=1821464033]
 layout_mode = 2
 autowrap_mode = 1
 
-[node name="Padding1" type="Control" parent="Layout/FontSizeView/FontSizePanel"]
+[node name="Padding1" type="Control" parent="Layout/FontSizeView/FontSizePanel" unique_id=1900581226]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="FontSizeValue" type="Label" parent="Layout/FontSizeView/FontSizePanel"]
+[node name="FontSizeValue" type="Label" parent="Layout/FontSizeView/FontSizePanel" unique_id=413638306]
 layout_mode = 2
 
-[node name="Padding2" type="Control" parent="Layout/FontSizeView/FontSizePanel"]
+[node name="Padding2" type="Control" parent="Layout/FontSizeView/FontSizePanel" unique_id=110035286]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
-[node name="FontSizeCode" parent="Layout/FontSizeView/FontSizePanel" instance=ExtResource("2")]
+[node name="FontSizeCode" parent="Layout/FontSizeView/FontSizePanel" unique_id=1483013261 instance=ExtResource("2")]
 layout_mode = 2
 
-[node name="EmptyPanel" type="Control" parent="Layout/FontSizeView"]
+[node name="EmptyPanel" type="Control" parent="Layout/FontSizeView" unique_id=30777039]
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 
-[node name="Padding0" type="Control" parent="Layout"]
+[node name="Padding0" type="Control" parent="Layout" unique_id=1552590615]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="Sample" parent="Layout" instance=ExtResource("5")]
+[node name="Sample" parent="Layout" unique_id=1049535655 instance=ExtResource("5")]
 layout_mode = 2
 
-[node name="FontPreview" type="Label" parent="Layout"]
+[node name="FontPreview" type="Label" parent="Layout" unique_id=263186388]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "Sample Text"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn5hrvw1lyawl"]
+[gd_scene format=3 uid="uid://cn5hrvw1lyawl"]
 
 [ext_resource type="Script" uid="uid://c0ixhi4hrnean" path="res://nodes/render/ui-render-handler/buttons/character-party-member-select-button/character_party_member_select_button.gd" id="1_adeao"]
 
@@ -86,14 +86,14 @@ corner_detail = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kd1c"]
 
-[node name="CharacterPartyMemberSelectButton" type="PanelContainer"]
+[node name="CharacterPartyMemberSelectButton" type="PanelContainer" unique_id=646525077]
 script = ExtResource("1_adeao")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1484164245]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1320660275]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_constants/margin_left = 5
@@ -101,13 +101,13 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="CharacterPortraitTextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer"]
+[node name="CharacterPortraitTextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer" unique_id=176737207]
 unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_kyy3p")
 expand_mode = 1
 
-[node name="CharacterNicknameLabel" type="Label" parent="VBoxContainer/MarginContainer"]
+[node name="CharacterNicknameLabel" type="Label" parent="VBoxContainer/MarginContainer" unique_id=2142583678]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -117,13 +117,13 @@ text = "Ch. Nickname"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="CharacterLevelLabel" type="Label" parent="VBoxContainer"]
+[node name="CharacterLevelLabel" type="Label" parent="VBoxContainer" unique_id=742305540]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lv. ???"
 horizontal_alignment = 1
 
-[node name="MemberIndexPanelContainer" type="PanelContainer" parent="."]
+[node name="MemberIndexPanelContainer" type="PanelContainer" parent="." unique_id=125766728]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(20, 20)
@@ -132,11 +132,11 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_fu11n")
 
-[node name="MarginContainer" type="MarginContainer" parent="MemberIndexPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MemberIndexPanelContainer" unique_id=755296165]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 
-[node name="MemberIndexLabel" type="Label" parent="MemberIndexPanelContainer/MarginContainer"]
+[node name="MemberIndexLabel" type="Label" parent="MemberIndexPanelContainer/MarginContainer" unique_id=1163051385]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/outline_size = 4
@@ -144,7 +144,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1083789481]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_adeao")

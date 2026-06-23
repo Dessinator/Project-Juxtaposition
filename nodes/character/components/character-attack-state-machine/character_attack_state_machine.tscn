@@ -1,19 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://056n3gghxmxn"]
+[gd_scene format=3 uid="uid://056n3gghxmxn"]
 
 [ext_resource type="Script" uid="uid://bwmg3r0od2dcb" path="res://nodes/character/components/character_attack_state_machine.gd" id="1_pght3"]
 [ext_resource type="Script" uid="uid://k5p6yghm7nrm" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_state.gd" id="2_x04ea"]
 
-[node name="CharacterAttackStateMachine" type="Node" node_paths=PackedStringArray("initial_state")]
+[node name="CharacterAttackStateMachine" type="Node" unique_id=1768501670]
 script = ExtResource("1_pght3")
 process_type = 0
 active = false
-initial_state = NodePath("")
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
-[node name="Idle" type="Node" parent="."]
+[node name="Idle" type="Node" parent="." unique_id=2129493689]
 script = ExtResource("2_x04ea")
 
-[node name="PerformingAttack" type="Node" parent="."]
+[node name="PerformingAttack" type="Node" parent="." unique_id=1261256338]
 script = ExtResource("2_x04ea")
 
 [connection signal="state_changed" from="." to="." method="_on_state_changed"]

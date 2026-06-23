@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl8xmod0jg1g4"]
+[gd_scene format=3 uid="uid://bl8xmod0jg1g4"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_olvgw"]
 
-[node name="IdaDodgeCharacterActionVisual" instance=ExtResource("1_olvgw")]
+[node name="IdaDodgeCharacterActionVisual" unique_id=1249796547 instance=ExtResource("1_olvgw")]
 _action_name = "Ida Dodge"
 action_visual_type = 1
 
-[node name="Button" parent="Control" index="0"]
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 text = "Ida Dodge"

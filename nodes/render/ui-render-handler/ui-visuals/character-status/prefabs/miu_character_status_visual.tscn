@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://qcvx55byd0td"]
+[gd_scene format=3 uid="uid://qcvx55byd0td"]
 
 [ext_resource type="PackedScene" uid="uid://cqhtmx2xw45nj" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/character_status_visual.tscn" id="1_1q7p0"]
 [ext_resource type="Texture2D" uid="uid://bnsmvolvuwl4d" path="res://resources/images/character-images/miu/miu_portrait_normal.png" id="2_t3kny"]
 
-[node name="MiuCharacterStatusVisual" instance=ExtResource("1_1q7p0")]
+[node name="MiuCharacterStatusVisual" unique_id=969938323 instance=ExtResource("1_1q7p0")]
 _character_name = "Miu"
 _character_portrait = ExtResource("2_t3kny")
 
-[node name="CharacterPortraitTextureRect" parent="CharacterStatusVisualContainer" index="0"]
+[node name="CharacterPortraitTextureRect" parent="CharacterStatusVisualContainer" parent_id_path=PackedInt32Array(913527735) index="0" unique_id=647398628]
 texture = ExtResource("2_t3kny")
 
-[node name="CharacterNameLabel" parent="CharacterStatusVisualContainer/VBoxContainer/CharacterMetadataContainer" index="0"]
+[node name="CharacterNameLabel" parent="CharacterStatusVisualContainer/VBoxContainer/CharacterMetadataContainer" parent_id_path=PackedInt32Array(1775709664) index="0" unique_id=666065763]
 text = "Miu"

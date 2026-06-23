@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kwwbdk1m8trx"]
 
-[node name="CharacterModel" type="Node3D"]
+[node name="CharacterModel" type="Node3D" unique_id=331617342]
 
-[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." unique_id=745101224]
 unique_name_in_owner = true

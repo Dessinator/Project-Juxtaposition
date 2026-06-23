@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crd2m5e5if8e1"]
+[gd_scene format=3 uid="uid://crd2m5e5if8e1"]
 
 [ext_resource type="Material" uid="uid://blyisfwgoph0y" path="res://resources/materials/psx_render_lit_material.tres" id="1_a73if"]
 
@@ -96,9 +96,9 @@ _data = {
 &"default": SubResource("Animation_a73if")
 }
 
-[node name="PlayableCharacterLandingParticles" type="Node3D"]
+[node name="PlayableCharacterLandingParticles" type="Node3D" unique_id=1162526915]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=349498878]
 unique_name_in_owner = true
 emitting = false
 amount = 15
@@ -111,9 +111,7 @@ interpolate = false
 process_material = SubResource("ParticleProcessMaterial_babne")
 draw_pass_1 = SubResource("SphereMesh_ldemn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=897610955]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_ta13o")
-}
-autoplay = "default"
+libraries/ = SubResource("AnimationLibrary_ta13o")
+autoplay = &"default"

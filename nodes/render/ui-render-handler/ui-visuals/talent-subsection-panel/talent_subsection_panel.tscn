@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://2iyrsuiqow1e"]
+[gd_scene format=3 uid="uid://2iyrsuiqow1e"]
 
 [ext_resource type="Script" uid="uid://ba1hsbcdcwy3q" path="res://nodes/render/ui-render-handler/ui-visuals/talent-subsection-panel/talent_subsection_panel.gd" id="1_q3kue"]
 
@@ -8,7 +8,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3kue"]
 
-[node name="TalentSubsectionPanel" type="PanelContainer"]
+[node name="TalentSubsectionPanel" type="PanelContainer" unique_id=1987974748]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -19,56 +19,55 @@ size_flags_horizontal = 10
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_yoaf8")
 script = ExtResource("1_q3kue")
-talent_description = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1768980142]
 layout_mode = 2
 
-[node name="TalentNameLevelPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="TalentNameLevelPanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=179163775]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TalentNameLevelPanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TalentNameLevelPanelContainer" unique_id=1318086974]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer"]
+[node name="NameLabel" type="Label" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer" unique_id=1449954382]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Talent Name"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer" unique_id=1167584856]
 layout_mode = 2
 
-[node name="LevelLabel" type="Label" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer"]
+[node name="LevelLabel" type="Label" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer" unique_id=1243629894]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lv. ???"
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer" unique_id=1269329194]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_6o0t4")
 
-[node name="SimplifyDescriptionCheckButton" type="CheckButton" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer"]
+[node name="SimplifyDescriptionCheckButton" type="CheckButton" parent="VBoxContainer/TalentNameLevelPanelContainer/HBoxContainer" unique_id=940317000]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q3kue")
 text = "Simplify Description"
 
-[node name="TalentDescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="TalentDescriptionPanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1704323990]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TalentDescriptionPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TalentDescriptionPanelContainer" unique_id=1109017648]
 layout_mode = 2
 
-[node name="DescriptionTitleLabel" type="Label" parent="VBoxContainer/TalentDescriptionPanelContainer/VBoxContainer"]
+[node name="DescriptionTitleLabel" type="Label" parent="VBoxContainer/TalentDescriptionPanelContainer/VBoxContainer" unique_id=515284631]
 layout_mode = 2
 text = "Talent Description"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TalentDescriptionPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TalentDescriptionPanelContainer/VBoxContainer" unique_id=679280640]
 layout_mode = 2
 
-[node name="DescriptionLabel" type="Label" parent="VBoxContainer/TalentDescriptionPanelContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/TalentDescriptionPanelContainer/VBoxContainer" unique_id=928924780]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."

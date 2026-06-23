@@ -1,25 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgvirx2ksr7o1"]
+[gd_scene format=3 uid="uid://bgvirx2ksr7o1"]
 
-[ext_resource type="Script" path="res://nodes/game/scenes/menus/options_menu/game/reset_game_control/reset_game_control.gd" id="1_06k6x"]
+[ext_resource type="Script" uid="uid://c0adnrrq1fkxi" path="res://nodes/game/scenes/menus/options_menu/game/reset_game_control/reset_game_control.gd" id="1_06k6x"]
 
-[node name="ResetGameControl" type="HBoxContainer"]
+[node name="ResetGameControl" type="HBoxContainer" unique_id=317946433]
 custom_minimum_size = Vector2(0, 32)
 offset_top = 210.0
 offset_right = 305.0
 offset_bottom = 242.0
 script = ExtResource("1_06k6x")
 
-[node name="ResetLabel" type="Label" parent="."]
+[node name="ResetLabel" type="Label" parent="." unique_id=223602527]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Reset Game :"
 
-[node name="ResetButton" type="Button" parent="."]
+[node name="ResetButton" type="Button" parent="." unique_id=1600008556]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 text = "Reset"
 
-[node name="ConfirmResetDialog" type="ConfirmationDialog" parent="."]
+[node name="ConfirmResetDialog" type="ConfirmationDialog" parent="." unique_id=345275808]
 dialog_text = "Do you want to reset your game data?"
 
 [connection signal="pressed" from="ResetButton" to="." method="_on_ResetButton_pressed"]

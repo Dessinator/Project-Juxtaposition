@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwcwammijy2m3"]
+[gd_scene format=3 uid="uid://cwcwammijy2m3"]
 
 [ext_resource type="PackedScene" uid="uid://kbu6wtu4nsm3" path="res://nodes/areas/hitbox/hitbox.tscn" id="1_0kk2b"]
 [ext_resource type="Script" uid="uid://620w5h0wrbkw" path="res://nodes/areas/hitbox/prefabs/standalone-hitbox/standalone_hitbox.gd" id="2_uly0o"]
 
-[node name="StandaloneHitbox" instance=ExtResource("1_0kk2b")]
+[node name="StandaloneHitbox" unique_id=293563001 instance=ExtResource("1_0kk2b")]
 script = ExtResource("2_uly0o")
 life = -1

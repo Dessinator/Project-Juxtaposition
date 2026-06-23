@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7crsyp5q1085"]
+[gd_scene format=3 uid="uid://b7crsyp5q1085"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_jjaqh"]
 
-[node name="JuxParryCharacterActionVisual" instance=ExtResource("1_jjaqh")]
+[node name="JuxParryCharacterActionVisual" unique_id=1641461768 instance=ExtResource("1_jjaqh")]
 visible = true
 _action_name = "Jux Parry"
 action_visual_type = 2
 
-[node name="Button" parent="Control" index="0"]
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 offset_right = 0.0
 offset_bottom = 0.0
 text = "Jux Parry"

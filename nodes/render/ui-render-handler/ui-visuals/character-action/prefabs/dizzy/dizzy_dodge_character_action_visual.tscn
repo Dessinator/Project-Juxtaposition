@@ -1,12 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxu3qcjgbr5dx"]
+[gd_scene format=3 uid="uid://cxu3qcjgbr5dx"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_2fx0x"]
 
-[node name="DizzyDodgeCharacterActionVisual" instance=ExtResource("1_2fx0x")]
+[node name="DizzyDodgeCharacterActionVisual" unique_id=1613492544 instance=ExtResource("1_2fx0x")]
 _action_name = "Dizzy Dodge"
 action_visual_type = 1
 
-[node name="Button" parent="Control" index="0"]
-offset_right = 0.0
-offset_bottom = 0.0
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 text = "Dizzy Dodge"

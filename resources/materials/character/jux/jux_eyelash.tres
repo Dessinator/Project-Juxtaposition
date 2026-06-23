@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ce7vn0mwv6dx5"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ce7vn0mwv6dx5"]
 
 [ext_resource type="Shader" uid="uid://gehd74ev1h83" path="res://resources/shaders/render/psx_eyelash_top.gdshader" id="1_0q0so"]
 [ext_resource type="Texture2D" uid="uid://cfdc0yh4ffxw0" path="res://resources/textures/character/jux/jux_albedo.png" id="2_biqyq"]

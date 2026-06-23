@@ -1,26 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbs653yqxpenw"]
+[gd_scene format=3 uid="uid://dbs653yqxpenw"]
 
 [ext_resource type="Texture2D" uid="uid://dp36bqov67hw6" path="res://resources/images/icons/play.svg" id="1_0of3e"]
 [ext_resource type="Script" uid="uid://d0gfdboehbr2o" path="res://nodes/render/ui-render-handler/ui-visuals/voice_line_panel.gd" id="1_cdc12"]
 
-[node name="VoiceLinePanel" type="PanelContainer"]
+[node name="VoiceLinePanel" type="PanelContainer" unique_id=1303138393]
 size_flags_horizontal = 8
 script = ExtResource("1_cdc12")
 
-[node name="VoiceLineAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="VoiceLineAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=985650188]
 unique_name_in_owner = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=725240141]
 layout_mode = 2
 
-[node name="PlayVoiceLineButton" type="Button" parent="HBoxContainer"]
+[node name="PlayVoiceLineButton" type="Button" parent="HBoxContainer" unique_id=12679950]
 layout_mode = 2
 icon = ExtResource("1_0of3e")
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=560229033]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="HBoxContainer"]
+[node name="TitleLabel" type="Label" parent="HBoxContainer" unique_id=404094614]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Voice Line Title"

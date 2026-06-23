@@ -1,13 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://br8hlkt0y4ggg"]
+[gd_scene format=3 uid="uid://br8hlkt0y4ggg"]
 
 [ext_resource type="PackedScene" uid="uid://cgrw78lmg08te" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.tscn" id="1_kcq30"]
 
-[node name="IdaLightAttackCharacterActionVisual" instance=ExtResource("1_kcq30")]
+[node name="IdaLightAttackCharacterActionVisual" unique_id=728536584 instance=ExtResource("1_kcq30")]
 _action_name = "Ida Light Attack"
 action_visual_type = 4
 
-[node name="Button" parent="Control" index="0"]
-offset_right = 0.0
-offset_bottom = 0.0
+[node name="Button" parent="Control" parent_id_path=PackedInt32Array(778391651) index="0" unique_id=1080623072]
 theme_override_font_sizes/font_size = 12
 text = "Ida Light Attack"

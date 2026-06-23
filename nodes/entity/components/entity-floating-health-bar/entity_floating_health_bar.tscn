@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bm3juln3l3i"]
+[gd_scene format=3 uid="uid://bm3juln3l3i"]
 
 [ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="1_bjxs7"]
 [ext_resource type="Script" uid="uid://dfjfy0opnqhv6" path="res://nodes/entity/components/entity-floating-health-bar/entity_floating_health_bar.gd" id="1_ne7yr"]
@@ -28,22 +28,22 @@ colors = PackedColorArray(1, 0, 0.63723, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_58x2y"]
 gradient = SubResource("Gradient_0hmms")
 
-[node name="EntityFloatingHealthBar" type="Node3D"]
+[node name="EntityFloatingHealthBar" type="Node3D" unique_id=1505323598]
 visible = false
 script = ExtResource("1_ne7yr")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1212778094]
 layers = 2
 billboard = 1
 no_depth_test = true
 texture = SubResource("ViewportTexture_bjxs7")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=751686066]
 unique_name_in_owner = true
 transparent_bg = true
 size = Vector2i(200, 20)
 
-[node name="StatusBar" parent="SubViewport" instance=ExtResource("1_bjxs7")]
+[node name="StatusBar" parent="SubViewport" unique_id=949220296 instance=ExtResource("1_bjxs7")]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,7 +57,7 @@ _under = SubResource("GradientTexture1D_hyfwl")
 _ghost_progress = SubResource("GradientTexture1D_naril")
 _true_progress = SubResource("GradientTexture1D_58x2y")
 
-[node name="WorldUIObjectInterface" type="Node" parent="."]
+[node name="WorldUIObjectInterface" type="Node" parent="." unique_id=1345174518]
 unique_name_in_owner = true
 script = ExtResource("3_cpapq")
 _world_origin_initial_position_copy_type = 2

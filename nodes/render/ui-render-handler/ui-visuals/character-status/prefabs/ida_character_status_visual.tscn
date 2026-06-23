@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv0k3fj34kch"]
+[gd_scene format=3 uid="uid://bv0k3fj34kch"]
 
 [ext_resource type="PackedScene" uid="uid://cqhtmx2xw45nj" path="res://nodes/render/ui-render-handler/ui-visuals/character-status/character_status_visual.tscn" id="1_rjboo"]
 
-[node name="IdaCharacterStatusVisual" instance=ExtResource("1_rjboo")]
+[node name="IdaCharacterStatusVisual" unique_id=1713970033 instance=ExtResource("1_rjboo")]
 _character_name = "Ida"
 
-[node name="CharacterNameLabel" parent="CharacterStatusVisualContainer/VBoxContainer/CharacterMetadataContainer" index="0"]
+[node name="CharacterNameLabel" parent="CharacterStatusVisualContainer/VBoxContainer/CharacterMetadataContainer" parent_id_path=PackedInt32Array(1775709664) index="0" unique_id=666065763]
 text = "Ida"

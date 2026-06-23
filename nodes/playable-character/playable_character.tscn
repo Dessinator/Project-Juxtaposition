@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://c873droosme0v"]
+[gd_scene format=3 uid="uid://c873droosme0v"]
 
 [ext_resource type="Script" uid="uid://bjx0nfkhbn162" path="res://nodes/playable-character/playable_character.gd" id="1_quqvc"]
 [ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="2_2aic4"]
@@ -124,140 +124,140 @@ content = {
 }
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
-[node name="PlayableCharacter" type="CharacterBody3D"]
+[node name="PlayableCharacter" type="CharacterBody3D" unique_id=1135147124]
 collision_layer = 4
 collision_mask = 39
 script = ExtResource("1_quqvc")
 metadata/_custom_type_script = "uid://bjx0nfkhbn162"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=736205641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_b0vta")
 
-[node name="PlayableCharacterMover" type="Node" parent="."]
+[node name="PlayableCharacterMover" type="Node" parent="." unique_id=1480182629]
 unique_name_in_owner = true
 script = ExtResource("3_3uqe5")
 
-[node name="StatusInterface" type="Node" parent="."]
+[node name="StatusInterface" type="Node" parent="." unique_id=1483421314]
 unique_name_in_owner = true
 script = ExtResource("3_vodfd")
 _max_health = 0
 metadata/_custom_type_script = "uid://qhvhuttmj4gj"
 
-[node name="PlayableCharacterVisualController" parent="." instance=ExtResource("5_avwae")]
+[node name="PlayableCharacterVisualController" parent="." unique_id=1758764739 instance=ExtResource("5_avwae")]
 unique_name_in_owner = true
 
-[node name="PlayableCharacterCombatManager" parent="." node_paths=PackedStringArray("camera", "target_range", "_gameplay_finite_state_machine", "_animation_finite_state_machine") instance=ExtResource("2_rfhey")]
+[node name="PlayableCharacterCombatManager" parent="." unique_id=922844177 node_paths=PackedStringArray("camera", "target_range", "_gameplay_finite_state_machine", "_animation_finite_state_machine") instance=ExtResource("2_rfhey")]
 unique_name_in_owner = true
 camera = NodePath("../PlayableCharacterCamera")
 target_range = NodePath("../PlayableCharacterTargetRange")
 _gameplay_finite_state_machine = NodePath("../GameplayFiniteStateMachine")
 _animation_finite_state_machine = NodePath("../AnimationFiniteStateMachine")
 
-[node name="PlayableCharacterPartyManager" parent="." instance=ExtResource("7_kxva5")]
+[node name="PlayableCharacterPartyManager" parent="." unique_id=2082225902 instance=ExtResource("7_kxva5")]
 unique_name_in_owner = true
 current_party = SubResource("Resource_y1bfg")
 
-[node name="PlayableCharacterJuxtometerManager" type="Node" parent="."]
+[node name="PlayableCharacterJuxtometerManager" type="Node" parent="." unique_id=914354719]
 unique_name_in_owner = true
 script = ExtResource("3_l2qdo")
 
-[node name="PlayableCharacterCharacterContainer" parent="." instance=ExtResource("6_1byfn")]
+[node name="PlayableCharacterCharacterContainer" parent="." unique_id=507084989 instance=ExtResource("6_1byfn")]
 unique_name_in_owner = true
 
-[node name="PlayableCharacterStaminaMeter" parent="." instance=ExtResource("2_s6wqa")]
+[node name="PlayableCharacterStaminaMeter" parent="." unique_id=292829048 instance=ExtResource("2_s6wqa")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 0, 0)
 
-[node name="PlayableCharacterCamera" parent="." instance=ExtResource("2_b536o")]
+[node name="PlayableCharacterCamera" parent="." unique_id=1621249683 instance=ExtResource("2_b536o")]
 unique_name_in_owner = true
 top_level = true
 max_zoom = 0.5
 min_zoom = 3.0
 
 [node name="OffsetPivot" parent="PlayableCharacterCamera/RotationPivot" index="0"]
-transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.944769e-07, 0.9999985, 5.4627657e-05, -2.2751578e-11, -5.710125e-05, 0.99999857, 0, 1.3, -2.9802322e-08)
+transform = Transform3D(1, -3.9187e-07, 6.47546e-10, 3.944769e-07, 0.9999985, 5.4597855e-05, -2.2751578e-11, -5.7041645e-05, 0.99999857, 0, 1.3, 0)
 
 [node name="CameraMarker" parent="PlayableCharacterCamera/RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
-transform = Transform3D(1, 1.520032e-07, 2.5595705e-07, 1.558245e-08, 1.0000858, 0.00032827258, 2.1462418e-07, -1.1622906e-05, 1.0016794, -3.34461e-09, -0.00027227402, 5.0000052)
+transform = Transform3D(1, 1.5200331e-07, 2.5595702e-07, 1.5582417e-08, 1.0000858, 0.00032824278, 2.1462425e-07, -1.1593103e-05, 1.0016794, -3.3447805e-09, -0.00027310848, 5.0000057)
 
 [node name="WorldCamera" parent="PlayableCharacterCamera" index="2"]
-transform = Transform3D(1, 1.1419341e-14, -3.6104464e-14, 1.6177836e-15, 0.9396926, 0.34202012, 3.7832747e-14, -0.34202012, 0.9396926, -1.8052221e-13, 2.9317007, 4.2538357)
+transform = Transform3D(1, 7.0142676e-15, -2.4001626e-14, 1.6177836e-15, 0.9396926, 0.34202012, 2.4953172e-14, -0.34202012, 0.9396926, -1.2000817e-13, 2.9317007, 4.2538357)
 
-[node name="PlayableCharacterSprintingParticles" parent="." instance=ExtResource("48_avwae")]
+[node name="PlayableCharacterSprintingParticles" parent="." unique_id=729797738 instance=ExtResource("48_avwae")]
 unique_name_in_owner = true
 
-[node name="PlayableCharacterHurtbox" parent="." node_paths=PackedStringArray("status_interface") instance=ExtResource("11_1byfn")]
+[node name="PlayableCharacterHurtbox" parent="." unique_id=535139268 node_paths=PackedStringArray("status_interface") instance=ExtResource("11_1byfn")]
 unique_name_in_owner = true
 status_interface = NodePath("../StatusInterface")
 
-[node name="PlayableCharacterTargetRange" parent="." instance=ExtResource("8_2p2ad")]
+[node name="PlayableCharacterTargetRange" parent="." unique_id=1373866021 instance=ExtResource("8_2p2ad")]
 range = 25.0
 max_range = 25.0
 _debug_color = Color(0, 1, 0, 0.501961)
 
-[node name="RegenerateStaminaTimer" type="Timer" parent="."]
+[node name="RegenerateStaminaTimer" type="Timer" parent="." unique_id=1929775104]
 unique_name_in_owner = true
 
-[node name="DrainStaminaTimer" type="Timer" parent="."]
+[node name="DrainStaminaTimer" type="Timer" parent="." unique_id=963245364]
 unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
 
-[node name="StaminaRegenerationDelayTimer" type="Timer" parent="."]
+[node name="StaminaRegenerationDelayTimer" type="Timer" parent="." unique_id=2060734434]
 unique_name_in_owner = true
 one_shot = true
 
-[node name="CharacterSwitchCooldownTimer" type="Timer" parent="."]
+[node name="CharacterSwitchCooldownTimer" type="Timer" parent="." unique_id=963077874]
 unique_name_in_owner = true
 wait_time = 0.75
 one_shot = true
 ignore_time_scale = true
 
-[node name="CharacterReplaceImmunityTimer" type="Timer" parent="."]
+[node name="CharacterReplaceImmunityTimer" type="Timer" parent="." unique_id=1472204752]
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 ignore_time_scale = true
 
-[node name="LightChargeThresholdTimer" type="Timer" parent="."]
+[node name="LightChargeThresholdTimer" type="Timer" parent="." unique_id=381357285]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 
-[node name="HeavyChargeThresholdTimer" type="Timer" parent="."]
+[node name="HeavyChargeThresholdTimer" type="Timer" parent="." unique_id=138513909]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 
-[node name="LightChargeAttackTimer" type="Timer" parent="."]
+[node name="LightChargeAttackTimer" type="Timer" parent="." unique_id=1729799365]
 unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
 
-[node name="HeavyChargeAttackTimer" type="Timer" parent="."]
+[node name="HeavyChargeAttackTimer" type="Timer" parent="." unique_id=1484383156]
 unique_name_in_owner = true
 wait_time = 0.6
 one_shot = true
 
-[node name="AirborneTimer" type="Timer" parent="."]
+[node name="AirborneTimer" type="Timer" parent="." unique_id=626919766]
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 
-[node name="DodgeTimeTimer" type="Timer" parent="."]
+[node name="DodgeTimeTimer" type="Timer" parent="." unique_id=1599119656]
 unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
 ignore_time_scale = true
 
-[node name="ParryTimeTimer" type="Timer" parent="."]
+[node name="ParryTimeTimer" type="Timer" parent="." unique_id=460981038]
 unique_name_in_owner = true
 wait_time = 0.3
 one_shot = true
 ignore_time_scale = true
 
-[node name="FunctionFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+[node name="FunctionFiniteStateMachine" type="Node" parent="." unique_id=194970002 node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_2aic4")
 process_type = 0
@@ -267,83 +267,83 @@ actor = NodePath("..")
 blackboard = SubResource("Resource_3tara")
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
-[node name="Gameplay" type="Node" parent="FunctionFiniteStateMachine"]
+[node name="Gameplay" type="Node" parent="FunctionFiniteStateMachine" unique_id=1698724010]
 script = ExtResource("15_ga6v7")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="onOpenCharacterMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" node_paths=PackedStringArray("next_state")]
+[node name="onOpenCharacterMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" unique_id=168721881 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../CharacterMenu")
 use_event = true
 event = "open_character_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onOpenPartyMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" node_paths=PackedStringArray("next_state")]
+[node name="onOpenPartyMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" unique_id=1174089627 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../PartyMenu")
 use_event = true
 event = "open_party_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onOpenCharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" node_paths=PackedStringArray("next_state")]
+[node name="onOpenCharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine/Gameplay" unique_id=1691373579 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../CharacterArchiveMenu")
 use_event = true
 event = "open_character_archive_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="CharacterMenu" type="Node" parent="FunctionFiniteStateMachine"]
+[node name="CharacterMenu" type="Node" parent="FunctionFiniteStateMachine" unique_id=740172639]
 script = ExtResource("17_gdylm")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="onCloseCharacterMenu" type="Node" parent="FunctionFiniteStateMachine/CharacterMenu" node_paths=PackedStringArray("next_state")]
+[node name="onCloseCharacterMenu" type="Node" parent="FunctionFiniteStateMachine/CharacterMenu" unique_id=1936792388 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../Gameplay")
 use_event = true
 event = "close_character_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="PartyMenu" type="Node" parent="FunctionFiniteStateMachine"]
+[node name="PartyMenu" type="Node" parent="FunctionFiniteStateMachine" unique_id=1976739556]
 script = ExtResource("18_gdylm")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="onClosePartyMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMenu" node_paths=PackedStringArray("next_state")]
+[node name="onClosePartyMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMenu" unique_id=606452086 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../Gameplay")
 use_event = true
 event = "close_party_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onOpenPartyMemberDetailsMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMenu" node_paths=PackedStringArray("next_state")]
+[node name="onOpenPartyMemberDetailsMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMenu" unique_id=2093942900 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../PartyMemberDetailsMenu")
 use_event = true
 event = "open_party_member_details_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="PartyMemberDetailsMenu" type="Node" parent="FunctionFiniteStateMachine"]
+[node name="PartyMemberDetailsMenu" type="Node" parent="FunctionFiniteStateMachine" unique_id=117540257]
 script = ExtResource("21_y1bfg")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="onClosePartyMemberDetailsMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMemberDetailsMenu" node_paths=PackedStringArray("next_state")]
+[node name="onClosePartyMemberDetailsMenu" type="Node" parent="FunctionFiniteStateMachine/PartyMemberDetailsMenu" unique_id=2082233857 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../PartyMenu")
 use_event = true
 event = "close_party_member_details_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="CharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine"]
+[node name="CharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine" unique_id=725281371]
 script = ExtResource("22_y1bfg")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="onCloseCharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine/CharacterArchiveMenu" node_paths=PackedStringArray("next_state")]
+[node name="onCloseCharacterArchiveMenu" type="Node" parent="FunctionFiniteStateMachine/CharacterArchiveMenu" unique_id=2085063271 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../Gameplay")
 use_event = true
 event = "close_character_archive_menu"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="GameplayFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+[node name="GameplayFiniteStateMachine" type="Node" parent="." unique_id=2076576182 node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_2aic4")
 active = false
@@ -352,232 +352,232 @@ actor = NodePath("..")
 blackboard = SubResource("Resource_t22va")
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
-[node name="IdleState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="IdleState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1097010239 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("4_kwpjs")
 _can_regenerate_stamina = true
 _animation_state = NodePath("../../AnimationFiniteStateMachine/IdleAnimationState")
 metadata/_custom_type_script = "uid://bv80dvrqw5nqc"
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1559806172 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1024664013 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1239243869 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1188525853 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1699379713 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1148321563 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=841409794 node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_kwpjs")
 next_state = NodePath("../../WalkState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1880724428 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_beju2")
 next_state = NodePath("../../JogState")
 
-[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=2104369300 node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_541kw")
 next_state = NodePath("../../SprintState")
 
-[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=54899397 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
-[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1980914176 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1547919069 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=2062614798 node_paths=PackedStringArray("next_state")]
 script = ExtResource("22_1sfey")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/IdleState" unique_id=1578979118 node_paths=PackedStringArray("next_state")]
 script = ExtResource("24_6kgvt")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="WalkState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="WalkState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1847160270 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("9_g13tn")
 _can_regenerate_stamina = true
 _animation_state = NodePath("../../AnimationFiniteStateMachine/WalkAnimationState")
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=250773887 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=469032047 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=1284401377 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=1030063953 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=474883284 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=2054203817 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=1695848397 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_qyjwt")
 next_state = NodePath("../../IdleState")
 
-[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=833544501 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_beju2")
 next_state = NodePath("../../JogState")
 
-[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=299902244 node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_541kw")
 next_state = NodePath("../../SprintState")
 
-[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=2130524993 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
-[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=620929693 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=770781095 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=478623516 node_paths=PackedStringArray("next_state")]
 script = ExtResource("22_1sfey")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/WalkState" unique_id=360719172 node_paths=PackedStringArray("next_state")]
 script = ExtResource("24_6kgvt")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="JogState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="JogState" type="Node" parent="GameplayFiniteStateMachine" unique_id=754850696 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("13_beju2")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/JogAnimationState")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1960293404 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=304386270 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1305054188 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=692785157 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=522165445 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=572684582 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=931363001 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_qyjwt")
 next_state = NodePath("../../IdleState")
 
-[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1685513189 node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_kwpjs")
 next_state = NodePath("../../WalkState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1701690366 node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_541kw")
 next_state = NodePath("../../SprintState")
 
-[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1535389554 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
-[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1587125808 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1947047872 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1663218205 node_paths=PackedStringArray("next_state")]
 script = ExtResource("22_1sfey")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/JogState" unique_id=1101711534 node_paths=PackedStringArray("next_state")]
 script = ExtResource("24_6kgvt")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="SprintState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_drain_stamina_timer", "_allow_skidding_delay_timer", "_skid_cooldown_timer", "_animation_state")]
+[node name="SprintState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1473815588 node_paths=PackedStringArray("_drain_stamina_timer", "_allow_skidding_delay_timer", "_skid_cooldown_timer", "_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("11_c3dl5")
 _drain_stamina_timer = NodePath("../../DrainStaminaTimer")
@@ -585,91 +585,91 @@ _allow_skidding_delay_timer = NodePath("AllowSkiddingDelayTimer")
 _skid_cooldown_timer = NodePath("../SkidState/SkidCooldownTimer")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/SprintAnimationState")
 
-[node name="AllowSkiddingDelayTimer" type="Timer" parent="GameplayFiniteStateMachine/SprintState"]
+[node name="AllowSkiddingDelayTimer" type="Timer" parent="GameplayFiniteStateMachine/SprintState" unique_id=81966894]
 wait_time = 3.0
 one_shot = true
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1017942170 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1308593558 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=2114786991 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=2085444867 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1301579097 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=258344387 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=785579517 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_qyjwt")
 next_state = NodePath("../../IdleState")
 
-[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1559817663 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_beju2")
 next_state = NodePath("../../JogState")
 
-[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=657356546 node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_kwpjs")
 next_state = NodePath("../../WalkState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1047804845 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
-[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1396321538 node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
 next_state = NodePath("../../MantleState")
 
-[node name="onStartSkidding" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSkidding" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1556638828 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SkidState")
 use_event = true
 event = "on_start_skidding"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1036557723 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1331615245 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=1831389787 node_paths=PackedStringArray("next_state")]
 script = ExtResource("22_1sfey")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SprintState" unique_id=527949311 node_paths=PackedStringArray("next_state")]
 script = ExtResource("24_6kgvt")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="SkidState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_skid_duration_timer", "_skid_cooldown_timer", "_animation_state")]
+[node name="SkidState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1883001128 node_paths=PackedStringArray("_skid_duration_timer", "_skid_cooldown_timer", "_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("13_owwb0")
 _skid_duration_timer = NodePath("SkidDurationTimer")
@@ -677,774 +677,774 @@ _skid_cooldown_timer = NodePath("SkidCooldownTimer")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/SkidAnimationState")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="SkidDurationTimer" type="Timer" parent="GameplayFiniteStateMachine/SkidState"]
+[node name="SkidDurationTimer" type="Timer" parent="GameplayFiniteStateMachine/SkidState" unique_id=444239158]
 wait_time = 0.4
 one_shot = true
 
-[node name="SkidCooldownTimer" type="Timer" parent="GameplayFiniteStateMachine/SkidState"]
+[node name="SkidCooldownTimer" type="Timer" parent="GameplayFiniteStateMachine/SkidState" unique_id=771004226]
 wait_time = 0.1
 one_shot = true
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1191957841 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1481192450 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=828138290 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1687340014 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=370190710 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1838755845 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1444334968 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=159500281 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1773054640 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1338921840 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1876961256 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=1301408076 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=482886622 node_paths=PackedStringArray("next_state")]
 script = ExtResource("22_1sfey")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/SkidState" unique_id=2121953291 node_paths=PackedStringArray("next_state")]
 script = ExtResource("24_6kgvt")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="JumpState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="JumpState" type="Node" parent="GameplayFiniteStateMachine" unique_id=289103804 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("12_nfjh7")
 _vertical_force = 12.0
 _animation_state = NodePath("../../AnimationFiniteStateMachine/JumpAnimationState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=2071528933 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=403554520 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=431613810 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=1603701142 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=142793976 node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
 next_state = NodePath("../../MantleState")
 
-[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=2123863126 node_paths=PackedStringArray("next_state")]
 script = ExtResource("21_dhcem")
 next_state = NodePath("../../WallrunState")
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=2126363522 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="startAirLightAttack" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="startAirLightAttack" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=1227510336 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../ArialLightAttackState")
 
-[node name="startAirHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/JumpState" node_paths=PackedStringArray("next_state")]
+[node name="startAirHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/JumpState" unique_id=1787765760 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../ArialHeavyAttackState")
 
-[node name="FallState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="FallState" type="Node" parent="GameplayFiniteStateMachine" unique_id=320783487 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("14_fc7wd")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/FallAnimationState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=1438368604 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=115212318 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=1790438545 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=53554203 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=385956135 node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
 next_state = NodePath("../../MantleState")
 
-[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=686233496 node_paths=PackedStringArray("next_state")]
 script = ExtResource("21_dhcem")
 next_state = NodePath("../../WallrunState")
 
-[node name="land" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=1520733400 node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
 next_state = NodePath("../../LandingState")
 
-[node name="startAirLightAttack" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="startAirLightAttack" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=22251635 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../ArialLightAttackState")
 
-[node name="startAirHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/FallState" node_paths=PackedStringArray("next_state")]
+[node name="startAirHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/FallState" unique_id=237375405 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../ArialHeavyAttackState")
 
-[node name="LandingState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="LandingState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1139313545 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("16_fc7wd")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/LandingAnimationState")
 metadata/_custom_type_script = "uid://k5p6yghm7nrm"
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=282606465 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1324791689 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1658949236 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=925267264 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=193457329 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=711588481 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_qyjwt")
 next_state = NodePath("../../IdleState")
 
-[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=523560134 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_beju2")
 next_state = NodePath("../../JogState")
 
-[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1341318198 node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_kwpjs")
 next_state = NodePath("../../WalkState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1232848819 node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_541kw")
 next_state = NodePath("../../SprintState")
 
-[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1606729683 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
-[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=2014161132 node_paths=PackedStringArray("next_state")]
 script = ExtResource("13_mb8j0")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1934148250 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_nv747")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1991770913 node_paths=PackedStringArray("next_state")]
 script = ExtResource("22_1sfey")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/LandingState" unique_id=1084370869 node_paths=PackedStringArray("next_state")]
 script = ExtResource("24_6kgvt")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="GroundedParryState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="GroundedParryState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1852125319]
 unique_name_in_owner = true
 script = ExtResource("38_3npex")
 _slow_motion = 0.5
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" unique_id=2042696916 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" unique_id=593580798 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" unique_id=2144610677 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" unique_id=2048286514 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" unique_id=411393009 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedParryState" unique_id=477376161 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="GroundedDodgeState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="GroundedDodgeState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1394340362 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("22_dkfog")
 _force = 12.0
 _slow_motion = 0.5
 _animation_state = NodePath("../../AnimationFiniteStateMachine/DodgeAnimationState")
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=1444229819 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=699026490 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=1644000975 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=1850525109 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=452780761 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartSkidding" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSkidding" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=116259146 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SkidState")
 use_event = true
 event = "on_start_skidding"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=1331314066 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/GroundedDodgeState" unique_id=662081694 node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
 next_state = NodePath("../../MantleState")
 
-[node name="GroundedLightAttackState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="GroundedLightAttackState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1702365878 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("25_mb8j0")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/LightAttackAnimationState")
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=150736559 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=201995352 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=1760795529 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=1020066746 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=446678011 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=825133006 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=796264963 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=1049567925 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=1226869028 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 use_event = true
 event = "on_start_grounded_light_charge_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=1952970535 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "on_start_grounded_heavy_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightAttackState" unique_id=506920073 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 use_event = true
 event = "on_start_grounded_heavy_charge_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="GroundedLightChargeAttackState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="GroundedLightChargeAttackState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1472176309 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("40_o2shg")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/ChargedLightAttackAnimationState")
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=1304644987 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=1579946227 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=727387536 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=871488422 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=505861079 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=1975149645 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=545115997 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=1109555460 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="onSelfLaunched" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onSelfLaunched" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=73587006 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SelfLaunchState")
 use_event = true
 event = "on_start_self_launch"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="StartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="StartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=2111534481 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "on_start_grounded_light_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=1457366189 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "on_start_grounded_heavy_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedLightChargeAttackState" unique_id=1744348000 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 use_event = true
 event = "on_start_grounded_heavy_charge_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="GroundedHeavyAttackState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="GroundedHeavyAttackState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1053402410 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("30_k3myv")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/HeavyAttackAnimationState")
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=720180349 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=1974935556 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=2100064186 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=1817665876 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=1571489204 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=1621420190 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=963869710 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=1313839623 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="StartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="StartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=880225786 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "on_start_grounded_light_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=1749617714 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 use_event = true
 event = "on_start_grounded_light_charge_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyAttackState" unique_id=1572665659 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedHeavyChargeAttackState")
 use_event = true
 event = "on_start_grounded_heavy_charge_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="GroundedHeavyChargeAttackState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_animation_state")]
+[node name="GroundedHeavyChargeAttackState" type="Node" parent="GameplayFiniteStateMachine" unique_id=346564718 node_paths=PackedStringArray("_animation_state")]
 unique_name_in_owner = true
 script = ExtResource("42_uy0g6")
 _animation_state = NodePath("../../AnimationFiniteStateMachine/ChargedHeavyAttackAnimationState")
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=726914776 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedParry" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=345879502 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartGroundedDodge" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=1842561162 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=913649079 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=208857508 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=194066431 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=1652199484 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=655920251 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="onSelfLaunched" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onSelfLaunched" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=614660188 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SelfLaunchState")
 use_event = true
 event = "on_start_self_launch"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="StartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="StartGroundedLightAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=1149734633 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedLightAttackState")
 use_event = true
 event = "on_start_grounded_light_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=399682117 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedLightChargeAttackState")
 use_event = true
 event = "on_start_grounded_light_charge_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startGroundedHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/GroundedHeavyChargeAttackState" unique_id=956488821 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../GroundedHeavyAttackState")
 use_event = true
 event = "on_start_grounded_heavy_attack"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="SelfLaunchState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="SelfLaunchState" type="Node" parent="GameplayFiniteStateMachine" unique_id=939711692]
 unique_name_in_owner = true
 script = ExtResource("43_uy0g6")
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/SelfLaunchState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/SelfLaunchState" unique_id=762099890 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/SelfLaunchState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/SelfLaunchState" unique_id=1370971686 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="LaunchedState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="LaunchedState" type="Node" parent="GameplayFiniteStateMachine" unique_id=848802438]
 unique_name_in_owner = true
 script = ExtResource("46_qbeoo")
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" unique_id=392821491 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" unique_id=1260219731 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" unique_id=980505631 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onSpiked" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" node_paths=PackedStringArray("next_state")]
+[node name="onSpiked" type="Node" parent="GameplayFiniteStateMachine/LaunchedState" unique_id=372330585 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SpikedState")
 use_event = true
 event = "on_spiked"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="AirborneState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="AirborneState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1018553826]
 unique_name_in_owner = true
 script = ExtResource("44_u6y8r")
 _horizontal_speed = 2.0
 _gravity = 1.0
 _acceleration = 20
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=78413726 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=1400749958 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=617881153 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=1738335515 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=1468446693 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=1550754568 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="onStartSpike" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSpike" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=508231204 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SpikedState")
 use_event = true
 event = "on_start_spike"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startArialLightAttack" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startArialLightAttack" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=1461294756 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startArialLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startArialLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=636316678 node_paths=PackedStringArray("next_state")]
 script = ExtResource("45_omajm")
 next_state = NodePath("../../ArialLightChargeAttackState")
 
-[node name="startArialHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startArialHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=1716234228 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startArialSpike" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startArialSpike" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=978653706 node_paths=PackedStringArray("next_state")]
 script = ExtResource("46_sjhaw")
 next_state = NodePath("../../ArialSpikeState")
 
-[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/AirborneState" node_paths=PackedStringArray("next_state")]
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/AirborneState" unique_id=1321503244 node_paths=PackedStringArray("next_state")]
 script = ExtResource("21_dhcem")
 next_state = NodePath("../../WallrunState")
 
-[node name="ArialParryState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="ArialParryState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1564218742]
 unique_name_in_owner = true
 script = ExtResource("49_b58ha")
 _damage_multiplier = 0.25
@@ -1452,24 +1452,24 @@ _gravity = 1.5
 _boost_force = 15.0
 _slow_motion = 0.5
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialParryState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialParryState" unique_id=507295804 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/ArialParryState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/ArialParryState" unique_id=1497762343 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialParryState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialParryState" unique_id=1923780126 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="ArialDodgeState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="ArialDodgeState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1198693395]
 unique_name_in_owner = true
 script = ExtResource("48_englh")
 _gravity = 9.8
@@ -1477,415 +1477,415 @@ _acceleration = 50
 _force = 12.0
 _slow_motion = 0.5
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialDodgeState" unique_id=108407555 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/ArialDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/ArialDodgeState" unique_id=346730259 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialDodgeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialDodgeState" unique_id=150896548 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="ArialLightAttackState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="ArialLightAttackState" type="Node" parent="GameplayFiniteStateMachine" unique_id=2056243854]
 unique_name_in_owner = true
 script = ExtResource("47_wtmr8")
 _stamina_drain = 2.0
 _gravity = 1.5
 _boost_force = 15.0
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" unique_id=1131511464 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" unique_id=1675349834 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" unique_id=1063351304 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialLightAttackState" unique_id=38436621 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="ArialLightChargeAttackState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="ArialLightChargeAttackState" type="Node" parent="GameplayFiniteStateMachine" unique_id=333266414]
 unique_name_in_owner = true
 script = ExtResource("48_ks0xi")
 _stamina_drain = 3.0
 _gravity = 1.5
 _boost_force = 15.0
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" unique_id=465719908 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" unique_id=1406616710 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" unique_id=1906777895 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialLightChargeAttackState" unique_id=966972053 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="ArialHeavyAttackState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="ArialHeavyAttackState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1310290811]
 unique_name_in_owner = true
 script = ExtResource("49_englh")
 _stamina_drain = 4
 _gravity = 1.5
 _boost_force = 15.0
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" unique_id=1034364656 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" unique_id=817448877 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" unique_id=846573858 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialHeavyAttackState" unique_id=1877444155 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="ArialSpikeState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="ArialSpikeState" type="Node" parent="GameplayFiniteStateMachine" unique_id=129967849]
 unique_name_in_owner = true
 script = ExtResource("50_3npex")
 _stamina_drain = 5.0
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" unique_id=56781690 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" unique_id=1272144006 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" unique_id=688755361 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartAirborne" type="Node" parent="GameplayFiniteStateMachine/ArialSpikeState" unique_id=1237191424 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../AirborneState")
 use_event = true
 event = "on_start_airborne"
 
-[node name="SpikedState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="SpikedState" type="Node" parent="GameplayFiniteStateMachine" unique_id=234084638]
 unique_name_in_owner = true
 script = ExtResource("56_qbeoo")
 
-[node name="land" type="Node" parent="GameplayFiniteStateMachine/SpikedState" node_paths=PackedStringArray("next_state")]
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/SpikedState" unique_id=1085295415 node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
 next_state = NodePath("../../LandingState")
 
-[node name="WallrunState" type="Node" parent="GameplayFiniteStateMachine" node_paths=PackedStringArray("_drain_stamina_timer")]
+[node name="WallrunState" type="Node" parent="GameplayFiniteStateMachine" unique_id=2040668388 node_paths=PackedStringArray("_drain_stamina_timer")]
 unique_name_in_owner = true
 script = ExtResource("26_m2e7d")
 _speed_multiplier = 1.5
 _stamina_drain = 2
 _drain_stamina_timer = NodePath("../../DrainStaminaTimer")
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallrunState" unique_id=1882534390 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WallrunState" unique_id=1851666366 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WallrunState" unique_id=436495393 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startWallsliding" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+[node name="startWallsliding" type="Node" parent="GameplayFiniteStateMachine/WallrunState" unique_id=608445120 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WallslideState")
 use_event = true
 event = "on_start_wallsliding"
 
-[node name="startWallJumping" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+[node name="startWallJumping" type="Node" parent="GameplayFiniteStateMachine/WallrunState" unique_id=1532416111 node_paths=PackedStringArray("next_state")]
 script = ExtResource("28_ilvu7")
 next_state = NodePath("../../WallJumpState")
 
-[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/WallrunState" unique_id=1301698694 node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
 next_state = NodePath("../../MantleState")
 
-[node name="land" type="Node" parent="GameplayFiniteStateMachine/WallrunState" node_paths=PackedStringArray("next_state")]
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/WallrunState" unique_id=1065359339 node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
 next_state = NodePath("../../LandingState")
 
-[node name="WallslideState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="WallslideState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1822685030]
 unique_name_in_owner = true
 script = ExtResource("27_spatg")
 _gravity = 2.5
 _acceleration = 25.0
 _speed_multiplier = 2.0
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/WallslideState" unique_id=1421921120 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WallslideState" unique_id=1945523302 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WallslideState" unique_id=802316172 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/WallslideState" unique_id=827225763 node_paths=PackedStringArray("next_state")]
 script = ExtResource("21_dhcem")
 next_state = NodePath("../../WallrunState")
 
-[node name="startWallJumping" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+[node name="startWallJumping" type="Node" parent="GameplayFiniteStateMachine/WallslideState" unique_id=564642076 node_paths=PackedStringArray("next_state")]
 script = ExtResource("28_ilvu7")
 next_state = NodePath("../../WallJumpState")
 
-[node name="land" type="Node" parent="GameplayFiniteStateMachine/WallslideState" node_paths=PackedStringArray("next_state")]
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/WallslideState" unique_id=1624120593 node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
 next_state = NodePath("../../LandingState")
 
-[node name="MantleState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="MantleState" type="Node" parent="GameplayFiniteStateMachine" unique_id=897987400]
 unique_name_in_owner = true
 script = ExtResource("28_spatg")
 _vertical_force = 10.0
 
-[node name="land" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
+[node name="land" type="Node" parent="GameplayFiniteStateMachine/MantleState" unique_id=1743315301 node_paths=PackedStringArray("next_state")]
 script = ExtResource("12_jtxij")
 next_state = NodePath("../../LandingState")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/MantleState" unique_id=58260776 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/MantleState" unique_id=1882739852 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/MantleState" node_paths=PackedStringArray("next_state")]
+[node name="startFalling" type="Node" parent="GameplayFiniteStateMachine/MantleState" unique_id=1990404874 node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_b0vta")
 next_state = NodePath("../../FallState")
 
-[node name="WallJumpState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="WallJumpState" type="Node" parent="GameplayFiniteStateMachine" unique_id=40475264]
 unique_name_in_owner = true
 script = ExtResource("27_1uog8")
 
-[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startNormalizing" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=1547902761 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_vodfd")
 next_state = NodePath("../../NormalizeState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startDeath" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=2085188610 node_paths=PackedStringArray("next_state")]
 script = ExtResource("18_4oive")
 next_state = NodePath("../../DeathState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialParry" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=1080090261 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialParryState")
 use_event = true
 event = "on_parry"
 
-[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="onStartArialDodge" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=239282321 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialDodgeState")
 use_event = true
 event = "on_dodge"
 
-[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startJuxtaposing" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=213431779 node_paths=PackedStringArray("next_state")]
 script = ExtResource("20_1byfn")
 next_state = NodePath("../../JuxtaposeState")
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=1824828072 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="startArialLightAttack" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startArialLightAttack" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=225055626 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialLightAttackState")
 use_event = true
 event = "pressed_light_attack_input"
 
-[node name="startArialLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startArialLightChargeAttack" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=39602227 node_paths=PackedStringArray("next_state")]
 script = ExtResource("45_omajm")
 next_state = NodePath("../../ArialLightChargeAttackState")
 
-[node name="startArialHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startArialHeavyAttack" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=377700728 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ArialHeavyAttackState")
 use_event = true
 event = "pressed_heavy_attack_input"
 
-[node name="startArialSpike" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startArialSpike" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=106318931 node_paths=PackedStringArray("next_state")]
 script = ExtResource("46_sjhaw")
 next_state = NodePath("../../ArialSpikeState")
 
-[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startWallrunning" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=745361428 node_paths=PackedStringArray("next_state")]
 script = ExtResource("21_dhcem")
 next_state = NodePath("../../WallrunState")
 
-[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" node_paths=PackedStringArray("next_state")]
+[node name="startMantling" type="Node" parent="GameplayFiniteStateMachine/WallJumpState" unique_id=1736199147 node_paths=PackedStringArray("next_state")]
 script = ExtResource("29_4yxhn")
 next_state = NodePath("../../MantleState")
 
-[node name="JuxtaposeState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="JuxtaposeState" type="Node" parent="GameplayFiniteStateMachine" unique_id=1130557431]
 unique_name_in_owner = true
 script = ExtResource("63_qbeoo")
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" unique_id=269445198 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" unique_id=370799747 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" unique_id=244854974 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" unique_id=844410879 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/JuxtaposeState" unique_id=2105992866 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="NormalizeState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="NormalizeState" type="Node" parent="GameplayFiniteStateMachine" unique_id=212696935]
 unique_name_in_owner = true
 script = ExtResource("64_kykue")
 
-[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartIdling" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" unique_id=13327795 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../IdleState")
 use_event = true
 event = "on_start_idling"
 
-[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartWalking" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" unique_id=1828909687 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../WalkState")
 use_event = true
 event = "on_start_walking"
 
-[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartJogging" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" unique_id=1223752213 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../JogState")
 use_event = true
 event = "on_start_jogging"
 
-[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartSprinting" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" unique_id=244823156 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../SprintState")
 use_event = true
 event = "on_start_sprinting"
 
-[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" node_paths=PackedStringArray("next_state")]
+[node name="onStartFalling" type="Node" parent="GameplayFiniteStateMachine/NormalizeState" unique_id=320408840 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../FallState")
 use_event = true
 event = "on_start_falling"
 
-[node name="DeathState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="DeathState" type="Node" parent="GameplayFiniteStateMachine" unique_id=972021833]
 unique_name_in_owner = true
 script = ExtResource("45_4oive")
 metadata/_custom_type_script = "uid://velff02opte8"
 
-[node name="onStartReplace" type="Node" parent="GameplayFiniteStateMachine/DeathState" node_paths=PackedStringArray("next_state")]
+[node name="onStartReplace" type="Node" parent="GameplayFiniteStateMachine/DeathState" unique_id=2084508602 node_paths=PackedStringArray("next_state")]
 script = ExtResource("11_1jk2l")
 next_state = NodePath("../../ReplaceState")
 use_event = true
 event = "on_start_replace"
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="ReplaceState" type="Node" parent="GameplayFiniteStateMachine"]
+[node name="ReplaceState" type="Node" parent="GameplayFiniteStateMachine" unique_id=136725461]
 unique_name_in_owner = true
 script = ExtResource("46_meuyo")
 metadata/_custom_type_script = "uid://velff02opte8"
 
-[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" node_paths=PackedStringArray("next_state")]
+[node name="startIlding" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" unique_id=131741705 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_qyjwt")
 next_state = NodePath("../../IdleState")
 
-[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" node_paths=PackedStringArray("next_state")]
+[node name="startJogging" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" unique_id=368943532 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_beju2")
 next_state = NodePath("../../JogState")
 
-[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" node_paths=PackedStringArray("next_state")]
+[node name="startWalking" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" unique_id=2091935602 node_paths=PackedStringArray("next_state")]
 script = ExtResource("5_kwpjs")
 next_state = NodePath("../../WalkState")
 metadata/_custom_type_script = "uid://1h0braq41vwb"
 
-[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" node_paths=PackedStringArray("next_state")]
+[node name="startSprinting" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" unique_id=1520583601 node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_541kw")
 next_state = NodePath("../../SprintState")
 
-[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" node_paths=PackedStringArray("next_state")]
+[node name="startJumping" type="Node" parent="GameplayFiniteStateMachine/ReplaceState" unique_id=22439934 node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_hv23c")
 next_state = NodePath("../../JumpState")
 
-[node name="AnimationFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+[node name="AnimationFiniteStateMachine" type="Node" parent="." unique_id=1639053700 node_paths=PackedStringArray("initial_state", "actor")]
 unique_name_in_owner = true
 script = ExtResource("2_2aic4")
 process_type = 0
@@ -1896,55 +1896,55 @@ blackboard = SubResource("Resource_s6wqa")
 verbose = true
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
-[node name="IdleAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="IdleAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=36548915]
 script = ExtResource("19_jrru3")
 
-[node name="WalkAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="WalkAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1189425412]
 script = ExtResource("20_8ke1j")
 
-[node name="JogAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="JogAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=415415556]
 script = ExtResource("21_clyg5")
 
-[node name="SprintAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="SprintAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1228081227]
 script = ExtResource("21_bd5yv")
 
-[node name="SkidAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="SkidAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1999313915]
 script = ExtResource("24_8ke1j")
 
-[node name="JumpAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="JumpAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=177582687]
 script = ExtResource("22_clyg5")
 
-[node name="FallAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="FallAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1485754078]
 script = ExtResource("23_beju2")
 
-[node name="LandingAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="LandingAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1175673679]
 script = ExtResource("34_m348m")
 
-[node name="DodgeAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="DodgeAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=751039639]
 script = ExtResource("30_dkfog")
 
-[node name="LightAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="LightAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1912520793]
 script = ExtResource("79_3uqe5")
 
-[node name="ChargedLightAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="ChargedLightAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1083808440]
 script = ExtResource("78_572xm")
 
-[node name="HeavyAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="HeavyAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1759952499]
 script = ExtResource("80_3tara")
 
-[node name="ChargedHeavyAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="ChargedHeavyAttackAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=1246880255]
 script = ExtResource("80_vb6qd")
 
-[node name="WallrunAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="WallrunAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=434879467]
 script = ExtResource("43_ug6ed")
 
-[node name="WallslideAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="WallslideAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=41071584]
 script = ExtResource("44_m65ax")
 
-[node name="MantleAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="MantleAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=2070830860]
 script = ExtResource("45_kbp4i")
 
-[node name="DeathAnimationState" type="Node" parent="AnimationFiniteStateMachine"]
+[node name="DeathAnimationState" type="Node" parent="AnimationFiniteStateMachine" unique_id=151594886]
 script = ExtResource("56_8pdar")
 metadata/_custom_type_script = "uid://ckcspu8iefpxp"
 

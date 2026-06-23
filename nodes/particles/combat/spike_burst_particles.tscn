@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtxo3x2lql2wc"]
+[gd_scene format=3 uid="uid://dtxo3x2lql2wc"]
 
 [ext_resource type="Shader" uid="uid://43rm1bhn3fyc" path="res://resources/shaders/render/psx_render_unlit.gdshader" id="1_7lbi5"]
 [ext_resource type="Texture2D" uid="uid://b7ts7rmv7y8g5" path="res://resources/images/particle-textures/star.png" id="2_lsf0r"]
@@ -108,9 +108,9 @@ _data = {
 &"default": SubResource("Animation_vnl6b")
 }
 
-[node name="SpikeBurstParticles" type="Node3D"]
+[node name="SpikeBurstParticles" type="Node3D" unique_id=2128047160]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=107284179]
 emitting = false
 amount = 10
 one_shot = true
@@ -119,8 +119,6 @@ fixed_fps = 12
 process_material = SubResource("ParticleProcessMaterial_0qyu3")
 draw_pass_1 = SubResource("QuadMesh_d2dem")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_or4ag")
-}
-autoplay = "default"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=385576476]
+libraries/ = SubResource("AnimationLibrary_or4ag")
+autoplay = &"default"

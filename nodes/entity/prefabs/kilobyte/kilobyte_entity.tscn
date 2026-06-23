@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ciwgnsmkif2l3"]
+[gd_scene format=3 uid="uid://ciwgnsmkif2l3"]
 
 [ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_3pax0"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="2_3ww0j"]
@@ -46,56 +46,55 @@ shader_parameter/resolution = Vector2i(320, 240)
 material = SubResource("ShaderMaterial_tescc")
 size = Vector3(0.922, 0.2, 0.5)
 
-[sub_resource type="Resource" id="Resource_n0e3f"]
+[sub_resource type="Resource" id="Resource_pwyk8"]
 resource_local_to_scene = true
 script = ExtResource("3_pwyk8")
-content = {}
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
-[node name="KilobyteEntity" instance=ExtResource("1_3pax0")]
+[node name="KilobyteEntity" unique_id=420644707 instance=ExtResource("1_3pax0")]
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=264321552]
 shape = SubResource("SphereShape3D_3ww0j")
 
-[node name="StatusInterface" parent="." index="2"]
+[node name="StatusInterface" parent="." index="3" unique_id=1367323731]
 _max_health = 10
 
-[node name="Model" type="Node3D" parent="EntityModelContainer" index="0"]
+[node name="Model" type="Node3D" parent="EntityModelContainer" parent_id_path=PackedInt32Array(1045606354) index="0" unique_id=1055352721]
 
-[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0"]
+[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0" unique_id=919863727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("CapsuleMesh_0lojl")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0"]
+[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0" unique_id=1686251855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151704, 0.3)
 mesh = SubResource("BoxMesh_eprog")
 
-[node name="EntityFloatingHealthBar" parent="." index="7"]
+[node name="EntityFloatingHealthBar" parent="." index="8" unique_id=235417886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="TargetedIndicator" parent="." index="8"]
+[node name="TargetedIndicator" parent="." index="9" unique_id=1450939994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
-[node name="EntityHomeRange" parent="." index="10"]
+[node name="EntityHomeRange" parent="." index="12" unique_id=834824422]
 range = 10.0
 max_range = 10.0
 
-[node name="EntityWanderRange" parent="." index="11"]
+[node name="EntityWanderRange" parent="." index="13" unique_id=1805775800]
 range = 10.0
 max_range = 10.0
 
-[node name="EntityDetectionRange" parent="." index="12"]
+[node name="EntityDetectionRange" parent="." index="14" unique_id=1042020562]
 range = 10.0
 max_range = 10.0
 
-[node name="EntityFollowRange" parent="." index="13"]
+[node name="EntityFollowRange" parent="." index="15" unique_id=1874361226]
 range = 4.0
 max_range = 10.0
 
-[node name="EntityAttackRange" parent="." index="14"]
+[node name="EntityAttackRange" parent="." index="16" unique_id=1136712721]
 range = 2.0
 max_range = 2.0
 
-[node name="StateMachine" parent="." index="16"]
-blackboard = SubResource("Resource_n0e3f")
+[node name="StateMachine" parent="." index="20" unique_id=824199047]
+blackboard = SubResource("Resource_pwyk8")

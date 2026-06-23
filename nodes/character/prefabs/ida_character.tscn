@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg4nb48w1rfip"]
+[gd_scene format=3 uid="uid://dg4nb48w1rfip"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_4km4v"]
 [ext_resource type="PackedScene" uid="uid://b21mw5n1jljvk" path="res://nodes/character_model/prefabs/ida_character_model.tscn" id="2_cxckr"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bd513nulas40a" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_heavy_attack_character_action_visual.tscn" id="10_uf4ns"]
 [ext_resource type="PackedScene" uid="uid://c23qi8no8j0gb" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/ida/ida_juxtapose_character_action_visual.tscn" id="11_wkyju"]
 
-[node name="IdaCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_4km4v")]
+[node name="IdaCharacter" unique_id=366040593 node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_4km4v")]
 _character_data = ExtResource("2_wgncw")
 _character_model = NodePath("IdaCharacterModel")
 _character_stats = ExtResource("3_85o65")
@@ -27,13 +27,139 @@ heavy_attack_character_action_visual_packedscene = ExtResource("10_uf4ns")
 juxtapose_character_action_visual_packedscene = ExtResource("11_wkyju")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="AnimationTree" parent="." index="4"]
+[node name="AnimationTree" parent="." index="4" unique_id=1642879660]
 root_node = NodePath("%AnimationTree/../IdaCharacterModel")
 anim_player = NodePath("../IdaCharacterModel/AnimationPlayer")
 
-[node name="IdaCharacterModel" parent="." index="5" instance=ExtResource("2_cxckr")]
+[node name="IdaCharacterModel" parent="." index="5" unique_id=1825209345 instance=ExtResource("2_cxckr")]
 
-[node name="MantleRayCast" type="RayCast3D" parent="." index="6"]
+[node name="GeneralSkeleton" parent="IdaCharacterModel/godot_rig" parent_id_path=PackedInt32Array(1825209345, 1712041170) index="0" unique_id=1097317961]
+bones/9/rotation = Quaternion(0.92678314, -6.4065205e-17, -6.4712033e-17, -0.37559688)
+bones/11/rotation = Quaternion(0.6706966, 0.323493, 0.5190465, -0.41965356)
+bones/13/rotation = Quaternion(0.6706966, -0.323493, -0.5190465, -0.41965356)
+bones/37/rotation = Quaternion(-0.21418673, 0.67388725, 0.21418673, 0.67388725)
+bones/38/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/39/scale = Vector3(1, 1.0000001, 1.0000001)
+bones/54/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/55/scale = Vector3(1, 1.0000001, 1.0000001)
+bones/61/rotation = Quaternion(0.9956432, -6.55414e-09, 6.998309e-08, -0.0932453)
+bones/65/rotation = Quaternion(0.89266527, 0.011942584, 0.43859002, -0.10317405)
+bones/69/rotation = Quaternion(0.89266527, -0.011942584, -0.43859002, -0.10317405)
+bones/73/rotation = Quaternion(0.7215917, -0.0022441002, 0.676202, -0.14849663)
+bones/77/rotation = Quaternion(0.7215917, 0.0022441002, -0.676202, -0.14849663)
+bones/81/rotation = Quaternion(0.9778623, 0.120204344, -0.16456145, -0.047494892)
+bones/85/rotation = Quaternion(0.9778623, -0.120204344, 0.16456145, -0.047494892)
+bones/89/rotation = Quaternion(0.8251454, 0.089130536, 0.5194267, -0.20343718)
+bones/94/rotation = Quaternion(0.8251454, -0.089130536, -0.5194267, -0.20343718)
+bones/102/rotation = Quaternion(0, 1, 0, 0)
+
+[node name="CoatSpringBoneSimulator3D" parent="IdaCharacterModel/godot_rig/GeneralSkeleton" index="1"]
+settings/0/joints/0/bone_name = "DEF-coat.001"
+settings/0/joints/0/bone = 61
+settings/0/joints/1/bone_name = "DEF-coat.002"
+settings/0/joints/1/bone = 62
+settings/0/joints/2/bone_name = "DEF-coat.003"
+settings/0/joints/2/bone = 63
+settings/1/joints/0/bone_name = "DEF-coat.004.L"
+settings/1/joints/0/bone = 65
+settings/1/joints/1/bone_name = "DEF-coat.005.L"
+settings/1/joints/1/bone = 66
+settings/1/joints/2/bone_name = "DEF-coat.006.L"
+settings/1/joints/2/bone = 67
+settings/2/joints/0/bone_name = "DEF-coat.004.R"
+settings/2/joints/0/bone = 69
+settings/2/joints/1/bone_name = "DEF-coat.005.R"
+settings/2/joints/1/bone = 70
+settings/2/joints/2/bone_name = "DEF-coat.006.R"
+settings/2/joints/2/bone = 71
+settings/3/joints/0/bone_name = "DEF-coat.007.L"
+settings/3/joints/0/bone = 73
+settings/3/joints/1/bone_name = "DEF-coat.008.L"
+settings/3/joints/1/bone = 74
+settings/3/joints/2/bone_name = "DEF-coat.009.L"
+settings/3/joints/2/bone = 75
+settings/4/joints/0/bone_name = "DEF-coat.007.R"
+settings/4/joints/0/bone = 77
+settings/4/joints/1/bone_name = "DEF-coat.008.R"
+settings/4/joints/1/bone = 78
+settings/4/joints/2/bone_name = "DEF-coat.009.R"
+settings/4/joints/2/bone = 79
+settings/5/joints/0/bone_name = "DEF-coat.010.L"
+settings/5/joints/0/bone = 81
+settings/5/joints/1/bone_name = "DEF-coat.011.L"
+settings/5/joints/1/bone = 82
+settings/5/joints/2/bone_name = "DEF-coat.012.L"
+settings/5/joints/2/bone = 83
+settings/6/joints/0/bone_name = "DEF-coat.010.R"
+settings/6/joints/0/bone = 85
+settings/6/joints/1/bone_name = "DEF-coat.011.R"
+settings/6/joints/1/bone = 86
+settings/6/joints/2/bone_name = "DEF-coat.012.R"
+settings/6/joints/2/bone = 87
+
+[node name="CoatSleevesSpringBoneSimulator3D" parent="IdaCharacterModel/godot_rig/GeneralSkeleton" index="2"]
+settings/0/joints/0/bone_name = "DEF-coat_sleeve.001.L"
+settings/0/joints/0/bone = 89
+settings/0/joints/1/bone_name = "DEF-coat_sleeve.002.L"
+settings/0/joints/1/bone = 90
+settings/0/joints/2/bone_name = "DEF-coat_sleeve.003.L"
+settings/0/joints/2/bone = 91
+settings/0/joints/3/bone_name = "DEF-coat_sleeve.004.L"
+settings/0/joints/3/bone = 92
+settings/1/joints/0/bone_name = "DEF-coat_sleeve.001.R"
+settings/1/joints/0/bone = 94
+settings/1/joints/1/bone_name = "DEF-coat_sleeve.002.R"
+settings/1/joints/1/bone = 95
+settings/1/joints/2/bone_name = "DEF-coat_sleeve.003.R"
+settings/1/joints/2/bone = 96
+settings/1/joints/3/bone_name = "DEF-coat_sleeve.004.R"
+settings/1/joints/3/bone = 97
+
+[node name="HairSpringBoneSimulator3D" parent="IdaCharacterModel/godot_rig/GeneralSkeleton" index="3"]
+settings/0/joints/0/bone_name = "DEF-hair.001"
+settings/0/joints/0/bone = 9
+settings/0/joints/1/bone_name = "DEF-hair.001_leaf"
+settings/0/joints/1/bone = 10
+settings/1/joints/0/bone_name = "DEF-hair.002.L"
+settings/1/joints/0/bone = 11
+settings/1/joints/1/bone_name = "DEF-hair.002.L_leaf"
+settings/1/joints/1/bone = 12
+settings/2/joints/0/bone_name = "DEF-hair.002.R"
+settings/2/joints/0/bone = 13
+settings/2/joints/1/bone_name = "DEF-hair.002.R_leaf"
+settings/2/joints/1/bone = 14
+
+[node name="HornsBoneSimulator3D" parent="IdaCharacterModel/godot_rig/GeneralSkeleton" index="4"]
+settings/0/joints/0/bone_name = "DEF-horn.002.L"
+settings/0/joints/0/bone = 20
+settings/0/joints/1/bone_name = "DEF-horn.002.L_leaf"
+settings/0/joints/1/bone = 21
+settings/1/joints/0/bone_name = "DEF-horn.002.R"
+settings/1/joints/0/bone = 23
+settings/1/joints/1/bone_name = "DEF-horn.002.R_leaf"
+settings/1/joints/1/bone = 24
+
+[node name="BreastsSpringBoneSimulator3D" parent="IdaCharacterModel/godot_rig/GeneralSkeleton" index="5"]
+settings/0/joints/0/bone_name = "DEF-breast.L"
+settings/0/joints/0/bone = 57
+settings/0/joints/1/bone_name = "DEF-breast.L_leaf"
+settings/0/joints/1/bone = 58
+settings/1/joints/0/bone_name = "DEF-breast.R"
+settings/1/joints/0/bone = 59
+settings/1/joints/1/bone_name = "DEF-breast.R_leaf"
+settings/1/joints/1/bone = 60
+
+[node name="CheeksSpringBoneSimulator3D" parent="IdaCharacterModel/godot_rig/GeneralSkeleton" index="6"]
+settings/0/joints/0/bone_name = "DEF-cheek.L"
+settings/0/joints/0/bone = 104
+settings/0/joints/1/bone_name = "DEF-cheek.L_leaf"
+settings/0/joints/1/bone = 105
+settings/1/joints/0/bone_name = "DEF-cheek.R"
+settings/1/joints/0/bone = 111
+settings/1/joints/1/bone_name = "DEF-cheek.R_leaf"
+settings/1/joints/1/bone = 112
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="6" unique_id=245099601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 1, 0, 1)

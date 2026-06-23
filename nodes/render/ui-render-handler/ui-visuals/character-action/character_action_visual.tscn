@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgrw78lmg08te"]
+[gd_scene format=3 uid="uid://cgrw78lmg08te"]
 
 [ext_resource type="Script" uid="uid://wqgacu02d8wt" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/character_action_visual.gd" id="1_u5tbf"]
 
@@ -164,17 +164,17 @@ _data = {
 &"pressed": SubResource("Animation_u5tbf")
 }
 
-[node name="CharacterActionVisual" type="PanelContainer"]
+[node name="CharacterActionVisual" type="PanelContainer" unique_id=1605162573]
 visible = false
 custom_minimum_size = Vector2(60, 60)
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_u5tbf")
 script = ExtResource("1_u5tbf")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=778391651]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Button" type="Button" parent="Control" unique_id=1080623072]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -192,7 +192,7 @@ autowrap_mode = 3
 clip_text = true
 metadata/_edit_group_ = true
 
-[node name="CooldownProgressBar" type="TextureProgressBar" parent="Control/Button"]
+[node name="CooldownProgressBar" type="TextureProgressBar" parent="Control/Button" unique_id=51754792]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -206,13 +206,11 @@ fill_mode = 4
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_n718m")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2001807488]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_lmaeb")
-}
+libraries/ = SubResource("AnimationLibrary_lmaeb")
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1345370413]
 unique_name_in_owner = true
 one_shot = true
 

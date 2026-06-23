@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1qul7v66a744"]
+[gd_scene format=3 uid="uid://d1qul7v66a744"]
 
 [ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_rcrpp"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="2_pn6jj"]
@@ -45,44 +45,43 @@ shader_parameter/resolution = Vector2i(320, 240)
 material = SubResource("ShaderMaterial_s58xa")
 size = Vector3(0.922, 0.2, 0.5)
 
-[sub_resource type="Resource" id="Resource_omakp"]
+[sub_resource type="Resource" id="Resource_rcrpp"]
 resource_local_to_scene = true
 script = ExtResource("3_7p21p")
-content = {}
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
-[node name="MegabyteEntity" instance=ExtResource("1_rcrpp")]
+[node name="MegabyteEntity" unique_id=884561819 instance=ExtResource("1_rcrpp")]
 _entity_type = 1
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=264321552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_rcrpp")
 
-[node name="StatusInterface" parent="." index="3"]
+[node name="StatusInterface" parent="." index="3" unique_id=1367323731]
 _max_health = 99999
 
-[node name="Model" type="Node3D" parent="EntityModelContainer" index="0"]
+[node name="Model" type="Node3D" parent="EntityModelContainer" parent_id_path=PackedInt32Array(1045606354) index="0" unique_id=830451322]
 
-[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0"]
+[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0" unique_id=911233863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_5duer")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0"]
+[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0" unique_id=79458994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451704, 0.3)
 mesh = SubResource("BoxMesh_notip")
 
-[node name="EntityFloatingHealthBar" parent="." index="8"]
+[node name="EntityFloatingHealthBar" parent="." index="8" unique_id=235417886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
-[node name="TargetedIndicator" parent="." index="9"]
+[node name="TargetedIndicator" parent="." index="9" unique_id=1450939994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="StateMachine" parent="." index="19"]
-blackboard = SubResource("Resource_omakp")
+[node name="StateMachine" parent="." index="20" unique_id=824199047]
+blackboard = SubResource("Resource_rcrpp")
 
-[node name="GroundedAttackingState" parent="StateMachine" index="3"]
+[node name="GroundedAttackingState" parent="StateMachine" index="3" unique_id=132248520]
 damage = 10
 
-[node name="ArialAttackingState" parent="StateMachine" index="10"]
+[node name="ArialAttackingState" parent="StateMachine" index="10" unique_id=1121739178]
 damage = 15

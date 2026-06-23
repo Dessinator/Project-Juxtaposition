@@ -1,16 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcyqaw6kwj58q"]
+[gd_scene format=3 uid="uid://dcyqaw6kwj58q"]
 
-[ext_resource type="Script" path="res://addons/ThirdPersonTemplate/Character/Scripts/CameraTemplate.gd" id="1_h46st"]
+[ext_resource type="Script" uid="uid://co6hlr4n07qmr" path="res://addons/ThirdPersonTemplate/Character/Scripts/CameraTemplate.gd" id="1_h46st"]
 
-[node name="Camroot" type="Node3D"]
+[node name="Camroot" type="Node3D" unique_id=295536831]
 script = ExtResource("1_h46st")
 
-[node name="h" type="Node3D" parent="."]
+[node name="h" type="Node3D" parent="." unique_id=422196262]
 
-[node name="v" type="SpringArm3D" parent="h"]
+[node name="v" type="SpringArm3D" parent="h" unique_id=521677859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 spring_length = -3.0
 
-[node name="Camera3D" type="Camera3D" parent="h/v"]
+[node name="Camera3D" type="Camera3D" parent="h/v" unique_id=1163189705]
 transform = Transform3D(-1, 1.45794e-08, -8.61985e-08, 0, 0.985996, 0.166769, 8.74228e-08, 0.166769, -0.985996, 0, 0, 0)
 keep_aspect = 0

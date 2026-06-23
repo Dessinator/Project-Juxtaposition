@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6mun6p3lk1k6"]
+[gd_scene format=3 uid="uid://c6mun6p3lk1k6"]
 
-[ext_resource type="Script" path="res://addons/explore-editor-theme/ui/FilterTool.gd" id="1"]
+[ext_resource type="Script" uid="uid://bnpcgp5vyxgls" path="res://addons/explore-editor-theme/ui/FilterTool.gd" id="1"]
 
-[node name="Filter" type="HBoxContainer"]
+[node name="Filter" type="HBoxContainer" unique_id=2043276387]
 offset_right = 988.0
 offset_bottom = 24.0
 size_flags_horizontal = 3
 script = ExtResource("1")
 label_text = "Filter"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1674209573]
 layout_mode = 2
 text = "Filter"
 
-[node name="Input" type="LineEdit" parent="."]
+[node name="Input" type="LineEdit" parent="." unique_id=605498702]
 layout_mode = 2
 size_flags_horizontal = 3
 clear_button_enabled = true

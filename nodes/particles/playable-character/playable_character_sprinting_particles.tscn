@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgnq2vj4f5nni"]
+[gd_scene format=3 uid="uid://bgnq2vj4f5nni"]
 
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="1_ukte5"]
 
@@ -42,9 +42,9 @@ height = 0.4
 radial_segments = 6
 rings = 3
 
-[node name="PlayableCharacterSprintingParticles" type="Node3D"]
+[node name="PlayableCharacterSprintingParticles" type="Node3D" unique_id=2118258007]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1044010899]
 unique_name_in_owner = true
 emitting = false
 amount = 30

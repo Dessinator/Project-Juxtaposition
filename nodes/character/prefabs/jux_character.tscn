@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://db1wminw8cf8m"]
+[gd_scene format=3 uid="uid://db1wminw8cf8m"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_vm1f3"]
 [ext_resource type="Resource" uid="uid://ctbpi1be43qto" path="res://resources/character/character-data/prefabs/jux_character_data.tres" id="2_k3yc5"]
@@ -12,11 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://cmisy4dwlng2d" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/jux/jux_light_attack_character_action_visual.tscn" id="9_7kod5"]
 [ext_resource type="PackedScene" uid="uid://cmyvhscc41oj8" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/jux/jux_heavy_attack_character_action_visual.tscn" id="10_30tvy"]
 [ext_resource type="PackedScene" uid="uid://lorkutbrvn1l" path="res://nodes/render/ui-render-handler/ui-visuals/character-action/prefabs/jux/jux_juxtapose_character_action_visual.tscn" id="11_hnf21"]
+[ext_resource type="Animation" uid="uid://bs5rsjet625w3" path="res://resources/animations/characters/jux/idle_test.res" id="13_wirka"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0gcm"]
 size = Vector3(0.5, 1.62, 0.5)
 
-[node name="JuxCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_vm1f3")]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgs7t"]
+_data = {
+&"idle_test": ExtResource("13_wirka")
+}
+
+[node name="JuxCharacter" unique_id=1289089677 node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_vm1f3")]
 _character_data = ExtResource("2_k3yc5")
 _character_model = NodePath("JuxCharacterModel")
 _character_stats = ExtResource("3_xkk03")
@@ -30,19 +36,19 @@ heavy_attack_character_action_visual_packedscene = ExtResource("10_30tvy")
 juxtapose_character_action_visual_packedscene = ExtResource("11_hnf21")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="CharacterHurtbox" parent="." index="0"]
+[node name="CharacterHurtbox" parent="." index="0" unique_id=896194080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81, 0)
 shape = SubResource("BoxShape3D_v0gcm")
 
-[node name="AnimationTree" parent="." index="4"]
+[node name="AnimationTree" parent="." index="4" unique_id=1642879660]
 root_node = NodePath("%AnimationTree/../JuxCharacterModel")
 root_motion_track = NodePath("%GeneralSkeleton:Hips")
 anim_player = NodePath("../JuxCharacterModel/AnimationPlayer")
 parameters/grounded_state_machine/non_targeting_movement/blend_position = Vector2(0.0047664642, 0.9656658)
 
-[node name="JuxCharacterModel" parent="." index="5" instance=ExtResource("2_v0gcm")]
+[node name="JuxCharacterModel" parent="." index="5" unique_id=1683319318 instance=ExtResource("2_v0gcm")]
 
-[node name="GeneralSkeleton" parent="JuxCharacterModel/godot_rig" index="0"]
+[node name="GeneralSkeleton" parent="JuxCharacterModel/godot_rig" parent_id_path=PackedInt32Array(1683319318, 1973768553) index="0" unique_id=1542554786]
 bones/19/rotation = Quaternion(0.4272321, 0.2455088, 0.81678087, -0.30011207)
 bones/22/rotation = Quaternion(-4.1719073e-08, -0.29845944, 0.95442235, 1.3046068e-08)
 bones/31/rotation = Quaternion(-0.33153617, -0.09032253, 0.93908566, 0.006618869)
@@ -61,20 +67,112 @@ bones/91/rotation = Quaternion(0, 1, 0, 0)
 bones/95/rotation = Quaternion(0, 1, 0, 0)
 bones/101/rotation = Quaternion(-0.1828055, -0.099692754, 0.9779099, -0.018322488)
 
+[node name="TailSpringBoneSimulator3D" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="4"]
+settings/0/joints/0/bone_name = "DEF-tail.001"
+settings/0/joints/0/bone = 101
+settings/0/joints/1/bone_name = "DEF-tail.002"
+settings/0/joints/1/bone = 102
+settings/0/joints/2/bone_name = "DEF-tail.003"
+settings/0/joints/2/bone = 103
+settings/0/joints/3/bone_name = "DEF-tail.004"
+settings/0/joints/3/bone = 104
+settings/0/joints/4/bone_name = "DEF-tail.005"
+settings/0/joints/4/bone = 105
+settings/0/joints/5/bone_name = "DEF-tail.006"
+settings/0/joints/5/bone = 106
+settings/0/joints/6/bone_name = "DEF-tail.007"
+settings/0/joints/6/bone = 107
+
+[node name="FringeSpringBoneSimulator3D" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="5"]
+settings/0/joints/0/bone_name = "DEF-fringe.001"
+settings/0/joints/0/bone = 13
+settings/0/joints/1/bone_name = "DEF-fringe.002"
+settings/0/joints/1/bone = 14
+settings/0/joints/2/bone_name = "DEF-fringe.003"
+settings/0/joints/2/bone = 15
+settings/1/joints/0/bone_name = "DEF-fringe.004"
+settings/1/joints/0/bone = 16
+settings/1/joints/1/bone_name = "DEF-fringe.005"
+settings/1/joints/1/bone = 17
+settings/1/joints/2/bone_name = "DEF-fringe.006"
+settings/1/joints/2/bone = 18
+settings/2/joints/0/bone_name = "DEF-fringe.007"
+settings/2/joints/0/bone = 19
+settings/2/joints/1/bone_name = "DEF-fringe.008"
+settings/2/joints/1/bone = 20
+settings/2/joints/2/bone_name = "DEF-fringe.009"
+settings/2/joints/2/bone = 21
+
+[node name="SideHairSpringBoneSimulator3D" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="6"]
+settings/0/joints/0/bone_name = "DEF-side_hair.001.L"
+settings/0/joints/0/bone = 25
+settings/0/joints/1/bone_name = "DEF-side_hair.002.L"
+settings/0/joints/1/bone = 26
+settings/0/joints/2/bone_name = "DEF-side_hair.003.L"
+settings/0/joints/2/bone = 27
+settings/1/joints/0/bone_name = "DEF-side_hair.001.R"
+settings/1/joints/0/bone = 28
+settings/1/joints/1/bone_name = "DEF-side_hair.002.R"
+settings/1/joints/1/bone = 29
+settings/1/joints/2/bone_name = "DEF-side_hair.003.R"
+settings/1/joints/2/bone = 30
+settings/2/joints/0/bone_name = "DEF-side_hair.004.L"
+settings/2/joints/0/bone = 31
+settings/2/joints/1/bone_name = "DEF-side_hair.005.L"
+settings/2/joints/1/bone = 32
+settings/2/joints/2/bone_name = "DEF-side_hair.006.L"
+settings/2/joints/2/bone = 33
+settings/3/joints/0/bone_name = "DEF-side_hair.004.R"
+settings/3/joints/0/bone = 34
+settings/3/joints/1/bone_name = "DEF-side_hair.005.R"
+settings/3/joints/1/bone = 35
+settings/3/joints/2/bone_name = "DEF-side_hair.006.R"
+settings/3/joints/2/bone = 36
+
+[node name="PonytailSpringBoneSimulator3D" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="7"]
+settings/0/joints/0/bone_name = "DEF-ponytail.001"
+settings/0/joints/0/bone = 22
+settings/0/joints/1/bone_name = "DEF-ponytail.002"
+settings/0/joints/1/bone = 23
+settings/0/joints/2/bone_name = "DEF-ponytail.003"
+settings/0/joints/2/bone = 24
+
+[node name="BarbedChainSpringBoneSimulator3D" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="8"]
+settings/0/joints/0/bone_name = "DEF-barbed_necklace.005.L"
+settings/0/joints/0/bone = 52
+settings/0/joints/1/bone_name = "DEF-barbed_necklace.006.L"
+settings/0/joints/1/bone = 53
+settings/1/joints/0/bone_name = "DEF-barbed_necklace.003.L"
+settings/1/joints/0/bone = 55
+settings/1/joints/1/bone_name = "DEF-barbed_necklace.004.L"
+settings/1/joints/1/bone = 56
+settings/2/joints/0/bone_name = "DEF-barbed_necklace.001"
+settings/2/joints/0/bone = 86
+settings/2/joints/1/bone_name = "DEF-barbed_necklace.002"
+settings/2/joints/1/bone = 87
+settings/3/joints/0/bone_name = "DEF-barbed_necklace.003.R"
+settings/3/joints/0/bone = 78
+settings/3/joints/1/bone_name = "DEF-barbed_necklace.004.R"
+settings/3/joints/1/bone = 79
+settings/4/joints/0/bone_name = "DEF-barbed_necklace.005.R"
+settings/4/joints/0/bone = 75
+settings/4/joints/1/bone_name = "DEF-barbed_necklace.006.R"
+settings/4/joints/1/bone = 76
+
 [node name="DEF-barbed_necklace_007_L" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.99999994, 4.3321256e-07, 1.5951362e-07, 3.8757148e-07, -0.9755572, 0.21974473, 2.5081093e-07, -0.21974476, -0.9755571, 0.15000054, 0.2716118, -0.051836584)
+transform = Transform3D(0.99999994, 4.3321964e-07, 1.5951261e-07, 3.8757855e-07, -0.9755572, 0.21974492, 2.5081155e-07, -0.21974495, -0.9755571, 0.15000054, 0.2716118, -0.051836584)
 
 [node name="DEF-barbed_necklace_008_L" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="10"]
-transform = Transform3D(0.9999998, -1.6871626e-07, 2.2874616e-07, -2.114211e-07, -0.97941065, 0.20187698, 1.8997652e-07, -0.20187697, -0.9794107, 0.07499982, 0.27663565, -0.061396863)
+transform = Transform3D(0.9999998, -1.6871081e-07, 2.287608e-07, -2.1141872e-07, -0.97941065, 0.20187698, 1.8999195e-07, -0.20187697, -0.9794107, 0.07499982, 0.27663565, -0.061396863)
 
 [node name="DEF-barbed_necklace_007_R" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.99999994, 3.5624666e-08, -1.06707404e-07, 5.8202314e-08, -0.9755573, 0.21974483, -9.6270874e-08, -0.21974489, -0.9755571, -0.14999962, 0.2716118, -0.05183659)
+transform = Transform3D(0.99999994, 4.165513e-08, -1.06974376e-07, 6.414404e-08, -0.9755573, 0.21974483, -9.520616e-08, -0.21974489, -0.9755571, -0.14999962, 0.2716118, -0.05183659)
 
 [node name="DEF-barbed_necklace_008_R" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.99999994, 1.8613773e-07, 8.57554e-08, 1.6499327e-07, -0.979411, 0.20187686, 1.2156666e-07, -0.20187686, -0.979411, -0.07499982, 0.27663565, -0.06139687)
+transform = Transform3D(0.99999994, 1.8613513e-07, 8.575121e-08, 1.6499158e-07, -0.979411, 0.20187686, 1.2156204e-07, -0.20187686, -0.979411, -0.07499982, 0.27663565, -0.06139687)
 
 [node name="DEF-barbed_necklace_009" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="13"]
-transform = Transform3D(1, -6.217249e-15, 1.4901161e-07, -2.7154641e-08, -0.98325574, 0.18223165, 1.4651651e-07, -0.18223166, -0.9832557, 7.0494873e-16, 0.27663565, -0.07136931)
+transform = Transform3D(1, -8.881784e-16, 1.4901163e-07, -2.7154634e-08, -0.9832555, 0.18223163, 1.4651651e-07, -0.18223163, -0.9832555, 7.0494873e-16, 0.27663565, -0.07136931)
 
 [node name="DEF-sleeve_L" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="14"]
 transform = Transform3D(-0.2833175, 0.9590261, -0.0006558951, -0.9583832, -0.28310242, 0.036812577, 0.035118543, 0.011058245, 0.999322, 1.0766534, 0.8713566, -0.014038308)
@@ -92,12 +190,15 @@ transform = Transform3D(0.74881256, -0.20508932, 0.6302525, -0.16163227, -0.9787
 transform = Transform3D(-0.034838755, -0.2659631, 0.9633531, -0.1251213, -0.95519334, -0.26823515, 0.9915284, -0.12988113, 0, -0.4689895, -0.11980003, -0.12137703)
 
 [node name="DEF-barbed_chain_004" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="19"]
-transform = Transform3D(-0.78563714, -0.22109807, 0.5778305, 0.006149886, -0.9367088, -0.3500556, 0.6186547, -0.2714635, 0.7372737, -0.3792482, -0.059909105, -0.37869558)
+transform = Transform3D(-0.78563714, -0.22109807, 0.5778305, 0.006149886, -0.9367088, -0.3500556, 0.6186547, -0.2714635, 0.7372737, -0.3792482, -0.059909046, -0.37869555)
 
 [node name="DEF-barbed_chain_005" parent="JuxCharacterModel/godot_rig/GeneralSkeleton" index="20"]
 transform = Transform3D(-0.99905443, -0.04123958, -0.013848702, 0.04349944, -0.950963, -0.30623037, -0.00054079405, -0.3065427, 0.9518572, -0.043610606, -0.07148969, -0.43701303)
 
-[node name="MantleRayCast" type="RayCast3D" parent="." index="6"]
+[node name="AnimationPlayer" parent="JuxCharacterModel" index="1" unique_id=423805151]
+libraries/ = SubResource("AnimationLibrary_jgs7t")
+
+[node name="MantleRayCast" type="RayCast3D" parent="." index="6" unique_id=16309317]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 1, 0, 1)

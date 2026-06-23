@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk84c3qd8enc8"]
+[gd_scene format=3 uid="uid://bk84c3qd8enc8"]
 
-[ext_resource type="Script" path="res://addons/third-person-camera/editor_panels/Preview.gd" id="1_6i4jr"]
+[ext_resource type="Script" uid="uid://cg1todba58owt" path="res://addons/third-person-camera/editor_panels/Preview.gd" id="1_6i4jr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_unll7"]
 
-[node name="Preview" type="Panel"]
+[node name="Preview" type="Panel" unique_id=217024400]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6i4jr")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=342780943]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,7 +30,8 @@ label_settings = SubResource("LabelSettings_unll7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1382353093]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=456201276]
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 4
+render_target_update_mode = 0

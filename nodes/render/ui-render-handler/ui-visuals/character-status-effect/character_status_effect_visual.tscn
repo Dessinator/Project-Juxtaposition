@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3dyt64jn0vo3"]
+[gd_scene format=3 uid="uid://c3dyt64jn0vo3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_owlx8"]
 
@@ -12,10 +12,10 @@ width = 1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ge24a"]
 
-[node name="CharacterStatusEffectVisual" type="PanelContainer"]
+[node name="CharacterStatusEffectVisual" type="PanelContainer" unique_id=1269954322]
 theme_override_styles/panel = SubResource("StyleBoxEmpty_owlx8")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1891322682]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2

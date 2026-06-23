@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ffvel65rklf3"]
+[gd_scene format=3 uid="uid://ffvel65rklf3"]
 
 [ext_resource type="PackedScene" uid="uid://8nifftfw2omy" path="res://nodes/entity/entity.tscn" id="1_itxdb"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="2_giylq"]
@@ -48,82 +48,81 @@ size = Vector3(0.922, 0.2, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_itxdb"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="Resource" id="Resource_omakp"]
+[sub_resource type="Resource" id="Resource_itxdb"]
 resource_local_to_scene = true
 script = ExtResource("2_itxdb")
-content = {}
 metadata/_custom_type_script = "uid://csq05x4oq8uf3"
 
-[node name="PunchingDummyEntity" instance=ExtResource("1_itxdb")]
+[node name="PunchingDummyEntity" unique_id=1292089944 instance=ExtResource("1_itxdb")]
 _entity_type = 1
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=264321552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_rcrpp")
 
-[node name="StatusInterface" parent="." index="3"]
+[node name="StatusInterface" parent="." index="3" unique_id=1367323731]
 _max_health = 99999
 
-[node name="TrackableTarget" parent="." index="6"]
+[node name="TrackableTarget" parent="." index="6" unique_id=1822020238]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Model" type="Node3D" parent="EntityModelContainer" index="0"]
+[node name="Model" type="Node3D" parent="EntityModelContainer" parent_id_path=PackedInt32Array(1045606354) index="0" unique_id=1315553741]
 
-[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0"]
+[node name="body" type="MeshInstance3D" parent="EntityModelContainer/Model" index="0" unique_id=2146755681]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_mlv0w")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0"]
+[node name="eyes" type="MeshInstance3D" parent="EntityModelContainer/Model/body" index="0" unique_id=2040852196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451704, 0.3)
 mesh = SubResource("BoxMesh_notip")
 
-[node name="EntityFloatingHealthBar" parent="." index="8"]
+[node name="EntityFloatingHealthBar" parent="." index="8" unique_id=235417886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
-[node name="TargetedIndicator" parent="." index="9"]
+[node name="TargetedIndicator" parent="." index="9" unique_id=1450939994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="EntityHurtbox" parent="." index="11"]
+[node name="EntityHurtbox" parent="." index="11" unique_id=1528741444]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_itxdb")
 
-[node name="EntityHomeRange" parent="." index="12"]
+[node name="EntityHomeRange" parent="." index="12" unique_id=834824422]
 range = 0.0
 max_range = 0.0
 _disabled = true
 
-[node name="EntityWanderRange" parent="." index="13"]
+[node name="EntityWanderRange" parent="." index="13" unique_id=1805775800]
 range = 0.0
 max_range = 0.0
 _disabled = true
 
-[node name="EntityDetectionRange" parent="." index="14"]
+[node name="EntityDetectionRange" parent="." index="14" unique_id=1042020562]
 top_level = true
 _is_static = true
 range = 0.0
 max_range = 0.0
 _disabled = true
 
-[node name="EntityFollowRange" parent="." index="15"]
+[node name="EntityFollowRange" parent="." index="15" unique_id=1874361226]
 top_level = true
 _is_static = true
 range = 0.0
 max_range = 0.0
 _disabled = true
 
-[node name="EntityAttackRange" parent="." index="16"]
+[node name="EntityAttackRange" parent="." index="16" unique_id=1136712721]
 top_level = true
 _is_static = true
 range = 0.0
 max_range = 0.0
 _disabled = true
 
-[node name="StateMachine" parent="." index="20"]
-blackboard = SubResource("Resource_omakp")
+[node name="StateMachine" parent="." index="20" unique_id=824199047]
+blackboard = SubResource("Resource_itxdb")
 
-[node name="GroundedAttackingState" parent="StateMachine" index="3"]
+[node name="GroundedAttackingState" parent="StateMachine" index="3" unique_id=132248520]
 damage = 10
 
-[node name="ArialAttackingState" parent="StateMachine" index="10"]
+[node name="ArialAttackingState" parent="StateMachine" index="10" unique_id=1121739178]
 damage = 15

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bw66lol5lltn0"]
+[gd_scene format=3 uid="uid://bw66lol5lltn0"]
 
 [ext_resource type="Script" uid="uid://bompl0oc50bxe" path="res://nodes/playable-character/components/playable-character-party-ui/playable_character_party_ui.gd" id="1_7mrmi"]
 [ext_resource type="PackedScene" uid="uid://d0x3d2x1idfw8" path="res://nodes/render/ui-render-handler/ui-visuals/status-bar/status_bar.tscn" id="2_kyy3p"]
@@ -79,7 +79,7 @@ texture = SubResource("GradientTexture2D_2r758")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_djywm"]
 
-[node name="PlayableCharacterPartyUI" type="Control"]
+[node name="PlayableCharacterPartyUI" type="Control" unique_id=2144516512]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,7 +89,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_7mrmi")
 
-[node name="GradientTextureRect" type="TextureRect" parent="."]
+[node name="GradientTextureRect" type="TextureRect" parent="." unique_id=1935051161]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,7 +99,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_7mrmi")
 
-[node name="GradientTextureRect2" type="TextureRect" parent="."]
+[node name="GradientTextureRect2" type="TextureRect" parent="." unique_id=617471145]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,7 +109,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_uf40v")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1469818605]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -122,13 +122,13 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_7mrmi")
 current_tab = 0
 tabs_visible = false
 
-[node name="MainPartyUIPanelContainer" type="PanelContainer" parent="TabContainer"]
+[node name="MainPartyUIPanelContainer" type="PanelContainer" parent="TabContainer" unique_id=2004831518]
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kyy3p")
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/MainPartyUIPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/MainPartyUIPanelContainer" unique_id=648153151]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 20
@@ -136,94 +136,94 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="PartySynergyHBoxContainer" type="HBoxContainer" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer"]
+[node name="PartySynergyHBoxContainer" type="HBoxContainer" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer" unique_id=1204598722]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="PartySynergyButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PartySynergyHBoxContainer"]
+[node name="PartySynergyButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PartySynergyHBoxContainer" unique_id=1264626428]
 layout_mode = 2
 text = "Party Synergy"
 
-[node name="PresetNameLabel" type="Label" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PartySynergyHBoxContainer"]
+[node name="PresetNameLabel" type="Label" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PartySynergyHBoxContainer" unique_id=1635044987]
 visible = false
 layout_mode = 2
 text = "Preset Name"
 
-[node name="ChangePresetNameButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PartySynergyHBoxContainer"]
+[node name="ChangePresetNameButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PartySynergyHBoxContainer" unique_id=684844823]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Edit..."
 
-[node name="SelectButtonsHBoxContainer" type="HBoxContainer" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer"]
+[node name="SelectButtonsHBoxContainer" type="HBoxContainer" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer" unique_id=436675075]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="QuickSelectButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/SelectButtonsHBoxContainer"]
+[node name="QuickSelectButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/SelectButtonsHBoxContainer" unique_id=62653066]
 layout_mode = 2
 text = "Quick Select"
 
-[node name="DeployButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/SelectButtonsHBoxContainer"]
+[node name="DeployButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/SelectButtonsHBoxContainer" unique_id=836877134]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Deploy"
 
-[node name="PreviousPresetButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer"]
+[node name="PreviousPresetButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer" unique_id=623779124]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "<"
 
-[node name="NextPresetButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer"]
+[node name="NextPresetButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer" unique_id=475016924]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 text = ">"
 
-[node name="PresetsHBoxContainer" type="HBoxContainer" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer"]
+[node name="PresetsHBoxContainer" type="HBoxContainer" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer" unique_id=1451385263]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Preset1Button" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer"]
+[node name="Preset1Button" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer" unique_id=932507304]
 visible = false
 layout_mode = 2
 text = "Preset 1"
 
-[node name="Preset2Button" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer"]
+[node name="Preset2Button" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer" unique_id=1970833462]
 visible = false
 layout_mode = 2
 text = "Preset 2"
 
-[node name="Preset3Button" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer"]
+[node name="Preset3Button" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer" unique_id=804234521]
 visible = false
 layout_mode = 2
 text = "Preset 3"
 
-[node name="AddNewPresetButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer"]
+[node name="AddNewPresetButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer/PresetsHBoxContainer" unique_id=1351087117]
 visible = false
 layout_mode = 2
 text = "Add New Preset"
 
-[node name="CloseButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer"]
+[node name="CloseButton" type="Button" parent="TabContainer/MainPartyUIPanelContainer/MarginContainer" unique_id=2072861104]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Close"
 
-[node name="CharacterSelectPanelContainer" type="PanelContainer" parent="TabContainer"]
+[node name="CharacterSelectPanelContainer" type="PanelContainer" parent="TabContainer" unique_id=383223360]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uf40v")
 metadata/_tab_index = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/CharacterSelectPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/CharacterSelectPanelContainer" unique_id=1916695293]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 20
@@ -231,50 +231,50 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CharacterSelectPanelContainer" type="PanelContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer"]
+[node name="CharacterSelectPanelContainer" type="PanelContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer" unique_id=1373968903]
 custom_minimum_size = Vector2(380, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer" unique_id=1131143180]
 layout_mode = 2
 
-[node name="CharacterPickerTitleLabel" type="Label" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+[node name="CharacterPickerTitleLabel" type="Label" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer" unique_id=563638530]
 layout_mode = 2
 text = "Character Picker"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer" unique_id=1702057671]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer" unique_id=1754635847]
 layout_mode = 2
 
-[node name="FilterCharactersButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer"]
+[node name="FilterCharactersButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer" unique_id=180370923]
 layout_mode = 2
 text = "Filters"
 
-[node name="SortCharacterByOptionButton" type="OptionButton" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer"]
+[node name="SortCharacterByOptionButton" type="OptionButton" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer" unique_id=72880866]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SortCharactersButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer"]
+[node name="SortCharactersButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/HBoxContainer" unique_id=125307344]
 layout_mode = 2
 text = "Sort
 "
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer" unique_id=1390204658]
 layout_mode = 2
 size_flags_vertical = 3
 vertical_scroll_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/ScrollContainer" unique_id=1672163452]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 10
 
-[node name="CharacterPartyMemberSelectButtonsGridContainer" type="GridContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="CharacterPartyMemberSelectButtonsGridContainer" type="GridContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=371657721]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -282,32 +282,32 @@ theme_override_constants/h_separation = 26
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer" unique_id=175630705]
 layout_mode = 2
 
-[node name="SelectButtonsHBoxContainer" type="HBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer"]
+[node name="SelectButtonsHBoxContainer" type="HBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer" unique_id=2113262766]
 layout_mode = 2
 
-[node name="CharacterSelectCancelButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer"]
+[node name="CharacterSelectCancelButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer" unique_id=883627194]
 layout_mode = 2
 text = "Cancel"
 
-[node name="VSeparator" type="VSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer" unique_id=2057474471]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_2r758")
 
-[node name="CharacterDetailsButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer"]
+[node name="CharacterDetailsButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer" unique_id=1616041045]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Details
 "
 
-[node name="ConfirmSelectionButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer"]
+[node name="ConfirmSelectionButton" type="Button" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterSelectPanelContainer/VBoxContainer/SelectButtonsHBoxContainer" unique_id=304356421]
 layout_mode = 2
 text = "Select"
 
-[node name="CharacterInfoPanelContainer" type="PanelContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer"]
+[node name="CharacterInfoPanelContainer" type="PanelContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer" unique_id=1760150359]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(380, 0)
 layout_mode = 2
@@ -315,7 +315,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxEmpty_apdft")
 
-[node name="CharacterPortraitTextureRect" type="TextureRect" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer"]
+[node name="CharacterPortraitTextureRect" type="TextureRect" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer" unique_id=2005773720]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
@@ -325,38 +325,38 @@ texture = SubResource("PlaceholderTexture2D_ldcqa")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer" unique_id=499868767]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer" unique_id=679548760]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer" unique_id=613342193]
 layout_mode = 2
 
-[node name="CharacterNicknameLabel" type="Label" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CharacterNicknameLabel" type="Label" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1071941357]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Character Nickname"
 
-[node name="VSeparator" type="VSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1995185125]
 layout_mode = 2
 
-[node name="VSeparator2" type="VSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=702333644]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_52ges")
 
-[node name="CharacterLevelLabel" type="Label" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CharacterLevelLabel" type="Label" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=741741466]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lv. ???"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer" unique_id=1708605283]
 layout_mode = 2
 
-[node name="CharacterHealthBar" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer" instance=ExtResource("2_kyy3p")]
+[node name="CharacterHealthBar" parent="TabContainer/CharacterSelectPanelContainer/MarginContainer/CharacterInfoPanelContainer/PanelContainer/VBoxContainer" unique_id=2132077357 instance=ExtResource("2_kyy3p")]
 unique_name_in_owner = true
 layout_mode = 2
 _label = "HPS"
@@ -364,13 +364,13 @@ _under = SubResource("GradientTexture1D_apdft")
 _ghost_progress = SubResource("GradientTexture1D_ldcqa")
 _true_progress = SubResource("GradientTexture1D_gqler")
 
-[node name="PartySynergyPanelContainer" type="PanelContainer" parent="TabContainer"]
+[node name="PartySynergyPanelContainer" type="PanelContainer" parent="TabContainer" unique_id=1990904906]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_52ges")
 metadata/_tab_index = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/PartySynergyPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/PartySynergyPanelContainer" unique_id=1149331877]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 20
@@ -378,111 +378,111 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer" unique_id=823149632]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer" unique_id=1650542696]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ldcqa")
 
-[node name="PartySynergyCloseButton" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="PartySynergyCloseButton" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=659045503]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Close"
 
-[node name="PartySynergyTitleLabel" type="Label" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="PartySynergyTitleLabel" type="Label" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=2103606413]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Party Synergy"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer" unique_id=730720397]
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer" unique_id=487572398]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gqler")
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer" unique_id=1815918053]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1960837742]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PartySynergyVisualizerPanelContainer" type="PanelContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PartySynergyVisualizerPanelContainer" type="PanelContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1542604112]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_esb0k")
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer"]
+[node name="GridContainer" type="GridContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer" unique_id=2145518169]
 custom_minimum_size = Vector2(450, 450)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 3
 
-[node name="Button" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=237215341]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button2" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=215173122]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button3" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button3" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=995917657]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button4" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=1294363513]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button5" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button5" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=291479330]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button6" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button6" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=889420529]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button7" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button7" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=336426103]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button8" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button8" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=559831980]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="Button9" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer"]
+[node name="Button9" type="Button" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyVisualizerPanelContainer/GridContainer" unique_id=205445280]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="PartySynergyDescriptionPanelContainer" type="PanelContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PartySynergyDescriptionPanelContainer" type="PanelContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=699607957]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_djywm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer" unique_id=834488577]
 layout_mode = 2
 
-[node name="PartySynergyDescriptionTitleLabel" type="Label" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer"]
+[node name="PartySynergyDescriptionTitleLabel" type="Label" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer" unique_id=1296651808]
 layout_mode = 2
 text = "Party Synergy Description"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer" unique_id=1580392858]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer" unique_id=2084493427]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PartySynergyPanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PartySynergyDescriptionPanelContainer/VBoxContainer/ScrollContainer" unique_id=1238206866]
 layout_mode = 2
 size_flags_horizontal = 3
 

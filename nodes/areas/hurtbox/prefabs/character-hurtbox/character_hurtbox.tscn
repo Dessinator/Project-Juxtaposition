@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr4gs41vhswi0"]
+[gd_scene format=3 uid="uid://cr4gs41vhswi0"]
 
 [ext_resource type="PackedScene" uid="uid://ddis70ff4svng" path="res://nodes/areas/hurtbox/hurtbox.tscn" id="1_r50v6"]
 [ext_resource type="Script" uid="uid://ds1mx0pgkewgt" path="res://nodes/areas/hurtbox/prefabs/character-hurtbox/character_hurtbox.gd" id="2_vgtfr"]
 
-[node name="CharacterHurtbox" instance=ExtResource("1_r50v6")]
+[node name="CharacterHurtbox" unique_id=1454174833 instance=ExtResource("1_r50v6")]
 monitoring = false
 monitorable = false
 script = ExtResource("2_vgtfr")

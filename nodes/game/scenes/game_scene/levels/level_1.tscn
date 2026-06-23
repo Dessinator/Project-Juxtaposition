@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://xqvox4es6gaf"]
+[gd_scene format=3 uid="uid://xqvox4es6gaf"]
 
-[ext_resource type="Script" path="res://nodes/game/scenes/game_scene/levels/level.gd" id="1_kweom"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="2_lktml"]
-[ext_resource type="Script" path="res://nodes/game/scenes/game_scene/input_display_label.gd" id="3_lmtv0"]
+[ext_resource type="Script" uid="uid://b4y1v7d0lsydp" path="res://nodes/game/scenes/game_scene/levels/level.gd" id="1_kweom"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="2_lktml"]
+[ext_resource type="Script" uid="uid://b8voft722htop" path="res://nodes/game/scenes/game_scene/input_display_label.gd" id="3_lmtv0"]
 
-[node name="Level1" type="Control"]
+[node name="Level1" type="Control" unique_id=318801137]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kweom")
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="BackgroundColor" type="ColorRect" parent="." unique_id=1756934908]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=832188690]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,39 +35,39 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=710574677]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1470869903]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 script = ExtResource("2_lktml")
 
-[node name="LoseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LoseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=886014218]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Lose"
 
-[node name="WinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="WinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1011082614]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Win"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1888653207]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1592829070]
 layout_mode = 2
 text = "Change Level State: "
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1819881754]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Change Color"
 
-[node name="InputDisplayLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="InputDisplayLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1791863271]
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_alignment = 1

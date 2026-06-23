@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c7ixr5uo7fs72"]
+[gd_scene format=3 uid="uid://c7ixr5uo7fs72"]
 
 [ext_resource type="PackedScene" uid="uid://bdsxjbfqrqtka" path="res://nodes/character/character.tscn" id="1_hj4o1"]
 [ext_resource type="Resource" uid="uid://crqlkrn1s1o16" path="res://resources/character/character-data/prefabs/miu_character_data.tres" id="2_4y4et"]
@@ -20,16 +20,20 @@ animation = &"jog"
 animation = &"sprint"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0pg88"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_fw5je")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_pqdem")
-blend_point_1/pos = 1.0
-blend_point_2/node = SubResource("AnimationNodeAnimation_vcnnv")
-blend_point_2/pos = 2.0
-blend_point_3/node = SubResource("AnimationNodeAnimation_14jtu")
-blend_point_3/pos = 3.0
 max_space = 3.0
 blend_mode = 2
+blend_point_0/node = SubResource("AnimationNodeAnimation_fw5je")
+blend_point_0/pos = 0.0
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_pqdem")
+blend_point_1/pos = 1.0
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_vcnnv")
+blend_point_2/pos = 2.0
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_14jtu")
+blend_point_3/pos = 3.0
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pg88"]
 animation = &"RESET"
@@ -68,32 +72,44 @@ animation = &"sprint"
 animation = &"sprint"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_iqkbo"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_0pg88")
-blend_point_0/pos = Vector2(0, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_3jcs7")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_38sl6")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_c50kb")
-blend_point_3/pos = Vector2(-1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_o63qx")
-blend_point_4/pos = Vector2(0, 1)
-blend_point_5/node = SubResource("AnimationNodeAnimation_iqkbo")
-blend_point_5/pos = Vector2(0, -2)
-blend_point_6/node = SubResource("AnimationNodeAnimation_d66ta")
-blend_point_6/pos = Vector2(2, 0)
-blend_point_7/node = SubResource("AnimationNodeAnimation_cm2we")
-blend_point_7/pos = Vector2(-2, 0)
-blend_point_8/node = SubResource("AnimationNodeAnimation_t2dxk")
-blend_point_8/pos = Vector2(0, 3)
-blend_point_9/node = SubResource("AnimationNodeAnimation_0q0f0")
-blend_point_9/pos = Vector2(-3, 0)
-blend_point_10/node = SubResource("AnimationNodeAnimation_dj2qr")
-blend_point_10/pos = Vector2(3, -0.1)
-blend_point_11/node = SubResource("AnimationNodeAnimation_xc87n")
-blend_point_11/pos = Vector2(0, -3)
 min_space = Vector2(-3, -3)
 max_space = Vector2(3, 3)
+blend_point_0/node = SubResource("AnimationNodeAnimation_0pg88")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_3jcs7")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_38sl6")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_c50kb")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_3/name = &"3"
+blend_point_4/node = SubResource("AnimationNodeAnimation_o63qx")
+blend_point_4/pos = Vector2(0, 1)
+blend_point_4/name = &"4"
+blend_point_5/node = SubResource("AnimationNodeAnimation_iqkbo")
+blend_point_5/pos = Vector2(0, -2)
+blend_point_5/name = &"5"
+blend_point_6/node = SubResource("AnimationNodeAnimation_d66ta")
+blend_point_6/pos = Vector2(2, 0)
+blend_point_6/name = &"6"
+blend_point_7/node = SubResource("AnimationNodeAnimation_cm2we")
+blend_point_7/pos = Vector2(-2, 0)
+blend_point_7/name = &"7"
+blend_point_8/node = SubResource("AnimationNodeAnimation_t2dxk")
+blend_point_8/pos = Vector2(0, 3)
+blend_point_8/name = &"8"
+blend_point_9/node = SubResource("AnimationNodeAnimation_0q0f0")
+blend_point_9/pos = Vector2(-3, 0)
+blend_point_9/name = &"9"
+blend_point_10/node = SubResource("AnimationNodeAnimation_dj2qr")
+blend_point_10/pos = Vector2(3, -0.1)
+blend_point_10/name = &"10"
+blend_point_11/node = SubResource("AnimationNodeAnimation_xc87n")
+blend_point_11/pos = Vector2(0, -3)
+blend_point_11/name = &"11"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sy323"]
 animation = &"RESET"
@@ -113,14 +129,19 @@ animation = &"wallrun_down"
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3he8t"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_sy323")
 blend_point_0/pos = Vector2(0, 0)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_bfudv")
 blend_point_1/pos = Vector2(0, -1)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_1q4p6")
 blend_point_2/pos = Vector2(-1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_r3dtm")
 blend_point_3/pos = Vector2(1, 0)
+blend_point_3/name = &"3"
 blend_point_4/node = SubResource("AnimationNodeAnimation_sw0u7")
 blend_point_4/pos = Vector2(0, 1)
+blend_point_4/name = &"4"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3he8t"]
 animation = &"wallslide"
@@ -134,10 +155,13 @@ animation = &"wallslide_left"
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_3jcs7"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_3he8t")
 blend_point_0/pos = 0.0
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_120cr")
 blend_point_1/pos = 1.0
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_te2m4")
 blend_point_2/pos = -1.0
+blend_point_2/name = &"2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ryv0y"]
 animation = &"die"
@@ -227,7 +251,7 @@ states/Passive/node = SubResource("AnimationNodeStateMachine_d66ta")
 states/Passive/position = Vector2(426, 100)
 transitions = ["Start", "Passive", SubResource("AnimationNodeStateMachineTransition_3jcs7")]
 
-[node name="MiuCharacter" node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_hj4o1")]
+[node name="MiuCharacter" unique_id=1616200790 node_paths=PackedStringArray("_character_model", "_mantle_ray_cast") instance=ExtResource("1_hj4o1")]
 _character_data = ExtResource("2_4y4et")
 _character_model = NodePath("MiuCharacterModel")
 _character_stats = ExtResource("3_ryv0y")
@@ -235,15 +259,15 @@ _character_switcher_visual_packedscene = ExtResource("4_4y4et")
 _character_status_visual_packedscene = ExtResource("5_ryv0y")
 _mantle_ray_cast = NodePath("MantleRayCast")
 
-[node name="MiuCharacterModel" parent="." index="1" instance=ExtResource("4_hj4o1")]
+[node name="MiuCharacterModel" parent="." index="1" unique_id=1099256170 instance=ExtResource("4_hj4o1")]
 
-[node name="MantleRayCast" type="RayCast3D" parent="." index="4"]
+[node name="MantleRayCast" type="RayCast3D" parent="." index="4" unique_id=1754939233]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.2)
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 1, 0, 1)
 debug_shape_thickness = 5
 
-[node name="AnimationTree" parent="." index="6"]
+[node name="AnimationTree" parent="." index="6" unique_id=1642879660]
 root_node = NodePath("%AnimationTree/../MiuCharacterModel")
 tree_root = SubResource("AnimationNodeStateMachine_cm2we")
 anim_player = NodePath("../MiuCharacterModel/AnimationPlayer")

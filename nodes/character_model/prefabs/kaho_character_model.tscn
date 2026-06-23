@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dvh1txklr27o8"]
+[gd_scene format=3 uid="uid://dvh1txklr27o8"]
 
 [ext_resource type="PackedScene" uid="uid://kwwbdk1m8trx" path="res://nodes/character_model/character_model.tscn" id="1_vjkmm"]
 [ext_resource type="Shader" uid="uid://cp4a87a76fahl" path="res://resources/shaders/render/psx_render_lit.gdshader" id="2_lxn0n"]
@@ -266,6 +266,121 @@ tracks/19/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vjkmm"]
+resource_name = "die"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dummy_root:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 1.03333, -0.934264, 1.5708, -0.1, -0.594325, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dummy_root:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dummy_root:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dummy_root:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 2.0052, 3)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("dummy_root:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.533333, -0.190118, 0.5, -0.166667, -0.4076, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 2.0052, 3)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("dummy_root:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 2.0052, 3)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("dummy_root:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.00169, 3)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("dummy_root:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.999999, -0.25, 0, 0.25, 0, 0.999999, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.00169, 3)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("dummy_root:scale:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.00169, 3)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_3n1r8"]
@@ -1626,121 +1741,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_vjkmm"]
-resource_name = "die"
-length = 3.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("dummy_root:rotation:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 1.03333, -0.934264, 1.5708, -0.1, -0.594325, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("dummy_root:rotation:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("dummy_root:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("dummy_root:position:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8, 2.0052, 3)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("dummy_root:position:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0.1, -0.25, 0, 0.533333, -0.190118, 0.5, -0.166667, -0.4076, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8, 2.0052, 3)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("dummy_root:position:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.8, 2.0052, 3)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("dummy_root:scale:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.00169, 3)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("dummy_root:scale:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.999999, -0.25, 0, 0.25, 0, 0.999999, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.00169, 3)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("dummy_root:scale:z")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.00169, 3)
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nsq03"]
 _data = {
 &"RESET": SubResource("Animation_c3blq"),
@@ -1819,97 +1819,95 @@ top_radius = 0.0
 bottom_radius = 0.1
 height = 0.3
 
-[node name="KahoCharacterModel" instance=ExtResource("1_vjkmm")]
+[node name="KahoCharacterModel" unique_id=2052558866 instance=ExtResource("1_vjkmm")]
 
-[node name="dummy_root" type="Node3D" parent="." index="0"]
+[node name="dummy_root" type="Node3D" parent="." index="0" unique_id=157934759]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0.15, 0)
 
-[node name="body" type="MeshInstance3D" parent="dummy_root" index="0"]
+[node name="body" type="MeshInstance3D" parent="dummy_root" index="0" unique_id=178668768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_btn13")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="dummy_root/body" index="0"]
+[node name="eyes" type="MeshInstance3D" parent="dummy_root/body" index="0" unique_id=148196108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.598128, 0.382005)
 mesh = SubResource("BoxMesh_c3blq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=107397125]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_nsq03")
-}
+libraries/ = SubResource("AnimationLibrary_nsq03")
 
-[node name="morningstar_root" type="Node3D" parent="." index="3"]
+[node name="morningstar_root" type="Node3D" parent="." index="3" unique_id=1719768101]
 
-[node name="shaft" type="MeshInstance3D" parent="morningstar_root" index="0"]
+[node name="shaft" type="MeshInstance3D" parent="morningstar_root" index="0" unique_id=2017345038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 mesh = SubResource("CylinderMesh_3x0a3")
 
-[node name="star" type="MeshInstance3D" parent="morningstar_root/shaft" index="0"]
+[node name="star" type="MeshInstance3D" parent="morningstar_root/shaft" index="0" unique_id=899755890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 mesh = SubResource("SphereMesh_6kwxq")
 
-[node name="spike" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="0"]
+[node name="spike" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="0" unique_id=216431576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike6" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="1"]
+[node name="spike6" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="1" unique_id=1530347228]
 transform = Transform3D(0.5, 0.5, -0.707107, -0.707107, 0.707107, 0, 0.5, 0.5, 0.707107, 0.22, 0.31, 0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike7" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="2"]
+[node name="spike7" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="2" unique_id=584273220]
 transform = Transform3D(-0.5, -0.5, -0.707107, -0.707107, 0.707107, 0, 0.5, 0.5, -0.707107, -0.22, 0.31, 0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike8" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="3"]
+[node name="spike8" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="3" unique_id=1059992479]
 transform = Transform3D(-0.5, -0.5, 0.707107, -0.707107, 0.707107, 0, -0.5, -0.5, -0.707107, -0.22, 0.31, -0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike9" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="4"]
+[node name="spike9" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="4" unique_id=2012891273]
 transform = Transform3D(0.5, 0.5, 0.707107, -0.707107, 0.707107, 0, -0.5, -0.5, 0.707107, 0.22, 0.31, -0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike10" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="5"]
+[node name="spike10" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="5" unique_id=668755941]
 transform = Transform3D(0.5, 0.5, -0.707107, 0.707107, -0.707107, -6.18172e-08, -0.5, -0.5, -0.707107, 0.22, -0.31, -0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike11" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="6"]
+[node name="spike11" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="6" unique_id=1077562143]
 transform = Transform3D(-0.5, -0.5, -0.707107, 0.707107, -0.707107, 6.18172e-08, -0.5, -0.5, 0.707107, -0.22, -0.31, -0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike12" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="7"]
+[node name="spike12" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="7" unique_id=1812381709]
 transform = Transform3D(-0.5, -0.5, 0.707107, 0.707107, -0.707107, 6.18172e-08, 0.5, 0.5, 0.707107, -0.22, -0.31, 0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike13" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="8"]
+[node name="spike13" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="8" unique_id=1692711427]
 transform = Transform3D(0.5, 0.5, 0.707107, 0.707107, -0.707107, -6.18172e-08, 0.5, 0.5, -0.707107, 0.22, -0.31, 0.22)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike2" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="9"]
+[node name="spike2" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="9" unique_id=720437564]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.4, 0, 0)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike3" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="10"]
+[node name="spike3" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="10" unique_id=616649903]
 transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, -0.4, 0, 0)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike4" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="11"]
+[node name="spike4" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="11" unique_id=657887702]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -1.74846e-08, 0, 0.4)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
 
-[node name="spike5" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="12"]
+[node name="spike5" type="MeshInstance3D" parent="morningstar_root/shaft/star" index="12" unique_id=1062169172]
 transform = Transform3D(-5.73206e-15, 1.31134e-07, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, 1.31134e-07, 1.74846e-08, 0, -0.4)
 mesh = SubResource("CylinderMesh_vjkmm")
 skeleton = NodePath("../..")
